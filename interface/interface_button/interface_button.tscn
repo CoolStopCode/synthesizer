@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bu84l3b3hj3ue"]
+
+[ext_resource type="Script" uid="uid://cxhweabu0dv8j" path="res://interface/interface_button/interface_button.gd" id="1_r717c"]
+[ext_resource type="Texture2D" uid="uid://ubf8xltmftr1" path="res://interface/white_button.png" id="2_yaqwk"]
+
+[node name="interface_button" type="Control" unique_id=423282510]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_r717c")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1608476394]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yaqwk")

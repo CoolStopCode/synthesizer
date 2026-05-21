@@ -1,11 +1,14 @@
 extends Control
 
+@onready var main: Control = $SubViewportContainer/SubViewport/main
+@onready var sub_viewport_container: SubViewportContainer = $SubViewportContainer
+@onready var sub_viewport: SubViewport = $SubViewportContainer/SubViewport
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
+func _process(delta):
+	var screen_size = DisplayServer.screen_get_size()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	var scale_factor = floor(screen_size.y / 72.0)
+
+	sub_viewport.size = screen_size / scale_factor
+	sub_viewport_container.scale = Vector2.ONE * scale_factor

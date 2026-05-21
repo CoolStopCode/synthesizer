@@ -63,7 +63,6 @@ func _update_texture() -> void:
 	else:
 		state = ButtonState.NORMAL
 	
-	print(state)
 	texture_node.texture = textures[button_color][state]
 
 

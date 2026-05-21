@@ -5,7 +5,7 @@
 [node name="main" type="Control" unique_id=42299528]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 128.0
+offset_right = 152.0
 offset_bottom = 72.0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1518602587]
@@ -15,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.115683846, 0.11568386, 0.115683846, 1)
+color = Color(0.03529412, 0.039215688, 0.078431375, 1)
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=391739374]
 layout_mode = 1
@@ -23,27 +23,44 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -52.0
+offset_left = -48.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/h_separation = 2
-theme_override_constants/v_separation = 2
-columns = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
 
 [node name="interface_button" parent="GridContainer" unique_id=423282510 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
+button_color = 1
 
 [node name="interface_button2" parent="GridContainer" unique_id=776683659 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
 
 [node name="interface_button3" parent="GridContainer" unique_id=2058881815 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
+button_color = 3
 
-[node name="interface_button4" parent="GridContainer" unique_id=1733830082 instance=ExtResource("1_ig7tw")]
+[node name="interface_button7" parent="GridContainer" unique_id=1365237474 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
+button_color = 2
 
-[node name="interface_button5" parent="GridContainer" unique_id=1871485957 instance=ExtResource("1_ig7tw")]
+[node name="interface_button8" parent="GridContainer" unique_id=529287022 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
+button_color = 2
 
-[node name="interface_button6" parent="GridContainer" unique_id=16862937 instance=ExtResource("1_ig7tw")]
+[node name="interface_button9" parent="GridContainer" unique_id=2101674466 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
+button_color = 2
+
+[node name="interface_button10" parent="GridContainer" unique_id=1429183097 instance=ExtResource("1_ig7tw")]
+layout_mode = 2
+button_color = 2
+
+[node name="interface_button11" parent="GridContainer" unique_id=1595316418 instance=ExtResource("1_ig7tw")]
+layout_mode = 2
+button_color = 2
+
+[node name="interface_button12" parent="GridContainer" unique_id=704267809 instance=ExtResource("1_ig7tw")]
+layout_mode = 2
+button_color = 2

@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://cspvrxqceta55"]
 
 [ext_resource type="PackedScene" uid="uid://bu84l3b3hj3ue" path="res://interface/interface_button/interface_button.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cdwuevi3neiv7" path="res://interface/interface_button/icon/record.png" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://b4fu1m412fd3q" path="res://interface/interface_button/icon/settings_pressed.png" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://hluqlx2fwit6" path="res://interface/interface_button/icon/record_pressed.png" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cvbk7mm1ydvlr" path="res://interface/interface_button/icon/settings.png" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cx1bcjsmxpi5d" path="res://interface/interface_button/icon/sound.png" id="5_5vw27"]
+[ext_resource type="Texture2D" uid="uid://d375odvurc1e7" path="res://interface/interface_button/icon/sound_pressed.png" id="5_272bh"]
 
 [node name="main" type="Control" unique_id=42299528]
 layout_mode = 3
@@ -15,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.03529412, 0.039215688, 0.078431375, 1)
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1284280781]
 layout_mode = 1
@@ -23,7 +29,7 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -72.0
+offset_left = -24.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -34,11 +40,17 @@ theme_override_constants/v_separation = 0
 
 [node name="interface_button" parent="CenterContainer/GridContainer" unique_id=423282510 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
+icon = ExtResource("2_lquwl")
+icon_pressed = ExtResource("3_7mycd")
 button_color = 1
 
 [node name="interface_button2" parent="CenterContainer/GridContainer" unique_id=776683659 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
+icon = ExtResource("5_5vw27")
+icon_pressed = ExtResource("5_272bh")
 
 [node name="interface_button3" parent="CenterContainer/GridContainer" unique_id=2058881815 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
+icon = ExtResource("4_lquwl")
+icon_pressed = ExtResource("3_1bvp3")
 button_color = 3

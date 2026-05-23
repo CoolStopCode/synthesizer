@@ -5,7 +5,11 @@ extends Control
 @onready var sub_viewport: SubViewport = $SubViewportContainer/SubViewport
 
 
-func _process(delta):
+func _ready() -> void:
+	get_window().size_changed.connect(_on_window_size_changed)
+	_on_window_size_changed()
+
+func _on_window_size_changed() -> void:
 	var screen_size = DisplayServer.screen_get_size()
 
 	var scale_factor = floor(screen_size.y / 72.0)

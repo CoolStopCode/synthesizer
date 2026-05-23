@@ -12,34 +12,32 @@ enum ButtonColor {
 enum ButtonState {
 	NORMAL,
 	PRESSED,
-	HOVERED
 }
 
 var textures := {
 	ButtonColor.BLUE: {
-		ButtonState.NORMAL: preload("res://interface/interface_button/apollo4/blue.png"),
-		ButtonState.PRESSED: preload("res://interface/interface_button/apollo4/blue_pressed.png"),
-		ButtonState.HOVERED: preload("res://interface/interface_button/apollo4/blue_hovered.png")
+		ButtonState.NORMAL: preload("res://interface/interface_button/button/blue.png"),
+		ButtonState.PRESSED: preload("res://interface/interface_button/button/blue_pressed.png"),
 	},
 
 	ButtonColor.RED: {
-		ButtonState.NORMAL: preload("res://interface/interface_button/apollo4/red.png"),
-		ButtonState.PRESSED: preload("res://interface/interface_button/apollo4/red_pressed.png"),
-		ButtonState.HOVERED: preload("res://interface/interface_button/apollo4/red_hovered.png")
+		ButtonState.NORMAL: preload("res://interface/interface_button/button/red.png"),
+		ButtonState.PRESSED: preload("res://interface/interface_button/button/red_pressed.png"),
 	},
 
 	ButtonColor.WHITE: {
-		ButtonState.NORMAL: preload("res://interface/interface_button/apollo4/white.png"),
-		ButtonState.PRESSED: preload("res://interface/interface_button/apollo4/white_pressed.png"),
-		ButtonState.HOVERED: preload("res://interface/interface_button/apollo4/white_hovered.png")
+		ButtonState.NORMAL: preload("res://interface/interface_button/button/white.png"),
+		ButtonState.PRESSED: preload("res://interface/interface_button/button/white_pressed.png"),
 	},
 
 	ButtonColor.YELLOW: {
-		ButtonState.NORMAL: preload("res://interface/interface_button/apollo4/yellow.png"),
-		ButtonState.PRESSED: preload("res://interface/interface_button/apollo4/yellow_pressed.png"),
-		ButtonState.HOVERED: preload("res://interface/interface_button/apollo4/yellow_hovered.png")
+		ButtonState.NORMAL: preload("res://interface/interface_button/button/yellow.png"),
+		ButtonState.PRESSED: preload("res://interface/interface_button/button/yellow_pressed.png"),
 	}
 }
+
+@export var icon : Texture2D
+@export var icon_pressed : Texture2D
 
 @export var button_color : ButtonColor:
 	set(value):
@@ -48,7 +46,8 @@ var textures := {
 
 @export var pressed : bool = false
 @export var hovered : bool = false
-@export var texture_node : TextureRect
+@export var button_node : TextureRect
+@export var icon_node : TextureRect
 
 
 func _ready() -> void:
@@ -56,20 +55,20 @@ func _ready() -> void:
 
 func _update_texture() -> void:
 	var state : ButtonState
+	
 	if pressed:
 		state = ButtonState.PRESSED
-	elif hovered:
-		state = ButtonState.HOVERED
 	else:
 		state = ButtonState.NORMAL
 	
-	texture_node.texture = textures[button_color][state]
+	button_node.texture = textures[button_color][state]
+	icon_node.texture = icon_pressed if pressed else icon
+	icon_node.position.y = 6 if pressed else 5
 
 func _set_state(state_pressed : bool):
 	pressed = state_pressed
 	_update_texture()
 
-func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			_set_state(event.pressed)
+func _gui_input(event):
+	if event is InputEventScreenTouch or event is InputEventMouseButton:
+		_set_state(event.pressed)

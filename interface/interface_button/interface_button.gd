@@ -65,9 +65,11 @@ func _update_texture() -> void:
 	
 	texture_node.texture = textures[button_color][state]
 
+func _set_state(state_pressed : bool):
+	pressed = state_pressed
+	_update_texture()
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			pressed = event.pressed
-			_update_texture()
+			_set_state(event.pressed)

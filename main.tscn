@@ -31,7 +31,6 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
-columns = 3
 
 [node name="interface_button" parent="CenterContainer/GridContainer" unique_id=423282510 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
@@ -43,27 +42,3 @@ layout_mode = 2
 [node name="interface_button3" parent="CenterContainer/GridContainer" unique_id=2058881815 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
 button_color = 3
-
-[node name="interface_button7" parent="CenterContainer/GridContainer" unique_id=1365237474 instance=ExtResource("1_ig7tw")]
-layout_mode = 2
-button_color = 2
-
-[node name="interface_button8" parent="CenterContainer/GridContainer" unique_id=529287022 instance=ExtResource("1_ig7tw")]
-layout_mode = 2
-button_color = 2
-
-[node name="interface_button9" parent="CenterContainer/GridContainer" unique_id=2101674466 instance=ExtResource("1_ig7tw")]
-layout_mode = 2
-button_color = 2
-
-[node name="interface_button10" parent="CenterContainer/GridContainer" unique_id=1429183097 instance=ExtResource("1_ig7tw")]
-layout_mode = 2
-button_color = 2
-
-[node name="interface_button11" parent="CenterContainer/GridContainer" unique_id=1595316418 instance=ExtResource("1_ig7tw")]
-layout_mode = 2
-button_color = 2
-
-[node name="interface_button12" parent="CenterContainer/GridContainer" unique_id=704267809 instance=ExtResource("1_ig7tw")]
-layout_mode = 2
-button_color = 2

@@ -1,4 +1,4 @@
-class_name Note
+class_name Note2
 enum {
 	C = 0,
 	Cs = 1,

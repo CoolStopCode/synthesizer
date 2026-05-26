@@ -1,5 +1,6 @@
-class_name ChordType2
-enum {
+class_name ChordType
+
+enum Enum {
 	MAJOR,
 	MINOR,
 	DIMINISHED,

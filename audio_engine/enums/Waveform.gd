@@ -1,4 +1,4 @@
-class_name Waveform
+class_name Waveform2
 
 enum {
 	SINE,

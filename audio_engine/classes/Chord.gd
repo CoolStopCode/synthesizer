@@ -1,4 +1,4 @@
-class_name Chord
+class_name Chord2
 
 var root: int # Note
 var octave: int = 4

@@ -1,4 +1,4 @@
-class_name Oscillator
+class_name Oscillator2
 
 static func evaluate(waveform: int, phase: float) -> float:
 	var p := phase

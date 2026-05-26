@@ -1,27 +1,22 @@
 [gd_scene format=3 uid="uid://dcman427vswea"]
 
-[ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio_engine/audio_engine.gd" id="1_7l53a"]
-[ext_resource type="Script" uid="uid://cw27w5g7vvw71" path="res://audio_engine/chord_generator.gd" id="2_iv6p0"]
-[ext_resource type="Script" uid="uid://dutqnu4iai8b1" path="res://audio_engine/io_test.gd" id="2_jwo0y"]
-[ext_resource type="Script" uid="uid://580f6vs44xe" path="res://audio_engine/wave_generator.gd" id="2_r1rco"]
+[ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio_engine/audio/audio_engine.gd" id="1_7l53a"]
+[ext_resource type="Script" uid="uid://bfsl0utby8d8o" path="res://audio_engine/audio/VoiceManager.gd" id="2_r1rco"]
+[ext_resource type="Script" uid="uid://clibqtsc0jdha" path="res://audio_engine/audio/io_test.gd" id="3_jwo0y"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_r1rco"]
 
-[node name="audio_engine" type="Node" unique_id=1297315903 node_paths=PackedStringArray("wave_generator", "chord_generator", "io_test")]
+[node name="audio_engine" type="Node" unique_id=1297315903 node_paths=PackedStringArray("voice_manager", "output")]
 script = ExtResource("1_7l53a")
-wave_generator = NodePath("wave_generator")
-chord_generator = NodePath("chord_generator")
-io_test = NodePath("io_test")
-
-[node name="wave_generator" type="Node" parent="." unique_id=223312678 node_paths=PackedStringArray("output")]
-script = ExtResource("2_r1rco")
+voice_manager = NodePath("VoiceManager")
 output = NodePath("output")
 
-[node name="output" type="AudioStreamPlayer" parent="wave_generator" unique_id=523073427]
+[node name="output" type="AudioStreamPlayer" parent="." unique_id=523073427]
 stream = SubResource("AudioStreamGenerator_r1rco")
 
-[node name="chord_generator" type="Node" parent="." unique_id=1234595024]
-script = ExtResource("2_iv6p0")
+[node name="VoiceManager" type="Node" parent="." unique_id=1490176254]
+script = ExtResource("2_r1rco")
+metadata/_custom_type_script = "uid://bfsl0utby8d8o"
 
-[node name="io_test" type="Node" parent="." unique_id=1322145732]
-script = ExtResource("2_jwo0y")
+[node name="io" type="Node" parent="." unique_id=531001594]
+script = ExtResource("3_jwo0y")

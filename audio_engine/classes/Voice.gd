@@ -1,4 +1,4 @@
-class_name Voice
+class_name Voice2
 
 var frequency : float
 var waveform : int = Waveform.SINE

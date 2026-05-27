@@ -9,10 +9,10 @@ func build_voice_pool(_voice_pool : Array[Voice]):
 	voice_pool = _voice_pool
 
 func voice_on(index : int):
-	voice_pool[index].chord_on()
+	voice_pool[index].voice_on()
 
 func voice_off(index : int):
-	voice_pool[index].chord_off()
+	voice_pool[index].voice_off()
 
 func process_mix(delta : float) -> float:
 	var mixed_sample := 0.0

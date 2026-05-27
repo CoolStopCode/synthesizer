@@ -9,11 +9,11 @@ func _init(_oscillators : Array[Oscillator] = [], _envelope : Envelope = null) -
 	oscillators = _oscillators
 	envelope = _envelope
 
-func chord_on() -> void:
+func voice_on() -> void:
 	is_pressed = true
 	envelope.process(0, is_pressed)
 
-func chord_off() -> void:
+func voice_off() -> void:
 	is_pressed = false
 	envelope.process(0, is_pressed)
 
@@ -26,4 +26,4 @@ func process(delta: float) -> float:
 	for oscillator in oscillators:
 		mixed_sample += oscillator.process(delta)
 	
-	return tanh(mixed_sample * amp)
+	return mixed_sample * amp / oscillators.size()

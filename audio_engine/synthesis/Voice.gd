@@ -26,4 +26,4 @@ func process(delta: float) -> float:
 	for oscillator in oscillators:
 		mixed_sample += oscillator.process(delta)
 	
-	return mixed_sample * amp
+	return tanh(mixed_sample * amp)

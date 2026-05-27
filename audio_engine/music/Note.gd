@@ -1,4 +1,5 @@
 class_name Note
+extends Resource
 
 enum Enum {
 	C = 0,
@@ -15,10 +16,10 @@ enum Enum {
 	B = 11
 }
 
-var note : Note.Enum
-var octave : int
+@export var note : Note.Enum
+@export var octave : int
 
-func _init(_note : Note.Enum, _octave : int) -> void:
+func _init(_note : Note.Enum = Note.Enum.C, _octave : int = 4) -> void:
 	note = _note
 	octave = _octave
 

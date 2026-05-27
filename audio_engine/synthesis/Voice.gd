@@ -1,27 +1,29 @@
 class_name Voice
 
-var oscillator: Oscillator
+var oscillators: Array[Oscillator]
 var envelope: Envelope
 
 var is_pressed: bool = false
-var note_id: int = -1
 
-func _init(_oscillator : Oscillator, _envelope : Envelope) -> void:
-	oscillator = _oscillator
+func _init(_oscillators : Array[Oscillator] = [], _envelope : Envelope = null) -> void:
+	oscillators = _oscillators
 	envelope = _envelope
 
-func note_on() -> void:
+func chord_on() -> void:
 	is_pressed = true
 	envelope.process(0, is_pressed)
 
-func note_off() -> void:
+func chord_off() -> void:
 	is_pressed = false
+	envelope.process(0, is_pressed)
 
 func process(delta: float) -> float:
 	if envelope.state == Envelope.State.IDLE:
 		return 0.0
 	
 	var amp := envelope.process(delta, is_pressed)
-	var sample := oscillator.process(delta)
+	var mixed_sample := 0.0
+	for oscillator in oscillators:
+		mixed_sample += oscillator.process(delta)
 	
-	return sample * amp
+	return mixed_sample * amp

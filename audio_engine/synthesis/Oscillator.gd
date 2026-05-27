@@ -18,7 +18,7 @@ func process(delta : float) -> float:
 	# advance phase
 	phase += frequency * delta
 	phase = fmod(phase, 1.0)
-
+	
 	return value
 
 

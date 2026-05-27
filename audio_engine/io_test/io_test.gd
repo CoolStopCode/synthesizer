@@ -3,8 +3,8 @@ extends Node
 # -----------------------------
 # MUSIC THEORY CONFIG
 # -----------------------------
-const KEY_ROOT := Note.Enum.C
-const SCALE_INTERVALS := [0, 2, 3, 5, 7, 8, 10] # natural minor
+const KEY_ROOT := Note.Enum.A
+const SCALE_INTERVALS := [0, 2, 3, 5, 7, 8, 10]
 
 # -----------------------------
 # STATE
@@ -14,17 +14,34 @@ var held_actions: Array[String] = []
 var scale_notes: Array[int] = []
 var scale_chords: Array[int] = []
 
-# Track currently playing note IDs
-var active_note_ids: Array[int] = []
+var active_voice_indices: Array[int] = []
 
 # -----------------------------
 # LIFECYCLE
 # -----------------------------
 func _ready() -> void:
 	rebuild_scale()
+	build_voice_pool()
 
 func _process(_delta: float) -> void:
 	handle_input()
+
+# -----------------------------
+# VOICE POOL (STATIC)
+# -----------------------------
+func build_voice_pool() -> void:
+	var voice_manager : VoiceManager = AudioEngine.voice_manager
+
+	# Build ONE chord representing maximum polyphony (7 voices)
+	var base_chord := Chord.new()
+	base_chord.root = Note.from_midi(60) # placeholder root
+	base_chord.type = ChordType.Enum.MAJOR
+
+	# Create full voice pool once
+	var voices: Array[Voice] = VoiceBuilder.chords_to_voices([base_chord])
+
+	# If your builder only returns one voice per chord, expand it:
+	voice_manager.build_voice_pool(voices)
 
 # -----------------------------
 # INPUT
@@ -67,48 +84,39 @@ func rebuild_scale() -> void:
 
 		if interval_3 == 4 and interval_5 == 7:
 			scale_chords.append(ChordType.Enum.MAJOR)
-
 		elif interval_3 == 3 and interval_5 == 7:
 			scale_chords.append(ChordType.Enum.MINOR)
-
 		elif interval_3 == 3 and interval_5 == 6:
 			scale_chords.append(ChordType.Enum.DIMINISHED)
-
 		else:
 			scale_chords.append(ChordType.Enum.MAJOR)
 
 # -----------------------------
-# SYNTH COORDINATION LAYER
+# SYNTH COORDINATION
 # -----------------------------
 func update_synthesizer_voices() -> void:
-	# Stop old notes
-	for note_id in active_note_ids:
-		AudioEngine.voice_manager.note_off(note_id)
+	var voice_manager : VoiceManager = AudioEngine.voice_manager
 
-	active_note_ids.clear()
+	# turn off previous voices
+	for i in active_voice_indices:
+		voice_manager.voice_off(i)
 
-	# Nothing held
+	active_voice_indices.clear()
+
 	if held_actions.is_empty():
 		return
 
-	# Latest held key wins
 	var latest := held_actions[-1]
 	var degree := int(latest.trim_prefix("Key")) - 1
 
-	# Build chord
 	var chord := Chord.new()
 	chord.root = Note.from_midi(scale_notes[degree] + (6 * 12))
 	chord.type = scale_chords[degree] as ChordType.Enum
 
-	# Play notes
-	for note in chord.get_notes():
-		var midi := note.to_midi()
-		print(note.to_string_name())
-		var frequency := note.to_frequency()
+	# Convert chord -> voices (NO rebuilding pool)
+	var voices := VoiceBuilder.chord_to_voice(chord)
 
-		active_note_ids.append(midi)
-
-		AudioEngine.voice_manager.note_on(
-			frequency,
-			midi
-		)
+	# IMPORTANT: assumes pool already exists and is same size mapping
+	for i in range(voices.size()):
+		voice_manager.voice_on(i)
+		active_voice_indices.append(i)

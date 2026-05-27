@@ -33,6 +33,7 @@ window/size/always_on_top=true
 
 folder_colors={
 "res://audio_engine/audio/": "green",
+"res://audio_engine/control/": "orange",
 "res://audio_engine/io_test/": "purple",
 "res://audio_engine/music/": "red",
 "res://audio_engine/synthesis/": "yellow"

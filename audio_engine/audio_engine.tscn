@@ -1,22 +1,42 @@
 [gd_scene format=3 uid="uid://dcman427vswea"]
 
-[ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio_engine/audio/audio_engine.gd" id="1_7l53a"]
-[ext_resource type="Script" uid="uid://bfsl0utby8d8o" path="res://audio_engine/audio/VoiceManager.gd" id="2_r1rco"]
-[ext_resource type="Script" uid="uid://clibqtsc0jdha" path="res://audio_engine/audio/io_test.gd" id="3_jwo0y"]
+[ext_resource type="Script" uid="uid://bnxjc1y2lkc86" path="res://audio_engine/AudioEngine.gd" id="1_jwo0y"]
+[ext_resource type="Script" uid="uid://r5n4vltdnpyx" path="res://audio_engine/synthesis/Envelope.gd" id="2_6ppth"]
+[ext_resource type="Script" uid="uid://ddfhviicidy5i" path="res://audio_engine/music/Note.gd" id="2_084pw"]
+[ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio_engine/audio/AudioPlayer.gd" id="2_iv6p0"]
+[ext_resource type="Script" uid="uid://bfsl0utby8d8o" path="res://audio_engine/control/VoiceManager.gd" id="2_r1rco"]
+[ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://audio_engine/io/io_temp.gd" id="3_iv6p0"]
+[ext_resource type="Script" uid="uid://5ec7fao2kg5e" path="res://audio_engine/music/Key.gd" id="3_x36ov"]
+
+[sub_resource type="Resource" id="Resource_084pw"]
+script = ExtResource("2_084pw")
+octave = 7
+metadata/_custom_type_script = "uid://ddfhviicidy5i"
+
+[sub_resource type="Resource" id="Resource_x36ov"]
+script = ExtResource("3_x36ov")
+root = SubResource("Resource_084pw")
+metadata/_custom_type_script = "uid://5ec7fao2kg5e"
+
+[sub_resource type="Resource" id="Resource_w3o6y"]
+script = ExtResource("2_6ppth")
+metadata/_custom_type_script = "uid://r5n4vltdnpyx"
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_r1rco"]
 
-[node name="audio_engine" type="Node" unique_id=1297315903 node_paths=PackedStringArray("voice_manager", "output")]
-script = ExtResource("1_7l53a")
-voice_manager = NodePath("VoiceManager")
-output = NodePath("output")
+[node name="audio_engine" type="Node" unique_id=1297315903 node_paths=PackedStringArray("audio_player", "voice_manager")]
+script = ExtResource("1_jwo0y")
+audio_player = NodePath("audio_player")
+voice_manager = NodePath("voice_manager")
+key = SubResource("Resource_x36ov")
+envelope = SubResource("Resource_w3o6y")
 
-[node name="output" type="AudioStreamPlayer" parent="." unique_id=523073427]
+[node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=523073427]
 stream = SubResource("AudioStreamGenerator_r1rco")
+script = ExtResource("2_iv6p0")
 
-[node name="VoiceManager" type="Node" parent="." unique_id=1490176254]
+[node name="voice_manager" type="Node" parent="." unique_id=1954687046]
 script = ExtResource("2_r1rco")
-metadata/_custom_type_script = "uid://bfsl0utby8d8o"
 
 [node name="io" type="Node" parent="." unique_id=531001594]
-script = ExtResource("3_jwo0y")
+script = ExtResource("3_iv6p0")

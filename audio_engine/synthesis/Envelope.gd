@@ -1,4 +1,5 @@
 class_name Envelope
+extends Resource
 
 enum State {
 	IDLE,
@@ -10,12 +11,12 @@ enum State {
 
 var state := State.IDLE
 
-var attack  : float = 0.05  # Seconds
-var decay   : float = 0.1   # Seconds
-var sustain : float = 0.7   # Volume
-var release : float = 0.2   # Seconds
+@export var attack  : float = 0.05  # Seconds
+@export var decay   : float = 0.1   # Seconds
+@export var sustain : float = 0.7   # Volume
+@export var release : float = 0.2   # Seconds
 
-var velocity: float = 1.0
+@export var velocity: float = 1.0
 
 var volume := 0.0
 
@@ -31,7 +32,6 @@ func _init(
 	sustain  = _sustain
 	release  = _release
 	velocity = _velocity
-
 
 func process(delta: float, is_pressed: bool) -> float:
 	match state:

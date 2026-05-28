@@ -14,7 +14,6 @@ func handle_input() -> void:
 			held_actions.append(action)
 
 			# Turn ONLY this key on
-			print(i)
 			AudioEngine.voice_manager.voice_on(i)
 
 		if Input.is_action_just_released(action):

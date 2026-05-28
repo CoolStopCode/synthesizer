@@ -10,16 +10,21 @@
 
 [sub_resource type="Resource" id="Resource_084pw"]
 script = ExtResource("2_084pw")
-octave = 7
+note = 9
+octave = 6
 metadata/_custom_type_script = "uid://ddfhviicidy5i"
 
 [sub_resource type="Resource" id="Resource_x36ov"]
 script = ExtResource("3_x36ov")
 root = SubResource("Resource_084pw")
+scale = 2
 metadata/_custom_type_script = "uid://5ec7fao2kg5e"
 
 [sub_resource type="Resource" id="Resource_w3o6y"]
 script = ExtResource("2_6ppth")
+attack = 0.01
+decay = 2.0
+sustain = 0.0
 metadata/_custom_type_script = "uid://r5n4vltdnpyx"
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_r1rco"]
@@ -30,6 +35,7 @@ audio_player = NodePath("audio_player")
 voice_manager = NodePath("voice_manager")
 key = SubResource("Resource_x36ov")
 envelope = SubResource("Resource_w3o6y")
+waveform = 1
 
 [node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=523073427]
 stream = SubResource("AudioStreamGenerator_r1rco")

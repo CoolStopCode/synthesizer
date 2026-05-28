@@ -28,13 +28,13 @@ func evaluate(p: float) -> float:
 			return sin(p * TAU)
 
 		Waveform.Enum.SQUARE:
-			return 1.0 if sin(p * TAU) >= 0.0 else -1.0
+			return 1.0 if p < 0.5 else -1.0
 
 		Waveform.Enum.SAW:
 			return (p * 2.0) - 1.0
 
 		Waveform.Enum.TRIANGLE:
-			return 2.0 * abs(2.0 * (p - floor(p + 0.5))) - 1.0
+			return 1.0 - 4.0 * abs(p - 0.5)
 		
 		_:
 			

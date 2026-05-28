@@ -26,7 +26,7 @@ func get_chords(sevenths : bool) -> Array[Chord]:
 		var chord_root_midi = root_midi + intervals[i]
 
 		chord.root = Note.from_midi(chord_root_midi)
-		chord.type = diatonic_qualities[i]
+		chord.quality = diatonic_qualities[i]
 
 		chords.append(chord)
 

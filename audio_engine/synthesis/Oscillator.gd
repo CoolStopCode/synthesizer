@@ -1,16 +1,18 @@
-extends Node
 class_name Oscillator
 
-var waveform: Waveform.Enum
-var phase: float = 0.0
-var frequency: float
+var waveform : Waveform.Enum
+var phase : float = 0.0
+var frequency : float
+var gain : float
 
 func _init(
 	_waveform : Waveform.Enum = Waveform.Enum.SAW, 
-	_frequency : float = 440.0
+	_frequency : float = 440.0,
+	_gain : float = 1.0
 ) -> void:
 	waveform = _waveform
 	frequency = _frequency
+	gain = _gain
 
 func process(delta : float) -> float:
 	var value := evaluate(phase)
@@ -19,7 +21,7 @@ func process(delta : float) -> float:
 	phase += frequency * delta
 	phase = fmod(phase, 1.0)
 	
-	return value
+	return value * gain
 
 
 func evaluate(p: float) -> float:

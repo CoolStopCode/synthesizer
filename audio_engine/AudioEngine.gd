@@ -3,6 +3,8 @@ extends Node
 @export var audio_player : AudioPlayer
 @export var voice_manager : VoiceManager
 
+@export var master_volume : float
+
 @export_category("Music")
 @export var key : Key
 

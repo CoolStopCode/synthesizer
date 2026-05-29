@@ -10,7 +10,7 @@ const SAMPLE_RATE := 44100.0
 func _ready() -> void:
 	var generator := AudioStreamGenerator.new()
 	generator.mix_rate = 44100.0 # Standard CD quality
-	generator.buffer_length = 0.025 # 100ms latency buffer
+	generator.buffer_length = 0.025
 	
 	output.stream = generator
 	output.play()
@@ -24,7 +24,7 @@ func process(voice_manager : VoiceManager) -> void:
 	var sample_delta := 1.0 / SAMPLE_RATE
 	
 	while frames_to_fill > 0:
-		var sample_value := voice_manager.process_mix(sample_delta)
+		var sample_value : float = voice_manager.process_mix(sample_delta) * AudioEngine.master_volume
 		
 		var frame := Vector2(sample_value, sample_value)
 		

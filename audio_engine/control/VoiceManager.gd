@@ -5,8 +5,11 @@ extends Node
 
 var voice_pool: Array[Voice] = []
 
-func build_voice_pool(_voice_pool : Array[Voice]):
+func set_voice_pool(_voice_pool : Array[Voice]):
 	voice_pool = _voice_pool
+
+func set_voice_oscillators(index : int, oscillators : Array[Oscillator]):
+	voice_pool[index].set_oscillators(oscillators)
 
 func voice_on(index : int):
 	voice_pool[index].voice_on()
@@ -19,4 +22,4 @@ func process_mix(delta : float) -> float:
 	for voice in voice_pool:
 		mixed_sample += voice.process(delta)
 	
-	return clampf(mixed_sample, -1.0, 1.0)
+	return mixed_sample

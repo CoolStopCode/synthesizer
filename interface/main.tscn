@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cspvrxqceta55"]
 
 [ext_resource type="PackedScene" uid="uid://bu84l3b3hj3ue" path="res://interface/interface_button/interface_button.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://c7x0efhxefg64" path="res://interface/main.gd" id="1_spusx"]
 [ext_resource type="Texture2D" uid="uid://cdwuevi3neiv7" path="res://interface/interface_button/icon/record.png" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://b4fu1m412fd3q" path="res://interface/interface_button/icon/settings_pressed.png" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://hluqlx2fwit6" path="res://interface/interface_button/icon/record_pressed.png" id="3_7mycd"]
@@ -13,6 +14,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 152.0
 offset_bottom = 72.0
+script = ExtResource("1_spusx")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1518602587]
 layout_mode = 1
@@ -22,6 +24,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
+[node name="test" type="GridContainer" parent="." unique_id=2125776782]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -66.0
+offset_right = 44.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1284280781]
 layout_mode = 1
@@ -38,7 +57,7 @@ layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
-[node name="interface_button" parent="CenterContainer/GridContainer" unique_id=423282510 instance=ExtResource("1_ig7tw")]
+[node name="interface_button" parent="CenterContainer/GridContainer" unique_id=170311006 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
 icon = ExtResource("2_lquwl")
 icon_pressed = ExtResource("3_7mycd")

@@ -25,16 +25,11 @@ metadata/_custom_type_script = "uid://5ec7fao2kg5e"
 script = ExtResource("2_6ppth")
 attack = 0.01
 decay = 2.0
-sustain = 0.0
+sustain = 0.5
 metadata/_custom_type_script = "uid://r5n4vltdnpyx"
 
 [sub_resource type="Resource" id="Resource_yyg6e"]
 script = ExtResource("5_x36ov")
-waveforms = Array[int]([2, 1, 0, 0])
-layer_enable = Array[bool]([true, true, true, true])
-layer_octave = Array[int]([-2, -1, -1, -1])
-note_octave = Array[int]([1, 1, 2, 0])
-note_gain = Array[float]([0.6, 1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://cqwhy58ttabfw"
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_r1rco"]

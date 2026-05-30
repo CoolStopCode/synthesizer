@@ -15,6 +15,11 @@ func _init(
 	envelope = _envelope
 	voice_properties = _voice_properties
 
+func set_oscillators(
+	_oscillators : Array[Oscillator]
+) -> void:
+	oscillators = _oscillators
+
 func voice_on() -> void:
 	is_pressed = true
 	envelope.state = Envelope.State.ATTACK

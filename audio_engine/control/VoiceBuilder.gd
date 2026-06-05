@@ -5,10 +5,9 @@ static func chord_to_voice(
 	envelope : Envelope,
 	voice_properties : VoiceProperties
 ) -> Voice:
-	var voice := Voice.new([], null, null)
+	var voice := Voice.new([], null)
 	voice.oscillators = []
 	voice.envelope = envelope.duplicate()
-	voice.voice_properties = voice_properties
 	
 	var notes := chord.get_notes()
 	for i : int in range(voice_properties.oscillator_layers.size()):

@@ -2,18 +2,15 @@ class_name Voice
 
 var oscillators : Array[Oscillator]
 var envelope : Envelope
-var voice_properties : VoiceProperties
 
 var is_pressed : bool = false
 
 func _init(
 	_oscillators : Array[Oscillator], 
 	_envelope : Envelope, 
-	_voice_properties : VoiceProperties
 ) -> void:
 	oscillators = _oscillators
 	envelope = _envelope
-	voice_properties = _voice_properties
 
 func set_oscillators(
 	_oscillators : Array[Oscillator]

@@ -3,7 +3,7 @@ extends Node
 @export var audio_player : AudioPlayer
 @export var voice_manager : VoiceManager
 
-@export var master_volume : float
+@export var master_volume : float = 1.0
 
 @export_category("Music")
 @export var key : Key
@@ -17,7 +17,7 @@ func _physics_process(_delta: float) -> void:
 
 func _ready() -> void:
 	var chords := key.get_chords()
-	#for chord in chords:
-		#print(chord.root.to_string_name(), ", ", chord.quality)
+	for chord in chords:
+		print(chord.root.to_string_name(), ", ", chord.quality)
 	var voices := VoiceBuilder.chords_to_voices(chords, envelope, voice_properties)
 	voice_manager.set_voice_pool(voices)

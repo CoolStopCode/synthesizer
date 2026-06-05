@@ -11,26 +11,19 @@ static func chord_to_voice(
 	voice.voice_properties = voice_properties
 	
 	var notes := chord.get_notes()
-	for i in range(notes.size()):
-		if voice_properties.note_enable[i]:
-			var note := Note.new(notes[i].note, notes[i].octave + voice_properties.note_octave[i])
-			var frequency := note.to_frequency()
+	for i : int in range(voice_properties.oscillator_layers.size()):
+		var note_layer : OscillatorLayer = voice_properties.oscillator_layers[i]
+		var from_note : Note = notes[note_layer.chord_note]
+		if    note_layer.enabled and\
+			  note_layer.chord_note < notes.size() and\
+			  from_note.octave + note_layer.octave_shift >= 0:
+			var to_note := Note.new(from_note.note + note_layer.semitone_shift, from_note.octave + note_layer.octave_shift)
+			var frequency := to_note.to_frequency()
 			voice.oscillators.append(
 				Oscillator.new(
-					voice_properties.waveforms[i],
+					note_layer.waveform,
 					frequency,
-					voice_properties.note_gain[i]
-				)
-			)
-		
-		if voice_properties.layer_enable[i]:
-			var note := Note.new(notes[i].note, notes[i].octave + voice_properties.layer_octave[i])
-			var frequency := note.to_frequency()
-			voice.oscillators.append(
-				Oscillator.new(
-					voice_properties.waveforms[i],
-					frequency,
-					voice_properties.layer_gain[i]
+					note_layer.gain
 				)
 			)
 	return voice

@@ -14,7 +14,7 @@ func get_notes() -> Array[Note]:
 
 	return result
 
-func get_chords(shift : int = 0, sevenths : bool = false) -> Array[Chord]:
+func get_chords(sevenths : bool = false) -> Array[Chord]:
 	var intervals : Array = Scale.INTERVALS[scale]
 	var diatonic_qualities := Scale.get_diatonic_qualities(scale, sevenths)
 	var root_midi := root.to_midi()

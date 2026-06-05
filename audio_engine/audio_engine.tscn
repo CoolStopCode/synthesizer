@@ -8,31 +8,70 @@
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://audio_engine/io/io_temp.gd" id="3_iv6p0"]
 [ext_resource type="Script" uid="uid://5ec7fao2kg5e" path="res://audio_engine/music/Key.gd" id="3_x36ov"]
 [ext_resource type="Script" uid="uid://cqwhy58ttabfw" path="res://audio_engine/synthesis/VoiceProperties.gd" id="5_x36ov"]
+[ext_resource type="Script" uid="uid://dw5gfw248250w" path="res://audio_engine/synthesis/OscillatorLayer.gd" id="5_yyg6e"]
 
 [sub_resource type="Resource" id="Resource_084pw"]
 script = ExtResource("2_084pw")
-note = 8
-octave = 6
+note = 7
+octave = 5
 metadata/_custom_type_script = "uid://ddfhviicidy5i"
 
 [sub_resource type="Resource" id="Resource_x36ov"]
 script = ExtResource("3_x36ov")
 root = SubResource("Resource_084pw")
+scale = 1
 metadata/_custom_type_script = "uid://5ec7fao2kg5e"
 
 [sub_resource type="Resource" id="Resource_w3o6y"]
 script = ExtResource("2_6ppth")
 attack = 0.01
-decay = 2.0
+decay = 0.05
 sustain = 0.5
 release = 1.0
+velocity = 0.5
 metadata/_custom_type_script = "uid://r5n4vltdnpyx"
+
+[sub_resource type="Resource" id="Resource_6l36a"]
+script = ExtResource("5_yyg6e")
+waveform = 3
+gain = 1.0
+metadata/_custom_type_script = "uid://dw5gfw248250w"
+
+[sub_resource type="Resource" id="Resource_qk1u2"]
+script = ExtResource("5_yyg6e")
+chord_note = 1
+waveform = 2
+metadata/_custom_type_script = "uid://dw5gfw248250w"
+
+[sub_resource type="Resource" id="Resource_qv75g"]
+script = ExtResource("5_yyg6e")
+chord_note = 2
+waveform = 1
+metadata/_custom_type_script = "uid://dw5gfw248250w"
+
+[sub_resource type="Resource" id="Resource_bk3b3"]
+script = ExtResource("5_yyg6e")
+octave_shift = 2
+waveform = 3
+gain = 0.2
+metadata/_custom_type_script = "uid://dw5gfw248250w"
+
+[sub_resource type="Resource" id="Resource_a25oa"]
+script = ExtResource("5_yyg6e")
+chord_note = 1
+octave_shift = -1
+metadata/_custom_type_script = "uid://dw5gfw248250w"
+
+[sub_resource type="Resource" id="Resource_gpvx1"]
+script = ExtResource("5_yyg6e")
+chord_note = 2
+octave_shift = -1
+waveform = 3
+metadata/_custom_type_script = "uid://dw5gfw248250w"
 
 [sub_resource type="Resource" id="Resource_yyg6e"]
 script = ExtResource("5_x36ov")
-waveforms = Array[int]([3, 2, 2, 0])
-layer_enable = Array[bool]([true, false, false, false])
-note_enable = Array[bool]([true, false, false, false])
+oscillator_layers = Array[ExtResource("5_yyg6e")]([SubResource("Resource_6l36a"), SubResource("Resource_qk1u2"), SubResource("Resource_qv75g"), SubResource("Resource_bk3b3"), SubResource("Resource_a25oa"), SubResource("Resource_gpvx1")])
 metadata/_custom_type_script = "uid://cqwhy58ttabfw"
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_r1rco"]
@@ -41,7 +80,6 @@ metadata/_custom_type_script = "uid://cqwhy58ttabfw"
 script = ExtResource("1_jwo0y")
 audio_player = NodePath("audio_player")
 voice_manager = NodePath("voice_manager")
-master_volume = 1.0
 key = SubResource("Resource_x36ov")
 envelope = SubResource("Resource_w3o6y")
 voice_properties = SubResource("Resource_yyg6e")

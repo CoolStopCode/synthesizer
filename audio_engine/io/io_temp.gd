@@ -1,6 +1,6 @@
 extends Node
 
-var held_action_indexes: Array[int] = []
+var active_index: int = -1  # only ONE key can be active
 
 func _process(_delta: float) -> void:
 	handle_input()
@@ -10,43 +10,42 @@ func handle_input() -> void:
 		var action := "Key%d" % (i + 1)
 
 		if Input.is_action_just_pressed(action):
-			held_action_indexes.erase(i)
-			held_action_indexes.append(i)
+			# If another key is already active, turn it off first
+			if active_index != -1 and active_index != i:
+				AudioEngine.voice_manager.voice_off(active_index)
 
-			# Turn ONLY this key on
+			active_index = i
 			AudioEngine.voice_manager.voice_on(i)
 
 		if Input.is_action_just_released(action):
-			held_action_indexes.erase(i)
+			# Only turn off if this is the currently active key
+			if active_index == i:
+				AudioEngine.voice_manager.voice_off(i)
+				active_index = -1
 
-			# Turn ONLY this key off
-			AudioEngine.voice_manager.voice_off(i)
+	# joystick modifier stays the same idea, but now only applies to ONE chord
+	if active_index != -1:
+		var joystick := Vector2(
+			Input.get_axis("Left", "Right"),
+			Input.get_axis("Down", "Up")
+		)
 
-			# If another key is still held, retrigger newest held key
-			if held_action_indexes.size() > 0:
-				var last_index = held_action_indexes[-1]
+		var modifier_quality : Quality.Enum = Quality.Enum.UNKNOWN
 
-				AudioEngine.voice_manager.voice_on(last_index)
-	
-	var modifier_quality : Quality.Enum
-	var joystick_moved : bool =\
-		Input.is_action_just_pressed("Up")    or Input.is_action_just_pressed("Down") or\
-		Input.is_action_just_pressed("Left")  or Input.is_action_just_pressed("Right") or\
-		Input.is_action_just_released("Up")   or Input.is_action_just_released("Down") or\
-		Input.is_action_just_released("Left") or Input.is_action_just_released("Right")
-	var joystick := Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Down", "Up"))
-	match joystick:
-		Vector2(0, 0):   modifier_quality = Quality.Enum.UNKNOWN
-		Vector2(0, 1):   modifier_quality = Quality.Enum.DOMINANT_7
-		Vector2(-1, 0):  modifier_quality = Quality.Enum.DIMINISHED
-		Vector2(1, 0):   modifier_quality = Quality.Enum.AUGMENTED
-		_:               modifier_quality = Quality.Enum.UNKNOWN
-	if joystick_moved:
-		for i in range(7):
-			if i in held_action_indexes:
-				var chord : Chord = AudioEngine.key.get_chords()[i]
-				if modifier_quality != Quality.Enum.UNKNOWN:
-					chord.quality = modifier_quality
-				print(chord.get_notes())
-				var voice : Voice = VoiceBuilder.chord_to_voice(chord, AudioEngine.envelope, AudioEngine.voice_properties)
-				AudioEngine.voice_manager.set_voice_oscillators(i, voice.oscillators)
+		match joystick:
+			Vector2(0, 1):   modifier_quality = Quality.Enum.DOMINANT_7
+			Vector2(-1, 0):  modifier_quality = Quality.Enum.DIMINISHED
+			Vector2(1, 0):   modifier_quality = Quality.Enum.AUGMENTED
+			_: pass
+
+		if modifier_quality != Quality.Enum.UNKNOWN:
+			var chord: Chord = AudioEngine.key.get_chords()[active_index]
+			chord.quality = modifier_quality
+
+			var voice: Voice = VoiceBuilder.chord_to_voice(
+				chord,
+				AudioEngine.envelope,
+				AudioEngine.voice_properties
+			)
+
+			AudioEngine.voice_manager.set_voice_oscillators(active_index, voice.oscillators)

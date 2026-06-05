@@ -19,9 +19,9 @@ func voice_off(index : int):
 
 func process_mix(delta : float) -> float:
 	var mixed_sample := 0.0
-	var oscillators := 0
+	var oscillators := 0.0
 	for voice in voice_pool:
 		mixed_sample += voice.process(delta)
 		oscillators += voice.oscillators.size()
 	
-	return mixed_sample / oscillators
+	return mixed_sample

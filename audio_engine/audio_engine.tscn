@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://5ec7fao2kg5e" path="res://audio_engine/music/Key.gd" id="3_x36ov"]
 [ext_resource type="Script" uid="uid://cqwhy58ttabfw" path="res://audio_engine/synthesis/VoiceProperties.gd" id="5_x36ov"]
 [ext_resource type="Script" uid="uid://dw5gfw248250w" path="res://audio_engine/synthesis/OscillatorLayer.gd" id="5_yyg6e"]
+[ext_resource type="Script" uid="uid://2e47rahfsthl" path="res://audio_engine/synthesis/Waveform.gd" id="6_6l36a"]
 
 [sub_resource type="Resource" id="Resource_084pw"]
 script = ExtResource("2_084pw")
@@ -19,7 +20,6 @@ metadata/_custom_type_script = "uid://ddfhviicidy5i"
 [sub_resource type="Resource" id="Resource_x36ov"]
 script = ExtResource("3_x36ov")
 root = SubResource("Resource_084pw")
-scale = 1
 metadata/_custom_type_script = "uid://5ec7fao2kg5e"
 
 [sub_resource type="Resource" id="Resource_w3o6y"]
@@ -31,42 +31,57 @@ release = 1.0
 velocity = 0.5
 metadata/_custom_type_script = "uid://r5n4vltdnpyx"
 
+[sub_resource type="Curve" id="Curve_6l36a"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0), 0.0, 0.0, 0, 0, Vector2(0.49, 1), 0.0, 0.0, 0, 0, Vector2(0.51, -1), 0.0, 0.0, 0, 0, Vector2(0.75, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="Resource" id="Resource_h8yrx"]
+script = ExtResource("6_6l36a")
+type = 4
+curve = SubResource("Curve_6l36a")
+metadata/_custom_type_script = "uid://2e47rahfsthl"
+
 [sub_resource type="Resource" id="Resource_6l36a"]
 script = ExtResource("5_yyg6e")
-waveform = 3
-gain = 1.0
+waveform = SubResource("Resource_h8yrx")
 metadata/_custom_type_script = "uid://dw5gfw248250w"
 
 [sub_resource type="Resource" id="Resource_qk1u2"]
 script = ExtResource("5_yyg6e")
+enabled = false
 chord_note = 1
-waveform = 2
+waveform = SubResource("Resource_h8yrx")
 metadata/_custom_type_script = "uid://dw5gfw248250w"
 
 [sub_resource type="Resource" id="Resource_qv75g"]
 script = ExtResource("5_yyg6e")
+enabled = false
 chord_note = 2
-waveform = 1
+waveform = SubResource("Resource_h8yrx")
 metadata/_custom_type_script = "uid://dw5gfw248250w"
 
 [sub_resource type="Resource" id="Resource_bk3b3"]
 script = ExtResource("5_yyg6e")
+enabled = false
 octave_shift = 2
-waveform = 3
 gain = 0.2
 metadata/_custom_type_script = "uid://dw5gfw248250w"
 
 [sub_resource type="Resource" id="Resource_a25oa"]
 script = ExtResource("5_yyg6e")
+enabled = false
 chord_note = 1
 octave_shift = -1
 metadata/_custom_type_script = "uid://dw5gfw248250w"
 
 [sub_resource type="Resource" id="Resource_gpvx1"]
 script = ExtResource("5_yyg6e")
+enabled = false
 chord_note = 2
 octave_shift = -1
-waveform = 3
 metadata/_custom_type_script = "uid://dw5gfw248250w"
 
 [sub_resource type="Resource" id="Resource_yyg6e"]

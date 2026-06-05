@@ -18,6 +18,6 @@ func _physics_process(_delta: float) -> void:
 func _ready() -> void:
 	var chords := key.get_chords()
 	for chord in chords:
-		print(chord.root.to_string_name(), ", ", chord.quality)
+		print(chord.root.to_string_name(), ", ", chord.quality.type)
 	var voices := VoiceBuilder.chords_to_voices(chords, envelope, voice_properties)
 	voice_manager.set_voice_pool(voices)

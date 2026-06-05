@@ -1,6 +1,12 @@
 class_name Quality
+extends Resource
 
-enum Enum {
+@export var type : Type
+
+func _init(_type : Type) -> void:
+	type = _type
+
+enum Type {
 	MAJOR,
 	MINOR,
 	DIMINISHED,
@@ -19,29 +25,30 @@ enum Enum {
 }
 
 const INTERVALS = {
-	Quality.Enum.MAJOR: [0, 4, 7],
-	Quality.Enum.MINOR: [0, 3, 7],
-	Quality.Enum.DIMINISHED: [0, 3, 6],
-	Quality.Enum.AUGMENTED: [0, 4, 8],
-	Quality.Enum.MAJOR_7: [0, 4, 7, 11],
-	Quality.Enum.MINOR_7: [0, 3, 7, 10],
-	Quality.Enum.DOMINANT_7: [0, 4, 7, 10],
-	Quality.Enum.HALF_DIMINISHED_7: [0, 3, 6, 10],
-	Quality.Enum.DIMINISHED_7: [0, 3, 6, 9],
-	Quality.Enum.AUGMENTED_7: [0, 4, 8, 10],
-	Quality.Enum.SUSPENDED_4: [0, 5, 7],
+	Type.MAJOR: [0, 4, 7],
+	Type.MINOR: [0, 3, 7],
+	Type.DIMINISHED: [0, 3, 6],
+	Type.AUGMENTED: [0, 4, 8],
+	Type.MAJOR_7: [0, 4, 7, 11],
+	Type.MINOR_7: [0, 3, 7, 10],
+	Type.DOMINANT_7: [0, 4, 7, 10],
+	Type.HALF_DIMINISHED_7: [0, 3, 6, 10],
+	Type.DIMINISHED_7: [0, 3, 6, 9],
+	Type.AUGMENTED_7: [0, 4, 8, 10],
+	Type.SUSPENDED_4: [0, 5, 7],
 	
-	Quality.Enum.UNKNOWN: [],
+	Type.UNKNOWN: [],
 }
 
-static func from_intervals(intervals: Array[int]) -> Quality.Enum:
+func to_intervals() -> Array:
+	return INTERVALS[type]
+
+
+static func from_intervals(intervals: Array[int]) -> Quality:
 	for quality in INTERVALS:
 		var quality_intervals = INTERVALS[quality]
 
-		# Skip root (0)
-		var compare : Array = quality_intervals.slice(1)
+		if quality_intervals == intervals:
+			return Quality.new(quality)
 
-		if compare == intervals:
-			return quality
-
-	return Quality.Enum.UNKNOWN
+	return Quality.new(Type.UNKNOWN)

@@ -2,7 +2,7 @@ class_name Key
 extends Resource
 
 @export var root : Note
-@export var scale : Scale.Enum
+@export var scale : Scale
 
 func get_notes() -> Array[Note]:
 	var intervals = Scale.INTERVALS[scale]
@@ -14,9 +14,9 @@ func get_notes() -> Array[Note]:
 
 	return result
 
-func get_chords(sevenths : bool = false) -> Array[Chord]:
-	var intervals : Array = Scale.INTERVALS[scale]
-	var diatonic_qualities := Scale.get_diatonic_qualities(scale, sevenths)
+func get_chords() -> Array[Chord]:
+	var intervals : Array = scale.get_intervals()
+	var qualities := scale.get_qualities([0, 2, 4])
 	var root_midi := root.to_midi()
 	
 	var chords: Array[Chord] = []
@@ -26,7 +26,7 @@ func get_chords(sevenths : bool = false) -> Array[Chord]:
 		var chord_root_midi = root_midi + intervals[i]
 
 		chord.root = Note.from_midi(chord_root_midi)
-		chord.quality = diatonic_qualities[i]
+		chord.quality = qualities[i]
 
 		chords.append(chord)
 

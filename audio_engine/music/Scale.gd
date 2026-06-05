@@ -1,6 +1,9 @@
 class_name Scale
+extends Resource
 
-enum Enum {
+@export var mode : Mode
+
+enum Mode {
 	MAJOR,
 	NATURAL_MINOR,
 	DORIAN,
@@ -13,47 +16,32 @@ enum Enum {
 }
 
 const INTERVALS : Dictionary = {
-	Enum.MAJOR: [0,2,4,5,7,9,11],
-	Enum.NATURAL_MINOR: [0,2,3,5,7,8,10],
-	Enum.DORIAN: [0,2,3,5,7,9,10],
-	Enum.PHRYGIAN: [0,1,3,5,7,8,10],
-	Enum.LYDIAN: [0,2,4,6,7,9,11],
-	Enum.MIXOLYDIAN: [0,2,4,5,7,9,10],
-	Enum.MELODIC_MINOR: [0,2,3,5,7,9,11],
-	Enum.HARMONIC_MINOR: [0,2,3,5,7,8,11],
-	Enum.LOCRIAN: [0,1,3,5,6,8,10]
+	Mode.MAJOR: [0,2,4,5,7,9,11],
+	Mode.NATURAL_MINOR: [0,2,3,5,7,8,10],
+	Mode.DORIAN: [0,2,3,5,7,9,10],
+	Mode.PHRYGIAN: [0,1,3,5,7,8,10],
+	Mode.LYDIAN: [0,2,4,6,7,9,11],
+	Mode.MIXOLYDIAN: [0,2,4,5,7,9,10],
+	Mode.MELODIC_MINOR: [0,2,3,5,7,9,11],
+	Mode.HARMONIC_MINOR: [0,2,3,5,7,8,11],
+	Mode.LOCRIAN: [0,1,3,5,6,8,10]
 }
 
-static func get_diatonic_qualities(scale: Scale.Enum, sevenths : bool) -> Array[Quality.Enum]:
-	var interval = INTERVALS[scale]
-	var size = interval.size()
-	
-	var qualities : Array[Quality.Enum] = []
+func get_intervals() -> Array:
+	return INTERVALS[mode]
+
+func get_qualities(members : Array[int]) -> Array[Quality]:
+	var intervals = INTERVALS[mode]
+	var size = intervals.size()
+	var qualities : Array[Quality] = []
 	for degree in range(size):
-		var root = interval[degree]
-		var intervals : Array[int]
-
-		# THIRD
-		var third = interval[(degree + 2) % size]
-		if degree + 2 >= size:
-			third += 12
-		intervals.append(third - root)
-
-		# FIFTH
-		var fifth = interval[(degree + 4) % size]
-		if degree + 4 >= size:
-			fifth += 12
-		intervals.append(fifth - root)
-
-		# SEVENTH
-		if sevenths:
-			var seventh = interval[(degree + 6) % size]
-			if degree + 6 >= size:
-				seventh += 12
-			intervals.append(seventh - root)
-
-		qualities.append(
-			Quality.from_intervals(intervals)
-		)
-
+		var root_interval = intervals[degree]
+		var chord_intervals: Array[int] = []
+		for member in members:
+			var target_degree = member + degree
+			var octave_shift = (target_degree / size) * 12
+			var member_absolute_interval = intervals[target_degree % size] + octave_shift
+			chord_intervals.append(member_absolute_interval - root_interval)
+		var quality := Quality.from_intervals(chord_intervals)
+		qualities.append(quality)
 	return qualities

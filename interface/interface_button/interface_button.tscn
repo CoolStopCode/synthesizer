@@ -10,6 +10,7 @@ anchors_preset = 0
 offset_right = 22.0
 offset_bottom = 22.0
 script = ExtResource("1_r717c")
+hovered = false
 button_node = NodePath("button")
 icon_node = NodePath("icon")
 
@@ -39,5 +40,3 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

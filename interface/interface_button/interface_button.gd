@@ -2,6 +2,8 @@
 class_name InterfaceButton
 extends Control
 
+signal press
+
 enum ButtonColor {
 	BLUE,
 	RED,
@@ -45,7 +47,6 @@ var textures := {
 		_update_texture()
 
 @export var pressed : bool = false
-@export var hovered : bool = false
 @export var button_node : TextureRect
 @export var icon_node : TextureRect
 
@@ -69,6 +70,8 @@ func _set_state(state_pressed : bool):
 	pressed = state_pressed
 	_update_texture()
 
-func _gui_input(event):
+func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventMouseButton:
+		if event.pressed:
+			press.emit()
 		_set_state(event.pressed)

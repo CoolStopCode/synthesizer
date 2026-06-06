@@ -1,38 +1,29 @@
 class_name Voice
+extends RefCounted
 
-var oscillators : Array[Oscillator]
-var envelope : Envelope
+var modulators: Array[Modulator] = []
+var parameters: Array[Parameter] = []
+var generators: Array[Generator] = []
 
 var is_pressed : bool = false
 
-func _init(
-	_oscillators : Array[Oscillator], 
-	_envelope : Envelope, 
-) -> void:
-	oscillators = _oscillators
-	envelope = _envelope
-
-func set_oscillators(
-	_oscillators : Array[Oscillator]
-) -> void:
-	oscillators = _oscillators
-
 func voice_on() -> void:
-	is_pressed = true
-	envelope.state = Envelope.State.ATTACK
+	for modulator in modulators:
+		modulator.voice_on()
 
 func voice_off() -> void:
-	is_pressed = false
-	envelope.state = Envelope.State.RELEASE
+	for modulator in modulators:
+		modulator.voice_off()
 
 func process(delta: float) -> float:
-	if envelope.state == Envelope.State.IDLE:
-		return 0.0
-	
-	var amp := envelope.process(delta, is_pressed)
 	var mixed_sample := 0.0
 	
-	for i in range(oscillators.size()):
-		var oscillator := oscillators[i]
-		mixed_sample += oscillator.process(delta)
-	return (mixed_sample / oscillators.size()) * amp;
+	for modulator in modulators:
+		modulator.process(delta)
+	for parameter in parameters:
+		parameter.process(delta)
+	for generator in generators:
+		mixed_sample += generator.process(delta)
+	
+	
+	return mixed_sample / generators.size();

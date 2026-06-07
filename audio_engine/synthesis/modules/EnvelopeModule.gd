@@ -26,9 +26,6 @@ var output: float = 0.0
 var state: State = State.IDLE
 
 func _init():
-	active_in = BoolPortIn.new()
-	output_out = FloatPortOut.new()
-
 	inputs = [
 		active_in
 	]
@@ -38,7 +35,11 @@ func _init():
 
 func process(delta : float) -> void:
 	var active : bool = active_in.get_value()
-
+	
+	if not active and state == State.IDLE:
+		output_out.value = 0.0
+		return
+	
 	if active:
 		if state == State.IDLE or state == State.RELEASE:
 			state = State.ATTACK
@@ -47,7 +48,7 @@ func process(delta : float) -> void:
 	
 	match state:
 		State.IDLE:
-			output_out.set_value(0.0)
+			output_out.value = 0.0
 			return
 
 		State.ATTACK:
@@ -71,4 +72,4 @@ func process(delta : float) -> void:
 				output = 0.0
 				state = State.IDLE
 
-	output_out.set_value(output)
+	output_out.value = output

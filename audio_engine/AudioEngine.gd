@@ -11,7 +11,7 @@ extends Node
 @export_category("Synthesis")
 @export var voice : Voice
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	audio_player.process(voice_manager)
 
 func _ready() -> void:

@@ -20,11 +20,6 @@ enum FilterType {
 var previous: float = 0.0
 
 func _init() -> void:
-	audio_in = FloatPortIn.new()
-	cutoff_in = FloatPortIn.new()
-	resonance_in = FloatPortIn.new()
-	output_out = FloatPortOut.new()
-
 	inputs = [
 		audio_in,
 		cutoff_in,
@@ -51,10 +46,10 @@ func process(delta: float) -> void:
 
 	match filter_type:
 		FilterType.LOW_PASS:
-			output_out.set_value(low_pass)
+			output_out.value = low_pass
 
 		FilterType.HIGH_PASS:
-			output_out.set_value(high_pass)
+			output_out.value = high_pass
 
 		FilterType.BAND_PASS:
-			output_out.set_value(band_pass)
+			output_out.value = band_pass

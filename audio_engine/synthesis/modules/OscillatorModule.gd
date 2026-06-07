@@ -13,10 +13,6 @@ extends Module
 var phase : float = 0.0
 
 func _init():
-	enabled_in = BoolPortIn.new()
-	frequency_in = FloatPortIn.new()
-	output_out = FloatPortOut.new()
-
 	inputs = [
 		enabled_in,
 		frequency_in
@@ -24,6 +20,9 @@ func _init():
 	outputs = [output_out]
 
 func process(delta : float) -> void:
+	#if not enabled_in.get_value():
+		#return
+	
 	var output : float = waveform.sample(phase)
 	
 	phase += frequency_in.get_value() * delta

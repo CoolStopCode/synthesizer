@@ -8,8 +8,6 @@ extends Module
 @export var audio_in : FloatPortIn
 
 func _init() -> void:
-	audio_in = FloatPortIn.new()
-	
 	inputs = [
 		audio_in
 	]

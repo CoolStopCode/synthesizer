@@ -10,9 +10,6 @@ extends Module
 @export var frequency_out : FloatPortOut
 
 func _init() -> void:
-	active_out = BoolPortOut.new()
-	frequency_out = FloatPortOut.new()
-	
 	inputs = []
 	outputs = [
 		active_out,

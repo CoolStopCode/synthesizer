@@ -14,13 +14,15 @@
 [ext_resource type="Script" uid="uid://cbjoy4kjke1ij" path="res://audio_engine/synthesis/modules/OutputModule.gd" id="7_a25oa"]
 [ext_resource type="Script" uid="uid://dfn5mpnkgs6f5" path="res://audio_engine/synthesis/modules/OscillatorModule.gd" id="8_gpvx1"]
 [ext_resource type="Script" uid="uid://tnr77wdyy4dh" path="res://audio_engine/synthesis/Voice.gd" id="9_nndlu"]
+[ext_resource type="Script" uid="uid://k4chyfvhddpc" path="res://audio_engine/synthesis/modules/EnvelopeModule.gd" id="10_cdmb6"]
 [ext_resource type="Script" uid="uid://cf0up708i8cyh" path="res://audio_engine/synthesis/ports/FloatPortIn.gd" id="10_k2vjg"]
 [ext_resource type="Script" uid="uid://ddpxtslp7f0g2" path="res://audio_engine/synthesis/ports/BoolPortIn.gd" id="12_cdmb6"]
+[ext_resource type="Script" uid="uid://blpl2p4muh6o5" path="res://audio_engine/synthesis/modules/math/MultiplyModule.gd" id="13_o1vw1"]
 
 [sub_resource type="Resource" id="Resource_084pw"]
 script = ExtResource("2_084pw")
-note = 7
-octave = 5
+note = 3
+octave = 6
 metadata/_custom_type_script = "uid://ddfhviicidy5i"
 
 [sub_resource type="Resource" id="Resource_nndlu"]
@@ -47,6 +49,25 @@ active_out = SubResource("Resource_cdmb6")
 frequency_out = SubResource("Resource_h3tjm")
 metadata/_custom_type_script = "uid://biipffryd363c"
 
+[sub_resource type="Resource" id="Resource_qws1d"]
+script = ExtResource("12_cdmb6")
+source = SubResource("Resource_cdmb6")
+metadata/_custom_type_script = "uid://ddpxtslp7f0g2"
+
+[sub_resource type="Resource" id="Resource_2sr80"]
+script = ExtResource("6_nndlu")
+metadata/_custom_type_script = "uid://jr74buq04ryf"
+
+[sub_resource type="Resource" id="Resource_ekbou"]
+script = ExtResource("10_cdmb6")
+attack = 0.01
+sustain = 0.4
+release = 1.0
+velocity = 0.5
+active_in = SubResource("Resource_qws1d")
+output_out = SubResource("Resource_2sr80")
+metadata/_custom_type_script = "uid://k4chyfvhddpc"
+
 [sub_resource type="Resource" id="Resource_l67un"]
 script = ExtResource("12_cdmb6")
 source = SubResource("Resource_cdmb6")
@@ -57,13 +78,13 @@ script = ExtResource("10_k2vjg")
 source = SubResource("Resource_h3tjm")
 metadata/_custom_type_script = "uid://cf0up708i8cyh"
 
-[sub_resource type="Resource" id="Resource_ekbou"]
+[sub_resource type="Resource" id="Resource_c4p5k"]
 script = ExtResource("6_nndlu")
 metadata/_custom_type_script = "uid://jr74buq04ryf"
 
 [sub_resource type="Curve" id="Curve_cdmb6"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.8, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_o1vw1"]
@@ -71,28 +92,45 @@ script = ExtResource("8_gpvx1")
 waveform = SubResource("Curve_cdmb6")
 enabled_in = SubResource("Resource_l67un")
 frequency_in = SubResource("Resource_iq7ir")
-output_out = SubResource("Resource_ekbou")
+output_out = SubResource("Resource_c4p5k")
 metadata/_custom_type_script = "uid://dfn5mpnkgs6f5"
 
-[sub_resource type="Resource" id="Resource_2sr80"]
-script = ExtResource("6_nndlu")
-metadata/_custom_type_script = "uid://jr74buq04ryf"
-
-[sub_resource type="Resource" id="Resource_qws1d"]
+[sub_resource type="Resource" id="Resource_0antx"]
 script = ExtResource("10_k2vjg")
 source = SubResource("Resource_2sr80")
 metadata/_custom_type_script = "uid://cf0up708i8cyh"
 
+[sub_resource type="Resource" id="Resource_xtonc"]
+script = ExtResource("10_k2vjg")
+source = SubResource("Resource_c4p5k")
+metadata/_custom_type_script = "uid://cf0up708i8cyh"
+
+[sub_resource type="Resource" id="Resource_amsqe"]
+script = ExtResource("6_nndlu")
+metadata/_custom_type_script = "uid://jr74buq04ryf"
+
+[sub_resource type="Resource" id="Resource_h6t7f"]
+script = ExtResource("13_o1vw1")
+argument1_in = SubResource("Resource_0antx")
+argument2_in = SubResource("Resource_xtonc")
+output_out = SubResource("Resource_amsqe")
+metadata/_custom_type_script = "uid://blpl2p4muh6o5"
+
+[sub_resource type="Resource" id="Resource_mge4l"]
+script = ExtResource("10_k2vjg")
+source = SubResource("Resource_amsqe")
+metadata/_custom_type_script = "uid://cf0up708i8cyh"
+
 [sub_resource type="Resource" id="Resource_k2vjg"]
 script = ExtResource("7_a25oa")
-audio_in = SubResource("Resource_qws1d")
+audio_in = SubResource("Resource_mge4l")
 metadata/_custom_type_script = "uid://cbjoy4kjke1ij"
 
 [sub_resource type="Resource" id="Resource_7qrb4"]
 script = ExtResource("9_nndlu")
 input_module = SubResource("Resource_h8yrx")
 output_module = SubResource("Resource_k2vjg")
-modules = Array[ExtResource("6_bk3b3")]([SubResource("Resource_h8yrx"), SubResource("Resource_o1vw1"), SubResource("Resource_k2vjg")])
+modules = Array[ExtResource("6_bk3b3")]([SubResource("Resource_h8yrx"), SubResource("Resource_ekbou"), SubResource("Resource_o1vw1"), SubResource("Resource_h6t7f"), SubResource("Resource_k2vjg")])
 metadata/_custom_type_script = "uid://tnr77wdyy4dh"
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_r1rco"]

@@ -1,5 +1,5 @@
 class_name PortIn
-extends RefCounted
+extends Resource
 
 func get_value():
 	pass

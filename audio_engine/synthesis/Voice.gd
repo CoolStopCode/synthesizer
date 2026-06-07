@@ -1,10 +1,10 @@
 class_name Voice
-extends RefCounted
+extends Resource
 
-var input_module : InputModule
-var output_module : OutputModule
+@export var input_module : InputModule
+@export var output_module : OutputModule
 
-var modules: Array[Module] = []
+@export var modules: Array[Module] = []
 
 func voice_on() -> void:
 	input_module.active = true

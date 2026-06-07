@@ -9,17 +9,17 @@ enum State {
 	RELEASE
 }
 
-# SETTINGS
-var attack: float = 0.1
-var decay: float = 0.1
-var sustain: float = 0.5
-var release: float = 0.1
+@export_category("SETTINGS")
+@export var attack: float = 0.1
+@export var decay: float = 0.1
+@export var sustain: float = 0.5
+@export var release: float = 0.1
 
-var velocity: float = 1.0
+@export var velocity: float = 1.0
 
-# PORTS
-var active_in: BoolPortIn
-var output_out: FloatPortOut
+@export_category("PORTS")
+@export var active_in: BoolPortIn
+@export var output_out: FloatPortOut
 
 # PRIVATE
 var output: float = 0.0
@@ -29,8 +29,12 @@ func _init():
 	active_in = BoolPortIn.new()
 	output_out = FloatPortOut.new()
 
-	inputs = [active_in]
-	outputs = [output_out]
+	inputs = [
+		active_in
+	]
+	outputs = [
+		output_out
+	]
 
 func process(delta : float) -> void:
 	var active : bool = active_in.get_value()

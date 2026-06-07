@@ -1,27 +1,23 @@
 class_name VoiceManager
 extends Node
 
-@export var voices: int = 7
+@export var polyvoices: int = 7
 
-var voice_pool: Array[Voice] = []
+var polyvoice_pool: Array[Polyvoice] = []
 
-func set_voice_pool(_voice_pool : Array[Voice]):
-	voice_pool = _voice_pool
+func set_polyvoice_pool(_polyvoice_pool : Array[Polyvoice]):
+	polyvoice_pool = _polyvoice_pool
 
-func set_voice_oscillators(index : int, oscillators : Array[Oscillator]):
-	voice_pool[index].set_oscillators(oscillators)
+func polyvoice_on(index : int):
+	polyvoice_pool[index].voice_on()
 
-func voice_on(index : int):
-	voice_pool[index].voice_on()
-
-func voice_off(index : int):
-	voice_pool[index].voice_off()
+func polyvoice_off(index : int):
+	polyvoice_pool[index].voice_off()
 
 func process_mix(delta : float) -> float:
-	var mixed_sample := 0.0
-	var oscillators := 0.0
-	for voice in voice_pool:
-		mixed_sample += voice.process(delta)
-		oscillators += voice.oscillators.size()
+	var sum : float = 0.0
 	
-	return mixed_sample
+	for polyvoice in polyvoice_pool:
+		sum += polyvoice.process(delta)
+	
+	return sum

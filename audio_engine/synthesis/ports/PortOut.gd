@@ -1,2 +1,2 @@
 class_name PortOut
-extends RefCounted
+extends Resource

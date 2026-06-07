@@ -1,13 +1,13 @@
 class_name InputModule
 extends Module
 
-# SETTINGS
-var active : bool
-var frequency : float
+@export_category("SETTINGS")
+@export var active : bool
+@export var frequency : float
 
-# PORTS
-var active_out : BoolPortOut
-var frequency_out : FloatPortOut
+@export_category("PORTS")
+@export var active_out : BoolPortOut
+@export var frequency_out : FloatPortOut
 
 func _init() -> void:
 	active_out = BoolPortOut.new()
@@ -20,5 +20,5 @@ func _init() -> void:
 	]
 
 func process(delta : float):
-	active_out.set_value(active)
-	frequency_out.set_value(frequency)
+	active_out.value = active
+	frequency_out.value = frequency

@@ -1,5 +1,5 @@
 class_name Module
-extends RefCounted
+extends Resource
 
 var inputs : Array[PortIn]
 

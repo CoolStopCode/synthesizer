@@ -9,7 +9,7 @@ extends Node
 @export var key : Key
 
 @export_category("Synthesis")
-@export var sound : Sound
+@export var voice : Voice
 
 func _physics_process(_delta: float) -> void:
 	audio_player.process(voice_manager)
@@ -22,11 +22,10 @@ func build_audio() -> void:
 	for chord in chords:
 		print(chord.root.to_string_name(), ", ", chord.quality.type)
 	
-	var voices := VoiceBuilder.chords_to_voices(chords, sound)
-	print("After:", voices[0].get_instance_id())
-	voice_manager.set_voice_pool(voices)
+	var polyvoices := VoiceBuilder.chords_to_polyvoices(chords, voice)
+	voice_manager.set_polyvoice_pool(polyvoices)
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("Debug"):
-		print("Before:", voice_manager.voice_pool[0].get_instance_id())
-		build_audio()
+#func _input(_event: InputEvent) -> void:
+	#if Input.is_action_just_pressed("Debug"):
+		#print("Before:", voice_manager.voice_pool[0].get_instance_id())
+		#build_audio()

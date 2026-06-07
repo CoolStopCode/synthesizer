@@ -1,41 +1,26 @@
 class_name VoiceBuilder
 
-static func chord_to_voice(
+static func chord_to_polyvoice(
 	chord : Chord,
-	sound : Sound
-) -> Voice:
-	var voice := Voice.new()
-	voice.modulators = []
-	voice.parameters = []
-	voice.generators = []
+	voice : Voice
+) -> Polyvoice:
+	var polyvoice := Polyvoice.new()
+	polyvoice.voices = []
 	
 	var notes := chord.get_notes()
+	for note in notes:
+		var new_voice : Voice = voice.duplicate(true)
+		new_voice.input_module.frequency = note.to_frequency()
+		polyvoice.voices.append(new_voice)
 	
-	return voice
-	#for i in range(voice_properties.oscillator_layers.size()):
-		#
-		#
-		#var note_layer : OscillatorLayer = voice_properties.oscillator_layers[i]
-		#var from_note : Note = notes[note_layer.chord_note]
-		#if    note_layer.enabled and\
-			  #note_layer.chord_note < notes.size() and\
-			  #from_note.octave + note_layer.octave_shift >= 0:
-			#var to_note := Note.new(from_note.note + note_layer.semitone_shift, from_note.octave + note_layer.octave_shift)
-			#var frequency := to_note.to_frequency()
-			#voice.oscillators.append(
-				#Oscillator.new(
-					#note_layer.waveform,
-					#frequency,
-					#note_layer.gain
-				#)
-			#)
-	#return voice
+	return polyvoice
 
-static func chords_to_voices(
+static func chords_to_polyvoices(
 	chords : Array[Chord],
-	sound : Sound
-) -> Array[Voice]:
-	var voices : Array[Voice]
+	voice : Voice
+) -> Array[Polyvoice]:
+	
+	var polyvoices : Array[Polyvoice]
 	for chord in chords:
-		voices.append(chord_to_voice(chord, sound))
-	return voices
+		polyvoices.append(chord_to_polyvoice(chord, voice))
+	return polyvoices

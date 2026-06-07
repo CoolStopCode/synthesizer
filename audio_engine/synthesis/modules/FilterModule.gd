@@ -7,14 +7,14 @@ enum FilterType {
 	BAND_PASS
 }
 
-# SETTINGS
-var filter_type: FilterType = FilterType.LOW_PASS
+@export_category("SETTINGS")
+@export var filter_type: FilterType = FilterType.LOW_PASS
 
-# PORTS
-var audio_in: FloatPortIn
-var cutoff_in: FloatPortIn
-var resonance_in: FloatPortIn
-var output_out: FloatPortOut
+@export_category("PORTS")
+@export var audio_in: FloatPortIn
+@export var cutoff_in: FloatPortIn
+@export var resonance_in: FloatPortIn
+@export var output_out: FloatPortOut
 
 # PRIVATE
 var previous: float = 0.0
@@ -30,7 +30,9 @@ func _init() -> void:
 		cutoff_in,
 		resonance_in
 	]
-	outputs = [output_out]
+	outputs = [
+		output_out
+	]
 
 func process(delta: float) -> void:
 	var input_sample := audio_in.get_value()

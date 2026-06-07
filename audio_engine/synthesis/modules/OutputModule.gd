@@ -1,11 +1,11 @@
 class_name OutputModule
 extends Module
 
-# SETTINGS
-var audio : float
+@export_category("SETTINGS")
+@export var audio : float
 
-# PORTS
-var audio_in : FloatPortIn
+@export_category("PORTS")
+@export var audio_in : FloatPortIn
 
 func _init() -> void:
 	audio_in = FloatPortIn.new()

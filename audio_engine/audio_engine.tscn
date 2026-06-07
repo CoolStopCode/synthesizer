@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://5ec7fao2kg5e" path="res://audio_engine/music/Key.gd" id="3_x36ov"]
 [ext_resource type="Script" uid="uid://y105cr0ul70m" path="res://audio_engine/sound/generators/GeneratorSound.gd" id="5_a25oa"]
 [ext_resource type="Script" uid="uid://cqwhy58ttabfw" path="res://audio_engine/sound/Sound.gd" id="5_x36ov"]
-[ext_resource type="Script" uid="uid://2e47rahfsthl" path="res://audio_engine/synthesis/generators/Waveform.gd" id="6_6l36a"]
 [ext_resource type="Script" uid="uid://bk55gickhddjh" path="res://audio_engine/sound/ParameterSound.gd" id="6_gpvx1"]
 [ext_resource type="Script" uid="uid://dp0h3uojweuam" path="res://audio_engine/sound/generators/OscillatorSound.gd" id="7_nndlu"]
 [ext_resource type="Script" uid="uid://bqbr11ye4dfbe" path="res://audio_engine/sound/modulators/ModulatorSound.gd" id="9_h8yrx"]
@@ -36,8 +35,45 @@ script = ExtResource("6_gpvx1")
 name = "wave1 gain"
 metadata/_custom_type_script = "uid://bk55gickhddjh"
 
+[sub_resource type="GDScript" id="GDScript_bk3b3"]
+script/source = "class_name Waveform
+extends Resource
+
+enum Type {
+	SINE,
+	SQUARE,
+	SAW,
+	TRIANGLE,
+	CUSTOM
+}
+
+@export var type: Type = Type.SINE
+@export var curve: Curve
+
+func _init(_type : Type = Type.SINE) -> void:
+	type = _type
+
+func evaluate(phase : float) -> float:
+	phase = fmod(phase, 1.0)
+	var amplitude : float
+	match type:
+		Type.SINE:
+			amplitude = sin(phase * TAU)
+		Type.SQUARE:
+			amplitude = 1.0 if phase < 0.5 else -1.0
+		Type.SAW:
+			amplitude = (phase * 2.0) - 1.0
+		Type.TRIANGLE:
+			amplitude =  1.0 - 4.0 * abs(phase - 0.5)
+		Type.CUSTOM:
+			amplitude = 1.0
+		_:
+			amplitude = 0.0
+	return amplitude * curve.sample(phase) if curve else amplitude
+"
+
 [sub_resource type="Resource" id="Resource_7qrb4"]
-script = ExtResource("6_6l36a")
+script = SubResource("GDScript_bk3b3")
 metadata/_custom_type_script = "uid://2e47rahfsthl"
 
 [sub_resource type="Resource" id="Resource_h3tjm"]
@@ -79,6 +115,7 @@ script = ExtResource("2_iv6p0")
 
 [node name="voice_manager" type="Node" parent="." unique_id=1954687046]
 script = ExtResource("2_r1rco")
+voices = null
 
 [node name="io" type="Node" parent="." unique_id=531001594]
 script = ExtResource("3_iv6p0")

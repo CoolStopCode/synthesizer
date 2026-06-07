@@ -1,0 +1,70 @@
+class_name EnvelopeModule
+extends Module
+
+enum State {
+	IDLE,
+	ATTACK,
+	DECAY,
+	SUSTAIN,
+	RELEASE
+}
+
+# SETTINGS
+var attack: float = 0.1
+var decay: float = 0.1
+var sustain: float = 0.5
+var release: float = 0.1
+
+var velocity: float = 1.0
+
+# PORTS
+var active_in: BoolPortIn
+var output_out: FloatPortOut
+
+# PRIVATE
+var output: float = 0.0
+var state: State = State.IDLE
+
+func _init():
+	active_in = BoolPortIn.new()
+	output_out = FloatPortOut.new()
+
+	inputs = [active_in]
+	outputs = [output_out]
+
+func process(delta : float) -> void:
+	var active : bool = active_in.get_value()
+
+	if active:
+		if state == State.IDLE or state == State.RELEASE:
+			state = State.ATTACK
+	elif state != State.IDLE and state != State.RELEASE:
+		state = State.RELEASE
+	
+	match state:
+		State.IDLE:
+			output_out.set_value(0.0)
+			return
+
+		State.ATTACK:
+			output += delta / max(attack, 0.0001)
+			if output >= velocity:
+				output = velocity
+				state = State.DECAY
+
+		State.DECAY:
+			output -= delta * ((velocity - sustain) / max(decay, 0.0001))
+			if output <= sustain:
+				output = sustain
+				state = State.SUSTAIN
+
+		State.SUSTAIN:
+			output = sustain
+
+		State.RELEASE:
+			output -= delta / max(release, 0.0001)
+			if output <= 0.0:
+				output = 0.0
+				state = State.IDLE
+
+	output_out.set_value(output)

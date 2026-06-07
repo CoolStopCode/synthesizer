@@ -1,29 +1,20 @@
 class_name Voice
 extends RefCounted
 
-var modulators: Array[Modulator] = []
-var parameters: Array[Parameter] = []
-var generators: Array[Generator] = []
+var input_module : InputModule
+var output_module : OutputModule
 
-var is_pressed : bool = false
+var modules: Array[Module] = []
 
 func voice_on() -> void:
-	for modulator in modulators:
-		modulator.voice_on()
+	input_module.active = true
 
 func voice_off() -> void:
-	for modulator in modulators:
-		modulator.voice_off()
+	input_module.active = false
 
 func process(delta: float) -> float:
-	var mixed_sample := 0.0
+	for module in modules:
+		module.process(delta)
 	
-	for modulator in modulators:
-		modulator.process(delta)
-	for parameter in parameters:
-		parameter.process(delta)
-	for generator in generators:
-		mixed_sample += generator.process(delta)
-	
-	
-	return mixed_sample / generators.size();
+	var output : float = output_module.audio
+	return output;

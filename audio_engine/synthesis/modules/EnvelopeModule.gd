@@ -18,8 +18,8 @@ enum State {
 @export var velocity: float = 1.0
 
 @export_category("PORTS")
-@export var active_in: BoolPortIn
-@export var output_out: FloatPortOut
+@export var active_in: BoolPort
+@export var output_out: FloatPort
 
 # PRIVATE
 var output: float = 0.0
@@ -34,7 +34,7 @@ func _init():
 	]
 
 func process(delta : float) -> void:
-	var active : bool = active_in.get_value()
+	var active : bool = active_in.value
 	
 	if not active and state == State.IDLE:
 		output_out.value = 0.0
@@ -71,5 +71,6 @@ func process(delta : float) -> void:
 			if output <= 0.0:
 				output = 0.0
 				state = State.IDLE
-
+	
 	output_out.value = output
+	return

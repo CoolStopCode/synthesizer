@@ -5,7 +5,7 @@ extends Module
 @export var audio : float
 
 @export_category("PORTS")
-@export var audio_in : FloatPortIn
+@export var audio_in : FloatPort
 
 func _init() -> void:
 	inputs = [
@@ -14,4 +14,4 @@ func _init() -> void:
 	outputs = []
 
 func process(delta : float):
-	audio = audio_in.get_value()
+	audio = audio_in.value

@@ -5,9 +5,9 @@ extends Module
 @export var waveform : Curve
 
 @export_category("PORTS")
-@export var enabled_in: BoolPortIn
-@export var frequency_in: FloatPortIn
-@export var output_out: FloatPortOut
+@export var enabled_in: BoolPort
+@export var frequency_in: FloatPort
+@export var output_out: FloatPort
 
 # PRIVATE
 var phase : float = 0.0
@@ -25,7 +25,7 @@ func process(delta : float) -> void:
 	
 	var output : float = waveform.sample(phase)
 	
-	phase += frequency_in.get_value() * delta
+	phase += frequency_in.value * delta
 	phase = fmod(phase, 1.0)
-
+	
 	output_out.value = output

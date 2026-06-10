@@ -1,9 +1,9 @@
 class_name Module
 extends Resource
 
-var inputs : Array[PortIn]
+var inputs : Array[Port]
 
 func process(delta : float):
 	pass
 
-var outputs : Array[PortOut]
+var outputs : Array[Port]

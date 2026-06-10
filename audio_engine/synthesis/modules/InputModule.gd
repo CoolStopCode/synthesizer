@@ -6,8 +6,8 @@ extends Module
 @export var frequency : float
 
 @export_category("PORTS")
-@export var active_out : BoolPortOut
-@export var frequency_out : FloatPortOut
+@export var active_out : BoolPort
+@export var frequency_out : FloatPort
 
 func _init() -> void:
 	inputs = []

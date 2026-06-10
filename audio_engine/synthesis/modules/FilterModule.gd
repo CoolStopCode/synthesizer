@@ -11,10 +11,10 @@ enum FilterType {
 @export var filter_type: FilterType = FilterType.LOW_PASS
 
 @export_category("PORTS")
-@export var audio_in: FloatPortIn
-@export var cutoff_in: FloatPortIn
-@export var resonance_in: FloatPortIn
-@export var output_out: FloatPortOut
+@export var audio_in: FloatPort
+@export var cutoff_in: FloatPort
+@export var resonance_in: FloatPort
+@export var output_out: FloatPort
 
 # PRIVATE
 var previous: float = 0.0
@@ -30,9 +30,9 @@ func _init() -> void:
 	]
 
 func process(delta: float) -> void:
-	var input_sample := audio_in.get_value()
-	var cutoff := cutoff_in.get_value()
-	var resonance := resonance_in.get_value()
+	var input_sample := audio_in.value
+	var cutoff := cutoff_in.value
+	var resonance := resonance_in.value
 
 	var alpha : float = clamp(cutoff * delta, 0.0, 1.0)
 

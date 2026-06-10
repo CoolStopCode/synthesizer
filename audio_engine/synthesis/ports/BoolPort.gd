@@ -1,4 +1,4 @@
-class_name BoolPort
-extends Port
+class_name GDBoolPort
+extends GDPort
 
-@export var value : bool
+@export var value : bool = false

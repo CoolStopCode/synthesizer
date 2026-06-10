@@ -10,7 +10,6 @@ anchors_preset = 0
 offset_right = 22.0
 offset_bottom = 22.0
 script = ExtResource("1_r717c")
-hovered = false
 button_node = NodePath("button")
 icon_node = NodePath("icon")
 

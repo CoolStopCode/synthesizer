@@ -1,5 +1,5 @@
-class_name EnvelopeModule
-extends Module
+class_name GDEnvelopeModule
+extends GDModule
 
 enum State {
 	IDLE,
@@ -18,8 +18,8 @@ enum State {
 @export var velocity: float = 1.0
 
 @export_category("PORTS")
-@export var active_in: BoolPort
-@export var output_out: FloatPort
+@export var IN_active: GDBoolPort
+@export var OUT_output: GDFloatPort
 
 # PRIVATE
 var output: float = 0.0
@@ -27,17 +27,17 @@ var state: State = State.IDLE
 
 func _init():
 	inputs = [
-		active_in
+		IN_active
 	]
 	outputs = [
-		output_out
+		OUT_output
 	]
 
 func process(delta : float) -> void:
-	var active : bool = active_in.value
+	var active : bool = IN_active.value
 	
 	if not active and state == State.IDLE:
-		output_out.value = 0.0
+		OUT_output.value = 0.0
 		return
 	
 	if active:
@@ -48,7 +48,7 @@ func process(delta : float) -> void:
 	
 	match state:
 		State.IDLE:
-			output_out.value = 0.0
+			OUT_output.value = 0.0
 			return
 
 		State.ATTACK:
@@ -71,6 +71,5 @@ func process(delta : float) -> void:
 			if output <= 0.0:
 				output = 0.0
 				state = State.IDLE
-	
-	output_out.value = output
-	return
+
+	OUT_output.value = output

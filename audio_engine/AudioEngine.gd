@@ -9,7 +9,7 @@ extends Node
 @export var key : Key
 
 @export_category("Synthesis")
-@export var voice : NewVoice
+@export var voice : Voice
 
 func _process(_delta: float) -> void:
 	audio_player.process(voice_manager)

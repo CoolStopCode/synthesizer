@@ -14,22 +14,22 @@ static func duplicate_voice(voice : Voice) -> Voice:
 
 static func chord_to_polyvoice(
 	chord : Chord,
-	voice : NewVoice
+	voice : Voice
 ) -> Polyvoice:
 	var polyvoice := Polyvoice.new()
 	polyvoice.voices = []
 	
 	var notes := chord.get_notes()
-	for note in notes:
-		var new_voice := voice.duplicate(true)
-		new_voice.input_frequency = note.to_frequency()
+	for note in [notes[0]]:
+		var new_voice := duplicate_voice(voice)
+		new_voice.input_module.frequency = note.to_frequency()
 		polyvoice.voices.append(new_voice)
 	
 	return polyvoice
 
 static func chords_to_polyvoices(
 	chords : Array[Chord],
-	voice : NewVoice
+	voice : Voice
 ) -> Array[Polyvoice]:
 	
 	var polyvoices : Array[Polyvoice]

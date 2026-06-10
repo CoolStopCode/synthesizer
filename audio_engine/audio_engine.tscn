@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://audio_engine/io/io_temp.gd" id="3_iv6p0"]
 [ext_resource type="Script" uid="uid://b0hvx63gftql4" path="res://audio_engine/music/Scale.gd" id="3_qk1u2"]
 [ext_resource type="Script" uid="uid://5ec7fao2kg5e" path="res://audio_engine/music/Key.gd" id="3_x36ov"]
-[ext_resource type="Script" uid="uid://bakaobbawund" path="res://audio_engine/synthesis/NewVoice.gd" id="17_h8yrx"]
 
 [sub_resource type="Resource" id="Resource_084pw"]
 script = ExtResource("2_084pw")
@@ -25,10 +24,52 @@ root = SubResource("Resource_084pw")
 scale = SubResource("Resource_nndlu")
 metadata/_custom_type_script = "uid://5ec7fao2kg5e"
 
-[sub_resource type="Resource" id="Resource_yyg6e"]
-script = ExtResource("17_h8yrx")
-output_module = 4
-metadata/_custom_type_script = "uid://bakaobbawund"
+[sub_resource type="Port" id="Port_084pw"]
+
+[sub_resource type="Port" id="Port_x36ov"]
+
+[sub_resource type="InputModule" id="InputModule_yyg6e"]
+OUT_active = SubResource("Port_084pw")
+OUT_frequency = SubResource("Port_x36ov")
+
+[sub_resource type="Port" id="Port_6l36a"]
+value = 1.0
+
+[sub_resource type="Port" id="Port_qk1u2"]
+
+[sub_resource type="Curve" id="Curve_084pw"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="OscillatorModule" id="OscillatorModule_qv75g"]
+waveform = 4
+curve = SubResource("Curve_084pw")
+IN_enabled = SubResource("Port_6l36a")
+IN_frequency = SubResource("Port_x36ov")
+OUT_output = SubResource("Port_qk1u2")
+
+[sub_resource type="Port" id="Port_bk3b3"]
+
+[sub_resource type="EnvelopeModule" id="EnvelopeModule_a25oa"]
+sustain = 0.8
+release = 1.0
+IN_active = SubResource("Port_084pw")
+OUT_output = SubResource("Port_bk3b3")
+
+[sub_resource type="Port" id="Port_gpvx1"]
+
+[sub_resource type="MultiplyModule" id="MultiplyModule_nndlu"]
+IN_argument1 = SubResource("Port_qk1u2")
+IN_argument2 = SubResource("Port_bk3b3")
+OUT_output = SubResource("Port_gpvx1")
+
+[sub_resource type="OutputModule" id="OutputModule_h8yrx"]
+IN_audio = SubResource("Port_gpvx1")
+
+[sub_resource type="Voice" id="Voice_084pw"]
+input_module = SubResource("InputModule_yyg6e")
+output_module = SubResource("OutputModule_h8yrx")
+modules = Array[Resource]([SubResource("InputModule_yyg6e"), SubResource("OscillatorModule_qv75g"), SubResource("EnvelopeModule_a25oa"), SubResource("MultiplyModule_nndlu"), SubResource("OutputModule_h8yrx")])
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_r1rco"]
 
@@ -37,7 +78,7 @@ script = ExtResource("1_jwo0y")
 audio_player = NodePath("audio_player")
 voice_manager = NodePath("voice_manager")
 key = SubResource("Resource_x36ov")
-voice = SubResource("Resource_yyg6e")
+voice = SubResource("Voice_084pw")
 
 [node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=523073427]
 stream = SubResource("AudioStreamGenerator_r1rco")

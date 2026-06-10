@@ -1,7 +1,7 @@
 class_name Polyvoice
 extends RefCounted
 
-var voices : Array[NewVoice]
+var voices : Array[Voice]
 
 func voice_on() -> void:
 	for voice in voices:
@@ -17,4 +17,4 @@ func process(delta: float) -> float:
 	for voice in voices:
 		sum += voice.process(delta)
 	
-	return sum
+	return sum / sqrt(voices.size())

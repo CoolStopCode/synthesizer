@@ -1,21 +1,21 @@
-class_name GDInputModule
-extends GDModule
+class_name InputModule
+extends Module
 
 @export_category("SETTINGS")
 @export var active : bool
 @export var frequency : float
 
 @export_category("PORTS")
-@export var OUT_active : GDBoolPort
-@export var OUT_frequency : GDFloatPort
+@export var active_out : BoolPortOut
+@export var frequency_out : FloatPortOut
 
 func _init() -> void:
 	inputs = []
 	outputs = [
-		OUT_active,
-		OUT_frequency
+		active_out,
+		frequency_out
 	]
 
 func process(delta : float):
-	OUT_active.value = active
-	OUT_frequency.value = frequency
+	active_out.value = active
+	frequency_out.value = frequency

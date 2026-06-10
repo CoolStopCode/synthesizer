@@ -1,59 +1,31 @@
-class_name GDOscillatorModule
-extends GDModule
-
-enum Waveform {
-	SINE,
-	SQUARE,
-	SAW,
-	TRIANGLE,
-	CUSTOM
-}
+class_name OscillatorModule
+extends Module
 
 @export_category("SETTINGS")
-@export var waveform : Waveform
-@export var curve : Curve
+@export var waveform : Curve
 
 @export_category("PORTS")
-@export var IN_enabled: GDBoolPort
-@export var IN_frequency: GDFloatPort
-@export var OUT_output: GDFloatPort
+@export var enabled_in: BoolPortIn
+@export var frequency_in: FloatPortIn
+@export var output_out: FloatPortOut
 
 # PRIVATE
 var phase : float = 0.0
 
 func _init():
 	inputs = [
-		IN_enabled,
-		IN_frequency
+		enabled_in,
+		frequency_in
 	]
-	outputs = [
-		OUT_output
-	]
+	outputs = [output_out]
 
 func process(delta : float) -> void:
 	#if not enabled_in.get_value():
 		#return
 	
-	phase += IN_frequency.value * delta
-	phase = fmod(phase, 1.0)
+	var output : float = waveform.sample(phase)
 	
-	var output : float = evaluate()
+	phase += frequency_in.get_value() * delta
+	phase = fmod(phase, 1.0)
 
-	OUT_output.value = output
-
-func evaluate() -> float:
-	var amplitude : float
-	match waveform:
-		Waveform.SINE:
-			amplitude = sin(phase * TAU)
-		Waveform.SQUARE:
-			amplitude = 1.0 if phase < 0.5 else -1.0
-		Waveform.SAW:
-			amplitude = (phase * 2.0) - 1.0
-		Waveform.TRIANGLE:
-			amplitude =  1.0 - 4.0 * abs(phase - 0.5)
-		Waveform.CUSTOM:
-			amplitude = curve.sample(phase)
-		_:
-			amplitude = 0.0
-	return amplitude
+	output_out.value = output

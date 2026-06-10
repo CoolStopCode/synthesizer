@@ -1,10 +1,10 @@
-class_name GDVoice
+class_name Voice
 extends Resource
 
-@export var input_module : GDInputModule
-@export var output_module : GDOutputModule
+@export var input_module : InputModule
+@export var output_module : OutputModule
 
-@export var modules: Array[GDModule] = []
+@export var modules: Array[Module] = []
 
 func voice_on() -> void:
 	input_module.active = true

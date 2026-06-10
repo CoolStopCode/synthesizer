@@ -1,21 +1,21 @@
-class_name GDMultiplyModule
-extends GDModule
+class_name MultiplyModule
+extends Module
 
 @export_category("PORTS")
-@export var IN_argument1: GDFloatPort
-@export var IN_argument2: GDFloatPort
-@export var OUT_output: GDFloatPort
+@export var argument1_in: FloatPortIn
+@export var argument2_in: FloatPortIn
+@export var output_out: FloatPortOut
 
 func _init():
 	inputs = [
-		IN_argument1,
-		IN_argument2
+		argument1_in,
+		argument2_in
 	]
 	outputs = [
-		OUT_output
+		output_out
 	]
 
 func process(delta : float) -> void:
-	var output : float = IN_argument1.value * IN_argument2.value
+	var output : float = argument1_in.get_value() * argument2_in.get_value()
 
-	OUT_output.value = output
+	output_out.value = output

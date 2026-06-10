@@ -1,5 +1,5 @@
-class_name GDFilterModule
-extends GDModule
+class_name FilterModule
+extends Module
 
 enum FilterType {
 	LOW_PASS,
@@ -11,28 +11,28 @@ enum FilterType {
 @export var filter_type: FilterType = FilterType.LOW_PASS
 
 @export_category("PORTS")
-@export var IN_audio: GDFloatPort
-@export var IN_cutoff: GDFloatPort
-@export var IN_resonance: GDFloatPort
-@export var OUT_output: GDFloatPort
+@export var audio_in: FloatPortIn
+@export var cutoff_in: FloatPortIn
+@export var resonance_in: FloatPortIn
+@export var output_out: FloatPortOut
 
 # PRIVATE
 var previous: float = 0.0
 
 func _init() -> void:
 	inputs = [
-		IN_audio,
-		IN_cutoff,
-		IN_resonance
+		audio_in,
+		cutoff_in,
+		resonance_in
 	]
 	outputs = [
-		OUT_output
+		output_out
 	]
 
 func process(delta: float) -> void:
-	var input_sample := IN_audio.value
-	var cutoff := IN_cutoff.value
-	var resonance := IN_resonance.value
+	var input_sample := audio_in.get_value()
+	var cutoff := cutoff_in.get_value()
+	var resonance := resonance_in.get_value()
 
 	var alpha : float = clamp(cutoff * delta, 0.0, 1.0)
 
@@ -46,10 +46,10 @@ func process(delta: float) -> void:
 
 	match filter_type:
 		FilterType.LOW_PASS:
-			OUT_output.value = low_pass
+			output_out.value = low_pass
 
 		FilterType.HIGH_PASS:
-			OUT_output.value = high_pass
+			output_out.value = high_pass
 
 		FilterType.BAND_PASS:
-			OUT_output.value = band_pass
+			output_out.value = band_pass

@@ -1,7 +1,7 @@
 class_name Polyvoice
 extends RefCounted
 
-var voices : Array[Voice]
+var voices : Array[NewVoice]
 
 func voice_on() -> void:
 	for voice in voices:

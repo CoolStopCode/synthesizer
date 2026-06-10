@@ -20,7 +20,7 @@ static func chord_to_polyvoice(
 	polyvoice.voices = []
 	
 	var notes := chord.get_notes()
-	for note in notes:
+	for note in [notes[0]]:
 		var new_voice := duplicate_voice(voice)
 		new_voice.input_module.frequency = note.to_frequency()
 		polyvoice.voices.append(new_voice)

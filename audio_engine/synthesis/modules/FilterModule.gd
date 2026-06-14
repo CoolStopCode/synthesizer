@@ -1,5 +1,5 @@
-class_name GDFilterModule
-extends GDModule
+class_name FilterModule
+extends Module
 
 enum FilterType {
 	LOW_PASS,
@@ -11,10 +11,10 @@ enum FilterType {
 @export var filter_type: FilterType = FilterType.LOW_PASS
 
 @export_category("PORTS")
-@export var IN_audio: GDFloatPort
-@export var IN_cutoff: GDFloatPort
-@export var IN_resonance: GDFloatPort
-@export var OUT_output: GDFloatPort
+@export var IN_audio: FloatPort
+@export var IN_cutoff: FloatPort
+@export var IN_resonance: FloatPort
+@export var OUT_output: FloatPort
 
 # PRIVATE
 var previous: float = 0.0

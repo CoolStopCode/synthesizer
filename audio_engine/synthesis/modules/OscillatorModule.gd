@@ -1,5 +1,5 @@
-class_name GDOscillatorModule
-extends GDModule
+class_name OscillatorModule
+extends Module
 
 enum Waveform {
 	SINE,
@@ -14,9 +14,9 @@ enum Waveform {
 @export var curve : Curve
 
 @export_category("PORTS")
-@export var IN_enabled: GDBoolPort
-@export var IN_frequency: GDFloatPort
-@export var OUT_output: GDFloatPort
+@export var IN_enabled: BoolPort
+@export var IN_frequency: FloatPort
+@export var OUT_output: FloatPort
 
 # PRIVATE
 var phase : float = 0.0

@@ -1,9 +1,9 @@
-class_name GDModule
+class_name Module
 extends Resource
 
-var inputs : Array[GDPort]
+var inputs : Array[Port]
 
 func process(delta : float):
 	pass
 
-var outputs : Array[GDPort]
+var outputs : Array[Port]

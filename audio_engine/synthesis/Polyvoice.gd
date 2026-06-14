@@ -5,11 +5,11 @@ var voices : Array[Voice]
 
 func voice_on() -> void:
 	for voice in voices:
-		voice.voice_on()
+		voice.active = true
 
 func voice_off() -> void:
 	for voice in voices:
-		voice.voice_off()
+		voice.active = false
 
 func process(delta: float) -> float:
 	var sum : float = 0.0
@@ -17,4 +17,5 @@ func process(delta: float) -> float:
 	for voice in voices:
 		sum += voice.process(delta)
 	
-	return sum / sqrt(voices.size())
+	
+	return sum / voices.size()

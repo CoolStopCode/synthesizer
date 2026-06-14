@@ -5,11 +5,11 @@ extends Node
 
 @export var master_volume : float = 1.0
 
-@export_category("Music")
+@export_group("Music")
 @export var key : Key
 
-@export_category("Synthesis")
-@export var voice : Voice
+@export_group("Synthesis")
+#@export var voice : Voice
 
 func _process(_delta: float) -> void:
 	audio_player.process(voice_manager)
@@ -22,7 +22,7 @@ func build_audio() -> void:
 	for chord in chords:
 		print(chord.root.to_string_name(), ", ", chord.quality.type)
 	
-	var polyvoices := VoiceBuilder.chords_to_polyvoices(chords, voice)
+	var polyvoices := VoiceBuilder.chords_to_polyvoices(chords)
 	voice_manager.set_polyvoice_pool(polyvoices)
 
 #func _input(_event: InputEvent) -> void:

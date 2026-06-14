@@ -5,7 +5,7 @@
 
 using namespace godot;
 
-void initialize_voice_module(ModuleInitializationLevel p_level);
-void uninitialize_voice_module(ModuleInitializationLevel p_level);
+void initialize_voice(ModuleInitializationLevel p_level);
+void uninitialize_voice(ModuleInitializationLevel p_level);
 
 #endif

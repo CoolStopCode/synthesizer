@@ -1,10 +1,10 @@
-class_name GDMultiplyModule
-extends GDModule
+class_name MultiplyModule
+extends Module
 
 @export_category("PORTS")
-@export var IN_argument1: GDFloatPort
-@export var IN_argument2: GDFloatPort
-@export var OUT_output: GDFloatPort
+@export var IN_argument1: FloatPort
+@export var IN_argument2: FloatPort
+@export var OUT_output: FloatPort
 
 func _init():
 	inputs = [

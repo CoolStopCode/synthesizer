@@ -1,5 +1,5 @@
-class_name GDEnvelopeModule
-extends GDModule
+class_name EnvelopeModule
+extends Module
 
 enum State {
 	IDLE,
@@ -18,8 +18,8 @@ enum State {
 @export var velocity: float = 1.0
 
 @export_category("PORTS")
-@export var IN_active: GDBoolPort
-@export var OUT_output: GDFloatPort
+@export var IN_active: BoolPort
+@export var OUT_output: FloatPort
 
 # PRIVATE
 var output: float = 0.0

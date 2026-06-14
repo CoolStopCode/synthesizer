@@ -1,11 +1,11 @@
-class_name GDOutputModule
-extends GDModule
+class_name OutputModule
+extends Module
 
 @export_category("SETTINGS")
 @export var audio : float
 
 @export_category("PORTS")
-@export var IN_audio : GDFloatPort
+@export var IN_audio : FloatPort
 
 func _init() -> void:
 	inputs = [

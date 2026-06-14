@@ -1,2 +1,2 @@
-class_name GDPort
+class_name Port
 extends Resource

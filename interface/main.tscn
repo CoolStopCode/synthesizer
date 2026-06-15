@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://cspvrxqceta55"]
 
-[ext_resource type="PackedScene" uid="uid://bu84l3b3hj3ue" path="res://interface/interface_button/interface_button.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b8ua4v07ohmcf" path="res://interface/interface_button/interface_button.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://c7x0efhxefg64" path="res://interface/main.gd" id="1_spusx"]
-[ext_resource type="Texture2D" uid="uid://cdwuevi3neiv7" path="res://interface/interface_button/icon/record.png" id="2_lquwl"]
-[ext_resource type="Texture2D" uid="uid://b4fu1m412fd3q" path="res://interface/interface_button/icon/settings_pressed.png" id="3_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://hluqlx2fwit6" path="res://interface/interface_button/icon/record_pressed.png" id="3_7mycd"]
-[ext_resource type="Texture2D" uid="uid://cvbk7mm1ydvlr" path="res://interface/interface_button/icon/settings.png" id="4_lquwl"]
-[ext_resource type="Texture2D" uid="uid://cx1bcjsmxpi5d" path="res://interface/interface_button/icon/sound.png" id="5_5vw27"]
-[ext_resource type="Texture2D" uid="uid://d375odvurc1e7" path="res://interface/interface_button/icon/sound_pressed.png" id="5_272bh"]
+[ext_resource type="Texture2D" uid="uid://4lxmy02qyyh7" path="res://interface/interface_button/icon/key.png" id="4_dyb18"]
+[ext_resource type="Texture2D" uid="uid://b52fyb2rp1dhl" path="res://interface/interface_button/icon/sound.png" id="5_5vw27"]
+[ext_resource type="Texture2D" uid="uid://dk6v6257vxqsd" path="res://interface/interface_button/icon/layers.png" id="5_l14rc"]
 
 [node name="main" type="Control" unique_id=42299528]
 layout_mode = 3
@@ -57,19 +54,17 @@ layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
-[node name="interface_button" parent="CenterContainer/GridContainer" unique_id=170311006 instance=ExtResource("1_ig7tw")]
-layout_mode = 2
-icon = ExtResource("2_lquwl")
-icon_pressed = ExtResource("3_7mycd")
-button_color = 1
-
-[node name="interface_button2" parent="CenterContainer/GridContainer" unique_id=776683659 instance=ExtResource("1_ig7tw")]
+[node name="interface_button" parent="CenterContainer/GridContainer" unique_id=955628202 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
 icon = ExtResource("5_5vw27")
-icon_pressed = ExtResource("5_272bh")
+color = Color(0.8117647, 0.25882354, 0.25882354, 1)
 
-[node name="interface_button3" parent="CenterContainer/GridContainer" unique_id=2058881815 instance=ExtResource("1_ig7tw")]
+[node name="interface_button2" parent="CenterContainer/GridContainer" unique_id=414641094 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
-icon = ExtResource("4_lquwl")
-icon_pressed = ExtResource("3_1bvp3")
-button_color = 3
+icon = ExtResource("4_dyb18")
+color = Color(0.23529412, 0.36862746, 0.54509807, 1)
+
+[node name="interface_button3" parent="CenterContainer/GridContainer" unique_id=1514958895 instance=ExtResource("1_ig7tw")]
+layout_mode = 2
+icon = ExtResource("5_l14rc")
+color = Color(0.85490197, 0.5254902, 0.24313726, 1)

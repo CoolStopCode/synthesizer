@@ -12,6 +12,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hjewq")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=851079127]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=575012270]
 texture_filter = 1
 layout_mode = 1

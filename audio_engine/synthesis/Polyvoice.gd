@@ -15,7 +15,8 @@ func process(delta: float) -> float:
 	var sum : float = 0.0
 	
 	for voice in voices:
-		sum += voice.process(delta)
+		var value = voice.process(delta)
+		sum += value
 	
 	
 	return sum / voices.size()

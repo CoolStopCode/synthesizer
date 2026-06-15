@@ -1,29 +1,55 @@
-[gd_scene format=3 uid="uid://bu84l3b3hj3ue"]
+[gd_scene format=3 uid="uid://b8ua4v07ohmcf"]
 
-[ext_resource type="Script" uid="uid://cxhweabu0dv8j" path="res://interface/interface_button/interface_button.gd" id="1_r717c"]
-[ext_resource type="Texture2D" uid="uid://bw2df72ecom2o" path="res://interface/interface_button/button/blue.png" id="2_lrfoe"]
+[ext_resource type="Script" uid="uid://c4dfqwxrbi0qr" path="res://interface/interface_button/interface_button.gd" id="1_r717c"]
+[ext_resource type="Texture2D" uid="uid://djbi15msx3l03" path="res://interface/interface_button/button_slice.png" id="2_lrfoe"]
+[ext_resource type="Texture2D" uid="uid://4lxmy02qyyh7" path="res://interface/interface_button/icon/key.png" id="2_yaqwk"]
 
-[node name="interface_button" type="Control" unique_id=423282510 node_paths=PackedStringArray("button_node", "icon_node")]
+[node name="interface_button" type="Control" unique_id=955628202]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 22.0
 offset_bottom = 22.0
 script = ExtResource("1_r717c")
-button_node = NodePath("button")
-icon_node = NodePath("icon")
 
-[node name="button" type="TextureRect" parent="." unique_id=1608476394]
+[node name="shadow" type="NinePatchRect" parent="." unique_id=314044081]
+self_modulate = Color(0.6276064, 0.6276064, 0.62760633, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -8.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_lrfoe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="button" type="NinePatchRect" parent="." unique_id=1054612250]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_lrfoe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="icon" type="TextureRect" parent="." unique_id=632570224]
+[node name="icon" type="TextureRect" parent="." unique_id=1837475538]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -37,5 +63,6 @@ offset_right = 6.0
 offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_yaqwk")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

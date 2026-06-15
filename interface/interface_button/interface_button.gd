@@ -1,77 +1,32 @@
-@tool
-class_name InterfaceButton
 extends Control
 
-signal press
-
-enum ButtonColor {
-	BLUE,
-	RED,
-	WHITE,
-	YELLOW
-}
-
-enum ButtonState {
-	NORMAL,
-	PRESSED,
-}
-
-var textures := {
-	ButtonColor.BLUE: {
-		ButtonState.NORMAL: preload("res://interface/interface_button/button/blue.png"),
-		ButtonState.PRESSED: preload("res://interface/interface_button/button/blue_pressed.png"),
-	},
-
-	ButtonColor.RED: {
-		ButtonState.NORMAL: preload("res://interface/interface_button/button/red.png"),
-		ButtonState.PRESSED: preload("res://interface/interface_button/button/red_pressed.png"),
-	},
-
-	ButtonColor.WHITE: {
-		ButtonState.NORMAL: preload("res://interface/interface_button/button/white.png"),
-		ButtonState.PRESSED: preload("res://interface/interface_button/button/white_pressed.png"),
-	},
-
-	ButtonColor.YELLOW: {
-		ButtonState.NORMAL: preload("res://interface/interface_button/button/yellow.png"),
-		ButtonState.PRESSED: preload("res://interface/interface_button/button/yellow_pressed.png"),
-	}
-}
+signal button_pressed
 
 @export var icon : Texture2D
-@export var icon_pressed : Texture2D
+@export var color : Color
 
-@export var button_color : ButtonColor:
-	set(value):
-		button_color = value
-		_update_texture()
-
-@export var pressed : bool = false
-@export var button_node : TextureRect
-@export var icon_node : TextureRect
-
+var button_position : Vector2
+var icon_position : Vector2
 
 func _ready() -> void:
-	_update_texture()
-
-func _update_texture() -> void:
-	var state : ButtonState
-	
-	if pressed:
-		state = ButtonState.PRESSED
-	else:
-		state = ButtonState.NORMAL
-	
-	button_node.texture = textures[button_color][state]
-	icon_node.texture = icon_pressed if pressed else icon
-	icon_node.position.y = 6 if pressed else 5
-
-func _set_state(state_pressed : bool):
-	pressed = state_pressed
-	_update_texture()
+	modulate = color
+	button_position = $button.position
+	icon_position = $icon.position
+	$icon.texture = icon
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventMouseButton:
 		if event.pressed:
-			press.emit()
-		_set_state(event.pressed)
+			button_pressed.emit()
+		update_visual(event.pressed)
+
+func update_visual(pressed : bool):
+	if pressed:
+		self.modulate = color * 0.8
+		self.modulate.a = 1.0
+		$button.position.y = button_position.y + 1
+		$icon.position.y = icon_position.y + 1
+	else:
+		self.modulate = color
+		$button.position.y = button_position.y
+		$icon.position.y = icon_position.y

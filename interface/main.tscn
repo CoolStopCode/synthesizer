@@ -2,9 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://b8ua4v07ohmcf" path="res://interface/interface_button/interface_button.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://c7x0efhxefg64" path="res://interface/main.gd" id="1_spusx"]
-[ext_resource type="Texture2D" uid="uid://4lxmy02qyyh7" path="res://interface/interface_button/icon/key.png" id="4_dyb18"]
-[ext_resource type="Texture2D" uid="uid://b52fyb2rp1dhl" path="res://interface/interface_button/icon/sound.png" id="5_5vw27"]
-[ext_resource type="Texture2D" uid="uid://dk6v6257vxqsd" path="res://interface/interface_button/icon/layers.png" id="5_l14rc"]
+[ext_resource type="Texture2D" uid="uid://bmvb1xcun7l2a" path="res://interface/interface_button/icon/key.png" id="4_dyb18"]
+[ext_resource type="Texture2D" uid="uid://80gqvwtaixph" path="res://interface/interface_button/icon/layers.png" id="5_l14rc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dyb18"]
+load_path = "res://.godot/imported/sound.png-bb8d0da830236f18970c40445daf1a32.ctex"
 
 [node name="main" type="Control" unique_id=42299528]
 layout_mode = 3
@@ -56,15 +58,21 @@ theme_override_constants/v_separation = 0
 
 [node name="interface_button" parent="CenterContainer/GridContainer" unique_id=955628202 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
-icon = ExtResource("5_5vw27")
-color = Color(0.8117647, 0.25882354, 0.25882354, 1)
+icon = SubResource("CompressedTexture2D_dyb18")
+light_color = Color(0.87058824, 0.61960787, 0.25490198, 1)
+medium_color = Color(0.74509805, 0.46666667, 0.16862746, 1)
+dark_color = Color(0.53333336, 0.29411766, 0.16862746, 1)
 
 [node name="interface_button2" parent="CenterContainer/GridContainer" unique_id=414641094 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
 icon = ExtResource("4_dyb18")
-color = Color(0.23529412, 0.36862746, 0.54509807, 1)
+light_color = Color(0.23529412, 0.36862746, 0.54509807, 1)
+medium_color = Color(0.14509805, 0.22745098, 0.36862746, 1)
+dark_color = Color(0.09019608, 0.1254902, 0.21960784, 1)
 
 [node name="interface_button3" parent="CenterContainer/GridContainer" unique_id=1514958895 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
 icon = ExtResource("5_l14rc")
-color = Color(0.85490197, 0.5254902, 0.24313726, 1)
+light_color = Color(0.64705884, 0.1882353, 0.1882353, 1)
+medium_color = Color(0.45882353, 0.14117648, 0.21960784, 1)
+dark_color = Color(0.25490198, 0.11372549, 0.19215687, 1)

@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_w3o6y"]
 script = ExtResource("2_084pw")
-octave = 6
+octave = 7
 metadata/_custom_type_script = "uid://ddfhviicidy5i"
 
 [sub_resource type="Resource" id="Resource_084pw"]
@@ -30,6 +30,7 @@ voice_manager = NodePath("VoiceManager")
 key = SubResource("Resource_x36ov")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=2034206177]
+bus = &"Active"
 script = ExtResource("2_iv6p0")
 
 [node name="VoiceManager" type="Node" parent="." unique_id=1446674782]

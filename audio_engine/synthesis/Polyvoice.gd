@@ -19,4 +19,4 @@ func process(delta: float) -> float:
 		sum += value
 	
 	
-	return sum / voices.size()
+	return (sum / sqrt(voices.size())) * 0.2

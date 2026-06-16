@@ -20,12 +20,11 @@ func _ready() -> void:
 func build_audio() -> void:
 	var chords := key.get_chords()
 	for chord in chords:
-		print(chord.root.to_string_name(), ", ", chord.quality.type)
+		print(chord.root.to_string_name(), ", ", chord.quality.type, ", ", chord.root.to_frequency())
 	
 	var polyvoices := VoiceBuilder.chords_to_polyvoices(chords)
 	voice_manager.set_polyvoice_pool(polyvoices)
 
-#func _input(_event: InputEvent) -> void:
-	#if Input.is_action_just_pressed("Debug"):
-		#print("Before:", voice_manager.voice_pool[0].get_instance_id())
-		#build_audio()
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Debug"):
+		build_audio()

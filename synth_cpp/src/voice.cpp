@@ -152,8 +152,7 @@ void Voice::process_oscillator_module(
     int    waveform  = static_cast<int>(std::round(parameters[m.parameter_offset]));
     double &phase    = states.write[m.state_offset];
 
-    phase += TWO_PI * frequency * delta;
-    if (phase >= TWO_PI) phase -= TWO_PI;
+    phase = std::fmod(phase + TWO_PI * frequency * delta, TWO_PI);
 
     double sample = 0.0;
     switch (waveform) {

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hluqlx2fwit6"
-path="res://.godot/imported/record_pressed.png-8b6edc36621bf2ec0b813a10eaf9a91b.ctex"
+uid="uid://d5u46j0aij4j"
+path="res://.godot/imported/shadow.png-03a9b8c41ed53d159ae3ec3a93a55426.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/interface_button/icon/record_pressed.png"
-dest_files=["res://.godot/imported/record_pressed.png-8b6edc36621bf2ec0b813a10eaf9a91b.ctex"]
+source_file="res://interface/interface_button/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-03a9b8c41ed53d159ae3ec3a93a55426.ctex"]
 
 [params]
 

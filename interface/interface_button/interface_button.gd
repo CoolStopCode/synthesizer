@@ -1,32 +1,58 @@
+@tool
 extends Control
-
 signal button_pressed
 
-@export var icon : Texture2D
-@export var color : Color
+@export var press_offset : int = 1
 
-var button_position : Vector2
-var icon_position : Vector2
+@export var icon: Texture2D :
+	set(v): icon = v; if icon_node: icon_node.texture = icon
+@export var light_color: Color :
+	set(v): light_color = v; _update_visuals()
+@export var medium_color: Color :
+	set(v): medium_color = v; _update_visuals()
+@export var dark_color: Color :
+	set(v): dark_color = v; _update_visuals()
+
+@export_group("private")
+@export var press_node : Control
+@export var base_node: NinePatchRect
+@export var outline_node: NinePatchRect
+@export var shadow_node: NinePatchRect
+@export var icon_node: TextureRect
+
+var is_pressed: bool = false
 
 func _ready() -> void:
-	modulate = color
-	button_position = $button.position
-	icon_position = $icon.position
-	$icon.texture = icon
+	icon_node.texture = icon
+	_update_visuals()
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventMouseButton:
-		if event.pressed:
+		is_pressed = event.pressed
+		if is_pressed:
 			button_pressed.emit()
-		update_visual(event.pressed)
+		_update_visuals()
 
-func update_visual(pressed : bool):
-	if pressed:
-		self.modulate = color * 0.8
-		self.modulate.a = 1.0
-		$button.position.y = button_position.y + 1
-		$icon.position.y = icon_position.y + 1
+func _update_visuals() -> void:
+	var offset : int
+	
+	if is_pressed:
+		base_node.self_modulate = medium_color
+		outline_node.self_modulate = dark_color
+		shadow_node.self_modulate = dark_color
+		icon_node.self_modulate = dark_color
+		
+		shadow_node.visible = false
+		
+		offset = press_offset
 	else:
-		self.modulate = color
-		$button.position.y = button_position.y
-		$icon.position.y = icon_position.y
+		base_node.self_modulate = light_color
+		outline_node.self_modulate = medium_color
+		shadow_node.self_modulate = dark_color
+		icon_node.self_modulate = medium_color
+		
+		shadow_node.visible = true
+		
+		offset = 0
+	
+	press_node.position.y = offset

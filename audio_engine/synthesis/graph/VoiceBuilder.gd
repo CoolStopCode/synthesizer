@@ -32,14 +32,12 @@ static func graph_to_voice(graph : VoiceGraph) -> Voice:
 		var state_data: Array[float] = module.get_states()
 		var state_count := state_data.size()
 		state_offsets.append(initial_memory_data.size())
-		state_counts.append(state_count)
 		initial_memory_data.append_array(state_data)
 		
 		# PARAMETERS
 		var parameter_data: Array[float] = module.get_parameters()
 		var parameter_count := parameter_data.size()
 		parameter_offsets.append(initial_memory_data.size())
-		parameter_counts.append(parameter_count)
 		initial_memory_data.append_array(parameter_data)
 	
 	var connection_map : Dictionary[GraphConnection, int] # GraphConnection -> index in memory data
@@ -51,7 +49,6 @@ static func graph_to_voice(graph : VoiceGraph) -> Voice:
 		output_data.resize(module_outputs.size())
 		
 		output_offsets.append(initial_memory_data.size())
-		output_counts.append(output_count)
 		var i := 0
 		for output in module_outputs: # loop through each ConnectionModule and writing down its index
 			connection_map[output] = initial_memory_data.size() + i
@@ -64,7 +61,6 @@ static func graph_to_voice(graph : VoiceGraph) -> Voice:
 		var input_count := module_inputs.size()
 		
 		input_offsets.append(input_routes.size())
-		input_counts.append(input_count)
 		
 		for input in module_inputs: # loop through all inputs and push the output index to input_routee
 			assert(connection_map.has(input), "Unbonded input on module type %d" % module.get_type())
@@ -73,13 +69,9 @@ static func graph_to_voice(graph : VoiceGraph) -> Voice:
 	voice.set_graph(
 		types,
 		input_offsets,
-		input_counts,
 		output_offsets,
-		output_counts,
 		state_offsets,
-		state_counts,
 		parameter_offsets,
-		parameter_counts,
 		input_routes,
 		initial_memory_data
 	)

@@ -18,13 +18,9 @@ void Voice::_bind_methods() {
         "set_graph",
         "types",
         "input_offsets",
-        "input_counts",
         "output_offsets",
-        "output_counts",
         "state_offsets",
-        "state_counts",
         "parameter_offsets",
-        "parameter_counts",
         "input_routes",
         "initial_memory_data"
     ), &Voice::set_graph);
@@ -62,16 +58,9 @@ void Voice::set_graph(
     const PackedByteArray &types_p, // Array of ModuleType
 
     const PackedInt32Array &input_offsets_p,
-    const PackedInt32Array &input_counts_p,
-
     const PackedInt32Array &output_offsets_p,
-    const PackedInt32Array &output_counts_p,
-
     const PackedInt32Array &state_offsets_p,
-    const PackedInt32Array &state_counts_p,
-
     const PackedInt32Array &parameter_offsets_p,
-    const PackedInt32Array &parameter_counts_p,
     
     const PackedInt32Array &input_routes_p, // Array of memory_data indices
     const PackedFloat64Array &initial_memory_data_p // memory_data
@@ -83,13 +72,9 @@ void Voice::set_graph(
         
         m.type             = types_p[i];
         m.input_offset     = input_offsets_p[i];
-        m.input_count      = input_counts_p[i];
         m.output_offset    = output_offsets_p[i];
-        m.output_count     = output_counts_p[i];
         m.state_offset     = state_offsets_p[i];
-        m.state_count      = state_counts_p[i];
         m.parameter_offset = parameter_offsets_p[i];
-        m.parameter_count  = parameter_counts_p[i];
     }
 
     int input_routes_count = input_routes_p.size();

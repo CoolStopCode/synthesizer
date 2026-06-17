@@ -35,21 +35,17 @@ public:
     struct Module {
         uint8_t type;
 
-        // Read memory_data[input_routes[offset ... offset + count - 1]]
+        // Read memory_data[input_routes[offset + i]
         uint32_t input_offset;
-        uint32_t input_count;
 
-        // Write memory_data[offset ... offset + count - 1]
+        // Write memory_data[offset + i]
         uint32_t output_offset;
-        uint32_t output_count;
 
-        // Read & write memory_data[offset ... offset + count - 1]
+        // Read & write memory_data[offset + i]
         uint32_t state_offset;
-        uint32_t state_count;
 
-        // Read memory_data[offset ... offset + count - 1]
+        // Read memory_data[offset + i]
         uint32_t parameter_offset;
-        uint32_t parameter_count;
     };
 
     using ModuleFunction = void(*)(
@@ -88,16 +84,9 @@ public:
         const PackedByteArray &types, // Array of ModuleType
 
         const PackedInt32Array &input_offsets,
-        const PackedInt32Array &input_counts,
-
         const PackedInt32Array &output_offsets,
-        const PackedInt32Array &output_counts,
-
         const PackedInt32Array &state_offsets,
-        const PackedInt32Array &state_counts,
-
         const PackedInt32Array &parameter_offsets,
-        const PackedInt32Array &parameter_counts,
         
         const PackedInt32Array &input_routes, // Array of memory_data indices
         const PackedFloat64Array &initial_memory_data // memory_data

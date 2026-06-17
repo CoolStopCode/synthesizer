@@ -6,16 +6,9 @@ static func graph_to_voice(graph : VoiceGraph) -> Voice:
 	var types : PackedByteArray
 	
 	var input_offsets : PackedInt32Array
-	var input_counts : PackedInt32Array
-	
 	var output_offsets : PackedInt32Array
-	var output_counts : PackedInt32Array
-	
 	var state_offsets : PackedInt32Array
-	var state_counts : PackedInt32Array
-	
 	var parameter_offsets : PackedInt32Array
-	var parameter_counts : PackedInt32Array
 	
 	var input_routes : PackedInt32Array
 	var initial_memory_data : PackedFloat64Array

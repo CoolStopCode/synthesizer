@@ -33,10 +33,12 @@ metadata/_custom_type_script = "uid://5ec7fao2kg5e"
 
 [sub_resource type="Resource" id="Resource_cdmb6"]
 script = ExtResource("6_gpvx1")
+name = "input_active"
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_o1vw1"]
 script = ExtResource("6_gpvx1")
+name = "input_freq"
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_gpvx1"]
@@ -47,6 +49,7 @@ metadata/_custom_type_script = "uid://o6sgy334ngbl"
 
 [sub_resource type="Resource" id="Resource_7qrb4"]
 script = ExtResource("6_gpvx1")
+name = "osc"
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_h3tjm"]
@@ -58,20 +61,24 @@ metadata/_custom_type_script = "uid://dygpklgpthpwc"
 
 [sub_resource type="Resource" id="Resource_qws1d"]
 script = ExtResource("6_gpvx1")
+name = "env"
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_2sr80"]
 script = ExtResource("9_h8yrx")
 gate = SubResource("Resource_cdmb6")
 level = SubResource("Resource_qws1d")
-attack = 0.01
-decay = 0.5
-sustain = 0.6
-release = 0.2
+attack = 0.05
+decay = 10.0
+release = 1.0
+attack_curve = 0.1
+decay_curve = 1.0
+release_curve = 1.0
 metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
 
 [sub_resource type="Resource" id="Resource_l67un"]
 script = ExtResource("6_gpvx1")
+name = "out"
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_iq7ir"]

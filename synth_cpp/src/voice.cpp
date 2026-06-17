@@ -254,15 +254,20 @@ void Voice::process_noise_module(
 
 // =====================================================================
 // ENVELOPE module
-// 
+//
 // inputs[0]     = gate : bool
 // outputs[0]    = level : float
 // states[0]     = level : float
 // states[1]     = stage : enum { IDLE, ATTACK, DECAY, SUSTAIN, RELEASE }
-// parameters[0] = attack : float
-// parameters[1] = decay : float
-// parameters[2] = sustain : float
-// parameters[3] = release : float
+// states[2]     = phase : float
+// states[3]     = release_start_level : float
+// parameters[0] = attack        : float
+// parameters[1] = decay         : float
+// parameters[2] = sustain       : float
+// parameters[3] = release       : float
+// parameters[4] = attack_curve  : float
+// parameters[5] = decay_curve   : float
+// parameters[6] = release_curve : float
 //
 // =====================================================================
 
@@ -272,49 +277,85 @@ void Voice::process_envelope_module(
     const uint32_t* input_routes,
     double delta
 ) {
-    double gate    = read_input(m.input_offset, memory_data, input_routes);
-    double attack  = read_memory(m.parameter_offset + 0, memory_data);
-    double decay   = read_memory(m.parameter_offset + 1, memory_data);
-    double sustain = read_memory(m.parameter_offset + 2, memory_data);
-    double release = read_memory(m.parameter_offset + 3, memory_data);
+    double gate          = read_input(m.input_offset, memory_data, input_routes);
+    double attack        = read_memory(m.parameter_offset + 0, memory_data);
+    double decay         = read_memory(m.parameter_offset + 1, memory_data);
+    double sustain       = read_memory(m.parameter_offset + 2, memory_data);
+    double release       = read_memory(m.parameter_offset + 3, memory_data);
+    double attack_curve  = read_memory(m.parameter_offset + 4, memory_data);
+    double decay_curve   = read_memory(m.parameter_offset + 5, memory_data);
+    double release_curve = read_memory(m.parameter_offset + 6, memory_data);
 
-    double level = read_memory(m.state_offset + 0, memory_data);
-    int stage = double_to_int(read_memory(m.state_offset + 1, memory_data));
+    double level                = read_memory(m.state_offset + 0, memory_data);
+    int stage                   = double_to_int(read_memory(m.state_offset + 1, memory_data));
+    double phase                = read_memory(m.state_offset + 2, memory_data);
+    double release_start_level  = read_memory(m.state_offset + 3, memory_data);
 
     bool gated = double_to_bool(gate);
 
-    if (gated  && (stage == 0 || stage == 4)) stage = 1; // Idle/Release -> Attack
-    if (!gated && stage != 0 && stage != 4)   stage = 4; // Any state -> Release
+    // guard against degenerate/garbage exponents
+    attack_curve  = std::max(attack_curve, 0.001);
+    decay_curve   = std::max(decay_curve, 0.001);
+    release_curve = std::max(release_curve, 0.001);
 
-    // 4. State Machine Execution
+    bool entering_attack  = gated  && (stage == 0 || stage == 4);
+    bool entering_release = !gated && stage != 0 && stage != 4;
+
+    if (entering_attack)  {
+        stage = 1;
+        phase = 0.0; 
+    }
+    if (entering_release) {
+        stage = 4;
+        phase = 0.0;
+        release_start_level = level;
+    }
+
     switch (stage) {
         case 0: // Idle
             level = 0.0;
             break;
-        case 1: // Attack
-            level += delta / std::max(attack, 1e-6);
-            if (level >= 1.0) { 
-                level = 1.0; 
-                stage = 2; 
+
+        case 1: { // Attack: phase 0->1 over attack seconds, level = phase^attack_curve
+            phase += delta / std::max(attack, 1e-6);
+            if (phase >= 1.0) {
+                level = 1.0;
+                stage = 2;
+                phase = 0.0; // reset for decay stage
+            } else {
+                level = std::pow(phase, attack_curve);
             }
             break;
-        case 2: // Decay
-            level -= (delta / std::max(decay, 1e-6)) * (1.0 - sustain);
-            if (level <= sustain) { 
-                level = sustain; 
-                stage = 3; 
+        }
+
+        case 2: { // Decay: phase 0->1 over decay seconds, level: 1 -> sustain
+            phase += delta / std::max(decay, 1e-6);
+            if (phase >= 1.0) {
+                level = sustain;
+                stage = 3;
+            } else {
+                double shaped = std::pow(phase, decay_curve);
+                level = 1.0 + (sustain - 1.0) * shaped;
             }
             break;
+        }
+
         case 3: // Sustain
             level = sustain;
             break;
-        case 4: // Release
-            level -= (delta / std::max(release, 1e-6)) * level;
-            if (level <= 0.001) { 
-                level = 0.0; 
-                stage = 0; 
+
+        case 4: { // Release: phase 0->1 over release seconds, level: release_start_level -> 0
+            phase += delta / std::max(release, 1e-6);
+            if (phase >= 1.0) {
+                level = 0.0;
+                stage = 0;
+            } else {
+                double shaped = std::pow(phase, release_curve);
+                level = release_start_level * (1.0 - shaped);
             }
             break;
+        }
+
         default:
             level = 0.0;
             break;
@@ -322,6 +363,8 @@ void Voice::process_envelope_module(
 
     write_memory(m.state_offset + 0, level, memory_data);
     write_memory(m.state_offset + 1, int_to_double(stage), memory_data);
+    write_memory(m.state_offset + 2, phase, memory_data);
+    write_memory(m.state_offset + 3, release_start_level, memory_data);
     write_memory(m.output_offset, level, memory_data);
 }
 

@@ -6,11 +6,19 @@
 [ext_resource type="Script" uid="uid://bfsl0utby8d8o" path="res://audio_engine/control/VoiceManager.gd" id="2_r1rco"]
 [ext_resource type="Script" uid="uid://b0hvx63gftql4" path="res://audio_engine/music/Scale.gd" id="3_qk1u2"]
 [ext_resource type="Script" uid="uid://5ec7fao2kg5e" path="res://audio_engine/music/Key.gd" id="3_x36ov"]
+[ext_resource type="Script" uid="uid://cf2vraxdg7h7c" path="res://audio_engine/synthesis/graph/GraphModule.gd" id="5_qk1u2"]
+[ext_resource type="Script" uid="uid://bpehx0osaw18w" path="res://audio_engine/synthesis/graph/GraphConnection.gd" id="6_gpvx1"]
+[ext_resource type="Script" uid="uid://o6sgy334ngbl" path="res://audio_engine/synthesis/graph/modules/GraphInputModule.gd" id="6_qv75g"]
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://audio_engine/io/io_temp.gd" id="7_084pw"]
+[ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio_engine/synthesis/graph/modules/GraphOutputModule.gd" id="7_bk3b3"]
+[ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio_engine/synthesis/graph/VoiceGraph.gd" id="8_a25oa"]
+[ext_resource type="Script" uid="uid://dygpklgpthpwc" path="res://audio_engine/synthesis/graph/modules/GraphOscillatorModule.gd" id="8_nndlu"]
+[ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio_engine/synthesis/graph/modules/GraphEnvelopeModule.gd" id="9_h8yrx"]
+[ext_resource type="Script" uid="uid://bqo3y3g087w23" path="res://audio_engine/synthesis/graph/modules/GraphArithmaticModule.gd" id="10_k2vjg"]
 
 [sub_resource type="Resource" id="Resource_w3o6y"]
 script = ExtResource("2_084pw")
-octave = 7
+octave = 6
 metadata/_custom_type_script = "uid://ddfhviicidy5i"
 
 [sub_resource type="Resource" id="Resource_084pw"]
@@ -23,11 +31,73 @@ root = SubResource("Resource_w3o6y")
 scale = SubResource("Resource_084pw")
 metadata/_custom_type_script = "uid://5ec7fao2kg5e"
 
+[sub_resource type="Resource" id="Resource_cdmb6"]
+script = ExtResource("6_gpvx1")
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_o1vw1"]
+script = ExtResource("6_gpvx1")
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_gpvx1"]
+script = ExtResource("6_qv75g")
+frequency = SubResource("Resource_o1vw1")
+active = SubResource("Resource_cdmb6")
+metadata/_custom_type_script = "uid://o6sgy334ngbl"
+
+[sub_resource type="Resource" id="Resource_7qrb4"]
+script = ExtResource("6_gpvx1")
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_h3tjm"]
+script = ExtResource("8_nndlu")
+frequency = SubResource("Resource_o1vw1")
+sample = SubResource("Resource_7qrb4")
+waveform = 2
+metadata/_custom_type_script = "uid://dygpklgpthpwc"
+
+[sub_resource type="Resource" id="Resource_qws1d"]
+script = ExtResource("6_gpvx1")
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_2sr80"]
+script = ExtResource("9_h8yrx")
+gate = SubResource("Resource_cdmb6")
+level = SubResource("Resource_qws1d")
+attack = 0.01
+decay = 0.5
+sustain = 0.6
+release = 0.2
+metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
+
+[sub_resource type="Resource" id="Resource_l67un"]
+script = ExtResource("6_gpvx1")
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_iq7ir"]
+script = ExtResource("10_k2vjg")
+operand_a = SubResource("Resource_7qrb4")
+operand_b = SubResource("Resource_qws1d")
+result = SubResource("Resource_l67un")
+operation = 2
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_nndlu"]
+script = ExtResource("7_bk3b3")
+sample = SubResource("Resource_l67un")
+metadata/_custom_type_script = "uid://dd87xat4ign3w"
+
+[sub_resource type="Resource" id="Resource_h8yrx"]
+script = ExtResource("8_a25oa")
+modules = Array[ExtResource("5_qk1u2")]([SubResource("Resource_gpvx1"), SubResource("Resource_h3tjm"), SubResource("Resource_2sr80"), SubResource("Resource_iq7ir"), SubResource("Resource_nndlu")])
+metadata/_custom_type_script = "uid://fcmxj7baxak3"
+
 [node name="AudioEngine" type="Node" unique_id=1307014848 node_paths=PackedStringArray("audio_player", "voice_manager")]
 script = ExtResource("1_jwo0y")
 audio_player = NodePath("AudioPlayer")
 voice_manager = NodePath("VoiceManager")
 key = SubResource("Resource_x36ov")
+voice_graph = SubResource("Resource_h8yrx")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=2034206177]
 bus = &"Active"

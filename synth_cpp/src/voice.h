@@ -2,10 +2,12 @@
 #define VOICE_H
 
 #include <array>
+#include <vector>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
+#include <godot_cpp/core/math_defs.hpp>
 #include <godot_cpp/core/class_db.hpp>
 
 using namespace godot;
@@ -16,60 +18,74 @@ class Voice : public RefCounted {
 public:
     enum ModuleType : uint8_t {
         INPUT,
-        OSCILLATOR,
-        ENVELOPE,
-        ARITHMETIC,
         OUTPUT,
+
+        OSCILLATOR,
+        NOISE,
+
+        ENVELOPE,
+        EQUALIZER,
+        BITCRUSHER,
+
+        ARITHMETIC,
+
         MODULE_TYPE_COUNT
     };
 
     struct Module {
         uint8_t type;
 
-        // === GET ===
-        uint32_t input_offset; // start of inputs in connections
-        uint32_t input_count; // length of inputs in connections
+        // Read memory_data[input_routes[offset ... offset + count - 1]]
+        uint32_t input_offset;
+        uint32_t input_count;
 
-        // === SET ===
-        uint32_t output_offset; // start of outputs in connections
-        uint32_t output_count; // length of outputs in connections
+        // Write memory_data[offset ... offset + count - 1]
+        uint32_t output_offset;
+        uint32_t output_count;
 
-        // === PRIVATE ===
-        uint32_t state_offset; // start of states in states
-        uint32_t state_count; // length of states in states
+        // Read & write memory_data[offset ... offset + count - 1]
+        uint32_t state_offset;
+        uint32_t state_count;
 
-        // === CONSTANT ===
-        uint32_t parameter_offset; // start of parameters in parameters
-        uint32_t parameter_count; // length of parameters in parameters
+        // Read memory_data[offset ... offset + count - 1]
+        uint32_t parameter_offset;
+        uint32_t parameter_count;
     };
 
-    using ModuleFunction = void(*)(const Module& module, Vector<double>& connections, Vector<double>& states, Vector<double>& parameters, double delta);
+    using ModuleFunction = void(*)(
+        const Module& m,
+        double* memory_data,
+        const uint32_t* input_routes,
+        double delta
+    );
 
 private:
-    double frequency = 0.0; // in
     bool active = false;
+    double frequency = 440.0;
+    // memory_data[0]:  wrote to by empty connections, never read
+    // memory_data[1]:  frequency input
+    // memory_data[2]:  active input
+    // memory_data[3]:  sample output
+    // memory_data[4+]: module use (outputs, states, parameters)
+    std::vector<double> memory_data;
+    std::vector<uint32_t> input_routes;
+    std::vector<Module> modules;
 
-    double sample = 0.0; // out
-
-    Vector<double> connections;
-    Vector<double> states;
-    Vector<double> parameters;
-    Vector<Module> modules;
-
+    // bindings of module process function to module
     static std::array<ModuleFunction, MODULE_TYPE_COUNT> dispatch_table;
 
 public:
-    Voice() {}
-    ~Voice() {}
+    Voice() {} // Constructor
+    ~Voice() {} // Destructor
 
-    void set_frequency(const double frequency_p);
+    void set_frequency(const double frequency_p); // memory_data[1]
     double get_frequency();
 
-    void set_active(const bool active_p);
+    void set_active(const bool active_p); // memory_data[2]
     bool get_active();
 
     void set_graph(
-        const PackedByteArray &types,
+        const PackedByteArray &types, // Array of ModuleType
 
         const PackedInt32Array &input_offsets,
         const PackedInt32Array &input_counts,
@@ -82,19 +98,35 @@ public:
 
         const PackedInt32Array &parameter_offsets,
         const PackedInt32Array &parameter_counts,
-
-        const PackedFloat64Array &parameter_values
+        
+        const PackedInt32Array &input_routes, // Array of memory_data indices
+        const PackedFloat64Array &initial_memory_data // memory_data
     );
 
     double process(double delta);
 
 private:
     static void _bind_methods();
-    static void process_input_module(       const Module&, Vector<double>&, Vector<double>&, Vector<double>&, double);
-    static void process_oscillator_module(  const Module&, Vector<double>&, Vector<double>&, Vector<double>&, double);
-    static void process_envelope_module(    const Module&, Vector<double>&, Vector<double>&, Vector<double>&, double);
-    static void process_arithmetic_module(  const Module&, Vector<double>&, Vector<double>&, Vector<double>&, double);
-    static void process_output_module(      const Module&, Vector<double>&, Vector<double>&, Vector<double>&, double);
+
+    static inline double read_input(uint32_t index, double* memory_data, const uint32_t* input_routes); // memory_data[input_routes[i]]
+    static inline double read_memory(uint32_t index, double* memory_data); // memory_data[i]
+    static inline void write_memory(uint32_t index, double value, double* memory_data); // memory_data[i]
+
+    static inline int double_to_int(double double_p);
+    static inline bool double_to_bool(double double_p);
+    static inline double bool_to_double(bool double_p);
+    static inline double int_to_double(int double_p);
+
+    static void process_input_module(       const Module&, double*, const uint32_t*, double);
+    static void process_output_module(      const Module&, double*, const uint32_t*, double);
+    static void process_oscillator_module(  const Module&, double*, const uint32_t*, double);
+    static void process_noise_module(       const Module&, double*, const uint32_t*, double);
+
+    static void process_envelope_module(    const Module&, double*, const uint32_t*, double);
+    static void process_equalizer_module(   const Module&, double*, const uint32_t*, double);
+    static void process_bitcrusher_module(  const Module&, double*, const uint32_t*, double);
+
+    static void process_arithmetic_module(  const Module&, double*, const uint32_t*, double);
 };
 
 #endif

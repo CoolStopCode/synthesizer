@@ -9,7 +9,7 @@ extends Node
 @export var key : Key
 
 @export_group("Synthesis")
-#@export var voice : Voice
+@export var voice_graph : VoiceGraph
 
 func _process(_delta: float) -> void:
 	audio_player.process(voice_manager)
@@ -22,7 +22,7 @@ func build_audio() -> void:
 	for chord in chords:
 		print(chord.root.to_string_name(), ", ", chord.quality.type, ", ", chord.root.to_frequency())
 	
-	var polyvoices := VoiceBuilder.chords_to_polyvoices(chords)
+	var polyvoices := VoiceBuilderOld.chords_to_polyvoices(chords, voice_graph)
 	voice_manager.set_polyvoice_pool(polyvoices)
 
 func _input(_event: InputEvent) -> void:

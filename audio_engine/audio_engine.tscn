@@ -18,7 +18,7 @@
 
 [sub_resource type="Resource" id="Resource_w3o6y"]
 script = ExtResource("2_084pw")
-octave = 6
+octave = 7
 metadata/_custom_type_script = "uid://ddfhviicidy5i"
 
 [sub_resource type="Resource" id="Resource_084pw"]
@@ -31,72 +31,103 @@ root = SubResource("Resource_w3o6y")
 scale = SubResource("Resource_084pw")
 metadata/_custom_type_script = "uid://5ec7fao2kg5e"
 
-[sub_resource type="Resource" id="Resource_cdmb6"]
-script = ExtResource("6_gpvx1")
-name = "input_active"
-metadata/_custom_type_script = "uid://bpehx0osaw18w"
-
-[sub_resource type="Resource" id="Resource_o1vw1"]
-script = ExtResource("6_gpvx1")
-name = "input_freq"
-metadata/_custom_type_script = "uid://bpehx0osaw18w"
-
 [sub_resource type="Resource" id="Resource_gpvx1"]
+script = ExtResource("6_gpvx1")
+name = "freq_out"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_nndlu"]
+script = ExtResource("6_gpvx1")
+name = "freq_in"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_6l36a"]
 script = ExtResource("6_qv75g")
-frequency = SubResource("Resource_o1vw1")
-active = SubResource("Resource_cdmb6")
+frequency = SubResource("Resource_nndlu")
+active = SubResource("Resource_gpvx1")
 metadata/_custom_type_script = "uid://o6sgy334ngbl"
 
-[sub_resource type="Resource" id="Resource_7qrb4"]
+[sub_resource type="Resource" id="Resource_h8yrx"]
 script = ExtResource("6_gpvx1")
-name = "osc"
+name = "freq_env_out"
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
-[sub_resource type="Resource" id="Resource_h3tjm"]
-script = ExtResource("8_nndlu")
-frequency = SubResource("Resource_o1vw1")
-sample = SubResource("Resource_7qrb4")
-waveform = 2
-metadata/_custom_type_script = "uid://dygpklgpthpwc"
-
-[sub_resource type="Resource" id="Resource_qws1d"]
-script = ExtResource("6_gpvx1")
-name = "env"
-metadata/_custom_type_script = "uid://bpehx0osaw18w"
+[sub_resource type="Resource" id="Resource_k2vjg"]
+script = ExtResource("9_h8yrx")
+gate = SubResource("Resource_gpvx1")
+level = SubResource("Resource_h8yrx")
+attack = 0.01
+decay = 0.2
+sustain = 0.1
+release = 3.0
+attack_curve = 0.01
+decay_curve = 0.2
+release_curve = 100.0
+metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
 
 [sub_resource type="Resource" id="Resource_2sr80"]
+script = ExtResource("6_gpvx1")
+name = "amp_env_out"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_cdmb6"]
 script = ExtResource("9_h8yrx")
-gate = SubResource("Resource_cdmb6")
-level = SubResource("Resource_qws1d")
-attack = 0.05
-decay = 10.0
-release = 1.0
+gate = SubResource("Resource_gpvx1")
+level = SubResource("Resource_2sr80")
+attack = 0.1
+decay = 0.2
+release = 0.2
 attack_curve = 0.1
-decay_curve = 1.0
+decay_curve = 1.5
 release_curve = 1.0
 metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
 
 [sub_resource type="Resource" id="Resource_l67un"]
 script = ExtResource("6_gpvx1")
-name = "out"
+name = "new_freq"
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
-[sub_resource type="Resource" id="Resource_iq7ir"]
+[sub_resource type="Resource" id="Resource_o1vw1"]
 script = ExtResource("10_k2vjg")
-operand_a = SubResource("Resource_7qrb4")
-operand_b = SubResource("Resource_qws1d")
+operand_a = SubResource("Resource_nndlu")
+operand_b = SubResource("Resource_h8yrx")
 result = SubResource("Resource_l67un")
 operation = 2
 metadata/_custom_type_script = "uid://bqo3y3g087w23"
 
-[sub_resource type="Resource" id="Resource_nndlu"]
+[sub_resource type="Resource" id="Resource_iq7ir"]
+script = ExtResource("6_gpvx1")
+name = "osc"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_7qrb4"]
+script = ExtResource("8_nndlu")
+frequency = SubResource("Resource_l67un")
+sample = SubResource("Resource_iq7ir")
+waveform = 3
+metadata/_custom_type_script = "uid://dygpklgpthpwc"
+
+[sub_resource type="Resource" id="Resource_ekbou"]
+script = ExtResource("6_gpvx1")
+name = "output"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_h3tjm"]
+script = ExtResource("10_k2vjg")
+operand_a = SubResource("Resource_2sr80")
+operand_b = SubResource("Resource_iq7ir")
+result = SubResource("Resource_ekbou")
+operation = 2
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_qws1d"]
 script = ExtResource("7_bk3b3")
-sample = SubResource("Resource_l67un")
+sample = SubResource("Resource_ekbou")
 metadata/_custom_type_script = "uid://dd87xat4ign3w"
 
-[sub_resource type="Resource" id="Resource_h8yrx"]
+[sub_resource type="Resource" id="Resource_yyg6e"]
 script = ExtResource("8_a25oa")
-modules = Array[ExtResource("5_qk1u2")]([SubResource("Resource_gpvx1"), SubResource("Resource_h3tjm"), SubResource("Resource_2sr80"), SubResource("Resource_iq7ir"), SubResource("Resource_nndlu")])
+modules = Array[ExtResource("5_qk1u2")]([SubResource("Resource_6l36a"), SubResource("Resource_k2vjg"), SubResource("Resource_cdmb6"), SubResource("Resource_o1vw1"), SubResource("Resource_7qrb4"), SubResource("Resource_h3tjm"), SubResource("Resource_qws1d")])
 metadata/_custom_type_script = "uid://fcmxj7baxak3"
 
 [node name="AudioEngine" type="Node" unique_id=1307014848 node_paths=PackedStringArray("audio_player", "voice_manager")]
@@ -104,7 +135,7 @@ script = ExtResource("1_jwo0y")
 audio_player = NodePath("AudioPlayer")
 voice_manager = NodePath("VoiceManager")
 key = SubResource("Resource_x36ov")
-voice_graph = SubResource("Resource_h8yrx")
+voice_graph = SubResource("Resource_yyg6e")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=2034206177]
 bus = &"Active"

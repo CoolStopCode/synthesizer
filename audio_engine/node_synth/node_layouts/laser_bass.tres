@@ -1,0 +1,109 @@
+[gd_resource type="Resource" script_class="Node_Layout" format=3 uid="uid://ufbsm2iwqm4j"]
+
+[ext_resource type="Script" uid="uid://cf2vraxdg7h7c" path="res://audio_engine/node_synth/layout/modules/Node_Module.gd" id="1_ibobf"]
+[ext_resource type="Script" uid="uid://bpehx0osaw18w" path="res://audio_engine/node_synth/layout/Node_Connection.gd" id="2_tcjq3"]
+[ext_resource type="Script" uid="uid://o6sgy334ngbl" path="res://audio_engine/node_synth/layout/modules/Node_InputModule.gd" id="3_kqh4g"]
+[ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio_engine/node_synth/layout/modules/Node_EnvelopeModule.gd" id="4_oyt2g"]
+[ext_resource type="Script" uid="uid://bqo3y3g087w23" path="res://audio_engine/node_synth/layout/modules/Node_ArithmaticModule.gd" id="5_udyhr"]
+[ext_resource type="Script" uid="uid://dygpklgpthpwc" path="res://audio_engine/node_synth/layout/modules/Node_OscillatorModule.gd" id="6_4d5rw"]
+[ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio_engine/node_synth/layout/modules/Node_OutputModule.gd" id="7_0wq6s"]
+[ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio_engine/node_synth/layout/Node_Layout.gd" id="8_bwari"]
+
+[sub_resource type="Resource" id="Resource_gpvx1"]
+script = ExtResource("2_tcjq3")
+name = "freq_out"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_nndlu"]
+script = ExtResource("2_tcjq3")
+name = "freq_in"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_6l36a"]
+script = ExtResource("3_kqh4g")
+frequency = SubResource("Resource_nndlu")
+active = SubResource("Resource_gpvx1")
+metadata/_custom_type_script = "uid://o6sgy334ngbl"
+
+[sub_resource type="Resource" id="Resource_h8yrx"]
+script = ExtResource("2_tcjq3")
+name = "freq_env_out"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_k2vjg"]
+script = ExtResource("4_oyt2g")
+gate = SubResource("Resource_gpvx1")
+level = SubResource("Resource_h8yrx")
+attack = 0.01
+decay = 0.2
+sustain = 0.1
+release = 3.0
+attack_curve = 0.01
+decay_curve = 0.2
+release_curve = 100.0
+metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
+
+[sub_resource type="Resource" id="Resource_2sr80"]
+script = ExtResource("2_tcjq3")
+name = "amp_env_out"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_cdmb6"]
+script = ExtResource("4_oyt2g")
+gate = SubResource("Resource_gpvx1")
+level = SubResource("Resource_2sr80")
+attack = 0.1
+decay = 0.2
+release = 0.2
+attack_curve = 0.1
+decay_curve = 1.5
+release_curve = 1.0
+metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
+
+[sub_resource type="Resource" id="Resource_l67un"]
+script = ExtResource("2_tcjq3")
+name = "new_freq"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_o1vw1"]
+script = ExtResource("5_udyhr")
+operand_a = SubResource("Resource_nndlu")
+operand_b = SubResource("Resource_h8yrx")
+result = SubResource("Resource_l67un")
+operation = 2
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_iq7ir"]
+script = ExtResource("2_tcjq3")
+name = "osc"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_7qrb4"]
+script = ExtResource("6_4d5rw")
+frequency = SubResource("Resource_l67un")
+sample = SubResource("Resource_iq7ir")
+waveform = 3
+metadata/_custom_type_script = "uid://dygpklgpthpwc"
+
+[sub_resource type="Resource" id="Resource_ekbou"]
+script = ExtResource("2_tcjq3")
+name = "output"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_h3tjm"]
+script = ExtResource("5_udyhr")
+operand_a = SubResource("Resource_2sr80")
+operand_b = SubResource("Resource_iq7ir")
+result = SubResource("Resource_ekbou")
+operation = 2
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_qws1d"]
+script = ExtResource("7_0wq6s")
+sample = SubResource("Resource_ekbou")
+metadata/_custom_type_script = "uid://dd87xat4ign3w"
+
+[resource]
+script = ExtResource("8_bwari")
+modules = Array[ExtResource("1_ibobf")]([SubResource("Resource_6l36a"), SubResource("Resource_k2vjg"), SubResource("Resource_cdmb6"), SubResource("Resource_o1vw1"), SubResource("Resource_7qrb4"), SubResource("Resource_h3tjm"), SubResource("Resource_qws1d")])
+metadata/_custom_type_script = "uid://fcmxj7baxak3"

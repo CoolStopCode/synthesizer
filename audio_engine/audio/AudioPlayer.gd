@@ -1,30 +1,32 @@
 extends AudioStreamPlayer
 class_name AudioPlayer
 
-@export var output : AudioStreamPlayer = self
+@export var output : AudioStreamPlayer
 
 var playback: AudioStreamGeneratorPlayback
 
-const SAMPLE_RATE := 44100.0
+var mix_rate: float
+var master_volume: float
+var sample_delta: float
 
 func _ready() -> void:
+	mix_rate = AudioEngine.mix_rate
+	master_volume = AudioEngine.master_volume
+	sample_delta = 1.0 / mix_rate
+	
 	var generator := AudioStreamGenerator.new()
-	generator.mix_rate = 44100.0 # Standard CD quality
-	generator.buffer_length = 0.03
+	generator.mix_rate = mix_rate
+	generator.buffer_length = AudioEngine.buffer_length
 	
 	output.stream = generator
 	output.play()
 	playback = output.get_stream_playback()
 
-func process(voice_manager : VoiceManager) -> void:
-	if not playback:
-		return
-	
+func fill_audio_buffer(audio_mode: AudioMode) -> void:
 	var frames_to_fill := playback.get_frames_available()
-	var sample_delta := 1.0 / SAMPLE_RATE
 	
 	while frames_to_fill > 0: 
-		var sample_value : float = voice_manager.process_mix(sample_delta) * AudioEngine.master_volume
+		var sample_value : float = audio_mode.process(sample_delta) * master_volume
 		var frame := Vector2(sample_value, sample_value)
 		
 		playback.push_frame(frame)

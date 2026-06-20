@@ -19,6 +19,7 @@ enum Stage {
 @export var current_level : float
 @export var stage : Stage
 @export var phase : float
+@export var attack_start_level : float
 @export var release_start_level : float
 
 @export_category("parameters")
@@ -29,6 +30,7 @@ enum Stage {
 @export var attack_curve : float
 @export var decay_curve : float
 @export var release_curve : float
+@export var reset : bool
 
 func get_type() -> int:
 	return 4
@@ -40,7 +42,7 @@ func get_outputs() -> Array[GraphConnection]:
 	return [level]
 
 func get_states() -> Array[float]:
-	return [current_level, float(stage), phase, release_start_level]
+	return [current_level, float(stage), phase, attack_start_level, release_start_level]
 
 func get_parameters() -> Array[float]:
-	return [attack, decay, sustain, release, attack_curve, decay_curve, release_curve]
+	return [attack, decay, sustain, release, attack_curve, decay_curve, release_curve, float(reset)]

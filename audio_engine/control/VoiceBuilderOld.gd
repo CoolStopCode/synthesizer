@@ -8,7 +8,7 @@ static func chord_to_polyvoice(
 	polyvoice.voices = []
 	
 	var notes := chord.get_notes()
-	for note : Note in [notes[0]]:
+	for note : Note in notes:
 		var new_voice := VoiceBuilder.graph_to_voice(graph)
 		
 		new_voice.frequency = note.to_frequency()

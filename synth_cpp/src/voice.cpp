@@ -260,7 +260,8 @@ void Voice::process_noise_module(
 // states[0]     = level : float
 // states[1]     = stage : enum { IDLE, ATTACK, DECAY, SUSTAIN, RELEASE }
 // states[2]     = phase : float
-// states[3]     = release_start_level : float
+// states[3]     = attack_start_level : float
+// states[4]     = release_start_level : float
 // parameters[0] = attack        : float
 // parameters[1] = decay         : float
 // parameters[2] = sustain       : float
@@ -268,6 +269,7 @@ void Voice::process_noise_module(
 // parameters[4] = attack_curve  : float
 // parameters[5] = decay_curve   : float
 // parameters[6] = release_curve : float
+// parameters[7] = reset         : bool
 //
 // =====================================================================
 
@@ -285,11 +287,13 @@ void Voice::process_envelope_module(
     double attack_curve  = read_memory(m.parameter_offset + 4, memory_data);
     double decay_curve   = read_memory(m.parameter_offset + 5, memory_data);
     double release_curve = read_memory(m.parameter_offset + 6, memory_data);
+    bool reset = double_to_bool(read_memory(m.parameter_offset + 7, memory_data));
 
     double level                = read_memory(m.state_offset + 0, memory_data);
     int stage                   = double_to_int(read_memory(m.state_offset + 1, memory_data));
     double phase                = read_memory(m.state_offset + 2, memory_data);
-    double release_start_level  = read_memory(m.state_offset + 3, memory_data);
+    double attack_start_level   = read_memory(m.state_offset + 3, memory_data);
+    double release_start_level  = read_memory(m.state_offset + 4, memory_data);
 
     bool gated = double_to_bool(gate);
 
@@ -303,7 +307,12 @@ void Voice::process_envelope_module(
 
     if (entering_attack)  {
         stage = 1;
-        phase = 0.0; 
+        phase = 0.0;
+        attack_start_level = level;
+        if (reset) {
+            level = 0.0;
+            attack_start_level = 0.0;
+        }
     }
     if (entering_release) {
         stage = 4;
@@ -321,9 +330,10 @@ void Voice::process_envelope_module(
             if (phase >= 1.0) {
                 level = 1.0;
                 stage = 2;
-                phase = 0.0; // reset for decay stage
+                phase = 0.0;
             } else {
-                level = std::pow(phase, attack_curve);
+                double shaped = std::pow(phase, attack_curve);
+                level = attack_start_level + (1.0 - attack_start_level) * shaped;
             }
             break;
         }
@@ -364,7 +374,8 @@ void Voice::process_envelope_module(
     write_memory(m.state_offset + 0, level, memory_data);
     write_memory(m.state_offset + 1, int_to_double(stage), memory_data);
     write_memory(m.state_offset + 2, phase, memory_data);
-    write_memory(m.state_offset + 3, release_start_level, memory_data);
+    write_memory(m.state_offset + 3, attack_start_level, memory_data);
+    write_memory(m.state_offset + 4, release_start_level, memory_data);
     write_memory(m.output_offset, level, memory_data);
 }
 

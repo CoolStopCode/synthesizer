@@ -46,12 +46,14 @@ metadata/_custom_type_script = "uid://bpehx0osaw18w"
 script = ExtResource("5_c26na")
 gate = SubResource("Resource_cdmb6")
 level = SubResource("Resource_qws1d")
-attack = 0.05
-decay = 10.0
-release = 1.0
+attack = 0.2
+decay = 1.0
+sustain = 0.5
+release = 3.0
 attack_curve = 0.1
-decay_curve = 1.0
-release_curve = 1.0
+decay_curve = 0.5
+release_curve = 0.4
+reset = true
 metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
 
 [sub_resource type="Resource" id="Resource_l67un"]

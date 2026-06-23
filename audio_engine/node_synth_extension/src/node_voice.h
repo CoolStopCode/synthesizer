@@ -24,7 +24,7 @@ public:
         NOISE,
 
         ENVELOPE,
-        EQUALIZER,
+        FILTER,
         BITCRUSHER,
 
         ARITHMETIC,
@@ -112,7 +112,7 @@ private:
     static void process_noise_module(       const Module&, double*, const uint32_t*, double);
 
     static void process_envelope_module(    const Module&, double*, const uint32_t*, double);
-    static void process_equalizer_module(   const Module&, double*, const uint32_t*, double);
+    static void process_filter_module(      const Module&, double*, const uint32_t*, double);
     static void process_bitcrusher_module(  const Module&, double*, const uint32_t*, double);
 
     static void process_arithmetic_module(  const Module&, double*, const uint32_t*, double);

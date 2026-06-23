@@ -48,7 +48,7 @@ std::array<Node_Voice::ModuleFunction, Node_Voice::MODULE_TYPE_COUNT> Node_Voice
     Node_Voice::process_noise_module,
 
     Node_Voice::process_envelope_module,
-    Node_Voice::process_equalizer_module,
+    Node_Voice::process_filter_module,
     Node_Voice::process_bitcrusher_module,
 
     Node_Voice::process_arithmetic_module,
@@ -380,28 +380,55 @@ void Node_Voice::process_envelope_module(
 }
 
 // =====================================================================
-// EQUALIZER module
-// 
-// inputs[0]     = audio_in : float
-// outputs[0]    = audio_out : float
-// states[0]     = x1 : float
-// states[1]     = x2 : float
-// states[2]     = y1 : float
-// states[3]     = y2 : float
-// parameters[0] = filter_type : enum { PEAK, LOW_SHELF, HIGH_SHELF, HPF, LPF }
-// parameters[1] = frequency : float
-// parameters[2] = gain : float
-// parameters[3] = q_factor : float
+// FILTER module
+//
+// inputs[0]     = audio_in     : float
+// outputs[0]    = audio_out    : float
+// states[0]     = lowpass      : float
+// states[1]     = bandpass     : float
+// parameters[0] = cutoff       : float
+// parameters[1] = resonance    : float  (0..1)
+// parameters[2] = filter_mode  : enum    { LP=0, BP=1, HP=2 }
 //
 // =====================================================================
 
-void Node_Voice::process_equalizer_module(
+void Node_Voice::process_filter_module(
     const Module &m,
     double* memory_data,
     const uint32_t* input_routes,
     double delta
 ) {
+    double audio_in   = read_input(m.input_offset + 0, memory_data, input_routes);
 
+    double cutoff     = read_memory(m.parameter_offset + 0, memory_data);
+    double resonance  = read_memory(m.parameter_offset + 1, memory_data);
+    int    mode       = double_to_int(read_memory(m.parameter_offset + 2, memory_data));
+    bool   oversample = double_to_bool(read_memory(m.parameter_offset + 3, memory_data));
+
+    double lowpass = read_memory(m.state_offset + 0, memory_data);
+    double bandpass = read_memory(m.state_offset + 1, memory_data);
+    double highpass = 0.0;
+
+    double radians_per_sample = M_PI * cutoff * delta;
+    double tuning = 2.0 * std::sin(radians_per_sample);
+    double damping = 2.0 - 2.0 * resonance;
+
+    highpass  = audio_in - (damping * bandpass) - lowpass; // error signal
+    bandpass += tuning * highpass;                         // integrate highpass
+    lowpass  += tuning * bandpass;                         // integrate bandpass
+
+    double audio_out = 0.0;
+    switch (mode) {
+        case 0:  audio_out = lowpass;  break;
+        case 1:  audio_out = bandpass; break;
+        case 2:  audio_out = highpass; break;
+        default: audio_out = lowpass;  break;
+    }
+
+    write_memory(m.output_offset + 0, audio_out, memory_data);
+
+    write_memory(m.state_offset + 0, lowpass, memory_data);
+    write_memory(m.state_offset + 1, bandpass, memory_data);
 }
 
 // =====================================================================

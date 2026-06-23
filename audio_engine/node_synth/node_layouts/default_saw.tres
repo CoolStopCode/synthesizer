@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bpehx0osaw18w" path="res://audio_engine/node_synth/layout/Node_Connection.gd" id="2_2bacj"]
 [ext_resource type="Script" uid="uid://o6sgy334ngbl" path="res://audio_engine/node_synth/layout/modules/Node_InputModule.gd" id="3_2k5ra"]
 [ext_resource type="Script" uid="uid://dygpklgpthpwc" path="res://audio_engine/node_synth/layout/modules/Node_OscillatorModule.gd" id="4_8te4a"]
+[ext_resource type="Script" uid="uid://cxndkphpyeral" path="res://audio_engine/node_synth/layout/modules/Node_FilterModule.gd" id="5_2bacj"]
 [ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio_engine/node_synth/layout/modules/Node_EnvelopeModule.gd" id="5_5ljw0"]
 [ext_resource type="Script" uid="uid://bqo3y3g087w23" path="res://audio_engine/node_synth/layout/modules/Node_ArithmaticModule.gd" id="6_sc2n1"]
 [ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio_engine/node_synth/layout/modules/Node_OutputModule.gd" id="7_1pav3"]
@@ -25,6 +26,7 @@ metadata/_custom_type_script = "uid://o6sgy334ngbl"
 
 [sub_resource type="Resource" id="Resource_8te4a"]
 script = ExtResource("2_2bacj")
+name = "osc out"
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_h3tjm"]
@@ -33,6 +35,18 @@ frequency = SubResource("Resource_wh8eb")
 sample = SubResource("Resource_8te4a")
 waveform = 2
 metadata/_custom_type_script = "uid://dygpklgpthpwc"
+
+[sub_resource type="Resource" id="Resource_yyg6e"]
+script = ExtResource("2_2bacj")
+name = "filter out"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_x36ov"]
+script = ExtResource("5_2bacj")
+audio_in = SubResource("Resource_8te4a")
+audio_out = SubResource("Resource_yyg6e")
+cutoff = 1000.0
+metadata/_custom_type_script = "uid://cxndkphpyeral"
 
 [sub_resource type="Resource" id="Resource_5ljw0"]
 script = ExtResource("2_2bacj")
@@ -56,7 +70,7 @@ metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_iq7ir"]
 script = ExtResource("6_sc2n1")
-operand_a = SubResource("Resource_8te4a")
+operand_a = SubResource("Resource_yyg6e")
 operand_b = SubResource("Resource_5ljw0")
 result = SubResource("Resource_2k5ra")
 operation = 2
@@ -69,5 +83,5 @@ metadata/_custom_type_script = "uid://dd87xat4ign3w"
 
 [resource]
 script = ExtResource("8_n64g3")
-modules = Array[ExtResource("1_wh8eb")]([SubResource("Resource_gpvx1"), SubResource("Resource_h3tjm"), SubResource("Resource_2sr80"), SubResource("Resource_iq7ir"), SubResource("Resource_nndlu")])
+modules = Array[ExtResource("1_wh8eb")]([SubResource("Resource_gpvx1"), SubResource("Resource_h3tjm"), SubResource("Resource_x36ov"), SubResource("Resource_2sr80"), SubResource("Resource_iq7ir"), SubResource("Resource_nndlu")])
 metadata/_custom_type_script = "uid://fcmxj7baxak3"

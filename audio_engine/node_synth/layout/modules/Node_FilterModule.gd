@@ -1,12 +1,10 @@
-class_name Node_EqualizerModule
+class_name Node_FilterModule
 extends Node_Module
 
-enum FilterType {
-	PEAK,
-	LOW_SHELF,
-	HIGH_SHELF,
-	HPF,
-	LPF
+enum FilterMode {
+	LOWPASS,
+	BANDPASS,
+	HIGHPASS
 }
 
 @export_category("inputs") 
@@ -16,16 +14,14 @@ enum FilterType {
 @export var audio_out : Node_Connection
 
 @export_category("states")
-@export var x1 : float
-@export var x2 : float
-@export var y1 : float
-@export var y2 : float
+@export var lowpass : float
+@export var bandpass : float
+
 
 @export_category("parameters")
-@export var filter_type : FilterType
-@export var frequency : float
-@export var gain : float
-@export var q_factor : float
+@export var cutoff : float
+@export var resonance: float
+@export var filter_mode: FilterMode
 
 func get_type() -> int:
 	return 5
@@ -37,7 +33,7 @@ func get_outputs() -> Array[Node_Connection]:
 	return [audio_out]
 
 func get_states() -> Array[float]:
-	return [x1, x2, y1, y2]
+	return [lowpass, bandpass]
 
 func get_parameters() -> Array[float]:
-	return [float(filter_type), frequency, gain, q_factor]
+	return [cutoff, resonance, float(filter_mode)]

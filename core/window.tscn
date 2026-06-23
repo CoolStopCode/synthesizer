@@ -12,14 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hjewq")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=851079127]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0627451, 0.078431375, 0.12156863, 1)
-
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=575012270]
 texture_filter = 1
 layout_mode = 1
@@ -33,6 +25,14 @@ grow_vertical = 2
 handle_input_locally = false
 size = Vector2i(128, 72)
 render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=851079127]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
 
 [node name="main" parent="SubViewportContainer/SubViewport" unique_id=42299528 instance=ExtResource("1_mvsta")]
 texture_filter = 1

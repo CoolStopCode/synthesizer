@@ -2,22 +2,20 @@
 
 [ext_resource type="Script" uid="uid://bnxjc1y2lkc86" path="res://audio_engine/AudioEngine.gd" id="1_jwo0y"]
 [ext_resource type="Script" uid="uid://ddfhviicidy5i" path="res://audio_engine/harmonics/Note.gd" id="2_084pw"]
-[ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio_engine/audio/AudioPlayer.gd" id="2_iv6p0"]
+[ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio_engine/AudioPlayer.gd" id="2_iv6p0"]
 [ext_resource type="Script" uid="uid://b0hvx63gftql4" path="res://audio_engine/harmonics/Scale.gd" id="3_qk1u2"]
 [ext_resource type="Script" uid="uid://5ec7fao2kg5e" path="res://audio_engine/harmonics/Key.gd" id="3_x36ov"]
-[ext_resource type="Resource" uid="uid://ufbsm2iwqm4j" path="res://audio_engine/node_synth/node_layouts/laser_bass.tres" id="5_x36ov"]
+[ext_resource type="Resource" uid="uid://bh08wlyd8apok" path="res://audio_engine/node_synth/node_layouts/default_saw.tres" id="5_x36ov"]
 [ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio_engine/node_synth/NodeSynthMode.gd" id="6_x36ov"]
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://audio_engine/io/io_temp.gd" id="7_084pw"]
 
 [sub_resource type="Resource" id="Resource_w3o6y"]
 script = ExtResource("2_084pw")
-note = 7
 octave = 7
 metadata/_custom_type_script = "uid://ddfhviicidy5i"
 
 [sub_resource type="Resource" id="Resource_084pw"]
 script = ExtResource("3_qk1u2")
-mode = 1
 metadata/_custom_type_script = "uid://b0hvx63gftql4"
 
 [sub_resource type="Resource" id="Resource_x36ov"]
@@ -26,9 +24,10 @@ root = SubResource("Resource_w3o6y")
 scale = SubResource("Resource_084pw")
 metadata/_custom_type_script = "uid://5ec7fao2kg5e"
 
-[sub_resource type="Resource" id="Resource_yyg6e"]
+[sub_resource type="Resource" id="Resource_ekbou"]
 script = ExtResource("6_x36ov")
-mono = true
+polyvoice_count = null
+allocation = 2
 layout = ExtResource("5_x36ov")
 metadata/_custom_type_script = "uid://bvkaggdqljufp"
 
@@ -36,7 +35,7 @@ metadata/_custom_type_script = "uid://bvkaggdqljufp"
 script = ExtResource("1_jwo0y")
 audio_player = NodePath("AudioPlayer")
 key = SubResource("Resource_x36ov")
-audio_mode = SubResource("Resource_yyg6e")
+audio_mode = SubResource("Resource_ekbou")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=2034206177 node_paths=PackedStringArray("output")]
 bus = &"Active"

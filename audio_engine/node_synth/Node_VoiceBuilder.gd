@@ -16,6 +16,9 @@ static func layout_to_voice(layout : Node_Layout) -> Node_Voice:
 	
 	for module in layout.modules:
 		var type := module.get_type()
+		if type == -1: # Constant Module
+			continue
+		
 		var module_states := module.get_states()
 		var module_parameters := module.get_parameters()
 		
@@ -35,8 +38,11 @@ static func layout_to_voice(layout : Node_Layout) -> Node_Voice:
 	
 	var connection_map : Dictionary[Node_Connection, int] # Node_Connection -> index in memory data
 	for module in layout.modules:
+		if module.get_type() == -1: # Constant Module
+			connection_map[module.get_outputs()[0]] = initial_memory_data.size()
+			initial_memory_data.append(module.get_parameters()[0])
+			continue
 		var module_outputs := module.get_outputs()
-		var output_count := module_outputs.size()
 		
 		var output_data: Array[float] = [] # create empty array of output values
 		output_data.resize(module_outputs.size())
@@ -50,8 +56,9 @@ static func layout_to_voice(layout : Node_Layout) -> Node_Voice:
 		initial_memory_data.append_array(output_data) # append the empty array to memory
 	
 	for module in layout.modules:
+		if module.get_type() == -1: # Constant Module
+			continue
 		var module_inputs := module.get_inputs()
-		var input_count := module_inputs.size()
 		
 		input_offsets.append(input_routes.size())
 		
@@ -78,6 +85,8 @@ static func chord_to_polyvoice(
 	polyvoice.voices = []
 	
 	var notes := chord.get_notes()
+	#var notes := [chord.get_notes()[0]]
+	notes.append(Note.new(notes[0].note, notes[0].octave - 1))
 	for note : Note in notes:
 		var new_voice := layout_to_voice(layout)
 		
@@ -91,7 +100,6 @@ static func chords_to_polyvoices(
 	chords : Array[Chord],
 	layout : Node_Layout,
 ) -> Array[Node_Polyvoice]:
-	
 	var polyvoices : Array[Node_Polyvoice]
 	for chord in chords:
 		polyvoices.append(chord_to_polyvoice(chord, layout))

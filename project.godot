@@ -41,7 +41,6 @@ window/size/always_on_top=true
 
 folder_colors={
 "res://audio_engine/": "purple",
-"res://audio_engine/audio/": "green",
 "res://audio_engine/harmonics/": "red",
 "res://audio_engine/io/": "blue",
 "res://audio_engine/node_synth/": "yellow",

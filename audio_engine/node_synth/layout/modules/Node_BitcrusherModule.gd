@@ -7,7 +7,7 @@ extends Node_Module
 @export_category("outputs")
 @export var audio_out : Node_Connection
 
-@export_category("states")
+@export_group("states")
 @export var sample_hold_value : float
 @export var phase : float
 

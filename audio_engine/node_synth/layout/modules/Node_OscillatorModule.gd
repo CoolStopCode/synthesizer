@@ -15,7 +15,7 @@ enum Waveform {
 @export_category("outputs")
 @export var sample : Node_Connection
 
-@export_category("states")
+@export_group("states")
 @export var phase : float
 
 @export_category("parameters")

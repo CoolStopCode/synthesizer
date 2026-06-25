@@ -13,7 +13,7 @@ enum Spectrum {
 @export_category("outputs")
 @export var sample : Node_Connection
 
-@export_category("states")
+@export_group("states")
 
 @export_category("parameters")
 @export var spectrum : Spectrum

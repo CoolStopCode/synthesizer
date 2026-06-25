@@ -8,7 +8,7 @@ extends Node_Module
 @export var frequency : Node_Connection
 @export var active : Node_Connection
 
-@export_category("states")
+@export_group("states")
 
 
 @export_category("parameters")

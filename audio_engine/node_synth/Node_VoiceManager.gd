@@ -26,8 +26,9 @@ static func polyvoice_off(index: int) -> void:
 static func process_mix(delta: float) -> float:
 	var sum: float = 0.0
 	for polyvoice in polyvoices:
+		var sample := polyvoice.process(delta)
 		if allocation == Allocation.LEGATO:
 			if active_legato != polyvoice:
 				continue
-		sum += polyvoice.process(delta)
+		sum += sample
 	return sum

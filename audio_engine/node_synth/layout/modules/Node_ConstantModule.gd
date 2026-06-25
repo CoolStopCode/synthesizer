@@ -6,7 +6,7 @@ extends Node_Module
 @export_category("outputs")
 @export var output : Node_Connection
 
-@export_category("states")
+@export_group("states")
 
 @export_category("parameters")
 @export var value : float

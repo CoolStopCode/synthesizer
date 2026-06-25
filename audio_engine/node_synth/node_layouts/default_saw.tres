@@ -45,7 +45,7 @@ metadata/_custom_type_script = "uid://bpehx0osaw18w"
 script = ExtResource("5_2bacj")
 audio_in = SubResource("Resource_8te4a")
 audio_out = SubResource("Resource_yyg6e")
-cutoff = 1000.0
+filter_mode = 2
 metadata/_custom_type_script = "uid://cxndkphpyeral"
 
 [sub_resource type="Resource" id="Resource_5ljw0"]
@@ -57,11 +57,12 @@ script = ExtResource("5_5ljw0")
 gate = SubResource("Resource_2bacj")
 level = SubResource("Resource_5ljw0")
 attack = 0.2
-sustain = 1.0
+decay = 13.0
 release = 3.0
 attack_curve = 0.1
 decay_curve = 1.0
 release_curve = 0.7
+reset = true
 metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
 
 [sub_resource type="Resource" id="Resource_2k5ra"]

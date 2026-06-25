@@ -16,7 +16,7 @@ enum Operation {
 @export_category("outputs")
 @export var result : Node_Connection
 
-@export_category("states")
+@export_group("states")
 
 @export_category("parameters")
 @export var operation : Operation

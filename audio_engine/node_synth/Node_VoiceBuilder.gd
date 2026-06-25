@@ -84,9 +84,9 @@ static func chord_to_polyvoice(
 	var polyvoice := Node_Polyvoice.new()
 	polyvoice.voices = []
 	
-	var notes := chord.get_notes()
-	#var notes := [chord.get_notes()[0]]
-	notes.append(Note.new(notes[0].note, notes[0].octave - 1))
+	#var notes := chord.get_notes()
+	#notes.append(Note.new(notes[0].note, notes[0].octave - 1))
+	var notes := [chord.get_notes()[0]]
 	for note : Note in notes:
 		var new_voice := layout_to_voice(layout)
 		

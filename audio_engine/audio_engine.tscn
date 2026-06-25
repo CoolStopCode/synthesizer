@@ -11,7 +11,7 @@
 
 [sub_resource type="Resource" id="Resource_w3o6y"]
 script = ExtResource("2_084pw")
-octave = 5
+octave = 6
 metadata/_custom_type_script = "uid://ddfhviicidy5i"
 
 [sub_resource type="Resource" id="Resource_084pw"]

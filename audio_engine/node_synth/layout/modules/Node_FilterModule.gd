@@ -13,7 +13,7 @@ enum FilterMode {
 @export_category("outputs")
 @export var audio_out : Node_Connection
 
-@export_category("states")
+@export_group("states")
 @export var lowpass : float
 @export var bandpass : float
 

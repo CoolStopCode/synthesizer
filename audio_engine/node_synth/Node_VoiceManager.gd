@@ -7,11 +7,9 @@ enum Allocation {
 }
 
 static var polyvoices: Array[Node_Polyvoice] = []
+
 static var allocation: Allocation
 static var active_legato : Node_Polyvoice
-
-static func set_polyvoices(_polyvoices: Array[Node_Polyvoice]) -> void:
-	polyvoices = _polyvoices
 
 static func polyvoice_on(index: int) -> void:
 	if allocation == Allocation.MONO or allocation == Allocation.LEGATO:

@@ -16,7 +16,7 @@ func process(delta : float) -> float:
 
 func build(chords : Array[Chord]) -> void:
 	var polyvoices := Node_VoiceBuilder.chords_to_polyvoices(chords, layout)
-	Node_VoiceManager.set_polyvoices(polyvoices)
+	Node_VoiceManager.polyvoices = polyvoices
 	Node_VoiceManager.allocation = allocation as Node_VoiceManager.Allocation
 
 func key_pressed(index: int) -> void:

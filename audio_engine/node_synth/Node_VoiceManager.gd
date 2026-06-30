@@ -30,3 +30,9 @@ static func process_mix(delta: float) -> float:
 				continue
 		sum += sample
 	return sum
+
+static func modify_polyvoice_chord(polyvoice : Node_Polyvoice, chord : Chord) -> void:
+	var i : int = 0
+	for voice in polyvoice.voices:
+		voice.frequency = chord.semitones[i].to_frequency()
+		i += 1

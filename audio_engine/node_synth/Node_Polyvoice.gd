@@ -2,12 +2,15 @@ class_name Node_Polyvoice
 extends RefCounted
 
 var voices : Array[Node_Voice]
+var active : bool = false
 
 func voice_on() -> void:
+	active = true
 	for voice in voices:
 		voice.active = true
 
 func voice_off() -> void:
+	active = false
 	for voice in voices:
 		voice.active = false
 

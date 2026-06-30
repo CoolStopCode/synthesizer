@@ -36,18 +36,20 @@ gdscript/warnings/integer_division=0
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/always_on_top=true
+window/vsync/vsync_mode=0
 
 [file_customization]
 
 folder_colors={
 "res://audio_engine/": "purple",
-"res://audio_engine/composition/": "green",
+"res://audio_engine/composition/": "red",
+"res://audio_engine/inspector/": "blue",
 "res://audio_engine/io/": "blue",
 "res://audio_engine/node_synth/": "yellow",
 "res://audio_engine/node_synth/node_layouts/": "orange",
 "res://audio_engine/node_synth_extension/": "yellow",
 "res://core/": "gray",
-"res://interface/": "blue"
+"res://interface/": "teal"
 }
 
 [input]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxthf2y1xm83a" path="res://core/window.gd" id="1_hjewq"]
 [ext_resource type="PackedScene" uid="uid://cspvrxqceta55" path="res://interface/main.tscn" id="1_mvsta"]
+[ext_resource type="Script" uid="uid://deyjhtxsrx140" path="res://interface/fps.gd" id="3_65v70"]
 
 [node name="window" type="Control" unique_id=1386016939]
 layout_mode = 3
@@ -43,3 +44,10 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="FPS" type="Label" parent="." unique_id=1793193761]
+layout_mode = 0
+offset_right = 19.0
+offset_bottom = 23.0
+text = "ee"
+script = ExtResource("3_65v70")

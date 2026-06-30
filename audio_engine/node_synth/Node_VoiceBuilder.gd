@@ -84,7 +84,7 @@ static func chord_to_polyvoice(
 	var polyvoice := Node_Polyvoice.new()
 	polyvoice.voices = []
 	
-	var notes := chord.notes
+	var notes := chord.semitones
 	for note : Semitone in notes:
 		var new_voice := layout_to_voice(layout)
 		

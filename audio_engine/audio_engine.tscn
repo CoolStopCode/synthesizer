@@ -16,7 +16,6 @@ metadata/_custom_type_script = "uid://wwstsyg87ftc"
 [sub_resource type="Resource" id="Resource_084pw"]
 script = ExtResource("3_x36ov")
 root = SubResource("Resource_x36ov")
-mode = 1
 metadata/_custom_type_script = "uid://2st765u0dv45"
 
 [sub_resource type="Resource" id="Resource_ekbou"]

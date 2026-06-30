@@ -12,3 +12,6 @@ func key_pressed(index: int) -> void:
 
 func key_released(index: int) -> void:
 	pass
+
+func joystick_moved(direction : Vector2) -> void:
+	pass

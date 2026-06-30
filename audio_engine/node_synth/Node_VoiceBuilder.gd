@@ -77,28 +77,28 @@ static func layout_to_voice(layout : Node_Layout) -> Node_Voice:
 	
 	return voice
 
-static func chord_to_polyvoice(
-	chord : Chord,
-	layout : Node_Layout
+static func layout_to_polyvoice(
+	layout : Node_Layout,
+	voice_count : int
 ) -> Node_Polyvoice:
 	var polyvoice := Node_Polyvoice.new()
 	polyvoice.voices = []
 	
-	var notes := chord.semitones
-	for note : Semitone in notes:
+	for i in range(voice_count):
 		var new_voice := layout_to_voice(layout)
 		
-		new_voice.frequency = note.to_frequency()
+		new_voice.frequency = 0.0
 		new_voice.active = false
 		polyvoice.voices.append(new_voice)
 	
 	return polyvoice
 
-static func chords_to_polyvoices(
-	chords : Array[Chord],
+static func layout_to_polyvoices(
 	layout : Node_Layout,
+	polyvoice_count : int,
+	voice_count : int
 ) -> Array[Node_Polyvoice]:
 	var polyvoices : Array[Node_Polyvoice]
-	for chord in chords:
-		polyvoices.append(chord_to_polyvoice(chord, layout))
+	for i in range(polyvoice_count):
+		polyvoices.append(layout_to_polyvoice(layout, voice_count))
 	return polyvoices

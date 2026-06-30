@@ -7,6 +7,8 @@
 // =========================================================
 
 void Node_Voice::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("set_enabled", "enabled"),  &Node_Voice::set_enabled);
+    ClassDB::bind_method(D_METHOD("get_enabled"),  &Node_Voice::get_enabled);
     ClassDB::bind_method(D_METHOD("set_frequency", "frequency"),  &Node_Voice::set_frequency);
     ClassDB::bind_method(D_METHOD("get_frequency"),  &Node_Voice::get_frequency);
     ClassDB::bind_method(D_METHOD("set_active", "active"),  &Node_Voice::set_active);
@@ -25,6 +27,7 @@ void Node_Voice::_bind_methods() {
         "initial_memory_data"
     ), &Node_Voice::set_layout);
 
+    ADD_PROPERTY(PropertyInfo(Variant::BOOL, "enabled"), "set_enabled", "get_enabled");
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "frequency"), "set_frequency", "get_frequency");
     ADD_PROPERTY(PropertyInfo(Variant::BOOL, "active"), "set_active", "get_active");
 }
@@ -33,12 +36,14 @@ void Node_Voice::_bind_methods() {
 // ==================   SETTERS/GETTERS   ==================
 // =========================================================
 
+void Node_Voice::set_enabled(const bool enabled_p) { enabled = enabled_p; }
+bool Node_Voice::get_enabled() { return enabled; }
+
 void Node_Voice::set_frequency(const double frequency_p) { frequency = frequency_p; }
 double Node_Voice::get_frequency() { return frequency; }
 
 void Node_Voice::set_active(const bool active_p) { active = active_p; }
 bool Node_Voice::get_active() { return active; }
-
 
 std::array<Node_Voice::ModuleFunction, Node_Voice::MODULE_TYPE_COUNT> Node_Voice::dispatch_table = {
     Node_Voice::process_input_module,

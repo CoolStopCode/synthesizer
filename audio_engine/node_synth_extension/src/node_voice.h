@@ -56,8 +56,10 @@ public:
     );
 
 private:
-    bool active = false;
+    bool enabled = true;
     double frequency = 440.0;
+    bool active = false;
+
     // memory_data[0]:  wrote to by empty connections, never read
     // memory_data[1]:  frequency input
     // memory_data[2]:  active input
@@ -73,6 +75,9 @@ private:
 public:
     Node_Voice() {} // Constructor
     ~Node_Voice() {} // Destructor
+
+    void set_enabled(const bool enabled_p);
+    bool get_enabled();
 
     void set_frequency(const double frequency_p); // memory_data[1]
     double get_frequency();

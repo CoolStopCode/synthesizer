@@ -16,6 +16,7 @@ static func polyvoice_on(index: int) -> void:
 		for polyvoice in polyvoices:
 			polyvoice.voice_off()
 	active_legato = polyvoices[index]
+	
 	polyvoices[index].voice_on()
 
 static func polyvoice_off(index: int) -> void:
@@ -34,5 +35,9 @@ static func process_mix(delta: float) -> float:
 static func modify_polyvoice_chord(polyvoice : Node_Polyvoice, chord : Chord) -> void:
 	var i : int = 0
 	for voice in polyvoice.voices:
-		voice.frequency = chord.semitones[i].to_frequency()
+		if i >= chord.semitones.size():
+			voice.enabled = false
+		else:
+			voice.enabled = true
+			voice.frequency = chord.semitones[i].to_frequency()
 		i += 1

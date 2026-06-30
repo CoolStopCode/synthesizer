@@ -19,7 +19,7 @@ func process(delta: float) -> float:
 	
 	for voice in voices:
 		var value = voice.process(delta)
-		sum += value
-	
+		if voice.enabled:
+			sum += value
 	
 	return (sum / sqrt(voices.size())) * 0.2

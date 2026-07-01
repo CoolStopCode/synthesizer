@@ -1,8 +1,0 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://daql8tc4ypbhs"]
-
-[ext_resource type="FontFile" uid="uid://yvv1mnn6wbc4" path="res://interface/styles/kiwi4.ttf" id="1_lhj7p"]
-
-[resource]
-line_spacing = 1.0
-font = ExtResource("1_lhj7p")
-font_size = 5

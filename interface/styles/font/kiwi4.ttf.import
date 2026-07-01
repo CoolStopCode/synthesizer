@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://yvv1mnn6wbc4"
-path="res://.godot/imported/kiwi4.ttf-98a3f80e974b0d5a723b47e9f74cd734.fontdata"
+path="res://.godot/imported/kiwi4.ttf-491b47c0df95518c4fe2fd1cce793ecd.fontdata"
 
 [deps]
 
-source_file="res://interface/styles/kiwi4.ttf"
-dest_files=["res://.godot/imported/kiwi4.ttf-98a3f80e974b0d5a723b47e9f74cd734.fontdata"]
+source_file="res://interface/styles/font/kiwi4.ttf"
+dest_files=["res://.godot/imported/kiwi4.ttf-491b47c0df95518c4fe2fd1cce793ecd.fontdata"]
 
 [params]
 

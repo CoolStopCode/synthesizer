@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://baaaxsmf6tg26"]
+
+[ext_resource type="Script" uid="uid://ciwht75c0fp32" path="res://interface/tooltip/tooltip.gd" id="1_acf2t"]
+[ext_resource type="Theme" uid="uid://ilnvu3512c0d" path="res://interface/styles/font/richtext_small.tres" id="2_t74q0"]
+
+[node name="tooltip" type="MarginContainer" unique_id=1777923397 node_paths=PackedStringArray("label")]
+custom_maximum_size = Vector2(66, 26)
+offset_right = 2.0
+offset_bottom = 2.0
+script = ExtResource("1_acf2t")
+label = NodePath("MarginContainer/description")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=9177095]
+layout_mode = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2017540311]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+
+[node name="description" type="RichTextLabel" parent="MarginContainer" unique_id=171522417]
+custom_maximum_size = Vector2(66, 25)
+layout_mode = 2
+theme = ExtResource("2_t74q0")
+fit_content = true
+scroll_active = false
+tab_size = 2

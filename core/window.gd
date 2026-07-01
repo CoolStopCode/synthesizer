@@ -1,9 +1,8 @@
 extends Control
 
-@onready var main: Control = $SubViewportContainer/SubViewport/main
-@onready var sub_viewport_container: SubViewportContainer = $SubViewportContainer
-@onready var sub_viewport: SubViewport = $SubViewportContainer/SubViewport
-
+@export var main : Control
+@export var sub_viewport_container: SubViewportContainer
+@export var sub_viewport: SubViewport
 
 func _ready() -> void:
 	get_window().size_changed.connect(_on_window_size_changed)

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ba4k64p5yr2mo"]
+
+[ext_resource type="Script" uid="uid://c2cewwkdwuuhp" path="res://new_core/screen.gd" id="1_tr16d"]
+[ext_resource type="PackedScene" uid="uid://dgcq4s20e6ms4" path="res://new_interface/interface.tscn" id="2_hcqtu"]
+[ext_resource type="PackedScene" uid="uid://dg5if6yvk0syd" path="res://new_interface/tooltip/tooltip.tscn" id="3_dht81"]
+
+[node name="screen" type="Control" unique_id=721855015]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tr16d")
+
+[node name="interface" type="CanvasLayer" parent="." unique_id=593906995]
+
+[node name="interface" parent="interface" unique_id=1389423360 instance=ExtResource("2_hcqtu")]
+
+[node name="tooltip" type="CanvasLayer" parent="." unique_id=1274727178]
+
+[node name="tooltip" parent="tooltip" unique_id=560822963 instance=ExtResource("3_dht81")]

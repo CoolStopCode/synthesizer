@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dgcq4s20e6ms4"]
+
+[ext_resource type="Script" uid="uid://dgyqn3y7laxf8" path="res://new_interface/interface.gd" id="1_brjpu"]
+[ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://new_interface/interface_button/interface_button.tscn" id="2_tq5ti"]
+[ext_resource type="Texture2D" uid="uid://bqn27w8du54su" path="res://interface/interface_button/icons/12x12/sound.png" id="3_b27bm"]
+[ext_resource type="Resource" uid="uid://myibeubq6l4p" path="res://new_interface/styles/interface_button_style/blue.tres" id="4_tq5ti"]
+
+[node name="interface" type="Control" unique_id=1389423360]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_brjpu")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=155417484]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
+[node name="interface_button" parent="." unique_id=127682664 instance=ExtResource("2_tq5ti")]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 14.0
+offset_right = 170.0
+offset_bottom = 49.0
+icon = ExtResource("3_b27bm")
+interface_button_style = ExtResource("4_tq5ti")
+tooltip = "test"

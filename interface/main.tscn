@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://dgfvc5ij8a8m1" path="res://interface/styles/interfact_button_styles/transparent.tres" id="6_uwr2n"]
 [ext_resource type="Texture2D" uid="uid://dsa5vkeoks2pn" path="res://interface/interface_button/icons/6x6/drums.png" id="7_uwr2n"]
 [ext_resource type="Resource" uid="uid://degv7wu80uj20" path="res://interface/styles/interfact_button_styles/red.tres" id="8_bab4p"]
-[ext_resource type="Resource" uid="uid://6ikugv0rlgyo" path="res://interface/styles/interfact_button_styles/pink.tres" id="8_htyv3"]
+[ext_resource type="Resource" uid="uid://cpruw6pgm8lpt" path="res://interface/styles/interfact_button_styles/grey.tres" id="8_htyv3"]
 
 [node name="main" type="Control" unique_id=42299528]
 layout_mode = 3

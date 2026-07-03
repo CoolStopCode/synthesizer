@@ -15,3 +15,4 @@ func _on_window_size_changed() -> void:
 
 	sub_viewport.size = screen_size / scale_factor
 	sub_viewport_container.scale = Vector2.ONE * scale_factor
+	print(sub_viewport.size)

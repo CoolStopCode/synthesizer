@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dg5if6yvk0syd"]
+
+[ext_resource type="Theme" uid="uid://byaf0uli0uec7" path="res://new_interface/font/richtext_small.tres" id="1_caum1"]
+[ext_resource type="Script" uid="uid://bqkmotk6tmcw6" path="res://new_interface/tooltip/tooltip.gd" id="1_sco1k"]
+
+[node name="tooltip" type="Control" unique_id=560822963 node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(5, 7)
+custom_maximum_size = Vector2(61, 31)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 61.0
+offset_bottom = 31.0
+script = ExtResource("1_sco1k")
+label = NodePath("RichTextLabel")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=733935594]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=571460181]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_caum1")
+text = "1123331234323432424134
+2
+3
+4
+5
+6"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 2

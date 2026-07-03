@@ -1,4 +1,4 @@
-class_name InterfaceButton
+class_name InterfaceButton2
 extends Control
 
 signal button_pressed

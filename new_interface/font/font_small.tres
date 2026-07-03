@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://j8dh05fvld47"]
+
+[ext_resource type="FontFile" uid="uid://yvv1mnn6wbc4" path="res://interface/styles/font/kiwi4.ttf" id="1_uwwk0"]
+
+[resource]
+line_spacing = 1.0
+font = ExtResource("1_uwwk0")
+font_size = 5
+font_color = Color(0.92156863, 0.92941177, 0.9137255, 1)

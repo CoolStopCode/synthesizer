@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="midi-make"
-run/main_scene="uid://b4sefl02vbi4g"
+run/main_scene="uid://ba4k64p5yr2mo"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -33,9 +33,13 @@ gdscript/warnings/integer_division=0
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=192
+window/size/viewport_height=108
 window/size/always_on_top=true
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 window/vsync/vsync_mode=0
 
 [file_customization]
@@ -133,6 +137,7 @@ Debug={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 textures/vram_compression/import_etc2_astc=true
 textures/default_filters/use_nearest_mipmap_filter=true

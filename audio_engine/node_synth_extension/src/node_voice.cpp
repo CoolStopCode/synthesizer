@@ -7,13 +7,15 @@
 // =========================================================
 
 void Node_Voice::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("set_enabled", "enabled"),  &Node_Voice::set_enabled);
-    ClassDB::bind_method(D_METHOD("get_enabled"),  &Node_Voice::get_enabled);
     ClassDB::bind_method(D_METHOD("set_frequency", "frequency"),  &Node_Voice::set_frequency);
     ClassDB::bind_method(D_METHOD("get_frequency"),  &Node_Voice::get_frequency);
     ClassDB::bind_method(D_METHOD("set_active", "active"),  &Node_Voice::set_active);
     ClassDB::bind_method(D_METHOD("get_active"),  &Node_Voice::get_active);
+    ClassDB::bind_method(D_METHOD("set_amplitude", "amplitude"),  &Node_Voice::set_amplitude);
+    ClassDB::bind_method(D_METHOD("get_amplitude"),  &Node_Voice::get_amplitude);
 
+    ClassDB::bind_method(D_METHOD("bend_frequency_to", "target", "duration"), &Node_Voice::bend_frequency_to);
+    ClassDB::bind_method(D_METHOD("bend_amplitude_to", "target", "duration"), &Node_Voice::bend_amplitude_to);
 
     ClassDB::bind_method(D_METHOD("process", "delta"), &Node_Voice::process);
     ClassDB::bind_method(D_METHOD(
@@ -27,20 +29,32 @@ void Node_Voice::_bind_methods() {
         "initial_memory_data"
     ), &Node_Voice::set_layout);
 
-    ADD_PROPERTY(PropertyInfo(Variant::BOOL, "enabled"), "set_enabled", "get_enabled");
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "frequency"), "set_frequency", "get_frequency");
     ADD_PROPERTY(PropertyInfo(Variant::BOOL, "active"), "set_active", "get_active");
+    ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "amplitude"), "set_amplitude", "get_amplitude");
 }
 
 // =========================================================
 // ==================   SETTERS/GETTERS   ==================
 // =========================================================
 
-void Node_Voice::set_enabled(const bool enabled_p) { enabled = enabled_p; }
-bool Node_Voice::get_enabled() { return enabled; }
-
-void Node_Voice::set_frequency(const double frequency_p) { frequency = frequency_p; }
+void Node_Voice::set_frequency(const double frequency_p) { frequency = frequency_p; frequency_target = frequency_p; }
 double Node_Voice::get_frequency() { return frequency; }
+void Node_Voice::bend_frequency_to(const double target, const double duration) {
+	frequency_start = frequency;
+	frequency_target = target;
+	frequency_bend_duration = duration;
+	frequency_bend_elapsed = 0.0;
+}
+
+void Node_Voice::set_amplitude(const double amplitude_p) { amplitude = amplitude_p; amplitude_target = amplitude_p; }
+double Node_Voice::get_amplitude() { return amplitude; }
+void Node_Voice::bend_amplitude_to(const double target, const double duration) {
+	amplitude_start = amplitude;
+	amplitude_target = target;
+	amplitude_bend_duration = duration;
+	amplitude_bend_elapsed = 0.0;
+}
 
 void Node_Voice::set_active(const bool active_p) { active = active_p; }
 bool Node_Voice::get_active() { return active; }
@@ -100,6 +114,22 @@ void Node_Voice::set_layout(
 // =========================================================
 
 double Node_Voice::process(double delta) {
+    if (frequency_bend_elapsed < frequency_bend_duration) {
+        frequency_bend_elapsed += delta;
+        double t = CLAMP(frequency_bend_elapsed / frequency_bend_duration, 0.0, 1.0);
+        frequency = lerp(frequency_start, frequency_target, t);
+    } else {
+        frequency = frequency_target;
+    }
+
+    if (amplitude_bend_elapsed < amplitude_bend_duration) {
+        amplitude_bend_elapsed += delta;
+        double t = CLAMP(amplitude_bend_elapsed / amplitude_bend_duration, 0.0, 1.0);
+        amplitude = lerp(amplitude_start, amplitude_target, t);
+    } else {
+        amplitude = amplitude_target;
+    }
+
     double *memory_data_pointer = memory_data.data();
     const u_int32_t *input_routes_pointer = input_routes.data();
 
@@ -110,7 +140,7 @@ double Node_Voice::process(double delta) {
         dispatch_table[modules[i].type](modules[i], memory_data_pointer, input_routes_pointer, delta);
     }
 
-    return read_memory(3, memory_data_pointer);
+    return read_memory(3, memory_data_pointer) * amplitude;
 }
 
 // =========================================================
@@ -154,6 +184,10 @@ inline double Node_Voice::bool_to_double(bool double_p) {
 
 inline double Node_Voice::int_to_double(int double_p) {
     return static_cast<double>(double_p);
+}
+
+inline double Node_Voice::lerp(double a, double b, double t) {
+    return a + (b - a) * t;
 }
 
 // =========================================================

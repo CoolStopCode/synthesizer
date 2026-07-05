@@ -35,17 +35,10 @@ public:
     struct Module {
         uint8_t type;
 
-        // Read memory_data[input_routes[offset + i]
-        uint32_t input_offset;
-
-        // Write memory_data[offset + i]
-        uint32_t output_offset;
-
-        // Read & write memory_data[offset + i]
-        uint32_t state_offset;
-
-        // Read memory_data[offset + i]
-        uint32_t parameter_offset;
+        uint32_t input_offset; // Read memory_data[input_routes[offset + i]]
+        uint32_t output_offset; // Write memory_data[offset + i]
+        uint32_t state_offset; // Read & write memory_data[offset + i]
+        uint32_t parameter_offset; // Read memory_data[offset + i]
     };
 
     using ModuleFunction = void(*)(
@@ -56,11 +49,21 @@ public:
     );
 
 private:
-    bool enabled = true;
-    double frequency = 440.0;
+    double frequency = 0.0;
+    double frequency_start = 0.0;
+    double frequency_target = 0.0;
+    double frequency_bend_duration = 0.0;
+    double frequency_bend_elapsed = 0.0;
+
+    double amplitude = 0.0;
+    double amplitude_start = 0.0;
+    double amplitude_target = 0.0;
+    double amplitude_bend_duration = 0.0;
+    double amplitude_bend_elapsed = 0.0;
+
     bool active = false;
 
-    // memory_data[0]:  wrote to by empty connections, never read
+    // memory_data[0]:  unused
     // memory_data[1]:  frequency input
     // memory_data[2]:  active input
     // memory_data[3]:  sample output
@@ -73,17 +76,19 @@ private:
     static std::array<ModuleFunction, MODULE_TYPE_COUNT> dispatch_table;
 
 public:
-    Node_Voice() {} // Constructor
-    ~Node_Voice() {} // Destructor
-
-    void set_enabled(const bool enabled_p);
-    bool get_enabled();
+    Node_Voice() = default; // Constructor
+    ~Node_Voice() = default; // Destructor
 
     void set_frequency(const double frequency_p); // memory_data[1]
     double get_frequency();
+    void bend_frequency_to(double target, double duration);
+
+    void set_amplitude(const double amplitude_p);
+    double get_amplitude();
+    void bend_amplitude_to(double target, double duration);
 
     void set_active(const bool active_p); // memory_data[2]
-    bool get_active();
+    bool get_active();    
 
     void set_layout(
         const PackedByteArray &types, // Array of ModuleType
@@ -110,16 +115,15 @@ private:
     static inline bool double_to_bool(double double_p);
     static inline double bool_to_double(bool double_p);
     static inline double int_to_double(int double_p);
+    static inline double lerp(double a, double b, double t);
 
     static void process_input_module(       const Module&, double*, const uint32_t*, double);
     static void process_output_module(      const Module&, double*, const uint32_t*, double);
     static void process_oscillator_module(  const Module&, double*, const uint32_t*, double);
     static void process_noise_module(       const Module&, double*, const uint32_t*, double);
-
     static void process_envelope_module(    const Module&, double*, const uint32_t*, double);
     static void process_filter_module(      const Module&, double*, const uint32_t*, double);
     static void process_bitcrusher_module(  const Module&, double*, const uint32_t*, double);
-
     static void process_arithmetic_module(  const Module&, double*, const uint32_t*, double);
 };
 

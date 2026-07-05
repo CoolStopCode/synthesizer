@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_qwoln")
-press_offset = 1
 light_color = Color(0.5058824, 0.5921569, 0.5882353, 1)
 medium_color = Color(0.34117648, 0.44705883, 0.46666667, 1)
 dark_color = Color(0.22352941, 0.2901961, 0.3137255, 1)

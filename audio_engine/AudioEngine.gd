@@ -13,6 +13,8 @@ extends Node
 @export var key : Key
 @export var audio_mode : AudioMode
 
+var test : Node_Voice
+
 func _process(_delta: float) -> void:
 	audio_player.fill_audio_buffer(audio_mode)
 

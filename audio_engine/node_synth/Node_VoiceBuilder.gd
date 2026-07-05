@@ -88,6 +88,7 @@ static func layout_to_polyvoice(
 		var new_voice := layout_to_voice(layout)
 		
 		new_voice.frequency = 0.0
+		#new_voice.amplitude = 1.0
 		new_voice.active = false
 		polyvoice.voices.append(new_voice)
 	

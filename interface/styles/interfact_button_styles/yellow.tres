@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_u5lu4")
-press_offset = 1
 light_color = Color(0.87058824, 0.61960787, 0.25490198, 1)
 medium_color = Color(0.74509805, 0.46666667, 0.16862746, 1)
 dark_color = Color(0.53333336, 0.29411766, 0.16862746, 1)

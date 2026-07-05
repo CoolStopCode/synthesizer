@@ -10,6 +10,8 @@ enum Allocation {
 @export var polyvoice_count: int = 7
 @export var voice_count: int = 5
 @export var allocation: Allocation
+@export var fade_duration : float = 0.05
+@export var chord_bend_duration : float = 0.1
 @export var layout : Node_Layout
 
 func process(delta : float) -> float:
@@ -19,13 +21,14 @@ func build(chords : Array[Chord]) -> void:
 	var polyvoices := Node_VoiceBuilder.layout_to_polyvoices(layout, polyvoice_count, voice_count)
 	Node_VoiceManager.polyvoices = polyvoices
 	Node_VoiceManager.allocation = allocation as Node_VoiceManager.Allocation
+	AudioEngine.test = polyvoices[0].voices[0]
 
 var joystick_direction := Vector2.ZERO
 
 func key_pressed(index: int) -> void:
-	Node_VoiceManager.polyvoice_on(index)
+	Node_VoiceManager.polyvoice_on(index, fade_duration)
 	var chord := build_chord(index, joystick_direction)
-	Node_VoiceManager.modify_polyvoice_chord(Node_VoiceManager.polyvoices[index], chord)
+	Node_VoiceManager.bend_polyvoice(Node_VoiceManager.polyvoices[index], chord, 0.0)
 
 func key_released(index: int) -> void:
 	Node_VoiceManager.polyvoice_off(index)
@@ -36,7 +39,7 @@ func joystick_moved(direction: Vector2) -> void:
 	var i := 0
 	for polyvoice in Node_VoiceManager.polyvoices:
 		if polyvoice.active:
-			Node_VoiceManager.modify_polyvoice_chord(polyvoice, build_chord(i, direction))
+			Node_VoiceManager.bend_polyvoice(polyvoice, build_chord(i, direction), chord_bend_duration)
 		i += 1
 
 func build_chord(index: int, direction: Vector2) -> Chord:

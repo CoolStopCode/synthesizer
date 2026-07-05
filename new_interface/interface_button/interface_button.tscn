@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://npdevkowq413"]
 
 [ext_resource type="Script" uid="uid://bqthjgqhrp5ik" path="res://new_interface/interface_button/interface_button.gd" id="1_rajel"]
-[ext_resource type="Texture2D" uid="uid://d5u46j0aij4j" path="res://interface/interface_button/shadow.png" id="2_rnefd"]
-[ext_resource type="Texture2D" uid="uid://dkcl6ckh762ys" path="res://interface/interface_button/base.png" id="3_pwsdf"]
-[ext_resource type="Texture2D" uid="uid://3rx7x4f8i6w7" path="res://interface/interface_button/outline.png" id="4_xqggl"]
+[ext_resource type="Texture2D" uid="uid://cjegouwjxm4nh" path="res://new_interface/interface_button/shadow.png" id="2_rnefd"]
+[ext_resource type="Texture2D" uid="uid://dednbl6gohlea" path="res://new_interface/interface_button/fill.png" id="3_pwsdf"]
+[ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://new_interface/interface_button/outline.png" id="4_xqggl"]
 
 [node name="interface_button" type="Control" unique_id=127682664 node_paths=PackedStringArray("tooltip_timer", "press_node", "fill_node", "outline_node", "shadow_node", "icon_node")]
-custom_minimum_size = Vector2(10, 10)
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 10.0
@@ -37,10 +37,10 @@ offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_rnefd")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="press" type="Control" parent="." unique_id=1673912321]
 layout_mode = 1
@@ -65,10 +65,10 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_pwsdf")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="outline" type="NinePatchRect" parent="press" unique_id=1577740348]
 self_modulate = Color(0, 1, 0, 1)
@@ -84,10 +84,10 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_xqggl")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="icon" type="TextureRect" parent="press" unique_id=534161686]
 self_modulate = Color(0, 1, 0, 1)

@@ -26,6 +26,9 @@ func fill_audio_buffer(audio_mode: AudioMode) -> void:
 	var frames_to_fill := playback.get_frames_available()
 	
 	while frames_to_fill > 0: 
+		if frames_to_fill == 2:
+			if AudioEngine.test:
+				print(AudioEngine.test.amplitude)
 		var sample_value : float = audio_mode.process(sample_delta) * master_volume
 		var frame := Vector2(sample_value, sample_value)
 		

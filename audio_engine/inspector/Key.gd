@@ -32,5 +32,4 @@ func build_scale() -> Scale:
 	var scale := Scale.new()
 	scale.root = root.to_semitone()
 	scale.intervals.assign(INTERVALS[mode])
-	print(scale.intervals)
 	return scale

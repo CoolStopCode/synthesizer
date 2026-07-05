@@ -13,6 +13,11 @@ func root_note(root_index: int) -> Chord:
 		Semitone.new(get_semitone(root_index))
 	])
 
+func root_shift_octave(root_index: int, oct: int) -> Chord:
+	return Chord.new([
+		Semitone.new(get_semitone(root_index) + 12 * oct),
+	])
+
 func triad(root_index: int) -> Chord:
 	return Chord.new([
 		Semitone.new(get_semitone(root_index)),

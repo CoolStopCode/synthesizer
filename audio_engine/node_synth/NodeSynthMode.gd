@@ -21,7 +21,6 @@ func build(chords : Array[Chord]) -> void:
 	var polyvoices := Node_VoiceBuilder.layout_to_polyvoices(layout, polyvoice_count, voice_count)
 	Node_VoiceManager.polyvoices = polyvoices
 	Node_VoiceManager.allocation = allocation as Node_VoiceManager.Allocation
-	AudioEngine.test = polyvoices[0].voices[0]
 
 var joystick_direction := Vector2.ZERO
 

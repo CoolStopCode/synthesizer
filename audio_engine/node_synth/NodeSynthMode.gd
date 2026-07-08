@@ -44,15 +44,15 @@ func joystick_moved(direction: Vector2) -> void:
 func build_chord(index: int, direction: Vector2) -> Chord:
 	var scale : Scale = AudioEngine.key.build_scale()
 	match direction:
-		Vector2( 0, -1): return scale.triad_shift_octave(index, 1)   # up
+		Vector2( 0, -1): return scale.triad(index).shift_octave(1)   # up
 		Vector2( 0,  0): return scale.triad(index)                   # none
-		Vector2( 0,  1): return scale.triad_shift_octave(index, -1)  # down
+		Vector2( 0,  1): return scale.triad(index).shift_octave(-1)  # down
 		
-		Vector2(-1, -1): return scale.triad_flip_third(index)        # left-up
+		Vector2(-1, -1): return scale.triad_parallel(index)        # left-up
 		Vector2(-1,  0): return scale.root_note(index)               # left
-		Vector2(-1,  1): return scale.boosted(index)                 # left-down
+		Vector2(-1,  1): return scale.cinimatic(index)                 # left-down
 		
-		Vector2( 1, -1): return scale.ninth(index)                   # right-up
+		Vector2( 1, -1): return scale.sixth(index)                   # right-up
 		Vector2( 1,  0): return scale.seventh(index)                 # right
-		Vector2( 1,  1): return scale.inverted_seventh(index)        # right-down
+		Vector2( 1,  1): return scale.triad(index).invert(1, 1)       # right-down
 		_:            return scale.triad(index)

@@ -4,30 +4,26 @@ extends Resource
 @export var root : Semitone
 @export var intervals : Array[int]
 
-func get_semitone(index: int) -> int:
+func get_semitone(index: int) -> Semitone:
 	var octave_offset: int = floor((index / 7) * 12)
-	return root.semitone + intervals[index % 7] + octave_offset
+	var semitone : int = root.semitone + intervals[index % 7] + octave_offset
+	return Semitone.new(semitone)
 
 func root_note(root_index: int) -> Chord:
 	return Chord.new([
-		Semitone.new(get_semitone(root_index))
-	])
-
-func root_shift_octave(root_index: int, oct: int) -> Chord:
-	return Chord.new([
-		Semitone.new(get_semitone(root_index) + 12 * oct),
+		get_semitone(root_index)
 	])
 
 func triad(root_index: int) -> Chord:
 	return Chord.new([
-		Semitone.new(get_semitone(root_index)),
-		Semitone.new(get_semitone(root_index + 2)),
-		Semitone.new(get_semitone(root_index + 4))
+		get_semitone(root_index),
+		get_semitone(root_index + 2),
+		get_semitone(root_index + 4)
 	])
 
-func triad_flip_third(root_index: int) -> Chord:
-	var third := get_semitone(root_index + 2)
-	var root_semi := get_semitone(root_index)
+func triad_parallel(root_index: int) -> Chord:
+	var third := get_semitone(root_index + 2).semitone
+	var root_semi := get_semitone(root_index).semitone
 	var interval := third - root_semi
 	if interval == 4:
 		third -= 1  # major -> minor
@@ -36,86 +32,70 @@ func triad_flip_third(root_index: int) -> Chord:
 	return Chord.new([
 		Semitone.new(root_semi),
 		Semitone.new(third),
-		Semitone.new(get_semitone(root_index + 4))
+		get_semitone(root_index + 4)
 	])
 
-func inverted_triad(root_index: int) -> Chord:
+func open_fifth(root_index: int) -> Chord:
 	return Chord.new([
-		Semitone.new(get_semitone(root_index + 2)),
-		Semitone.new(get_semitone(root_index + 4)),
-		Semitone.new(get_semitone(root_index + 12)) # root up octave
-	])
-
-func triad_shift_octave(root_index: int, oct: int) -> Chord:
-	return Chord.new([
-		Semitone.new(get_semitone(root_index) + 12 * oct),
-		Semitone.new(get_semitone(root_index + 2) + 12 * oct),
-		Semitone.new(get_semitone(root_index + 4) + 12 * oct)
-	])
-
-func fifth(root_index: int) -> Chord:
-	return Chord.new([
-		Semitone.new(get_semitone(root_index)),
-		Semitone.new(get_semitone(root_index + 4))
+		get_semitone(root_index),
+		get_semitone(root_index + 4)
 	])
 
 func sixth(root_index: int) -> Chord:
 	return Chord.new([
-		Semitone.new(get_semitone(root_index)),
-		Semitone.new(get_semitone(root_index + 2)),
-		Semitone.new(get_semitone(root_index + 4)),
-		Semitone.new(get_semitone(root_index + 5))
+		get_semitone(root_index),
+		get_semitone(root_index + 2),
+		get_semitone(root_index + 4),
+		get_semitone(root_index + 5)
 	])
 
-func brighten(root_index: int) -> Chord:
+func sixth_omit_fifth(root_index: int) -> Chord:
 	return Chord.new([
-		Semitone.new(get_semitone(root_index)),
-		Semitone.new(get_semitone(root_index + 2)),
-		Semitone.new(get_semitone(root_index + 5))
+		get_semitone(root_index),
+		get_semitone(root_index + 2),
+		get_semitone(root_index + 5)
 	])
 
-func boosted(root_index: int) -> Chord:
+func cinimatic(root_index: int) -> Chord:
 	return Chord.new([
-		Semitone.new(get_semitone(root_index)),
-		Semitone.new(get_semitone(root_index + 3)),
-		Semitone.new(get_semitone(root_index + 5))
+		get_semitone(root_index),
+		get_semitone(root_index + 3),
+		get_semitone(root_index + 5)
 	])
 
 func seventh(root_index: int) -> Chord:
 	return Chord.new([
-		Semitone.new(get_semitone(root_index)),
-		Semitone.new(get_semitone(root_index + 2)),
-		Semitone.new(get_semitone(root_index + 4)),
-		Semitone.new(get_semitone(root_index + 6))
-	])
-
-func inverted_seventh(root_index: int) -> Chord:
-	return Chord.new([
-		Semitone.new(get_semitone(root_index + 2)),
-		Semitone.new(get_semitone(root_index + 4)),
-		Semitone.new(get_semitone(root_index + 6)),
-		Semitone.new(get_semitone(root_index + 12))
+		get_semitone(root_index),
+		get_semitone(root_index + 2),
+		get_semitone(root_index + 4),
+		get_semitone(root_index + 6)
 	])
 
 func ninth(root_index: int) -> Chord:
 	return Chord.new([
-		Semitone.new(get_semitone(root_index)),
-		Semitone.new(get_semitone(root_index + 2)),
-		Semitone.new(get_semitone(root_index + 4)),
-		Semitone.new(get_semitone(root_index + 6)),
-		Semitone.new(get_semitone(root_index + 8))
+		get_semitone(root_index),
+		get_semitone(root_index + 2),
+		get_semitone(root_index + 4),
+		get_semitone(root_index + 6),
+		get_semitone(root_index + 8)
 	])
 
 func sus2(root_index: int) -> Chord:
 	return Chord.new([
-		Semitone.new(get_semitone(root_index)),
-		Semitone.new(get_semitone(root_index + 1)),
-		Semitone.new(get_semitone(root_index + 4))
+		get_semitone(root_index),
+		get_semitone(root_index + 1),
+		get_semitone(root_index + 4)
 	])
 
 func sus4(root_index: int) -> Chord:
 	return Chord.new([
-		Semitone.new(get_semitone(root_index)),
-		Semitone.new(get_semitone(root_index + 3)),
-		Semitone.new(get_semitone(root_index + 4))
+		get_semitone(root_index),
+		get_semitone(root_index + 3),
+		get_semitone(root_index + 4)
 	])
+
+func custom(root_index: int, degrees: Array[int]) -> Chord:
+	var semitones: Array[Semitone] = []
+	for degree in degrees:
+		semitones.append(get_semitone(root_index + degree - 1))
+	return Chord.new(semitones)

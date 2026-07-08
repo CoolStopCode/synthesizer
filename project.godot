@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="midi-make"
-run/main_scene="uid://ba4k64p5yr2mo"
+run/main_scene="uid://b4sefl02vbi4g"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

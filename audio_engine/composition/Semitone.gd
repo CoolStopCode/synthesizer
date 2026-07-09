@@ -1,7 +1,7 @@
 class_name Semitone
-extends Resource
+extends RefCounted
 
-@export var semitone : int
+var semitone : int
 
 func _init(_semitone : int = 69) -> void:
 	semitone = _semitone

@@ -1,5 +1,5 @@
 class_name Chord
-extends Resource
+extends RefCounted
 
 var semitones : Array[Semitone]
 

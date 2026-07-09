@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://cgd5hs18bevdo"
 
-[autoload]
-
-AudioEngine="*uid://dcman427vswea"
-
 [debug]
 
 gdscript/warnings/unused_variable=0
@@ -52,8 +48,10 @@ folder_colors={
 "res://audio_engine/node_synth/": "yellow",
 "res://audio_engine/node_synth/node_layouts/": "orange",
 "res://audio_engine/node_synth_extension/": "yellow",
-"res://core/": "gray",
-"res://interface/": "teal"
+"res://core/": "red",
+"res://interface/": "teal",
+"res://old_core/": "gray",
+"res://old_interface/": "gray"
 }
 
 [input]

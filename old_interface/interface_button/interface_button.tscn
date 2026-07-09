@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://b8ua4v07ohmcf"]
+
+[ext_resource type="Script" uid="uid://c4dfqwxrbi0qr" path="res://old_interface/interface_button/interface_button.gd" id="1_r717c"]
+[ext_resource type="Texture2D" uid="uid://d5u46j0aij4j" path="res://old_interface/interface_button/shadow.png" id="2_vy4s6"]
+[ext_resource type="Texture2D" uid="uid://dkcl6ckh762ys" path="res://old_interface/interface_button/base.png" id="3_qojby"]
+[ext_resource type="Texture2D" uid="uid://3rx7x4f8i6w7" path="res://old_interface/interface_button/outline.png" id="4_56i6t"]
+
+[node name="interface_button" type="Control" unique_id=955628202 node_paths=PackedStringArray("press_node", "fill_node", "outline_node", "shadow_node", "icon_node")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_r717c")
+press_node = NodePath("press")
+fill_node = NodePath("press/fill")
+outline_node = NodePath("press/outline")
+shadow_node = NodePath("shadow")
+icon_node = NodePath("press/icon")
+
+[node name="shadow" type="NinePatchRect" parent="." unique_id=314044081]
+self_modulate = Color(0, 0, 1, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -8.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_vy4s6")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="press" type="Control" parent="." unique_id=972217703]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="fill" type="NinePatchRect" parent="press" unique_id=1054612250]
+self_modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qojby")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="outline" type="NinePatchRect" parent="press" unique_id=1215702340]
+self_modulate = Color(0, 1, 0, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_56i6t")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="icon" type="TextureRect" parent="press" unique_id=1837475538]
+self_modulate = Color(0, 1, 0, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

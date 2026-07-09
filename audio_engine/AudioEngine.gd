@@ -1,3 +1,4 @@
+class_name AudioEngine
 extends Node
 
 @export var key : Key
@@ -29,7 +30,7 @@ func build_audio() -> void:
 		var names : Array = chord.semitones.map(func(s): return s.to_string_name())
 		print(", ".join(names))
 	
-	audio_mode.build(chords)
+	audio_mode.build(scale)
 
 func key_pressed(index: int) -> void:
 	audio_mode.key_pressed(index)
@@ -38,7 +39,8 @@ func key_released(index: int) -> void:
 	audio_mode.key_released(index)
 
 func joystick_moved(direction : Vector2) -> void:
-	audio_mode.joystick_moved(direction)
+	audio_mode.joystick_direction = direction
+	audio_mode.joystick_moved()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Debug"):

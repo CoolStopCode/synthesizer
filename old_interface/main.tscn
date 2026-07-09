@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://cspvrxqceta55"]
+
+[ext_resource type="PackedScene" uid="uid://b8ua4v07ohmcf" path="res://old_interface/interface_button/interface_button.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://c7x0efhxefg64" path="res://old_interface/main.gd" id="1_spusx"]
+[ext_resource type="Texture2D" uid="uid://oijmwfn65a08" path="res://old_interface/interface_button/icons/6x6/node_synth.png" id="3_bab4p"]
+[ext_resource type="Texture2D" uid="uid://bqn27w8du54su" path="res://old_interface/interface_button/icons/12x12/sound.png" id="3_ui3ld"]
+[ext_resource type="Resource" uid="uid://nqshfptd2wwv" path="res://old_interface/styles/interfact_button_styles/yellow.tres" id="4_rirh5"]
+[ext_resource type="Texture2D" uid="uid://b6i4ric1eogny" path="res://old_interface/interface_button/icons/6x6/analog_synth.png" id="5_ipgly"]
+[ext_resource type="Texture2D" uid="uid://bmvb1xcun7l2a" path="res://old_interface/interface_button/icons/12x12/key.png" id="5_rirh5"]
+[ext_resource type="Resource" uid="uid://celetj8gnqn1l" path="res://old_interface/styles/interfact_button_styles/blue.tres" id="6_d0hba"]
+[ext_resource type="Texture2D" uid="uid://b5u82f70hyvov" path="res://old_interface/interface_button/icons/6x6/sampler.png" id="6_htyv3"]
+[ext_resource type="Texture2D" uid="uid://80gqvwtaixph" path="res://old_interface/interface_button/icons/12x12/layers.png" id="6_spusx"]
+[ext_resource type="Resource" uid="uid://dgfvc5ij8a8m1" path="res://old_interface/styles/interfact_button_styles/transparent.tres" id="6_uwr2n"]
+[ext_resource type="Texture2D" uid="uid://dsa5vkeoks2pn" path="res://old_interface/interface_button/icons/6x6/drums.png" id="7_uwr2n"]
+[ext_resource type="Resource" uid="uid://degv7wu80uj20" path="res://old_interface/styles/interfact_button_styles/red.tres" id="8_bab4p"]
+[ext_resource type="Resource" uid="uid://cpruw6pgm8lpt" path="res://old_interface/styles/interfact_button_styles/grey.tres" id="8_htyv3"]
+
+[node name="main" type="Control" unique_id=42299528]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 152.0
+offset_bottom = 72.0
+script = ExtResource("1_spusx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1518602587]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
+[node name="test" type="GridContainer" parent="." unique_id=2125776782]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -66.0
+offset_right = 44.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="side_controls" type="Control" parent="." unique_id=1671183485]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = 3.0
+offset_right = -1.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="left" type="Control" parent="side_controls" unique_id=249487785]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 12.0
+grow_vertical = 2
+
+[node name="mode_select" type="Control" parent="side_controls/left" unique_id=1767403875]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="analog_synth" parent="side_controls/left/mode_select" unique_id=955628202 instance=ExtResource("1_ig7tw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -32.0
+offset_right = 6.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("5_ipgly")
+button_style = ExtResource("6_uwr2n")
+tooltip = "ANALOG SYNTH"
+
+[node name="node_synth" parent="side_controls/left/mode_select" unique_id=1749176197 instance=ExtResource("1_ig7tw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -16.0
+offset_right = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("3_bab4p")
+button_style = ExtResource("6_uwr2n")
+tooltip = "NODE SYNTH"
+
+[node name="sampler" parent="side_controls/left/mode_select" unique_id=1502020634 instance=ExtResource("1_ig7tw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_right = 6.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("6_htyv3")
+button_style = ExtResource("6_uwr2n")
+tooltip = "SAMPLER"
+
+[node name="drums" parent="side_controls/left/mode_select" unique_id=1788507475 instance=ExtResource("1_ig7tw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = 16.0
+offset_right = 6.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("7_uwr2n")
+button_style = ExtResource("6_uwr2n")
+tooltip = "DRUMS"
+
+[node name="mode" parent="side_controls/left" unique_id=64527061 instance=ExtResource("1_ig7tw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -32.0
+offset_right = 6.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("3_bab4p")
+button_style = ExtResource("8_htyv3")
+tooltip = "MODE"
+
+[node name="right" type="Control" parent="side_controls" unique_id=1476604042]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="sound" parent="side_controls/right" unique_id=1434336416 instance=ExtResource("1_ig7tw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -33.0
+offset_right = 11.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("3_ui3ld")
+button_style = ExtResource("4_rirh5")
+tooltip = "SOUND"
+
+[node name="key" parent="side_controls/right" unique_id=414641094 instance=ExtResource("1_ig7tw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("5_rirh5")
+button_style = ExtResource("6_d0hba")
+tooltip = "KEY"
+
+[node name="layer" parent="side_controls/right" unique_id=1514958895 instance=ExtResource("1_ig7tw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = 11.0
+offset_right = 11.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("6_spusx")
+button_style = ExtResource("8_bab4p")
+tooltip = "LAYER"

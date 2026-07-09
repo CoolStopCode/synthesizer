@@ -6,12 +6,11 @@ enum Allocation {
 	LEGATO,
 }
 
-static var polyvoices: Array[Node_Polyvoice] = []
-static var allocation: Allocation
-static var active_legato: Node_Polyvoice
+var polyvoices: Array[Node_Polyvoice] = []
+var allocation: Allocation
+var active_legato: Node_Polyvoice
 
-
-static func polyvoice_on(index: int, fade_duration : float) -> void:
+func polyvoice_on(index: int, fade_duration : float) -> void:
 	if allocation == Allocation.MONO:
 		for polyvoice in polyvoices:
 			polyvoice.polyvoice_off()
@@ -35,13 +34,13 @@ static func polyvoice_on(index: int, fade_duration : float) -> void:
 		polyvoices[index].polyvoice_on()
 
 
-static func polyvoice_off(index: int) -> void:
+func polyvoice_off(index: int) -> void:
 	polyvoices[index].polyvoice_off()
 
-static func bend_polyvoice(polyvoice: Node_Polyvoice, chord: Chord, chord_bend_duration : float) -> void:
+func bend_polyvoice(polyvoice: Node_Polyvoice, chord: Chord, chord_bend_duration : float) -> void:
 	polyvoice.bend_polyvoice(chord, chord_bend_duration)
 
-static func process_mix(delta: float) -> float:
+func process_mix(delta: float) -> float:
 	var sum: float = 0.0
 	
 	for polyvoice in polyvoices:

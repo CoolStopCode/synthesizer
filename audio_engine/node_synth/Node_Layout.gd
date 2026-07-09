@@ -1,0 +1,106 @@
+class_name Node_Layout
+extends Resource
+
+@export var modules : Array[Node_Module]
+
+func to_voice() -> Node_Voice:
+	var voice := Node_Voice.new()
+	
+	var types : PackedByteArray
+	
+	var input_offsets : PackedInt32Array
+	var output_offsets : PackedInt32Array
+	var state_offsets : PackedInt32Array
+	var parameter_offsets : PackedInt32Array
+	
+	var input_routes : PackedInt32Array
+	var initial_memory_data : PackedFloat64Array
+	initial_memory_data.append_array([0.0, 0.0, 0.0, 0.0])
+	
+	for module in modules:
+		var type := module.get_type()
+		if type == -1: # Constant Module
+			continue
+		
+		var module_states := module.get_states()
+		var module_parameters := module.get_parameters()
+		
+		types.append(type)
+		
+		# STATES
+		var state_data: Array[float] = module.get_states()
+		var state_count := state_data.size()
+		state_offsets.append(initial_memory_data.size())
+		initial_memory_data.append_array(state_data)
+		
+		# PARAMETERS
+		var parameter_data: Array[float] = module.get_parameters()
+		var parameter_count := parameter_data.size()
+		parameter_offsets.append(initial_memory_data.size())
+		initial_memory_data.append_array(parameter_data)
+	
+	var connection_map : Dictionary[Node_Connection, int] # Node_Connection -> index in memory data
+	for module in modules:
+		if module.get_type() == -1: # Constant Module
+			connection_map[module.get_outputs()[0]] = initial_memory_data.size()
+			initial_memory_data.append(module.get_parameters()[0])
+			continue
+		var module_outputs := module.get_outputs()
+		
+		var output_data: Array[float] = [] # create empty array of output values
+		output_data.resize(module_outputs.size())
+		
+		output_offsets.append(initial_memory_data.size())
+		var i := 0
+		for output in module_outputs: # loop through each ConnectionModule and writing down its index
+			connection_map[output] = initial_memory_data.size() + i
+			i += 1
+		
+		initial_memory_data.append_array(output_data) # append the empty array to memory
+	
+	for module in modules:
+		if module.get_type() == -1: # Constant Module
+			continue
+		var module_inputs := module.get_inputs()
+		
+		input_offsets.append(input_routes.size())
+		
+		for input in module_inputs: # loop through all inputs and push the output index to input_routee
+			input_routes.append(connection_map[input])
+	
+	voice.set_layout(
+		types,
+		input_offsets,
+		output_offsets,
+		state_offsets,
+		parameter_offsets,
+		input_routes,
+		initial_memory_data
+	)
+	
+	return voice
+
+func to_polyvoice(
+	voice_count : int
+) -> Node_Polyvoice:
+	var polyvoice := Node_Polyvoice.new()
+	polyvoice.voices = []
+	
+	for i in range(voice_count):
+		var new_voice : Node_Voice = to_voice()
+		
+		new_voice.frequency = 0.0
+		#new_voice.amplitude = 1.0
+		new_voice.active = false
+		polyvoice.voices.append(new_voice)
+	
+	return polyvoice
+
+func to_polyvoices(
+	polyvoice_count : int,
+	voice_count : int
+) -> Array[Node_Polyvoice]:
+	var polyvoices : Array[Node_Polyvoice]
+	for i in range(polyvoice_count):
+		polyvoices.append(to_polyvoice(voice_count))
+	return polyvoices

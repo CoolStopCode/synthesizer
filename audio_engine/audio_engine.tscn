@@ -19,10 +19,12 @@ key = ExtResource("2_w3o6y")
 audio_mode = SubResource("Resource_ekbou")
 audio_player = NodePath("AudioPlayer")
 
-[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=2034206177 node_paths=PackedStringArray("output")]
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=2034206177 node_paths=PackedStringArray("audio_engine", "output")]
 bus = &"Active"
 script = ExtResource("2_iv6p0")
+audio_engine = NodePath("..")
 output = NodePath(".")
 
-[node name="io" type="Node" parent="." unique_id=507746158]
+[node name="io" type="Node" parent="." unique_id=507746158 node_paths=PackedStringArray("audio_engine")]
 script = ExtResource("7_084pw")
+audio_engine = NodePath("..")

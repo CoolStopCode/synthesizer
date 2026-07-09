@@ -1,8 +1,8 @@
 class_name Scale
-extends Resource
+extends RefCounted
 
-@export var root : Semitone
-@export var intervals : Array[int]
+var root : Semitone
+var intervals : Array[int]
 
 func get_semitone(index: int) -> Semitone:
 	var octave_offset: int = floor((index / 7) * 12)

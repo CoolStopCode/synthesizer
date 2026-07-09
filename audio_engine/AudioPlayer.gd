@@ -1,6 +1,7 @@
 extends AudioStreamPlayer
 class_name AudioPlayer
 
+@export var audio_engine : AudioEngine
 @export var output : AudioStreamPlayer
 
 var playback: AudioStreamGeneratorPlayback
@@ -10,13 +11,13 @@ var master_volume: float
 var sample_delta: float
 
 func _ready() -> void:
-	mix_rate = AudioEngine.mix_rate
-	master_volume = AudioEngine.master_volume
+	mix_rate = audio_engine.mix_rate
+	master_volume = audio_engine.master_volume
 	sample_delta = 1.0 / mix_rate
 	
 	var generator := AudioStreamGenerator.new()
 	generator.mix_rate = mix_rate
-	generator.buffer_length = AudioEngine.buffer_length
+	generator.buffer_length = audio_engine.buffer_length
 	
 	output.stream = generator
 	output.play()

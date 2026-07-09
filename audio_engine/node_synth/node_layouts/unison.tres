@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dygpklgpthpwc" path="res://audio_engine/node_synth/layout/modules/Node_OscillatorModule.gd" id="6_py76c"]
 [ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio_engine/node_synth/layout/modules/Node_EnvelopeModule.gd" id="7_nr1jn"]
 [ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio_engine/node_synth/layout/modules/Node_OutputModule.gd" id="8_2axlg"]
-[ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio_engine/node_synth/layout/Node_Layout.gd" id="9_yt8l1"]
+[ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio_engine/node_synth/Node_Layout.gd" id="9_yt8l1"]
 
 [sub_resource type="Resource" id="Resource_gpvx1"]
 script = ExtResource("2_u85kb")

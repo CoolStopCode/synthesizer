@@ -1,17 +1,15 @@
+@abstract
 class_name AudioMode
 extends Resource
 
-func process(delta : float) -> float:
-	return 0.0
+var joystick_direction : Vector2
 
-func build(chords : Array[Chord]) -> void:
-	pass
+@abstract func process(delta : float) -> float
 
-func key_pressed(index: int) -> void:
-	pass
+@abstract func build(scale : Scale) -> void
 
-func key_released(index: int) -> void:
-	pass
+@abstract func key_pressed(index: int) -> void
 
-func joystick_moved(direction : Vector2) -> void:
-	pass
+@abstract func key_released(index: int) -> void
+
+@abstract func joystick_moved() -> void

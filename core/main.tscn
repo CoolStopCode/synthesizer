@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ba4k64p5yr2mo"]
+
+[ext_resource type="Script" uid="uid://c2cewwkdwuuhp" path="res://core/main.gd" id="1_3gdo0"]
+[ext_resource type="PackedScene" uid="uid://dgcq4s20e6ms4" path="res://interface/interface.tscn" id="2_csopv"]
+[ext_resource type="PackedScene" uid="uid://dcman427vswea" path="res://audio_engine/audio_engine.tscn" id="2_xa854"]
+[ext_resource type="PackedScene" uid="uid://dg5if6yvk0syd" path="res://interface/tooltip/tooltip.tscn" id="3_xa854"]
+
+[node name="main" type="Control" unique_id=721855015]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3gdo0")
+
+[node name="AudioEngine" parent="." unique_id=1307014848 instance=ExtResource("2_xa854")]
+master_volume = null
+tune = null
+mix_rate = null
+buffer_length = null
+
+[node name="interface" type="CanvasLayer" parent="." unique_id=593906995]
+
+[node name="interface" parent="interface" unique_id=1389423360 instance=ExtResource("2_csopv")]
+
+[node name="tooltip" type="CanvasLayer" parent="." unique_id=1274727178]
+
+[node name="tooltip" parent="tooltip" unique_id=560822963 instance=ExtResource("3_xa854")]

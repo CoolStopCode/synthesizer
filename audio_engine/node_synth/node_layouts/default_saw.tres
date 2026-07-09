@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio_engine/node_synth/layout/modules/Node_EnvelopeModule.gd" id="5_5ljw0"]
 [ext_resource type="Script" uid="uid://bqo3y3g087w23" path="res://audio_engine/node_synth/layout/modules/Node_ArithmaticModule.gd" id="6_sc2n1"]
 [ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio_engine/node_synth/layout/modules/Node_OutputModule.gd" id="7_1pav3"]
-[ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio_engine/node_synth/layout/Node_Layout.gd" id="8_n64g3"]
+[ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio_engine/node_synth/Node_Layout.gd" id="8_n64g3"]
 
 [sub_resource type="Resource" id="Resource_2bacj"]
 script = ExtResource("2_2bacj")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Key" format=3 uid="uid://b2b0gdd2n5d1i"]
+
+[ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio_engine/inspector/Note.gd" id="1_xdqt4"]
+[ext_resource type="Script" uid="uid://2st765u0dv45" path="res://audio_engine/inspector/Key.gd" id="2_eex78"]
+
+[sub_resource type="Resource" id="Resource_w3o6y"]
+script = ExtResource("1_xdqt4")
+octave = 4
+metadata/_custom_type_script = "uid://wwstsyg87ftc"
+
+[resource]
+script = ExtResource("2_eex78")
+root = SubResource("Resource_w3o6y")
+mode = 2
+metadata/_custom_type_script = "uid://2st765u0dv45"

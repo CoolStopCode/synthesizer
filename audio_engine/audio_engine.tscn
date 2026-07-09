@@ -1,24 +1,11 @@
 [gd_scene format=3 uid="uid://dcman427vswea"]
 
 [ext_resource type="Script" uid="uid://bnxjc1y2lkc86" path="res://audio_engine/AudioEngine.gd" id="1_jwo0y"]
-[ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio_engine/inspector/Note.gd" id="2_084pw"]
 [ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio_engine/AudioPlayer.gd" id="2_iv6p0"]
-[ext_resource type="Script" uid="uid://2st765u0dv45" path="res://audio_engine/inspector/Key.gd" id="3_x36ov"]
+[ext_resource type="Resource" uid="uid://b2b0gdd2n5d1i" path="res://audio_engine/inspector/default_key.tres" id="2_w3o6y"]
 [ext_resource type="Resource" uid="uid://bh08wlyd8apok" path="res://audio_engine/node_synth/node_layouts/default_saw.tres" id="5_x36ov"]
 [ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio_engine/node_synth/NodeSynthMode.gd" id="6_x36ov"]
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://audio_engine/io/io_temp.gd" id="7_084pw"]
-
-[sub_resource type="Resource" id="Resource_x36ov"]
-script = ExtResource("2_084pw")
-note = 7
-octave = 3
-metadata/_custom_type_script = "uid://wwstsyg87ftc"
-
-[sub_resource type="Resource" id="Resource_084pw"]
-script = ExtResource("3_x36ov")
-root = SubResource("Resource_x36ov")
-mode = 1
-metadata/_custom_type_script = "uid://2st765u0dv45"
 
 [sub_resource type="Resource" id="Resource_ekbou"]
 script = ExtResource("6_x36ov")
@@ -28,9 +15,9 @@ metadata/_custom_type_script = "uid://bvkaggdqljufp"
 
 [node name="AudioEngine" type="Node" unique_id=1307014848 node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_jwo0y")
-audio_player = NodePath("AudioPlayer")
-key = SubResource("Resource_084pw")
+key = ExtResource("2_w3o6y")
 audio_mode = SubResource("Resource_ekbou")
+audio_player = NodePath("AudioPlayer")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=2034206177 node_paths=PackedStringArray("output")]
 bus = &"Active"

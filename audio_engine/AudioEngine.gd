@@ -1,5 +1,8 @@
 extends Node
 
+@export var key : Key
+@export var audio_mode : AudioMode
+
 @export_group("Nodes")
 @export var audio_player : AudioPlayer
 
@@ -9,10 +12,6 @@ extends Node
 @export var mix_rate : int = 44100
 @export var buffer_length : float = 0.03
 
-@export_group("")
-@export var key : Key
-@export var audio_mode : AudioMode
-
 func _process(_delta: float) -> void:
 	audio_player.fill_audio_buffer(audio_mode)
 
@@ -21,12 +20,13 @@ func _ready() -> void:
 
 func build_audio() -> void:
 	var scale := key.build_scale()
+	
 	var chords : Array[Chord]
 	for i in range(7):
 		var chord : Chord = scale.triad(i)
 		chords.append(chord)
 		
-		var names = chord.semitones.map(func(s): return s.to_string_name())
+		var names : Array = chord.semitones.map(func(s): return s.to_string_name())
 		print(", ".join(names))
 	
 	audio_mode.build(chords)

@@ -13,22 +13,18 @@ func handle_input() -> void:
 		if Input.is_action_just_released(action):
 			audio_engine.key_released(i)
 	
-	var direction := Vector2.ZERO
-	if Input.is_action_pressed("ui_right"):
-		direction.x += 1
-	if Input.is_action_pressed("ui_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		direction.y += 1
-	if Input.is_action_pressed("ui_up"):
-		direction.y -= 1
+	var bend : Vector3i
+	bend = Vector3i(
+		int( Input.is_action_pressed("Bend1") ),
+		int( Input.is_action_pressed("Bend2") ),
+		int( Input.is_action_pressed("Bend3") )
+	)
 	
 	var any_just_changed := (
-		Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_right") or
-		Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_left") or
-		Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_down") or
-		Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_up")
+		Input.is_action_just_pressed("Bend1") or Input.is_action_just_released("Bend1") or
+		Input.is_action_just_pressed("Bend2") or Input.is_action_just_released("Bend2") or
+		Input.is_action_just_pressed("Bend3") or Input.is_action_just_released("Bend3")
 	)
 	
 	if any_just_changed:
-		audio_engine.joystick_moved(direction)
+		audio_engine.bend_changed(bend)

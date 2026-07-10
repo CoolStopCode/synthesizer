@@ -30,7 +30,8 @@ func build_audio() -> void:
 		var names : Array = chord.semitones.map(func(s): return s.to_string_name())
 		print(", ".join(names))
 	
-	audio_mode.build(scale)
+	audio_mode.scale = scale
+	audio_mode.build()
 
 func key_pressed(index: int) -> void:
 	audio_mode.key_pressed(index)
@@ -38,9 +39,9 @@ func key_pressed(index: int) -> void:
 func key_released(index: int) -> void:
 	audio_mode.key_released(index)
 
-func joystick_moved(direction : Vector2) -> void:
-	audio_mode.joystick_direction = direction
-	audio_mode.joystick_moved()
+func bend_changed(bend : Vector3i) -> void:
+	audio_mode.bend = bend
+	audio_mode.bend_changed()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Debug"):

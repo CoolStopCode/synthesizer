@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://bnxjc1y2lkc86" path="res://audio_engine/AudioEngine.gd" id="1_jwo0y"]
 [ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio_engine/AudioPlayer.gd" id="2_iv6p0"]
 [ext_resource type="Resource" uid="uid://b2b0gdd2n5d1i" path="res://audio_engine/inspector/default_key.tres" id="2_w3o6y"]
-[ext_resource type="Resource" uid="uid://bh08wlyd8apok" path="res://audio_engine/node_synth/node_layouts/default_saw.tres" id="5_x36ov"]
+[ext_resource type="Resource" uid="uid://dc6e3lk1jh1ne" path="res://audio_engine/node_synth/node_layouts/piano.tres" id="3_w3o6y"]
 [ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio_engine/node_synth/NodeSynthMode.gd" id="6_x36ov"]
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://audio_engine/io/io_temp.gd" id="7_084pw"]
 
 [sub_resource type="Resource" id="Resource_ekbou"]
 script = ExtResource("6_x36ov")
 allocation = 2
-layout = ExtResource("5_x36ov")
+layout = ExtResource("3_w3o6y")
 metadata/_custom_type_script = "uid://bvkaggdqljufp"
 
 [node name="AudioEngine" type="Node" unique_id=1307014848 node_paths=PackedStringArray("audio_player")]

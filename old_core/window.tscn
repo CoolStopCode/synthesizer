@@ -2,8 +2,101 @@
 
 [ext_resource type="Script" uid="uid://cxthf2y1xm83a" path="res://old_core/window.gd" id="1_hjewq"]
 [ext_resource type="PackedScene" uid="uid://cspvrxqceta55" path="res://old_interface/main.tscn" id="1_mvsta"]
+[ext_resource type="PackedScene" uid="uid://dcman427vswea" path="res://audio_engine/audio_engine.tscn" id="2_0ge73"]
 [ext_resource type="Script" uid="uid://deyjhtxsrx140" path="res://old_interface/fps.gd" id="3_65v70"]
 [ext_resource type="PackedScene" uid="uid://baaaxsmf6tg26" path="res://old_interface/tooltip/tooltip.tscn" id="3_fetnt"]
+[ext_resource type="Script" uid="uid://cf2vraxdg7h7c" path="res://audio_engine/node_synth/layout/modules/Node_Module.gd" id="3_up6a8"]
+[ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio_engine/node_synth/NodeSynthMode.gd" id="4_kbsev"]
+[ext_resource type="Script" uid="uid://bpehx0osaw18w" path="res://audio_engine/node_synth/layout/Node_Connection.gd" id="4_warju"]
+[ext_resource type="Script" uid="uid://o6sgy334ngbl" path="res://audio_engine/node_synth/layout/modules/Node_InputModule.gd" id="5_d1o70"]
+[ext_resource type="Script" uid="uid://dygpklgpthpwc" path="res://audio_engine/node_synth/layout/modules/Node_OscillatorModule.gd" id="6_7074b"]
+[ext_resource type="Script" uid="uid://cxndkphpyeral" path="res://audio_engine/node_synth/layout/modules/Node_FilterModule.gd" id="7_qrtlt"]
+[ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio_engine/node_synth/layout/modules/Node_EnvelopeModule.gd" id="8_q3rk2"]
+[ext_resource type="Script" uid="uid://bqo3y3g087w23" path="res://audio_engine/node_synth/layout/modules/Node_ArithmaticModule.gd" id="9_pg7fn"]
+[ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio_engine/node_synth/layout/modules/Node_OutputModule.gd" id="10_vy4dx"]
+[ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio_engine/node_synth/Node_Layout.gd" id="11_kabt0"]
+
+[sub_resource type="Resource" id="Resource_2bacj"]
+script = ExtResource("4_warju")
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_wh8eb"]
+script = ExtResource("4_warju")
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_gpvx1"]
+script = ExtResource("5_d1o70")
+frequency = SubResource("Resource_wh8eb")
+active = SubResource("Resource_2bacj")
+metadata/_custom_type_script = "uid://o6sgy334ngbl"
+
+[sub_resource type="Resource" id="Resource_8te4a"]
+script = ExtResource("4_warju")
+name = "osc out"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_h3tjm"]
+script = ExtResource("6_7074b")
+frequency = SubResource("Resource_wh8eb")
+sample = SubResource("Resource_8te4a")
+waveform = 2
+metadata/_custom_type_script = "uid://dygpklgpthpwc"
+
+[sub_resource type="Resource" id="Resource_yyg6e"]
+script = ExtResource("4_warju")
+name = "filter out"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_x36ov"]
+script = ExtResource("7_qrtlt")
+audio_in = SubResource("Resource_8te4a")
+audio_out = SubResource("Resource_yyg6e")
+filter_mode = 2
+metadata/_custom_type_script = "uid://cxndkphpyeral"
+
+[sub_resource type="Resource" id="Resource_5ljw0"]
+script = ExtResource("4_warju")
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_2sr80"]
+script = ExtResource("8_q3rk2")
+gate = SubResource("Resource_2bacj")
+level = SubResource("Resource_5ljw0")
+attack = 0.05
+decay = 13.0
+release = 3.0
+attack_curve = 0.4
+decay_curve = 1.0
+release_curve = 0.7
+metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
+
+[sub_resource type="Resource" id="Resource_2k5ra"]
+script = ExtResource("4_warju")
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_iq7ir"]
+script = ExtResource("9_pg7fn")
+operand_a = SubResource("Resource_yyg6e")
+operand_b = SubResource("Resource_5ljw0")
+result = SubResource("Resource_2k5ra")
+operation = 2
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_nndlu"]
+script = ExtResource("10_vy4dx")
+sample = SubResource("Resource_2k5ra")
+metadata/_custom_type_script = "uid://dd87xat4ign3w"
+
+[sub_resource type="Resource" id="Resource_up6a8"]
+script = ExtResource("11_kabt0")
+modules = Array[ExtResource("3_up6a8")]([SubResource("Resource_gpvx1"), SubResource("Resource_h3tjm"), SubResource("Resource_x36ov"), SubResource("Resource_2sr80"), SubResource("Resource_iq7ir"), SubResource("Resource_nndlu")])
+metadata/_custom_type_script = "uid://fcmxj7baxak3"
+
+[sub_resource type="Resource" id="Resource_vdnn4"]
+script = ExtResource("4_kbsev")
+allocation = 2
+layout = SubResource("Resource_up6a8")
+metadata/_custom_type_script = "uid://bvkaggdqljufp"
 
 [node name="window" type="Control" unique_id=1386016939 node_paths=PackedStringArray("main", "sub_viewport_container", "sub_viewport")]
 layout_mode = 3
@@ -16,6 +109,9 @@ script = ExtResource("1_hjewq")
 main = NodePath("SubViewportContainer/SubViewport/main/main")
 sub_viewport_container = NodePath("SubViewportContainer")
 sub_viewport = NodePath("SubViewportContainer/SubViewport")
+
+[node name="AudioEngine" parent="." unique_id=1307014848 instance=ExtResource("2_0ge73")]
+audio_mode = SubResource("Resource_vdnn4")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=575012270]
 texture_filter = 1

@@ -18,6 +18,8 @@ func to_voice() -> Node_Voice:
 	initial_memory_data.append_array([0.0, 0.0, 0.0, 0.0])
 	
 	for module in modules:
+		if module == null: continue
+		
 		var type := module.get_type()
 		if type == -1: # Constant Module
 			continue
@@ -41,6 +43,8 @@ func to_voice() -> Node_Voice:
 	
 	var connection_map : Dictionary[Node_Connection, int] # Node_Connection -> index in memory data
 	for module in modules:
+		if module == null: continue
+		
 		if module.get_type() == -1: # Constant Module
 			connection_map[module.get_outputs()[0]] = initial_memory_data.size()
 			initial_memory_data.append(module.get_parameters()[0])
@@ -59,6 +63,8 @@ func to_voice() -> Node_Voice:
 		initial_memory_data.append_array(output_data) # append the empty array to memory
 	
 	for module in modules:
+		if module == null: continue
+		
 		if module.get_type() == -1: # Constant Module
 			continue
 		var module_inputs := module.get_inputs()

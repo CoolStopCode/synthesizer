@@ -1,8 +1,8 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://ding2jfmqqyfp"]
 
-[ext_resource type="FontFile" uid="uid://dlqrceeldmc7b" path="res://old_interface/styles/font/monogram.ttf" id="1_1mx7v"]
+[ext_resource type="FontFile" uid="uid://bmkn2pl8fo6n7" path="res://interface/font/monogram.ttf" id="1_my7d0"]
 
 [resource]
 line_spacing = -2.0
-font = ExtResource("1_1mx7v")
+font = ExtResource("1_my7d0")
 font_color = Color(0.92156863, 0.92941177, 0.9137255, 1)

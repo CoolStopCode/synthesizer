@@ -45,13 +45,13 @@ folder_colors={
 "res://audio_engine/composition/": "red",
 "res://audio_engine/inspector/": "blue",
 "res://audio_engine/io/": "blue",
-"res://audio_engine/node_synth/": "yellow",
-"res://audio_engine/node_synth/node_layouts/": "orange",
-"res://audio_engine/node_synth_extension/": "yellow",
+"res://audio_engine/node/": "yellow",
+"res://audio_engine/node/node_layouts/": "orange",
+"res://audio_engine/node_extension/": "yellow",
+"res://audio_engine/tonal/": "green",
+"res://audio_engine/tonal/bend_bindings/": "blue",
 "res://core/": "red",
-"res://interface/": "teal",
-"res://old_core/": "gray",
-"res://old_interface/": "gray"
+"res://interface/": "teal"
 }
 
 [input]

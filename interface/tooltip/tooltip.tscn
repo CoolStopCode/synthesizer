@@ -32,12 +32,7 @@ offset_top = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_caum1")
-text = "1123331234323432424134
-2
-3
-4
-5
-6"
+text = "Tooltip"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

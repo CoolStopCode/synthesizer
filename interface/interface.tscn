@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://dgcq4s20e6ms4"]
 
 [ext_resource type="Script" uid="uid://dgyqn3y7laxf8" path="res://interface/interface.gd" id="1_brjpu"]
+[ext_resource type="PackedScene" uid="uid://dma58ukp803ln" path="res://interface/interface_modes/node_interface_mode/node_interface_mode.tscn" id="2_21s64"]
 [ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://interface/interface_button/interface_button.tscn" id="2_tq5ti"]
-[ext_resource type="Texture2D" uid="uid://bqn27w8du54su" path="res://old_interface/interface_button/icons/12x12/sound.png" id="3_b27bm"]
+[ext_resource type="Texture2D" uid="uid://50uiip3cle52" path="res://interface/icon/12x12/sound.png" id="3_talkl"]
 [ext_resource type="Resource" uid="uid://ccjvwttdoqhpi" path="res://interface/styles/interface_button_style/yellow.tres" id="4_b27bm"]
 [ext_resource type="Resource" uid="uid://myibeubq6l4p" path="res://interface/styles/interface_button_style/blue.tres" id="4_tq5ti"]
 [ext_resource type="Texture2D" uid="uid://cq6gflw0avxfe" path="res://interface/icon/12x12/key.png" id="5_rrsvm"]
 [ext_resource type="Resource" uid="uid://c2vsl3nmcaxmx" path="res://interface/styles/interface_button_style/red.tres" id="6_k5wfx"]
+[ext_resource type="Texture2D" uid="uid://dkk3b5b6ywxvu" path="res://interface/icon/6x6/metronome.png" id="7_ai3xk"]
 [ext_resource type="Texture2D" uid="uid://476fe1fbyeb3" path="res://interface/icon/12x12/layers.png" id="7_uxvr6"]
+[ext_resource type="Texture2D" uid="uid://h6po6smca61m" path="res://interface/icon/6x6/settings.png" id="8_gu1y1"]
 [ext_resource type="Texture2D" uid="uid://crfqrvu5lde3j" path="res://interface/icon/6x6/dial.png" id="9_c13xy"]
 [ext_resource type="Resource" uid="uid://yjrdwjegerbm" path="res://interface/styles/interface_button_style/gray.tres" id="10_13l2x"]
 
@@ -29,82 +32,143 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0627451, 0.078431375, 0.12156863, 1)
 
+[node name="node_interface_mode" parent="." unique_id=1176748786 instance=ExtResource("2_21s64")]
+layout_mode = 1
+offset_right = -46.0
+
 [node name="sidebar" type="Control" parent="." unique_id=379291883]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -30.0
+offset_left = -46.0
+offset_top = 9.0
 offset_right = -2.0
+offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="interface_button" parent="sidebar" unique_id=127682664 instance=ExtResource("2_tq5ti")]
+[node name="right" type="Control" parent="sidebar" unique_id=852116357]
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = 11
 anchor_left = 1.0
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -30.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="interface_button" parent="sidebar/right" unique_id=127682664 instance=ExtResource("2_tq5ti")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
 offset_top = -45.0
-offset_right = 0.0
+offset_right = 15.0
 offset_bottom = -15.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
-icon = ExtResource("3_b27bm")
+icon = ExtResource("3_talkl")
 interface_button_style = ExtResource("4_b27bm")
-tooltip = "test"
+tooltip = "sound"
 
-[node name="interface_button3" parent="sidebar" unique_id=1130688192 instance=ExtResource("2_tq5ti")]
+[node name="interface_button3" parent="sidebar/right" unique_id=1130688192 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
+offset_left = -15.0
 offset_top = -15.0
-offset_right = 0.0
+offset_right = 15.0
 offset_bottom = 15.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("5_rrsvm")
 interface_button_style = ExtResource("4_tq5ti")
-tooltip = "test"
+tooltip = "key"
 
-[node name="interface_button2" parent="sidebar" unique_id=2039112307 instance=ExtResource("2_tq5ti")]
+[node name="interface_button2" parent="sidebar/right" unique_id=2039112307 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
+offset_left = -15.0
 offset_top = 15.0
-offset_right = 0.0
+offset_right = 15.0
 offset_bottom = 45.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("7_uxvr6")
 interface_button_style = ExtResource("6_k5wfx")
-tooltip = "test"
+tooltip = "layers"
 
-[node name="interface_button4" parent="sidebar" unique_id=1541533215 instance=ExtResource("2_tq5ti")]
-visible = false
+[node name="left" type="Control" parent="sidebar" unique_id=738732446]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_right = -30.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="interface_button4" parent="sidebar/left" unique_id=1541533215 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = 25.0
-offset_right = -3.0
-offset_bottom = 51.0
+offset_left = -14.0
+offset_top = -44.0
+offset_right = 0.0
+offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("9_c13xy")
 interface_button_style = ExtResource("10_13l2x")
-tooltip = "test"
+tooltip = "mode"
+
+[node name="interface_button5" parent="sidebar/left" unique_id=1626598368 instance=ExtResource("2_tq5ti")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -22.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("7_ai3xk")
+interface_button_style = ExtResource("10_13l2x")
+tooltip = "metronome"
+
+[node name="interface_button7" parent="sidebar/left" unique_id=171411916 instance=ExtResource("2_tq5ti")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = 22.0
+offset_right = 0.0
+offset_bottom = 44.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("8_gu1y1")
+interface_button_style = ExtResource("10_13l2x")
+tooltip = "settings
+"

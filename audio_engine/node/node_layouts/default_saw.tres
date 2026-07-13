@@ -45,7 +45,7 @@ metadata/_custom_type_script = "uid://bpehx0osaw18w"
 script = ExtResource("5_2bacj")
 audio_in = SubResource("Resource_8te4a")
 audio_out = SubResource("Resource_yyg6e")
-filter_mode = 2
+cutoff = 8000.0
 metadata/_custom_type_script = "uid://cxndkphpyeral"
 
 [sub_resource type="Resource" id="Resource_5ljw0"]

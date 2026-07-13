@@ -8,25 +8,14 @@ script = ExtResource("1_pfunl")
 base = 1
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
-[sub_resource type="Resource" id="Resource_t1twr"]
-script = ExtResource("1_pfunl")
-base = 1
-transformations = Array[int]([1])
-metadata/_custom_type_script = "uid://vmjvtatt83va"
-
-[sub_resource type="Resource" id="Resource_ux08l"]
-script = ExtResource("1_pfunl")
-metadata/_custom_type_script = "uid://vmjvtatt83va"
-
 [sub_resource type="Resource" id="Resource_l1ude"]
 script = ExtResource("1_pfunl")
 base = 1
 transformations = Array[int]([0])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
-[sub_resource type="Resource" id="Resource_ka5r3"]
+[sub_resource type="Resource" id="Resource_ux08l"]
 script = ExtResource("1_pfunl")
-base = 6
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
 [sub_resource type="Resource" id="Resource_rjnh8"]
@@ -35,20 +24,31 @@ base = 1
 transformations = Array[int]([6])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
+[sub_resource type="Resource" id="Resource_t1twr"]
+script = ExtResource("1_pfunl")
+base = 1
+transformations = Array[int]([1])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
 [sub_resource type="Resource" id="Resource_k2fum"]
 script = ExtResource("1_pfunl")
 base = 2
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
+[sub_resource type="Resource" id="Resource_ka5r3"]
+script = ExtResource("1_pfunl")
+base = 6
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
 [sub_resource type="Resource" id="Resource_ltm8o"]
 script = ExtResource("1_pfunl")
 base = 7
-transformations = Array[int]([7, 4])
+transformations = Array[int]([4])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
 [resource]
 script = ExtResource("2_c8sm2")
-bend_binding = Dictionary[Vector3i, Object]({
+bend_binding = Dictionary[Vector3i, ExtResource("1_pfunl")]({
 Vector3i(0, 0, 0): SubResource("Resource_s2qte"),
 Vector3i(0, 0, 1): SubResource("Resource_l1ude"),
 Vector3i(0, 1, 0): SubResource("Resource_ux08l"),

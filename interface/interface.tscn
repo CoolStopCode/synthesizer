@@ -74,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("3_talkl")
 interface_button_style = ExtResource("4_b27bm")
-tooltip = "sound"
+tooltip = "Sound"
 
 [node name="interface_button3" parent="sidebar/right" unique_id=1130688192 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
@@ -91,7 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("5_rrsvm")
 interface_button_style = ExtResource("4_tq5ti")
-tooltip = "key"
+tooltip = "Key"
 
 [node name="interface_button2" parent="sidebar/right" unique_id=2039112307 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
@@ -108,7 +108,7 @@ grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("7_uxvr6")
 interface_button_style = ExtResource("6_k5wfx")
-tooltip = "layers"
+tooltip = "Layers"
 
 [node name="left" type="Control" parent="sidebar" unique_id=738732446]
 layout_mode = 1
@@ -136,7 +136,7 @@ grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("9_c13xy")
 interface_button_style = ExtResource("10_13l2x")
-tooltip = "mode"
+tooltip = "Mode"
 
 [node name="interface_button5" parent="sidebar/left" unique_id=1626598368 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
@@ -153,7 +153,7 @@ grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("7_ai3xk")
 interface_button_style = ExtResource("10_13l2x")
-tooltip = "metronome"
+tooltip = "Metronome"
 
 [node name="interface_button7" parent="sidebar/left" unique_id=171411916 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
@@ -170,5 +170,5 @@ grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("8_gu1y1")
 interface_button_style = ExtResource("10_13l2x")
-tooltip = "settings
+tooltip = "Settings
 "

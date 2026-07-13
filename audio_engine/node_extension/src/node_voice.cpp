@@ -442,19 +442,22 @@ void Node_Voice::process_filter_module(
     double cutoff     = read_memory(m.parameter_offset + 0, memory_data);
     double resonance  = read_memory(m.parameter_offset + 1, memory_data);
     int    mode       = double_to_int(read_memory(m.parameter_offset + 2, memory_data));
-    bool   oversample = double_to_bool(read_memory(m.parameter_offset + 3, memory_data));
 
     double lowpass = read_memory(m.state_offset + 0, memory_data);
     double bandpass = read_memory(m.state_offset + 1, memory_data);
     double highpass = 0.0;
 
-    double radians_per_sample = M_PI * cutoff * delta;
-    double tuning = 2.0 * std::sin(radians_per_sample);
+    const int iteration_count = 2;
+    double iteration_delta = delta / iteration_count;
+    double iteration_radians = M_PI * cutoff * iteration_delta;
+    double tuning = 2.0 * std::sin(iteration_radians);
     double damping = 2.0 - 2.0 * resonance;
 
-    highpass  = audio_in - (damping * bandpass) - lowpass; // error signal
-    bandpass += tuning * highpass;                         // integrate highpass
-    lowpass  += tuning * bandpass;                         // integrate bandpass
+    for (int i = 0; i < iteration_count; ++i) {
+        highpass  = audio_in - (damping * bandpass) - lowpass;
+        bandpass += tuning * highpass;
+        lowpass  += tuning * bandpass;
+    }
 
     double audio_out = 0.0;
     switch (mode) {

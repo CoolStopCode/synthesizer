@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bypq5q5ltosea"]
 
-[ext_resource type="Script" uid="uid://dycaet48kaqrq" path="res://interface/stats/stats.gd" id="1_b4ipq"]
+[ext_resource type="Script" uid="uid://dycaet48kaqrq" path="res://core/stats/stats.gd" id="1_b4ipq"]
 [ext_resource type="LabelSettings" uid="uid://j8dh05fvld47" path="res://interface/font/font_small.tres" id="2_6f06c"]
 
 [node name="stats" type="Control" unique_id=1913815094 node_paths=PackedStringArray("fps_label", "memory_label", "objects_label")]

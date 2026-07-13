@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dg5if6yvk0syd"]
 
-[ext_resource type="Theme" uid="uid://byaf0uli0uec7" path="res://interface/font/richtext_small.tres" id="1_caum1"]
-[ext_resource type="Script" uid="uid://bqkmotk6tmcw6" path="res://interface/tooltip/tooltip.gd" id="1_sco1k"]
+[ext_resource type="Script" uid="uid://bqkmotk6tmcw6" path="res://core/tooltip/tooltip.gd" id="1_sco1k"]
+[ext_resource type="Theme" uid="uid://38g50n3elypy" path="res://interface/font/richtext_big.tres" id="2_3jxky"]
 
 [node name="tooltip" type="Control" unique_id=560822963 node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(5, 7)
@@ -31,7 +31,7 @@ offset_left = 1.0
 offset_top = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_caum1")
+theme = ExtResource("2_3jxky")
 text = "Tooltip"
 fit_content = true
 scroll_active = false

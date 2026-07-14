@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://d3hfdgjpimvie"
-path="res://.godot/imported/kiwi4.ttf-c7b57ffbd298d463a00944961a48558e.fontdata"
+uid="uid://40yhhcx1dqql"
+path="res://.godot/imported/medium_pixuf.ttf-32d5ef9d064a1ac7c536e8a20b351b61.fontdata"
 
 [deps]
 
-source_file="res://interface/font/kiwi4.ttf"
-dest_files=["res://.godot/imported/kiwi4.ttf-c7b57ffbd298d463a00944961a48558e.fontdata"]
+source_file="res://interface/font/medium_pixuf.ttf"
+dest_files=["res://.godot/imported/medium_pixuf.ttf-32d5ef9d064a1ac7c536e8a20b351b61.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 modulate_color_glyphs=false
-hinting=1
+hinting=3
 subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0

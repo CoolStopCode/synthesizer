@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bnxjc1y2lkc86" path="res://audio_engine/audio_engine.gd" id="1_jwo0y"]
 [ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio_engine/audio_player.gd" id="2_iv6p0"]
-[ext_resource type="Resource" uid="uid://ns3hmwga5j1a" path="res://audio_engine/tonal/bend_bindings/default_bend_binding.tres" id="2_nndlu"]
+[ext_resource type="Resource" uid="uid://dlcbpadla7fys" path="res://audio_engine/tonal/bend_bindings/melodic.tres" id="2_nndlu"]
 [ext_resource type="Script" uid="uid://cf2vraxdg7h7c" path="res://audio_engine/node/layout/modules/node_module.gd" id="3_a25oa"]
 [ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio_engine/inspector/note.gd" id="3_h8yrx"]
 [ext_resource type="Script" uid="uid://bpehx0osaw18w" path="res://audio_engine/node/layout/node_connection.gd" id="4_gpvx1"]
@@ -19,7 +19,7 @@
 
 [sub_resource type="Resource" id="Resource_a25oa"]
 script = ExtResource("3_h8yrx")
-octave = 5
+octave = 4
 metadata/_custom_type_script = "uid://wwstsyg87ftc"
 
 [sub_resource type="Resource" id="Resource_bk3b3"]

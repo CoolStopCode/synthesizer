@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://byaf0uli0uec7"]
 
-[ext_resource type="FontFile" uid="uid://d3hfdgjpimvie" path="res://interface/font/kiwi4.ttf" id="1_3k3h2"]
+[ext_resource type="FontFile" uid="uid://d3hfdgjpimvie" path="res://interface/font/small_kiwi4.ttf" id="1_3k3h2"]
 
 [resource]
 default_font = ExtResource("1_3k3h2")

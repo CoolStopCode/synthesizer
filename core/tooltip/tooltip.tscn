@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dg5if6yvk0syd"]
 
 [ext_resource type="Script" uid="uid://bqkmotk6tmcw6" path="res://core/tooltip/tooltip.gd" id="1_sco1k"]
-[ext_resource type="Theme" uid="uid://38g50n3elypy" path="res://interface/font/richtext_big.tres" id="2_3jxky"]
+[ext_resource type="Theme" uid="uid://38g50n3elypy" path="res://interface/font/richtext_large.tres" id="2_3jxky"]
 
 [node name="tooltip" type="Control" unique_id=560822963 node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(5, 7)

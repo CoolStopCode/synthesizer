@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="BendBinding" format=3 uid="uid://dlcbpadla7fys"]
+
+[ext_resource type="Script" uid="uid://vmjvtatt83va" path="res://audio_engine/tonal/bend_behavior.gd" id="1_3xbwe"]
+[ext_resource type="Script" uid="uid://cyyslm2d8sue8" path="res://audio_engine/tonal/bend_binding.gd" id="2_t2wlk"]
+
+[sub_resource type="Resource" id="Resource_s2qte"]
+script = ExtResource("1_3xbwe")
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_l1ude"]
+script = ExtResource("1_3xbwe")
+transformations = Array[int]([0])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_ux08l"]
+script = ExtResource("1_3xbwe")
+transformations = Array[int]([4])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_rjnh8"]
+script = ExtResource("1_3xbwe")
+transformations = Array[int]([2])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_t1twr"]
+script = ExtResource("1_3xbwe")
+transformations = Array[int]([1])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_k2fum"]
+script = ExtResource("1_3xbwe")
+transformations = Array[int]([5])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_ka5r3"]
+script = ExtResource("1_3xbwe")
+transformations = Array[int]([3])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_ltm8o"]
+script = ExtResource("1_3xbwe")
+transformations = Array[int]([4, 5])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[resource]
+script = ExtResource("2_t2wlk")
+bend_binding = Dictionary[Vector3i, ExtResource("1_3xbwe")]({
+Vector3i(0, 0, 0): SubResource("Resource_s2qte"),
+Vector3i(0, 0, 1): SubResource("Resource_l1ude"),
+Vector3i(0, 1, 0): SubResource("Resource_ux08l"),
+Vector3i(0, 1, 1): SubResource("Resource_rjnh8"),
+Vector3i(1, 0, 0): SubResource("Resource_t1twr"),
+Vector3i(1, 0, 1): SubResource("Resource_k2fum"),
+Vector3i(1, 1, 0): SubResource("Resource_ka5r3"),
+Vector3i(1, 1, 1): SubResource("Resource_ltm8o")
+})
+metadata/_custom_type_script = "uid://cyyslm2d8sue8"

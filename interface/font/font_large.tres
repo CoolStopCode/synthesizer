@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://ding2jfmqqyfp"]
 
-[ext_resource type="FontFile" uid="uid://bmkn2pl8fo6n7" path="res://interface/font/monogram.ttf" id="1_my7d0"]
+[ext_resource type="FontFile" uid="uid://bmkn2pl8fo6n7" path="res://interface/font/large_monogram.ttf" id="1_my7d0"]
 
 [resource]
 line_spacing = -2.0

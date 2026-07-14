@@ -34,7 +34,7 @@ color = Color(0.0627451, 0.078431375, 0.12156863, 1)
 
 [node name="node_interface_mode" parent="." unique_id=1176748786 instance=ExtResource("2_21s64")]
 layout_mode = 1
-offset_right = -46.0
+offset_right = -48.0
 
 [node name="sidebar" type="Control" parent="." unique_id=379291883]
 layout_mode = 1

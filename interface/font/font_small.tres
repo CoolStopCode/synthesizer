@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://j8dh05fvld47"]
 
-[ext_resource type="FontFile" uid="uid://d3hfdgjpimvie" path="res://interface/font/kiwi4.ttf" id="1_03wil"]
+[ext_resource type="FontFile" uid="uid://d3hfdgjpimvie" path="res://interface/font/small_kiwi4.ttf" id="1_03wil"]
 
 [resource]
 line_spacing = 1.0

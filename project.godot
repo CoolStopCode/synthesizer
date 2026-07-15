@@ -43,12 +43,15 @@ window/vsync/vsync_mode=0
 
 folder_colors={
 "res://audio_engine/": "purple",
+"res://audio_engine/analog/": "teal",
 "res://audio_engine/composition/": "red",
+"res://audio_engine/drums/": "orange",
 "res://audio_engine/inspector/": "blue",
 "res://audio_engine/io/": "blue",
 "res://audio_engine/node/": "yellow",
 "res://audio_engine/node/node_layouts/": "orange",
 "res://audio_engine/node_extension/": "yellow",
+"res://audio_engine/sampler/": "pink",
 "res://audio_engine/tonal/": "green",
 "res://audio_engine/tonal/bend_bindings/": "blue",
 "res://core/": "red",

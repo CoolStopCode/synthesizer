@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dgcq4s20e6ms4" path="res://interface/interface.tscn" id="2_csopv"]
 [ext_resource type="PackedScene" uid="uid://dcman427vswea" path="res://audio_engine/audio_engine.tscn" id="2_xa854"]
 [ext_resource type="Script" uid="uid://ejtqccpgvur5" path="res://core/record_test.gd" id="3_kagtj"]
-[ext_resource type="Resource" uid="uid://dlcbpadla7fys" path="res://audio_engine/tonal/bend_bindings/melodic.tres" id="3_rayt5"]
+[ext_resource type="Resource" uid="uid://ns3hmwga5j1a" path="res://audio_engine/tonal/bend_bindings/default.tres" id="3_rayt5"]
 [ext_resource type="PackedScene" uid="uid://dg5if6yvk0syd" path="res://core/tooltip/tooltip.tscn" id="3_xa854"]
 [ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio_engine/inspector/note.gd" id="4_rayt5"]
 [ext_resource type="Script" uid="uid://2st765u0dv45" path="res://audio_engine/inspector/key.gd" id="5_510js"]

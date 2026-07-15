@@ -1,29 +1,59 @@
-class_name NodeMode
+class_name NodeAudioMode
 extends TonalAudioMode
 
-var voice_manager : Node_VoiceManager
 @export var layout : Node_Layout
 
+var polyvoices: Array[Node_Polyvoice] = []
+var active_legato: Node_Polyvoice
+
 func process(delta : float) -> float:
-	return voice_manager.process_mix(delta)
+	var sum: float = 0.0
+	
+	for polyvoice in polyvoices:
+		var sample := polyvoice.process(delta)
+		sum += sample
+	
+	return sum
 
 func build() -> void:
 	super.build()
-	voice_manager = Node_VoiceManager.new()
-	voice_manager.polyvoices = layout.to_polyvoices(polyvoice_count, voice_count)
-	voice_manager.allocation = allocation as Node_VoiceManager.Allocation
+	polyvoices = layout.to_polyvoices(polyvoice_count, voice_count)
 
 func key_pressed(index: int) -> void:
-	voice_manager.polyvoice_on(index, fade_duration)
-	var chord := build_chord(index)
-	voice_manager.bend_polyvoice(voice_manager.polyvoices[index], chord, 0.0)
+	var pressed_polyvoice := polyvoices[index]
+	pressed_polyvoice.bend_polyvoice(build_chord(index), 0.0)
+	active_legato = pressed_polyvoice
+	
+	if allocation == Allocation.MONO:
+		for polyvoice in polyvoices:
+			polyvoice.polyvoice_off()
+		pressed_polyvoice.polyvoice_on()
+		
+		return
+	
+	if allocation == Allocation.LEGATO:
+		for polyvoice in polyvoices:
+			if polyvoice == pressed_polyvoice:
+				polyvoice.fade_amplitude_to(1.0, fade_duration)
+				polyvoice.polyvoice_on()
+			else:
+				polyvoice.fade_amplitude_to(0.0, fade_duration)
+				polyvoice.polyvoice_off()
+		
+		return
+	
+	if allocation == Allocation.POLY:
+		pressed_polyvoice.polyvoice_on()
+		
+		return
 
 func key_released(index: int) -> void:
-	voice_manager.polyvoice_off(index)
+	var released_polyvoice := polyvoices[index]
+	released_polyvoice.polyvoice_off()
 
 func bend_changed() -> void:
 	var i := 0
-	for polyvoice in voice_manager.polyvoices:
+	for polyvoice in polyvoices:
 		if polyvoice.active:
-			voice_manager.bend_polyvoice(polyvoice, build_chord(i), chord_bend_duration)
+			polyvoice.bend_polyvoice(build_chord(i), chord_bend_duration)
 		i += 1

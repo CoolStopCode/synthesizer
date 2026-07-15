@@ -1,7 +1,7 @@
-class_name Node_Polyvoice
+class_name Sampler_Polyvoice
 extends RefCounted
 
-var voices : Array[Node_Voice]
+var voices : Array[Sampler_Voice]
 var active : bool
 var amplitude : float = 1.0
 

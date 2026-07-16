@@ -3,8 +3,8 @@ extends RefCounted
 
 var voices : Array[Node_Voice]
 var active : bool
-var amplitude : float = 1.0
 
+var amplitude : float = 1.0
 var amplitude_fade_start : float = 1.0
 var amplitude_fade_target : float = 1.0
 var amplitude_fade_duration : float = 0.0

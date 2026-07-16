@@ -22,7 +22,7 @@ func build_chord(index: int) -> Chord:
 	return bend_binding.build_chord(scale, index, bend)
 
 func build() -> void:
-	scale= key.build_scale()
+	scale = key.build_scale()
 	
 	var chords : Array[Chord]
 	for i in range(7):

@@ -3,8 +3,8 @@ extends RefCounted
 
 var voices : Array[Sampler_Voice]
 var active : bool
-var amplitude : float = 1.0
 
+var amplitude : float = 1.0
 var amplitude_fade_start : float = 1.0
 var amplitude_fade_target : float = 1.0
 var amplitude_fade_duration : float = 0.0
@@ -45,7 +45,7 @@ func update_amplitude_fade(delta: float) -> void:
 
 func bend_polyvoice(chord: Chord, chord_bend_duration : float) -> void:
 	for i in voices.size():
-		var voice : Node_Voice = voices[i]
+		var voice : Sampler_Voice = voices[i]
 		var has_note := i < chord.semitones.size()
 		
 		if has_note:

@@ -10,8 +10,7 @@ func process(delta : float) -> float:
 	var sum: float = 0.0
 	
 	for polyvoice in polyvoices:
-		var sample := polyvoice.process(delta)
-		sum += sample
+		sum += polyvoice.process(delta)
 	
 	return sum
 

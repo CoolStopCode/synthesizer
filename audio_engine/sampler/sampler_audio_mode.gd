@@ -15,9 +15,20 @@ func process(delta : float) -> float:
 
 func build() -> void:
 	super.build()
-	sample.decode_stream()
-	print(sample.get_frequency(6000, 9000))
+	var frequencies := sample.get_frequencies(10000, 11000)
+	print(get_median(frequencies))
 
+func get_median(values : Array[float]):
+	var sorted_values = values.duplicate()
+	sorted_values.sort()
+
+	var size = sorted_values.size()
+	var mid = size / 2
+
+	if size % 2 == 0:
+		return (sorted_values[mid - 1] + sorted_values[mid]) / 2.0
+	else:
+		return float(sorted_values[mid])
 
 func key_pressed(index: int) -> void:
 	pass

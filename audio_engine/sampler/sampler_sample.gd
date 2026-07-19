@@ -3,146 +3,194 @@ extends Resource
 
 @export var audio_stream : AudioStreamWAV
 
-func downsample_stream(byte_data : PackedByteArray, decimation_factor : int) -> PackedByteArray:
-	var original_size : int = byte_data.size() / 2
- 
-	var new_size : int = int(ceil(float(original_size) / decimation_factor))
-	var downsampled : PackedByteArray
-	downsampled.resize(new_size * 2)
- 
-	for i in range(new_size):
-		var source_index : int = i * decimation_factor * 2
-		var destination_index : int = i * 2
-		downsampled[destination_index] = byte_data[source_index]
-	
-	return downsampled
- 
 func decode_stream(byte_data : PackedByteArray) -> PackedFloat32Array:
-	var sample_count : int = byte_data.size() / 2
- 
-	var decoded : PackedFloat32Array
-	decoded.resize(sample_count)
- 
+	var is_stereo : bool = audio_stream.stereo
+	var format : AudioStreamWAV.Format = audio_stream.format
+	
+	match format:
+		AudioStreamWAV.FORMAT_16_BITS:
+			var sample_count : int = byte_data.size() / 2
+			var decoded : PackedFloat32Array
+			decoded.resize(sample_count)
+
+			for i in range(sample_count):
+				var byte_index : int = i * 2
+				var low : int = byte_data[byte_index]
+				var high : int = byte_data[byte_index + 1]
+				var sample : int = low | (high << 8)
+				if sample >= 32768:
+					sample -= 65536
+				decoded[i] = sample / 32768.0
+
+			return decoded
+		
+		AudioStreamWAV.FORMAT_8_BITS:
+			var sample_count : int = byte_data.size()
+			var decoded : PackedFloat32Array
+			decoded.resize(sample_count)
+			
+			for i in range(sample_count):
+				decoded[i] = byte_data[i]
+			
+			return decoded
+	
+	return []
+
+func downsample(samples : PackedFloat32Array, decimation_factor : int) -> PackedFloat32Array:
+	var new_size : int = ceil(float(samples.size()) / decimation_factor)
+	var downsampled : PackedFloat32Array
+	downsampled.resize(new_size)
+
+	for i in range(new_size):
+		downsampled[i] = samples[i * decimation_factor]
+
+	return downsampled
+
+func low_pass_filter(samples : PackedFloat32Array, sample_rate : float, cutoff : float) -> PackedFloat32Array:
+	var filtered : PackedFloat32Array
+	filtered.resize(samples.size())
+
+	var response_time : float = 1.0 / (TAU * cutoff)
+	var delta : float = 1.0 / sample_rate
+	var smoothing_factor : float = delta / (response_time + delta)
+	
+	for i in range(1, samples.size()):
+		filtered[i] = filtered[i - 1] + smoothing_factor * (samples[i] - filtered[i - 1])
+
+	return filtered
+
+func hann_window(samples : PackedFloat32Array) -> PackedFloat32Array:
+	var sample_count : int = samples.size()
+	var windowed : PackedFloat32Array
+	windowed.resize(sample_count)
+	
 	for i in range(sample_count):
-		var byte_index : int = i * 2
-		var low : int = byte_data[byte_index]
-		var high : int = byte_data[byte_index + 1]
-		var sample : int = low | (high << 8)
-		if sample >= 32768:
-			sample -= 65536
-		decoded[i] = sample / 32768.0
- 
-	return decoded
-
-func first_local_minimum_under_threshold(
-	values : Array[float],
-	threshold : float
-) -> int:
-	var start_index : int = 0
-	var end_index : int = values.size()
+		var multiplier : float = 0.5 - 0.5 * cos(TAU * i / (sample_count - 1))
+		windowed[i] = samples[i] * multiplier
 	
-	var start_minimum_check : int
-	for threshold_check in range(start_index, end_index):
-		if values[threshold_check] < threshold:
-			start_minimum_check = threshold_check
-			break
+	return windowed
+
+
+
+
+
+func normalized_square_difference(samples : PackedFloat32Array, max_lag : int) -> PackedFloat32Array:
+	var sample_count : int = samples.size()
 	
-	for minimum_check in range(start_minimum_check + 1, end_index):
-		if values[minimum_check] > values[minimum_check - 1]:
-			return minimum_check - 1
+	var result : PackedFloat32Array
+	result.resize(max_lag)
 	
-	return -1
-
-func parabolic_interpolation(left : float, center : float, right : float) -> float:
-	var numerator : float = left - right
-	var denominator : float = left - 2.0 * center + right
-	if is_zero_approx(denominator): return 0.0
+	var square_prefix : PackedFloat32Array
+	square_prefix.resize(sample_count + 1)
 	
-	return 0.5 * numerator / denominator
-
-# Squared-difference function d(tau) for a single lag, computed over the
-# first window_length samples of the given buffer. The buffer must be at
-# least window_length + tau samples long.
-func difference(samples : PackedFloat32Array, window_length : int, lag : int) -> float:
-	var sum : float = 0.0
-	for j in range(window_length - lag):
-		var delta : float = samples[j] - samples[j + lag]
-		sum += delta * delta
-
-	return sum
-
-
-# Cumulative Mean Normalized Difference Function. Returns an array indexed
-# by lag (0..maximum_lag - 1); cmndf[0] is defined as 1.0 by convention.
-func cmndf(samples : PackedFloat32Array, window_length : int, minimum_lag : int, maximum_lag : int) -> Array[float]:
-	var result : Array[float] = []
-	result.resize(maximum_lag)
-	result[0] = 1.0
-
-	var running_sum : float = 0.0
-	for tau in range(1, maximum_lag):
-		var d : float = difference(samples, window_length, tau)
-		running_sum += d
-
-		if is_zero_approx(running_sum):
-			result[tau] = 1.0
+	square_prefix[0] = 0.0
+	for i in range(1, sample_count + 1):
+		square_prefix[i] = square_prefix[i - 1] + samples[i - 1] * samples[i - 1]
+	
+	for i in range(max_lag):
+		var window : int = sample_count - i
+		var autocorrelation : float = 0.0
+		for j in range(window):
+			autocorrelation += samples[j] * samples[j + i]
+		
+		var sum_left : float = square_prefix[window]
+		var sum_right : float = square_prefix[sample_count] - square_prefix[i]
+		var energy : float = sum_left + sum_right
+		
+		if is_zero_approx(energy):
+			result[i] = 0.0
 		else:
-			result[tau] = d * tau / running_sum
-
+			result[i] = (2.0 * autocorrelation) / energy
+	
 	return result
 
+func parabolic_interpolation(values : PackedFloat32Array, index : int) -> float:
+	var left : float = values[index - 1]
+	var center : float = values[index]
+	var right : float = values[index + 1]
+	
+	var denominator : float = left - 2.0 * center + right
+
+	if is_zero_approx(denominator):
+		return float(index)
+
+	var delta : float = 0.5 * (left - right) / denominator
+	return float(index) + delta
+
+func key_maximum(values : PackedFloat32Array, threshold : float) -> float:
+	var value_count : int = values.size()
+	
+	var start_search_index : int = -1
+	for i in range(1, value_count): # Skip past first peak
+		if values[i] < 0.0 and values[i - 1] >= 0.0:
+			start_search_index = i
+			break
+	if start_search_index == -1: return -1.0
+	
+	var candidates : Array[int] = []
+	for i in range(start_search_index, value_count - 1):
+		if values[i] < 0.0:
+			continue
+		if values[i] >= values[i - 1] and values[i] > values[i + 1]:
+			candidates.append(i)
+	if candidates.is_empty(): return -1.0
+	
+	var highest_candidate : float = -INF
+	for candidate in candidates:
+		highest_candidate = max(highest_candidate, values[candidate])
+	
+	for candidate in candidates:
+		if values[candidate] >= threshold * highest_candidate:
+			return parabolic_interpolation(values, candidate)
+	
+	return -1.0
+
+
+
+
 func get_frequencies(
-	window_start : int, 
+	window_start : int,
 	window_end : int,
 	minimum_frequency : float = 20.0,
-	maximum_frequency : float = 8000.0,
+	maximum_frequency : float = 2000.0,
 	decimation_factor : int = 4,
-	cmndf_threshold : float = 0.3
+	peak_threshold : float = 0.85
 ) -> Array[float]:
-	var downsampled_bytes : PackedByteArray = downsample_stream(audio_stream.data, decimation_factor)
-	var decoded_stream : PackedFloat32Array = decode_stream(downsampled_bytes)
+	var downsampled_sample_rate : float = audio_stream.mix_rate / decimation_factor
 	
-	var frequencies : Array[float]
-	
-	var downsampled_sample_rate := audio_stream.mix_rate / decimation_factor
-	var window_length : int = window_end - window_start
+	var decoded_stream : PackedFloat32Array = decode_stream(audio_stream.data)
+	#var filtered_stream : PackedFloat32Array = low_pass_filter(decoded_stream, audio_stream.mix_rate, downsampled_sample_rate * 0.45)
+	var downsampled_stream : PackedFloat32Array = downsample(decoded_stream, decimation_factor)
 
-	var minimum_lag : int = int(downsampled_sample_rate / maximum_frequency)
-	var maximum_lag : int = int(downsampled_sample_rate / minimum_frequency)
-
+	var downsampled_start : int = window_start / decimation_factor
+	var downsampled_end : int = window_end / decimation_factor
+	var window_length : int = downsampled_end - downsampled_start
 	var hop_length : int = window_length / 2
-	var slice_count = (decoded_stream.size() - window_length) / hop_length + 1
+
+	var max_lag : int = min(int(downsampled_sample_rate / minimum_frequency), window_length - 1)
+
+	var results : Array[float] = []
+	var slice_count : int = (downsampled_stream.size() - window_length) / hop_length + 1
+
 	for i in range(slice_count):
 		var slice_start : int = i * hop_length
-		var slice : PackedFloat32Array = decoded_stream.slice(
-			slice_start,
-			slice_start + window_length
-		)
+		var slice : PackedFloat32Array = downsampled_stream.slice(slice_start, slice_start + window_length)
+		#var hann_slice : PackedFloat32Array = hann_window(slice)
+		var nsdf_slice : PackedFloat32Array = normalized_square_difference(slice, max_lag)
 		
-		var stream_cmndf : Array[float] = cmndf(
-			slice,
-			window_length,
-			minimum_lag,
-			maximum_lag
-		)
-		
-		var stream_flmut : int = first_local_minimum_under_threshold(
-			stream_cmndf,
-			cmndf_threshold
-		)
-		
-		if stream_flmut == -1:
-			frequencies.append(0.0)
-			continue
-		
-		var fractional_offset : float = parabolic_interpolation(
-			stream_cmndf[stream_flmut - 1],
-			stream_cmndf[stream_flmut],
-			stream_cmndf[stream_flmut + 1]
-		)
-		
-		var estimated_lag : float = minimum_lag + stream_flmut + fractional_offset
-		var estimated_frequency : float = (audio_stream.mix_rate / decimation_factor) / estimated_lag
-		frequencies.append(estimated_frequency)
+		var maximum : float = key_maximum(nsdf_slice, peak_threshold)
+		var frequency : float = downsampled_sample_rate / maximum
 
-	return frequencies
+		results.append(frequency)
+
+	return results
+
+func estimate_root_frequency(
+	window_start : int,
+	window_end : int,
+) -> float:
+	var frames : Array[float] = get_frequencies(window_start, window_end, 20.0, 2000.0, 4, 0.03)
+	frames.sort()
+	
+	var median_frequency : float = frames[frames.size() / 2]
+	return median_frequency

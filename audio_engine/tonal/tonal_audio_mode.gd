@@ -27,7 +27,7 @@ func build() -> void:
 	var chords : Array[Chord]
 	for i in range(7):
 		var chord : Chord = Chord.new()
-		print(scale.root_note(i).get_semitone(0).to_string_name())
+		#print(scale.root_note(i).get_semitone(0).to_string_name())
 		chords.append(chord)
 	
 	

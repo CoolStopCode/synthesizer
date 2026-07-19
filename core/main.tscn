@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c2cewwkdwuuhp" path="res://core/main.gd" id="1_3gdo0"]
 [ext_resource type="PackedScene" uid="uid://dgcq4s20e6ms4" path="res://interface/interface.tscn" id="2_csopv"]
 [ext_resource type="PackedScene" uid="uid://dcman427vswea" path="res://audio_engine/audio_engine.tscn" id="2_xa854"]
-[ext_resource type="AudioStream" uid="uid://6chipo0wpp3m" path="res://audio_engine/sampler/samples/vibraphone.wav" id="3_brq4u"]
 [ext_resource type="Script" uid="uid://ejtqccpgvur5" path="res://core/record_test.gd" id="3_kagtj"]
 [ext_resource type="Resource" uid="uid://ns3hmwga5j1a" path="res://audio_engine/tonal/bend_bindings/default.tres" id="3_rayt5"]
 [ext_resource type="PackedScene" uid="uid://dg5if6yvk0syd" path="res://core/tooltip/tooltip.tscn" id="3_xa854"]
@@ -11,7 +10,8 @@
 [ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio_engine/inspector/note.gd" id="4_rayt5"]
 [ext_resource type="Script" uid="uid://2st765u0dv45" path="res://audio_engine/inspector/key.gd" id="5_510js"]
 [ext_resource type="PackedScene" uid="uid://bypq5q5ltosea" path="res://core/stats/stats.tscn" id="5_xa854"]
-[ext_resource type="Script" uid="uid://dpy5c3x8xv6dq" path="res://audio_engine/sampler/sampler_sample.gd" id="6_rayt5"]
+[ext_resource type="AudioStream" uid="uid://ciu2gx76vthug" path="res://audio_engine/sampler/samples/C5.wav" id="6_510js"]
+[ext_resource type="Script" uid="uid://ci7n2q8htqlrk" path="res://audio_engine/sampler/sampler_sample.gd" id="6_rayt5"]
 
 [sub_resource type="Resource" id="Resource_jsmgm"]
 script = ExtResource("4_rayt5")
@@ -23,14 +23,14 @@ script = ExtResource("5_510js")
 root = SubResource("Resource_jsmgm")
 metadata/_custom_type_script = "uid://2st765u0dv45"
 
-[sub_resource type="Resource" id="Resource_xhu5d"]
+[sub_resource type="Resource" id="Resource_510js"]
 script = ExtResource("6_rayt5")
-audio_stream = ExtResource("3_brq4u")
-metadata/_custom_type_script = "uid://dpy5c3x8xv6dq"
+audio_stream = ExtResource("6_510js")
+metadata/_custom_type_script = "uid://ci7n2q8htqlrk"
 
 [sub_resource type="Resource" id="Resource_rayt5"]
 script = ExtResource("4_jsmgm")
-sample = SubResource("Resource_xhu5d")
+sample = SubResource("Resource_510js")
 key = SubResource("Resource_brq4u")
 bend_binding = ExtResource("3_rayt5")
 metadata/_custom_type_script = "uid://bug3qwv7jsriv"

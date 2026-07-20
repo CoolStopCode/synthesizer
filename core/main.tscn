@@ -10,28 +10,31 @@
 [ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio_engine/inspector/note.gd" id="4_rayt5"]
 [ext_resource type="Script" uid="uid://2st765u0dv45" path="res://audio_engine/inspector/key.gd" id="5_510js"]
 [ext_resource type="PackedScene" uid="uid://bypq5q5ltosea" path="res://core/stats/stats.tscn" id="5_xa854"]
-[ext_resource type="AudioStream" uid="uid://ciu2gx76vthug" path="res://audio_engine/sampler/samples/C5.wav" id="6_510js"]
+[ext_resource type="AudioStream" uid="uid://b6gbtfnlfbg0u" path="res://audio_engine/sampler/samples/guitar.wav" id="6_510js"]
 [ext_resource type="Script" uid="uid://ci7n2q8htqlrk" path="res://audio_engine/sampler/sampler_sample.gd" id="6_rayt5"]
 
-[sub_resource type="Resource" id="Resource_jsmgm"]
+[sub_resource type="Resource" id="Resource_rayt5"]
 script = ExtResource("4_rayt5")
 octave = 4
 metadata/_custom_type_script = "uid://wwstsyg87ftc"
 
-[sub_resource type="Resource" id="Resource_brq4u"]
+[sub_resource type="Resource" id="Resource_xhu5d"]
 script = ExtResource("5_510js")
-root = SubResource("Resource_jsmgm")
+root = SubResource("Resource_rayt5")
 metadata/_custom_type_script = "uid://2st765u0dv45"
 
-[sub_resource type="Resource" id="Resource_510js"]
+[sub_resource type="Resource" id="Resource_ntwa4"]
 script = ExtResource("6_rayt5")
 audio_stream = ExtResource("6_510js")
 metadata/_custom_type_script = "uid://ci7n2q8htqlrk"
 
-[sub_resource type="Resource" id="Resource_rayt5"]
+[sub_resource type="Resource" id="Resource_7ua4h"]
 script = ExtResource("4_jsmgm")
-sample = SubResource("Resource_510js")
-key = SubResource("Resource_brq4u")
+sample = SubResource("Resource_ntwa4")
+attack = 0.02
+release = 2.0
+allocation = 2
+key = SubResource("Resource_xhu5d")
 bend_binding = ExtResource("3_rayt5")
 metadata/_custom_type_script = "uid://bug3qwv7jsriv"
 
@@ -45,7 +48,7 @@ grow_vertical = 2
 script = ExtResource("1_3gdo0")
 
 [node name="AudioEngine" parent="." unique_id=1307014848 instance=ExtResource("2_xa854")]
-audio_mode = SubResource("Resource_rayt5")
+audio_mode = SubResource("Resource_7ua4h")
 
 [node name="record_test" type="Node" parent="." unique_id=1149961572]
 script = ExtResource("3_kagtj")

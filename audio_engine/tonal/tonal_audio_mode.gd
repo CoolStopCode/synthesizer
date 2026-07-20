@@ -25,7 +25,7 @@ func build() -> void:
 	scale = key.build_scale()
 	
 	var chords : Array[Chord]
-	for i in range(7):
+	for i in range(polyvoice_count):
 		var chord : Chord = Chord.new()
 		#print(scale.root_note(i).get_semitone(0).to_string_name())
 		chords.append(chord)

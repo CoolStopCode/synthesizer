@@ -17,7 +17,7 @@
 		#_states[m] = VisitState.UNVISITED
 #
 	## run DFS
-	#for m in modules:
+
 		#if _states[m] == VisitState.UNVISITED:
 			#_visit(m)
 #

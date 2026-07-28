@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://ejtqccpgvur5" path="res://core/record_test.gd" id="3_kagtj"]
 [ext_resource type="Resource" uid="uid://ns3hmwga5j1a" path="res://audio_engine/tonal/bend_bindings/default.tres" id="3_rayt5"]
 [ext_resource type="PackedScene" uid="uid://dg5if6yvk0syd" path="res://core/tooltip/tooltip.tscn" id="3_xa854"]
-[ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio_engine/inspector/note.gd" id="4_rayt5"]
-[ext_resource type="Script" uid="uid://2st765u0dv45" path="res://audio_engine/inspector/key.gd" id="5_510js"]
+[ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio_engine/tonal/inspector/note.gd" id="4_rayt5"]
+[ext_resource type="Script" uid="uid://2st765u0dv45" path="res://audio_engine/tonal/inspector/key.gd" id="5_510js"]
 [ext_resource type="PackedScene" uid="uid://bypq5q5ltosea" path="res://core/stats/stats.tscn" id="5_xa854"]
 [ext_resource type="Resource" uid="uid://bh08wlyd8apok" path="res://audio_engine/node/node_layouts/default_saw.tres" id="6_rayt5"]
 [ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio_engine/node/node_audio_mode.gd" id="7_510js"]
@@ -20,6 +20,7 @@ metadata/_custom_type_script = "uid://wwstsyg87ftc"
 [sub_resource type="Resource" id="Resource_jsmgm"]
 script = ExtResource("5_510js")
 root = SubResource("Resource_imgpf")
+mode = 1
 metadata/_custom_type_script = "uid://2st765u0dv45"
 
 [sub_resource type="Resource" id="Resource_brq4u"]
@@ -41,7 +42,6 @@ script = ExtResource("1_3gdo0")
 
 [node name="AudioEngine" parent="." unique_id=1307014848 instance=ExtResource("2_xa854")]
 audio_mode = SubResource("Resource_brq4u")
-master_volume = 2.0
 
 [node name="record_test" type="Node" parent="." unique_id=1149961572]
 script = ExtResource("3_kagtj")

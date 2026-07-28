@@ -38,23 +38,24 @@ func _on_gui_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT):
 		return
 
-	if event.pressed:
+	if event.pressed: # Press
 		is_pressed = true
 		button_down.emit()
 		tooltip_timer.start()
-		update_visuals()
-	else:
+	else: # Release
 		if is_pressed:
 			is_pressed = false
 			button_up.emit()
 			tooltip_timer.stop()
 			if is_hovered:
 				pressed.emit()
-			update_visuals()
 			Tooltip.clear_tooltip()
+	
+	update_visuals()
 
 func is_visually_pressed() -> bool:
-	return is_pressed and is_hovered
+	return is_pressed
+	# return is_pressed and is_hovered
 
 func update_visuals() -> void:
 	var is_pressed_visual := is_visually_pressed()
@@ -65,9 +66,8 @@ func update_visuals() -> void:
 	icon_node.self_modulate = interface_button_style.get_icon_color(is_pressed_visual)
 	
 	icon_node.texture = icon
-
+	
 	press_node.position.y = interface_button_style.get_offset(is_pressed_visual)
-
 
 func _on_tooltip_timer_timeout() -> void:
 	if is_pressed and not tooltip.is_empty():

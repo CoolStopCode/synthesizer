@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bnxjc1y2lkc86" path="res://audio_engine/audio_engine.gd" id="1_jwo0y"]
 [ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio_engine/audio_player.gd" id="2_iv6p0"]
-[ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://audio_engine/io/io_temp.gd" id="7_084pw"]
+[ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://audio_engine/io_temp.gd" id="7_084pw"]
 
 [node name="AudioEngine" type="Node" unique_id=1307014848 node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_jwo0y")

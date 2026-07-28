@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BendBinding" format=3 uid="uid://ns3hmwga5j1a"]
 
-[ext_resource type="Script" uid="uid://vmjvtatt83va" path="res://audio_engine/tonal/bend_behavior.gd" id="1_pfunl"]
-[ext_resource type="Script" uid="uid://cyyslm2d8sue8" path="res://audio_engine/tonal/bend_binding.gd" id="2_c8sm2"]
+[ext_resource type="Script" uid="uid://vmjvtatt83va" path="res://audio_engine/tonal/tonal_bend_behavior.gd" id="1_pfunl"]
+[ext_resource type="Script" uid="uid://cyyslm2d8sue8" path="res://audio_engine/tonal/tonal_bend_binding.gd" id="2_c8sm2"]
 
 [sub_resource type="Resource" id="Resource_s2qte"]
 script = ExtResource("1_pfunl")

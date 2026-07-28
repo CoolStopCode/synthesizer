@@ -32,16 +32,14 @@ func fade_amplitude_to(target: float, duration: float) -> void:
 	amplitude_fade_elapsed = 0.0
 	amplitude_fading = true
 
-func set_amplitude_to(value: float) -> void:
-	amplitude = value
-	amplitude_fading = false
-
 func update_amplitude_fade(delta: float) -> void:
 	amplitude_fade_elapsed += delta
-	var t : float = clamp(amplitude_fade_elapsed / amplitude_fade_duration, 0.0, 1.0)
-	amplitude = lerp(amplitude_fade_start, amplitude_fade_target, t)
-	if t >= 1.0:
+	var progress : float = amplitude_fade_elapsed / amplitude_fade_duration
+	if progress >= 1.0:
+		amplitude = amplitude_fade_target
 		amplitude_fading = false
+	else:
+		amplitude = lerp(amplitude_fade_start, amplitude_fade_target, progress)
 
 func bend_polyvoice(chord: Chord, chord_bend_duration : float) -> void:
 	for i in voices.size():
@@ -56,8 +54,7 @@ func bend_polyvoice(chord: Chord, chord_bend_duration : float) -> void:
 			voice.bend_amplitude_to(0.0, chord_bend_duration)
 
 func process(delta: float) -> float:
-	if amplitude_fading:
-		update_amplitude_fade(delta)
+	if amplitude_fading: update_amplitude_fade(delta)
 	
 	var sum : float = 0.0
 	

@@ -1,4 +1,4 @@
-class_name BendBehavior
+class_name Tonal_BendBehavior
 extends Resource
 
 enum Base {
@@ -15,7 +15,7 @@ enum Base {
 	SUS4
 }
 
-func get_base(scale : Scale, index: int) -> Chord:
+func get_base(scale : Scale, index: int) -> Chord: # Could be reworkded in the future for resource-based chord generation
 	match base:
 		Base.ROOT_NOTE:         return scale.root_note(index)
 		Base.TRIAD:             return scale.triad(index)

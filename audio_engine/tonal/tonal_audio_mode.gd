@@ -1,4 +1,4 @@
-## An abstract class that provides an AudioMode class with music theory and chord building structures.
+## An abstract class that provides an AudioMode class with music theory and chord building structures
 @abstract class_name TonalAudioMode
 extends AudioMode
 

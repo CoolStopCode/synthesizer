@@ -52,6 +52,7 @@ folder_colors={
 "res://audio_engine/sampler/": "pink",
 "res://audio_engine/tonal/": "green",
 "res://audio_engine/tonal/bend_bindings/": "orange",
+"res://audio_engine/tonal/chord_transformation/": "blue",
 "res://audio_engine/tonal/composition/": "red",
 "res://audio_engine/tonal/inspector/": "pink",
 "res://core/": "red",

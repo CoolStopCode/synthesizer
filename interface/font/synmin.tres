@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://d0kws5alkuuv1"]
+
+[ext_resource type="FontFile" uid="uid://drj2bic2q14ee" path="res://interface/font/Synmin.ttf" id="1_gwn5w"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_gwn5w")
+font_size = 5

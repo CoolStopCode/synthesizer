@@ -1,59 +1,59 @@
 [gd_resource type="Resource" script_class="Node_Layout" format=3 uid="uid://bh08wlyd8apok"]
 
-[ext_resource type="Script" uid="uid://cf2vraxdg7h7c" path="res://audio_engine/node/modules/node_module.gd" id="1_wh8eb"]
-[ext_resource type="Script" uid="uid://bpehx0osaw18w" path="res://audio_engine/node/node_connection.gd" id="2_2bacj"]
-[ext_resource type="Script" uid="uid://o6sgy334ngbl" path="res://audio_engine/node/modules/node_input_module.gd" id="3_2k5ra"]
-[ext_resource type="Script" uid="uid://dygpklgpthpwc" path="res://audio_engine/node/modules/node_oscillator_module.gd" id="4_8te4a"]
-[ext_resource type="Script" uid="uid://cxndkphpyeral" path="res://audio_engine/node/modules/node_filter_module.gd" id="5_2bacj"]
-[ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio_engine/node/modules/node_envelope_module.gd" id="5_5ljw0"]
-[ext_resource type="Script" uid="uid://bqo3y3g087w23" path="res://audio_engine/node/modules/node_arithmatic_module.gd" id="6_sc2n1"]
-[ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio_engine/node/modules/node_output_module.gd" id="7_1pav3"]
+[ext_resource type="Script" uid="uid://cf2vraxdg7h7c" path="res://audio_engine/node/modules/node_module.gd" id="1_k2ova"]
+[ext_resource type="Script" uid="uid://bpehx0osaw18w" path="res://audio_engine/node/node_connection.gd" id="2_ijm46"]
+[ext_resource type="Script" uid="uid://o6sgy334ngbl" path="res://audio_engine/node/modules/node_input_module.gd" id="3_3i8x5"]
+[ext_resource type="Script" uid="uid://dygpklgpthpwc" path="res://audio_engine/node/modules/node_oscillator_module.gd" id="4_gd6ss"]
+[ext_resource type="Script" uid="uid://cxndkphpyeral" path="res://audio_engine/node/modules/node_filter_module.gd" id="5_1565g"]
+[ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio_engine/node/modules/node_envelope_module.gd" id="6_v8emk"]
+[ext_resource type="Script" uid="uid://bqo3y3g087w23" path="res://audio_engine/node/modules/node_arithmatic_module.gd" id="7_456vm"]
+[ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio_engine/node/modules/node_output_module.gd" id="8_e4oxx"]
 [ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio_engine/node/node_layout.gd" id="8_n64g3"]
 
 [sub_resource type="Resource" id="Resource_2bacj"]
-script = ExtResource("2_2bacj")
+script = ExtResource("2_ijm46")
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_wh8eb"]
-script = ExtResource("2_2bacj")
+script = ExtResource("2_ijm46")
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_gpvx1"]
-script = ExtResource("3_2k5ra")
+script = ExtResource("3_3i8x5")
 frequency = SubResource("Resource_wh8eb")
 active = SubResource("Resource_2bacj")
 metadata/_custom_type_script = "uid://o6sgy334ngbl"
 
 [sub_resource type="Resource" id="Resource_8te4a"]
-script = ExtResource("2_2bacj")
+script = ExtResource("2_ijm46")
 name = "osc out"
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_h3tjm"]
-script = ExtResource("4_8te4a")
+script = ExtResource("4_gd6ss")
 frequency = SubResource("Resource_wh8eb")
 sample = SubResource("Resource_8te4a")
 waveform = 2
 metadata/_custom_type_script = "uid://dygpklgpthpwc"
 
 [sub_resource type="Resource" id="Resource_yyg6e"]
-script = ExtResource("2_2bacj")
+script = ExtResource("2_ijm46")
 name = "filter out"
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_x36ov"]
-script = ExtResource("5_2bacj")
+script = ExtResource("5_1565g")
 audio_in = SubResource("Resource_8te4a")
 audio_out = SubResource("Resource_yyg6e")
 cutoff = 8000.0
 metadata/_custom_type_script = "uid://cxndkphpyeral"
 
 [sub_resource type="Resource" id="Resource_5ljw0"]
-script = ExtResource("2_2bacj")
+script = ExtResource("2_ijm46")
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_2sr80"]
-script = ExtResource("5_5ljw0")
+script = ExtResource("6_v8emk")
 gate = SubResource("Resource_2bacj")
 level = SubResource("Resource_5ljw0")
 attack = 0.05
@@ -65,11 +65,11 @@ release_curve = 0.7
 metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
 
 [sub_resource type="Resource" id="Resource_2k5ra"]
-script = ExtResource("2_2bacj")
+script = ExtResource("2_ijm46")
 metadata/_custom_type_script = "uid://bpehx0osaw18w"
 
 [sub_resource type="Resource" id="Resource_iq7ir"]
-script = ExtResource("6_sc2n1")
+script = ExtResource("7_456vm")
 operand_a = SubResource("Resource_yyg6e")
 operand_b = SubResource("Resource_5ljw0")
 result = SubResource("Resource_2k5ra")
@@ -77,11 +77,11 @@ operation = 2
 metadata/_custom_type_script = "uid://bqo3y3g087w23"
 
 [sub_resource type="Resource" id="Resource_nndlu"]
-script = ExtResource("7_1pav3")
+script = ExtResource("8_e4oxx")
 sample = SubResource("Resource_2k5ra")
 metadata/_custom_type_script = "uid://dd87xat4ign3w"
 
 [resource]
 script = ExtResource("8_n64g3")
-modules = Array[ExtResource("1_wh8eb")]([SubResource("Resource_gpvx1"), SubResource("Resource_h3tjm"), SubResource("Resource_x36ov"), SubResource("Resource_2sr80"), SubResource("Resource_iq7ir"), SubResource("Resource_nndlu")])
+modules = Array[ExtResource("1_k2ova")]([SubResource("Resource_gpvx1"), SubResource("Resource_h3tjm"), SubResource("Resource_x36ov"), SubResource("Resource_2sr80"), SubResource("Resource_iq7ir"), SubResource("Resource_nndlu")])
 metadata/_custom_type_script = "uid://fcmxj7baxak3"

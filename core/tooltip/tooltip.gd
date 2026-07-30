@@ -1,7 +1,7 @@
 class_name Tooltip
 extends Control
 
-@export var label : RichTextLabel
+@export var label : Label
 static var instance: Tooltip
 
 func _ready() -> void:
@@ -15,11 +15,10 @@ static func create_tooltip(_text: String, _position: Vector2) -> void:
 	instance.label.text = _text
 	
 
-	var width := instance.label.get_content_width()
-	var height := instance.label.get_content_height()
-	instance.size = Vector2(width + 1, height + 1)
+	var minimum_size : Vector2 = instance.label.get_minimum_size()
+	instance.size = minimum_size + Vector2(1, 1)
 	
-	instance.position.x = _position.x - (width + 2) / 2
+	instance.position.x = _position.x - (minimum_size.x / 2) - 1
 	instance.position.y = _position.y
 	
 	instance.show()

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://40yhhcx1dqql"
-path="res://.godot/imported/medium_pixuf.ttf-32d5ef9d064a1ac7c536e8a20b351b61.fontdata"
+uid="uid://dh1sa0lf0fsoq"
+path="res://.godot/imported/Synmed.ttf-b3a5a149ff207b8b837a65ba28150116.fontdata"
 
 [deps]
 
-source_file="res://interface/font/medium_pixuf.ttf"
-dest_files=["res://.godot/imported/medium_pixuf.ttf-32d5ef9d064a1ac7c536e8a20b351b61.fontdata"]
+source_file="res://interface/font/Synmed.ttf"
+dest_files=["res://.godot/imported/Synmed.ttf-b3a5a149ff207b8b837a65ba28150116.fontdata"]
 
 [params]
 

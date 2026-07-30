@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://dg5if6yvk0syd"]
 
 [ext_resource type="Script" uid="uid://bqkmotk6tmcw6" path="res://core/tooltip/tooltip.gd" id="1_sco1k"]
-[ext_resource type="Theme" uid="uid://38g50n3elypy" path="res://interface/font/richtext_large.tres" id="2_3jxky"]
+[ext_resource type="LabelSettings" uid="uid://cowybiqytq2j8" path="res://interface/font/synmed.tres" id="2_3jxky"]
 
 [node name="tooltip" type="Control" unique_id=560822963 node_paths=PackedStringArray("label")]
-custom_minimum_size = Vector2(5, 7)
 custom_maximum_size = Vector2(61, 31)
 layout_mode = 3
 anchors_preset = 0
@@ -12,7 +11,7 @@ offset_right = 61.0
 offset_bottom = 31.0
 mouse_filter = 2
 script = ExtResource("1_sco1k")
-label = NodePath("RichTextLabel")
+label = NodePath("Label")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=733935594]
 layout_mode = 1
@@ -24,19 +23,16 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0627451, 0.078431375, 0.12156863, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=571460181]
+[node name="Label" type="Label" parent="." unique_id=1928202620]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1.0
 offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("2_3jxky")
-text = "Tooltip"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-tab_size = 2
+text = "hello"
+label_settings = ExtResource("2_3jxky")

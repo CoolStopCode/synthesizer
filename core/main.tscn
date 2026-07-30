@@ -20,7 +20,6 @@ metadata/_custom_type_script = "uid://wwstsyg87ftc"
 [sub_resource type="Resource" id="Resource_jsmgm"]
 script = ExtResource("5_510js")
 root = SubResource("Resource_imgpf")
-mode = 1
 metadata/_custom_type_script = "uid://2st765u0dv45"
 
 [sub_resource type="Resource" id="Resource_brq4u"]

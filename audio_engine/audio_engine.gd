@@ -12,7 +12,7 @@ extends Node
 @export var mix_rate : int = 44100
 @export var buffer_length : float = 0.03
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void: # Generates chunks of audio processes per frame
 	audio_player.fill_audio_buffer(audio_mode)
 
 func _ready() -> void:
@@ -21,11 +21,8 @@ func _ready() -> void:
 func build() -> void:
 	audio_mode.build()
 
-func key_pressed(index: int) -> void:
-	audio_mode.key_pressed(index)
-
-func key_released(index: int) -> void:
-	audio_mode.key_released(index)
+func key_pressed(index: int)  -> void: audio_mode.key_pressed(index)
+func key_released(index: int) -> void: audio_mode.key_released(index)
 
 func bend_changed(bend : Vector3i) -> void:
 	audio_mode.bend = bend

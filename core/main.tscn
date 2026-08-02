@@ -25,6 +25,7 @@ metadata/_custom_type_script = "uid://2st765u0dv45"
 [sub_resource type="Resource" id="Resource_brq4u"]
 script = ExtResource("7_510js")
 layout = ExtResource("6_rayt5")
+voice_count = 4
 allocation = 2
 key = SubResource("Resource_jsmgm")
 bend_binding = ExtResource("3_rayt5")

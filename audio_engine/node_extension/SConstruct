@@ -37,6 +37,14 @@ elif env["platform"] == "ios":
             "bin/libsynth.{}.{}.a".format(env["platform"], env["target"]),
             source=sources,
         )
+elif env["platform"] == "android":
+    # Generates uniform names like: bin/libsynth.android.template_debug.arm64.so
+    library = env.SharedLibrary(
+        "bin/libsynth.{}.{}.{}.so".format(
+            env["platform"], env["target"], env["arch"]
+        ),
+        source=sources,
+    )
 else:
     library = env.SharedLibrary(
         "bin/libsynth{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),

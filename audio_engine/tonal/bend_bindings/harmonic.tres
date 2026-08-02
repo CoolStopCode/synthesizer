@@ -13,22 +13,6 @@ script = ExtResource("1_om6qg")
 degrees = Array[int]([0, 2, 4])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
-[sub_resource type="Resource" id="Resource_rayt5"]
-script = ExtResource("3_uksfa")
-semitones = -12
-metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
-
-[sub_resource type="Resource" id="Resource_6hfrw"]
-script = ExtResource("1_om6qg")
-degrees = Array[int]([0, 2, 4])
-transformations = Array[ExtResource("2_uksfa")]([SubResource("Resource_rayt5")])
-metadata/_custom_type_script = "uid://vmjvtatt83va"
-
-[sub_resource type="Resource" id="Resource_ximew"]
-script = ExtResource("1_om6qg")
-degrees = Array[int]([0])
-metadata/_custom_type_script = "uid://vmjvtatt83va"
-
 [sub_resource type="Resource" id="Resource_uksfa"]
 script = ExtResource("3_uksfa")
 semitones = 12
@@ -40,9 +24,9 @@ degrees = Array[int]([0, 2, 4])
 transformations = Array[ExtResource("2_uksfa")]([SubResource("Resource_uksfa")])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
-[sub_resource type="Resource" id="Resource_p0eo5"]
+[sub_resource type="Resource" id="Resource_ximew"]
 script = ExtResource("1_om6qg")
-degrees = Array[int]([0, 3, 5])
+degrees = Array[int]([0])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
 [sub_resource type="Resource" id="Resource_vdyda"]
@@ -56,6 +40,17 @@ degrees = Array[int]([0, 2, 4])
 transformations = Array[ExtResource("2_uksfa")]([SubResource("Resource_vdyda")])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
+[sub_resource type="Resource" id="Resource_rayt5"]
+script = ExtResource("3_uksfa")
+semitones = -12
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_6hfrw"]
+script = ExtResource("1_om6qg")
+degrees = Array[int]([0, 2, 4])
+transformations = Array[ExtResource("2_uksfa")]([SubResource("Resource_rayt5")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
 [sub_resource type="Resource" id="Resource_tkua8"]
 script = ExtResource("5_tkua8")
 metadata/_custom_type_script = "uid://cygkchfsc4bg2"
@@ -64,6 +59,11 @@ metadata/_custom_type_script = "uid://cygkchfsc4bg2"
 script = ExtResource("1_om6qg")
 degrees = Array[int]([0, 2, 4])
 transformations = Array[ExtResource("2_uksfa")]([SubResource("Resource_tkua8")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_p0eo5"]
+script = ExtResource("1_om6qg")
+degrees = Array[int]([0, 3, 5])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
 [sub_resource type="Resource" id="Resource_pbmga"]

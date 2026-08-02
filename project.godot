@@ -55,6 +55,7 @@ folder_colors={
 "res://audio_engine/tonal/chord_transformation/": "blue",
 "res://audio_engine/tonal/composition/": "red",
 "res://audio_engine/tonal/inspector/": "pink",
+"res://concept/": "yellow",
 "res://core/": "red",
 "res://interface/": "teal"
 }

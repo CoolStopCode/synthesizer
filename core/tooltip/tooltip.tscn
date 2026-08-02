@@ -34,5 +34,5 @@ offset_right = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "input"
+text = "sample"
 label_settings = ExtResource("2_3jxky")

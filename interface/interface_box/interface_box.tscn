@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cr8dyy3kdsspj"]
+
+[ext_resource type="Script" uid="uid://dnwbo1ileixvk" path="res://interface/interface_box/interface_box.gd" id="1_1px41"]
+[ext_resource type="Texture2D" uid="uid://dednbl6gohlea" path="res://interface/interface_button/fill.png" id="3_g27gg"]
+[ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://interface/interface_button/outline.png" id="4_eussn"]
+
+[node name="interface_box" type="Control" unique_id=1490079550 node_paths=PackedStringArray("fill_node", "outline_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1px41")
+fill_node = NodePath("fill")
+outline_node = NodePath("outline")
+
+[node name="fill" type="NinePatchRect" parent="." unique_id=1542294576]
+self_modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_g27gg")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="outline" type="NinePatchRect" parent="." unique_id=2105932530]
+self_modulate = Color(0, 1, 0, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_eussn")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6

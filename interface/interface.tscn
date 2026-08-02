@@ -171,5 +171,3 @@ grow_vertical = 2
 icon = ExtResource("8_gu1y1")
 interface_button_style = ExtResource("10_13l2x")
 tooltip = "Settings"
-
-[connection signal="pressed" from="sidebar/right/interface_button" to="." method="_on_interface_button_pressed"]

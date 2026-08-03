@@ -12,8 +12,6 @@
 [ext_resource type="Resource" uid="uid://bh08wlyd8apok" path="res://audio_engine/node/node_layouts/default_saw.tres" id="6_rayt5"]
 [ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio_engine/node/node_audio_mode.gd" id="7_510js"]
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://core/test/io_test.gd" id="9_ntwa4"]
-[ext_resource type="PackedScene" uid="uid://cr8dyy3kdsspj" path="res://interface/interface_box/interface_box.tscn" id="10_7ua4h"]
-[ext_resource type="Script" uid="uid://bck0rs22po71l" path="res://interface/interface_box/interface_box_style.gd" id="11_ntwa4"]
 
 [sub_resource type="Resource" id="Resource_imgpf"]
 script = ExtResource("4_rayt5")
@@ -33,13 +31,6 @@ allocation = 2
 key = SubResource("Resource_jsmgm")
 bend_binding = ExtResource("3_rayt5")
 metadata/_custom_type_script = "uid://bvkaggdqljufp"
-
-[sub_resource type="Resource" id="Resource_rayt5"]
-script = ExtResource("11_ntwa4")
-light_color = Color(0.9832615, 0.9832615, 0.9832615, 1)
-medium_color = Color(0.7647059, 0.8117647, 0, 1)
-dark_color = Color(0, 0.47058824, 0.70980394, 1)
-metadata/_custom_type_script = "uid://bck0rs22po71l"
 
 [node name="main" type="Control" unique_id=721855015]
 layout_mode = 3
@@ -66,16 +57,11 @@ audio_engine = NodePath("../AudioEngine")
 
 [node name="interface" parent="interface" unique_id=1389423360 instance=ExtResource("2_csopv")]
 
-[node name="interface_box" parent="interface" unique_id=1490079550 instance=ExtResource("10_7ua4h")]
-offset_left = 27.0
-offset_top = 40.0
-offset_right = -53.0
-offset_bottom = -12.0
-interface_box_style = SubResource("Resource_rayt5")
-
 [node name="info" type="CanvasLayer" parent="." unique_id=1274727178]
 
 [node name="tooltip" parent="info" unique_id=560822963 instance=ExtResource("3_xa854")]
+visible = false
 
 [node name="stats" parent="info" unique_id=1913815094 instance=ExtResource("5_xa854")]
+visible = false
 offset_right = 97.0

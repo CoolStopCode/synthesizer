@@ -1,5 +1,5 @@
-class_name ModularOscillatorModule
-extends ModularModule
+class_name ModularAudioOscillatorModule
+extends ModularAudioModule
 
 enum Waveform {
 	SINE,
@@ -10,10 +10,10 @@ enum Waveform {
 
 
 @export_category("inputs") 
-@export var frequency : ModularConnection
+@export var frequency : ModularAudioConnection
 
 @export_category("outputs")
-@export var sample : ModularConnection
+@export var sample : ModularAudioConnection
 
 @export_group("states")
 @export var phase : float
@@ -24,10 +24,10 @@ enum Waveform {
 func get_type() -> int:
 	return 2
 
-func get_inputs() -> Array[ModularConnection]:
+func get_inputs() -> Array[ModularAudioConnection]:
 	return [frequency]
 
-func get_outputs() -> Array[ModularConnection]:
+func get_outputs() -> Array[ModularAudioConnection]:
 	return [sample]
 
 func get_states() -> Array[float]:

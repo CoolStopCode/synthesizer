@@ -64,7 +64,12 @@ folder_colors={
 "res://editor/sampler/": "blue",
 "res://editor/tonal/": "purple",
 "res://interface/": "teal",
-"res://interface/art/": "yellow"
+"res://interface/art/": "red",
+"res://interface/font/": "orange",
+"res://interface/icon/": "yellow",
+"res://interface/interface_box/": "green",
+"res://interface/interface_button/": "green",
+"res://interface/styles/": "blue"
 }
 
 [input]

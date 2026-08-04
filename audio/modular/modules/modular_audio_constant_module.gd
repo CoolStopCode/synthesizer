@@ -1,10 +1,10 @@
-class_name ModularConstantModule
-extends ModularModule
+class_name ModularAudioConstantModule
+extends ModularAudioModule
 
 @export_category("inputs") 
 
 @export_category("outputs")
-@export var output : ModularConnection
+@export var output : ModularAudioConnection
 
 @export_group("states")
 
@@ -14,10 +14,10 @@ extends ModularModule
 func get_type() -> int:
 	return -1
 
-func get_inputs() -> Array[ModularConnection]:
+func get_inputs() -> Array[ModularAudioConnection]:
 	return []
 
-func get_outputs() -> Array[ModularConnection]:
+func get_outputs() -> Array[ModularAudioConnection]:
 	return [output]
 
 func get_states() -> Array[float]:

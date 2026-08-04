@@ -1,4 +1,4 @@
-class_name ModularConnection
+class_name ModularAudioConnection
 extends Resource
 
 @export var name : String

@@ -1,4 +1,4 @@
-#include "modular_voice.h"
+#include "modular_audio_voice.h"
 #include <cmath>
 #include <godot_cpp/variant/utility_functions.hpp>
 
@@ -6,18 +6,18 @@
 // ===================   GODOT BINDINGS   ==================
 // =========================================================
 
-void ModularVoice::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("set_frequency", "frequency"),  &ModularVoice::set_frequency);
-    ClassDB::bind_method(D_METHOD("get_frequency"),  &ModularVoice::get_frequency);
-    ClassDB::bind_method(D_METHOD("set_active", "active"),  &ModularVoice::set_active);
-    ClassDB::bind_method(D_METHOD("get_active"),  &ModularVoice::get_active);
-    ClassDB::bind_method(D_METHOD("set_amplitude", "amplitude"),  &ModularVoice::set_amplitude);
-    ClassDB::bind_method(D_METHOD("get_amplitude"),  &ModularVoice::get_amplitude);
+void ModularAudioVoice::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("set_frequency", "frequency"),  &ModularAudioVoice::set_frequency);
+    ClassDB::bind_method(D_METHOD("get_frequency"),  &ModularAudioVoice::get_frequency);
+    ClassDB::bind_method(D_METHOD("set_active", "active"),  &ModularAudioVoice::set_active);
+    ClassDB::bind_method(D_METHOD("get_active"),  &ModularAudioVoice::get_active);
+    ClassDB::bind_method(D_METHOD("set_amplitude", "amplitude"),  &ModularAudioVoice::set_amplitude);
+    ClassDB::bind_method(D_METHOD("get_amplitude"),  &ModularAudioVoice::get_amplitude);
 
-    ClassDB::bind_method(D_METHOD("bend_frequency_to", "target", "duration"), &ModularVoice::bend_frequency_to);
-    ClassDB::bind_method(D_METHOD("bend_amplitude_to", "target", "duration"), &ModularVoice::bend_amplitude_to);
+    ClassDB::bind_method(D_METHOD("bend_frequency_to", "target", "duration"), &ModularAudioVoice::bend_frequency_to);
+    ClassDB::bind_method(D_METHOD("bend_amplitude_to", "target", "duration"), &ModularAudioVoice::bend_amplitude_to);
 
-    ClassDB::bind_method(D_METHOD("process", "delta"), &ModularVoice::process);
+    ClassDB::bind_method(D_METHOD("process", "delta"), &ModularAudioVoice::process);
     ClassDB::bind_method(D_METHOD(
         "set_layout",
         "types",
@@ -27,7 +27,7 @@ void ModularVoice::_bind_methods() {
         "parameter_offsets",
         "input_routes",
         "initial_memory_data"
-    ), &ModularVoice::set_layout);
+    ), &ModularAudioVoice::set_layout);
 
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "frequency"), "set_frequency", "get_frequency");
     ADD_PROPERTY(PropertyInfo(Variant::BOOL, "active"), "set_active", "get_active");
@@ -38,42 +38,42 @@ void ModularVoice::_bind_methods() {
 // ==================   SETTERS/GETTERS   ==================
 // =========================================================
 
-void ModularVoice::set_frequency(const double frequency_p) { frequency = frequency_p; frequency_target = frequency_p; }
-double ModularVoice::get_frequency() { return frequency; }
-void ModularVoice::bend_frequency_to(const double target, const double duration) {
+void ModularAudioVoice::set_frequency(const double frequency_p) { frequency = frequency_p; frequency_target = frequency_p; }
+double ModularAudioVoice::get_frequency() { return frequency; }
+void ModularAudioVoice::bend_frequency_to(const double target, const double duration) {
 	frequency_start = frequency;
 	frequency_target = target;
 	frequency_bend_duration = duration;
 	frequency_bend_elapsed = 0.0;
 }
 
-void ModularVoice::set_amplitude(const double amplitude_p) { amplitude = amplitude_p; amplitude_target = amplitude_p; }
-double ModularVoice::get_amplitude() { return amplitude; }
-void ModularVoice::bend_amplitude_to(const double target, const double duration) {
+void ModularAudioVoice::set_amplitude(const double amplitude_p) { amplitude = amplitude_p; amplitude_target = amplitude_p; }
+double ModularAudioVoice::get_amplitude() { return amplitude; }
+void ModularAudioVoice::bend_amplitude_to(const double target, const double duration) {
 	amplitude_start = amplitude;
 	amplitude_target = target;
 	amplitude_bend_duration = duration;
 	amplitude_bend_elapsed = 0.0;
 }
 
-void ModularVoice::set_active(const bool active_p) { active = active_p; }
-bool ModularVoice::get_active() { return active; }
+void ModularAudioVoice::set_active(const bool active_p) { active = active_p; }
+bool ModularAudioVoice::get_active() { return active; }
 
-std::array<ModularVoice::ModuleFunction, ModularVoice::MODULE_TYPE_COUNT> ModularVoice::dispatch_table = {
-    ModularVoice::process_input_module,
-    ModularVoice::process_output_module,
+std::array<ModularAudioVoice::ModuleFunction, ModularAudioVoice::MODULE_TYPE_COUNT> ModularAudioVoice::dispatch_table = {
+    ModularAudioVoice::process_input_module,
+    ModularAudioVoice::process_output_module,
 
-    ModularVoice::process_oscillator_module,
-    ModularVoice::process_noise_module,
+    ModularAudioVoice::process_oscillator_module,
+    ModularAudioVoice::process_noise_module,
 
-    ModularVoice::process_envelope_module,
-    ModularVoice::process_filter_module,
-    ModularVoice::process_bitcrusher_module,
+    ModularAudioVoice::process_envelope_module,
+    ModularAudioVoice::process_filter_module,
+    ModularAudioVoice::process_bitcrusher_module,
 
-    ModularVoice::process_arithmetic_module,
+    ModularAudioVoice::process_arithmetic_module,
 };
 
-void ModularVoice::set_layout(
+void ModularAudioVoice::set_layout(
     const PackedByteArray &types_p, // Array of ModuleType
 
     const PackedInt32Array &input_offsets_p,
@@ -113,7 +113,7 @@ void ModularVoice::set_layout(
 // ======================   PROCESS   ======================
 // =========================================================
 
-double ModularVoice::process(double delta) {
+double ModularAudioVoice::process(double delta) {
     if (frequency_bend_elapsed < frequency_bend_duration) {
         frequency_bend_elapsed += delta;
         double t = CLAMP(frequency_bend_elapsed / frequency_bend_duration, 0.0, 1.0);
@@ -147,7 +147,7 @@ double ModularVoice::process(double delta) {
 // ======================   HELPERS   ======================
 // =========================================================
 
-inline double ModularVoice::read_input(
+inline double ModularAudioVoice::read_input(
     uint32_t index,
     double* memory_data,
     const uint32_t* input_routes
@@ -155,14 +155,14 @@ inline double ModularVoice::read_input(
     return memory_data[input_routes[index]];
 }
 
-inline double ModularVoice::read_memory(
+inline double ModularAudioVoice::read_memory(
     uint32_t index,
     double* memory_data
 ) {
     return memory_data[index];
 }
 
-inline void ModularVoice::write_memory(
+inline void ModularAudioVoice::write_memory(
     uint32_t index,
     double value,
     double* memory_data
@@ -170,23 +170,23 @@ inline void ModularVoice::write_memory(
     memory_data[index] = value;
 }
 
-inline int ModularVoice::double_to_int(double double_p) {
+inline int ModularAudioVoice::double_to_int(double double_p) {
     return static_cast<int>(std::round(double_p));
 }
 
-inline bool ModularVoice::double_to_bool(double double_p) {
+inline bool ModularAudioVoice::double_to_bool(double double_p) {
     return double_p != 0.0;
 }
 
-inline double ModularVoice::bool_to_double(bool double_p) {
+inline double ModularAudioVoice::bool_to_double(bool double_p) {
     return double_p ? 1.0 : 0.0;
 }
 
-inline double ModularVoice::int_to_double(int double_p) {
+inline double ModularAudioVoice::int_to_double(int double_p) {
     return static_cast<double>(double_p);
 }
 
-inline double ModularVoice::lerp(double a, double b, double t) {
+inline double ModularAudioVoice::lerp(double a, double b, double t) {
     return a + (b - a) * t;
 }
 
@@ -198,7 +198,7 @@ inline double ModularVoice::lerp(double a, double b, double t) {
 //
 // =========================================================
 
-void ModularVoice::process_input_module(
+void ModularAudioVoice::process_input_module(
     const Module &m,
     double* memory_data,
     const uint32_t* input_routes,
@@ -217,7 +217,7 @@ void ModularVoice::process_input_module(
 //
 // =====================================================================
 
-void ModularVoice::process_output_module(
+void ModularAudioVoice::process_output_module(
     const Module &m,
     double* memory_data,
     const uint32_t* input_routes,
@@ -238,7 +238,7 @@ void ModularVoice::process_output_module(
 // 
 // =========================================================
 
-void ModularVoice::process_oscillator_module(
+void ModularAudioVoice::process_oscillator_module(
     const Module &m,
     double* memory_data,
     const uint32_t* input_routes,
@@ -282,7 +282,7 @@ void ModularVoice::process_oscillator_module(
 // 
 // =========================================================
 
-void ModularVoice::process_noise_module(
+void ModularAudioVoice::process_noise_module(
     const Module &m,
     double* memory_data,
     const uint32_t* input_routes,
@@ -312,7 +312,7 @@ void ModularVoice::process_noise_module(
 //
 // =====================================================================
 
-void ModularVoice::process_envelope_module(
+void ModularAudioVoice::process_envelope_module(
     const Module &m,
     double* memory_data,
     const uint32_t* input_routes,
@@ -431,7 +431,7 @@ void ModularVoice::process_envelope_module(
 //
 // =====================================================================
 
-void ModularVoice::process_filter_module(
+void ModularAudioVoice::process_filter_module(
     const Module &m,
     double* memory_data,
     const uint32_t* input_routes,
@@ -486,7 +486,7 @@ void ModularVoice::process_filter_module(
 //
 // =====================================================================
 
-void ModularVoice::process_bitcrusher_module(
+void ModularAudioVoice::process_bitcrusher_module(
     const Module &m,
     double* memory_data,
     const uint32_t* input_routes,
@@ -505,7 +505,7 @@ void ModularVoice::process_bitcrusher_module(
 //
 // =====================================================================
 
-void ModularVoice::process_arithmetic_module(
+void ModularAudioVoice::process_arithmetic_module(
     const Module &m,
     double* memory_data,
     const uint32_t* input_routes,

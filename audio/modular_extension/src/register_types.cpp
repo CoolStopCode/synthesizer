@@ -4,7 +4,7 @@
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
 
-#include "modular_voice.h"
+#include "modular_audio_voice.h"
 
 using namespace godot;
 
@@ -13,7 +13,7 @@ void initialize_voice(ModuleInitializationLevel p_level) {
 		return;
 	}
 	
-	ClassDB::register_class<ModularVoice>();
+	ClassDB::register_class<ModularAudioVoice>();
 }
 
 void uninitialize_voice(ModuleInitializationLevel p_level) {

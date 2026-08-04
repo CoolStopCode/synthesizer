@@ -1,4 +1,4 @@
-class_name SamplerSample
+class_name SamplerAudioSample
 extends Resource
 
 @export var audio_stream : AudioStreamWAV

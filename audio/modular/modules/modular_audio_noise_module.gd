@@ -1,5 +1,5 @@
-class_name ModularNoiseModule
-extends ModularModule
+class_name ModularAudioNoiseModule
+extends ModularAudioModule
 
 enum Spectrum {
 	WHITE,
@@ -11,7 +11,7 @@ enum Spectrum {
 @export_category("inputs") 
 
 @export_category("outputs")
-@export var sample : ModularConnection
+@export var sample : ModularAudioConnection
 
 @export_group("states")
 
@@ -21,10 +21,10 @@ enum Spectrum {
 func get_type() -> int:
 	return 3
 
-func get_inputs() -> Array[ModularConnection]:
+func get_inputs() -> Array[ModularAudioConnection]:
 	return []
 
-func get_outputs() -> Array[ModularConnection]:
+func get_outputs() -> Array[ModularAudioConnection]:
 	return [sample]
 
 func get_states() -> Array[float]:

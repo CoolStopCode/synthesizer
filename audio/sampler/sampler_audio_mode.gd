@@ -1,13 +1,13 @@
 class_name SamplerAudioMode
 extends TonalAudioMode
 
-@export var sample : SamplerSample
+@export var sample : SamplerAudioSample
 @export var sample_amplitude = 1.0
 @export var attack : float
 @export var release : float
 
-var active_legato : SamplerPolyvoice
-var polyvoices : Array[SamplerPolyvoice]
+var active_legato : SamplerAudioPolyvoice
+var polyvoices : Array[SamplerAudioPolyvoice]
 
 func process(delta : float) -> float:
 	var sum: float = 0.0
@@ -23,11 +23,11 @@ func build() -> void:
 	var base_frequency := sample.estimate_root_frequency(48000,49000)
 	
 	for i in range(polyvoice_count):
-		var polyvoice := SamplerPolyvoice.new()
+		var polyvoice := SamplerAudioPolyvoice.new()
 		polyvoice.attack = attack
 		polyvoice.release = release
 		for j in range(voice_count):
-			var voice := SamplerVoice.new()
+			var voice := SamplerAudioVoice.new()
 			voice.base_frequency = base_frequency
 			voice.sample_rate = sample.audio_stream.mix_rate
 			voice.audio_stream = decoded_stream

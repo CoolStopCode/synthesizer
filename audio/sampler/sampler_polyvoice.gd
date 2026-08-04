@@ -1,7 +1,7 @@
-class_name SamplerPolyvoice
+class_name SamplerAudioPolyvoice
 extends RefCounted
 
-var voices : Array[SamplerVoice]
+var voices : Array[SamplerAudioVoice]
 var active : bool
 
 var attack : float = 0.1
@@ -71,7 +71,7 @@ func update_transition_fade(delta: float) -> void:
 
 func bend_polyvoice(chord: Chord, chord_bend_duration : float) -> void:
 	for i in voices.size():
-		var voice : SamplerVoice = voices[i]
+		var voice : SamplerAudioVoice = voices[i]
 		var has_note := i < chord.semitones.size()
 		
 		if has_note:

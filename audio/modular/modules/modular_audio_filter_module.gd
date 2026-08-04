@@ -1,5 +1,5 @@
-class_name ModularFilterModule
-extends ModularModule
+class_name ModularAudioFilterModule
+extends ModularAudioModule
 
 enum FilterMode {
 	LOWPASS,
@@ -8,10 +8,10 @@ enum FilterMode {
 }
 
 @export_category("inputs") 
-@export var audio_in : ModularConnection
+@export var audio_in : ModularAudioConnection
 
 @export_category("outputs")
-@export var audio_out : ModularConnection
+@export var audio_out : ModularAudioConnection
 
 @export_group("states")
 @export var lowpass : float
@@ -26,10 +26,10 @@ enum FilterMode {
 func get_type() -> int:
 	return 5
 
-func get_inputs() -> Array[ModularConnection]:
+func get_inputs() -> Array[ModularAudioConnection]:
 	return [audio_in]
 
-func get_outputs() -> Array[ModularConnection]:
+func get_outputs() -> Array[ModularAudioConnection]:
 	return [audio_out]
 
 func get_states() -> Array[float]:

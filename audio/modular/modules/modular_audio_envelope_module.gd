@@ -1,5 +1,5 @@
-class_name ModularEnvelopeModule
-extends ModularModule
+class_name ModularAudioEnvelopeModule
+extends ModularAudioModule
 
 enum Stage {
 	IDLE,
@@ -10,10 +10,10 @@ enum Stage {
 }
 
 @export_category("inputs")
-@export var gate : ModularConnection
+@export var gate : ModularAudioConnection
 
 @export_category("outputs")
-@export var level : ModularConnection
+@export var level : ModularAudioConnection
 
 @export_group("states")
 @export var current_level : float
@@ -35,10 +35,10 @@ enum Stage {
 func get_type() -> int:
 	return 4
 
-func get_inputs() -> Array[ModularConnection]:
+func get_inputs() -> Array[ModularAudioConnection]:
 	return [gate]
 
-func get_outputs() -> Array[ModularConnection]:
+func get_outputs() -> Array[ModularAudioConnection]:
 	return [level]
 
 func get_states() -> Array[float]:

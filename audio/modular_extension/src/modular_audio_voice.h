@@ -12,8 +12,8 @@
 
 using namespace godot;
 
-class ModularVoice : public RefCounted {
-    GDCLASS(ModularVoice, RefCounted)
+class ModularAudioVoice : public RefCounted {
+    GDCLASS(ModularAudioVoice, RefCounted)
 
 public:
     enum ModuleType : uint8_t {
@@ -76,8 +76,8 @@ private:
     static std::array<ModuleFunction, MODULE_TYPE_COUNT> dispatch_table;
 
 public:
-    ModularVoice() = default; // Constructor
-    ~ModularVoice() = default; // Destructor
+    ModularAudioVoice() = default; // Constructor
+    ~ModularAudioVoice() = default; // Destructor
 
     void set_frequency(const double frequency_p); // memory_data[1]
     double get_frequency();

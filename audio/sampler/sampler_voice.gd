@@ -1,4 +1,4 @@
-class_name SamplerVoice
+class_name SamplerAudioVoice
 extends RefCounted
 
 var audio_stream : PackedFloat32Array

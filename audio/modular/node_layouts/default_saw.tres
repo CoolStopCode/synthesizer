@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="ModularLayout" format=3 uid="uid://bh08wlyd8apok"]
+[gd_resource type="Resource" script_class="ModularAudioLayout" format=3 uid="uid://bh08wlyd8apok"]
 
-[ext_resource type="Script" uid="uid://cf2vraxdg7h7c" path="res://audio/modular/modules/modular_module.gd" id="1_jycx2"]
-[ext_resource type="Script" uid="uid://bpehx0osaw18w" path="res://audio/modular/modular_connection.gd" id="2_ayg77"]
-[ext_resource type="Script" uid="uid://o6sgy334ngbl" path="res://audio/modular/modules/modular_input_module.gd" id="3_oqcjn"]
-[ext_resource type="Script" uid="uid://dygpklgpthpwc" path="res://audio/modular/modules/modular_oscillator_module.gd" id="4_qlrfv"]
-[ext_resource type="Script" uid="uid://cxndkphpyeral" path="res://audio/modular/modules/modular_filter_module.gd" id="5_iwyt5"]
-[ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio/modular/modules/modular_envelope_module.gd" id="6_0em4g"]
-[ext_resource type="Script" uid="uid://bqo3y3g087w23" path="res://audio/modular/modules/modular_arithmatic_module.gd" id="7_m74jw"]
-[ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio/modular/modules/modular_output_module.gd" id="8_e1ygx"]
-[ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio/modular/modular_layout.gd" id="9_lk1tt"]
+[ext_resource type="Script" uid="uid://cf2vraxdg7h7c" path="res://audio/modular/modules/modular_audio_module.gd" id="1_ivnsa"]
+[ext_resource type="Script" uid="uid://bpehx0osaw18w" path="res://audio/modular/modular_audio_connection.gd" id="2_ayg77"]
+[ext_resource type="Script" uid="uid://o6sgy334ngbl" path="res://audio/modular/modules/modular_audio_input_module.gd" id="3_oqcjn"]
+[ext_resource type="Script" uid="uid://dygpklgpthpwc" path="res://audio/modular/modules/modular_audio_oscillator_module.gd" id="4_qlrfv"]
+[ext_resource type="Script" uid="uid://cxndkphpyeral" path="res://audio/modular/modules/modular_audio_filter_module.gd" id="5_iwyt5"]
+[ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio/modular/modules/modular_audio_envelope_module.gd" id="6_0em4g"]
+[ext_resource type="Script" uid="uid://bqo3y3g087w23" path="res://audio/modular/modules/modular_audio_arithmatic_module.gd" id="7_m74jw"]
+[ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio/modular/modules/modular_audio_output_module.gd" id="8_e1ygx"]
+[ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio/modular/modular_audio_layout.gd" id="9_lk1tt"]
 
 [sub_resource type="Resource" id="Resource_2bacj"]
 script = ExtResource("2_ayg77")
@@ -83,5 +83,5 @@ metadata/_custom_type_script = "uid://dd87xat4ign3w"
 
 [resource]
 script = ExtResource("9_lk1tt")
-modules = Array[ExtResource("1_jycx2")]([SubResource("Resource_gpvx1"), SubResource("Resource_h3tjm"), SubResource("Resource_x36ov"), SubResource("Resource_2sr80"), SubResource("Resource_iq7ir"), SubResource("Resource_nndlu")])
+modules = Array[ExtResource("1_ivnsa")]([SubResource("Resource_gpvx1"), SubResource("Resource_h3tjm"), SubResource("Resource_x36ov"), SubResource("Resource_2sr80"), SubResource("Resource_iq7ir"), SubResource("Resource_nndlu")])
 metadata/_custom_type_script = "uid://fcmxj7baxak3"

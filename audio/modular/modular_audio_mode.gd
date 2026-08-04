@@ -1,9 +1,9 @@
 class_name ModularAudioMode
 extends TonalAudioMode
 
-@export var layout : ModularLayout
+@export var layout : ModularAudioLayout
 
-var polyvoices: Array[ModularPolyvoice] = []
+var polyvoices: Array[ModularAudioPolyvoice] = []
 
 ## Simply processes each polyvoice and returns the sum of their outpus
 func process(delta : float) -> float:

@@ -1,7 +1,7 @@
-class_name ModularPolyvoice
+class_name ModularAudioPolyvoice
 extends RefCounted
 
-var voices : Array[ModularVoice]
+var voices : Array[ModularAudioVoice]
 var active : bool
 
 var amplitude : float = 1.0
@@ -43,7 +43,7 @@ func update_amplitude_fade(delta: float) -> void:
 
 func bend_polyvoice(chord: Chord, chord_bend_duration : float) -> void:
 	for i in voices.size():
-		var voice : ModularVoice = voices[i]
+		var voice : ModularAudioVoice = voices[i]
 		var has_note := i < chord.semitones.size()
 		
 		if has_note:

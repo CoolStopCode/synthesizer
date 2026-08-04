@@ -1,5 +1,5 @@
-class_name ModularArithmaticModule
-extends ModularModule
+class_name ModularAudioArithmaticModule
+extends ModularAudioModule
 
 enum Operation {
 	ADD,
@@ -10,11 +10,11 @@ enum Operation {
 
 
 @export_category("inputs") 
-@export var operand_a : ModularConnection
-@export var operand_b : ModularConnection
+@export var operand_a : ModularAudioConnection
+@export var operand_b : ModularAudioConnection
 
 @export_category("outputs")
-@export var result : ModularConnection
+@export var result : ModularAudioConnection
 
 @export_group("states")
 
@@ -24,10 +24,10 @@ enum Operation {
 func get_type() -> int:
 	return 7
 
-func get_inputs() -> Array[ModularConnection]:
+func get_inputs() -> Array[ModularAudioConnection]:
 	return [operand_a, operand_b]
 
-func get_outputs() -> Array[ModularConnection]:
+func get_outputs() -> Array[ModularAudioConnection]:
 	return [result]
 
 func get_states() -> Array[float]:

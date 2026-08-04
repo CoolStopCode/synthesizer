@@ -1,11 +1,11 @@
-class_name ModularLayout
+class_name ModularAudioLayout
 extends Resource
 
-@export var modules : Array[ModularModule]
+@export var modules : Array[ModularAudioModule]
 
 ## Converts itself to a the C++ GDExtension object, which can be processed much faster
-func to_voice() -> ModularVoice:
-	var voice := ModularVoice.new()
+func to_voice() -> ModularAudioVoice:
+	var voice := ModularAudioVoice.new()
 	
 	var types : PackedByteArray # The types of each module, e.g. Oscillator, Filter 
 	
@@ -45,7 +45,7 @@ func to_voice() -> ModularVoice:
 		parameter_offsets.append(initial_memory_data.size())
 		initial_memory_data.append_array(parameter_data)
 	
-	var connection_map : Dictionary[ModularConnection, int] # ModularConnection -> index in memory data
+	var connection_map : Dictionary[ModularAudioConnection, int] # ModularAudioConnection -> index in memory data
 	for module in modules: # Outputs
 		if module == null: continue
 		
@@ -95,12 +95,12 @@ func to_voice() -> ModularVoice:
 
 func to_polyvoice(
 	voice_count : int
-) -> ModularPolyvoice:
-	var polyvoice := ModularPolyvoice.new()
+) -> ModularAudioPolyvoice:
+	var polyvoice := ModularAudioPolyvoice.new()
 	polyvoice.voices = []
 	
 	for i in range(voice_count):
-		var new_voice : ModularVoice = to_voice()
+		var new_voice : ModularAudioVoice = to_voice()
 		polyvoice.voices.append(new_voice)
 	
 	return polyvoice
@@ -108,8 +108,8 @@ func to_polyvoice(
 func to_polyvoices(
 	polyvoice_count : int,
 	voice_count : int
-) -> Array[ModularPolyvoice]:
-	var polyvoices : Array[ModularPolyvoice]
+) -> Array[ModularAudioPolyvoice]:
+	var polyvoices : Array[ModularAudioPolyvoice]
 	for i in range(polyvoice_count):
 		polyvoices.append(to_polyvoice(voice_count))
 	return polyvoices

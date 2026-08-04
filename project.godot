@@ -42,23 +42,29 @@ window/vsync/vsync_mode=0
 [file_customization]
 
 folder_colors={
-"res://audio_engine/": "purple",
-"res://audio_engine/analog/": "teal",
-"res://audio_engine/drums/": "orange",
-"res://audio_engine/modular/": "yellow",
-"res://audio_engine/modular/modules/": "green",
-"res://audio_engine/modular/node_layouts/": "orange",
-"res://audio_engine/modular_extension/": "yellow",
-"res://audio_engine/sampler/": "pink",
-"res://audio_engine/tonal/": "green",
-"res://audio_engine/tonal/bend_bindings/": "orange",
-"res://audio_engine/tonal/chord_transformation/": "blue",
-"res://audio_engine/tonal/composition/": "red",
-"res://audio_engine/tonal/inspector/": "pink",
-"res://concept/": "yellow",
-"res://core/": "red",
+"res://audio/": "purple",
+"res://audio/analog/": "red",
+"res://audio/drums/": "yellow",
+"res://audio/modular/": "green",
+"res://audio/modular/modules/": "green",
+"res://audio/modular/node_layouts/": "teal",
+"res://audio/modular_extension/": "green",
+"res://audio/sampler/": "blue",
+"res://audio/sampler/samples/": "teal",
+"res://audio/tonal/": "purple",
+"res://audio/tonal/bend_bindings/": "pink",
+"res://audio/tonal/chord_transformation/": "blue",
+"res://audio/tonal/composition/": "red",
+"res://audio/tonal/inspector/": "red",
+"res://core/": "gray",
+"res://editor/": "pink",
+"res://editor/analog/": "red",
+"res://editor/drums/": "yellow",
+"res://editor/modular/": "green",
+"res://editor/sampler/": "blue",
+"res://editor/tonal/": "purple",
 "res://interface/": "teal",
-"res://interface/interface_modes/modular_interface_mode/": "purple"
+"res://interface/art/": "yellow"
 }
 
 [input]

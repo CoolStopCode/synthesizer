@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="Tonal_BendBinding" format=3 uid="uid://b34n6atb8dcqh"]
+
+[ext_resource type="Script" uid="uid://vmjvtatt83va" path="res://audio/tonal/tonal_bend_behavior.gd" id="1_om6qg"]
+[ext_resource type="Script" uid="uid://c76xcxl64e8kr" path="res://audio/tonal/chord_transformation/chord_transformation.gd" id="2_uksfa"]
+[ext_resource type="Script" uid="uid://cyyslm2d8sue8" path="res://audio/tonal/tonal_bend_binding.gd" id="3_2ewe7"]
+[ext_resource type="Script" uid="uid://dxx6f3ilk2sfr" path="res://audio/tonal/chord_transformation/transposition_chord_transformation.gd" id="3_uksfa"]
+[ext_resource type="Script" uid="uid://iuk71y1w08v3" path="res://audio/tonal/chord_transformation/inversion_chord_transformation.gd" id="4_vdyda"]
+[ext_resource type="Script" uid="uid://cygkchfsc4bg2" path="res://audio/tonal/chord_transformation/parallelization_chord_transformation.gd" id="5_tkua8"]
+[ext_resource type="Script" uid="uid://dswfjxu20hcjr" path="res://audio/tonal/chord_transformation/drop_chord_transformation.gd" id="6_pbmga"]
+
+[sub_resource type="Resource" id="Resource_67o5f"]
+script = ExtResource("1_om6qg")
+degrees = Array[int]([0, 2, 4])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_uksfa"]
+script = ExtResource("3_uksfa")
+semitones = 12
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_2ewe7"]
+script = ExtResource("1_om6qg")
+degrees = Array[int]([0, 2, 4])
+transformations = Array[ExtResource("2_uksfa")]([SubResource("Resource_uksfa")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_ximew"]
+script = ExtResource("1_om6qg")
+degrees = Array[int]([0])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_vdyda"]
+script = ExtResource("4_vdyda")
+amount = 1
+metadata/_custom_type_script = "uid://iuk71y1w08v3"
+
+[sub_resource type="Resource" id="Resource_1iesh"]
+script = ExtResource("1_om6qg")
+degrees = Array[int]([0, 2, 4])
+transformations = Array[ExtResource("2_uksfa")]([SubResource("Resource_vdyda")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_rayt5"]
+script = ExtResource("3_uksfa")
+semitones = -12
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_6hfrw"]
+script = ExtResource("1_om6qg")
+degrees = Array[int]([0, 2, 4])
+transformations = Array[ExtResource("2_uksfa")]([SubResource("Resource_rayt5")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_tkua8"]
+script = ExtResource("5_tkua8")
+metadata/_custom_type_script = "uid://cygkchfsc4bg2"
+
+[sub_resource type="Resource" id="Resource_b3rbs"]
+script = ExtResource("1_om6qg")
+degrees = Array[int]([0, 2, 4])
+transformations = Array[ExtResource("2_uksfa")]([SubResource("Resource_tkua8")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_p0eo5"]
+script = ExtResource("1_om6qg")
+degrees = Array[int]([0, 3, 5])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_pbmga"]
+script = ExtResource("6_pbmga")
+metadata/_custom_type_script = "uid://dswfjxu20hcjr"
+
+[sub_resource type="Resource" id="Resource_bg858"]
+script = ExtResource("1_om6qg")
+degrees = Array[int]([0, 2, 4, 6])
+transformations = Array[ExtResource("2_uksfa")]([SubResource("Resource_pbmga")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[resource]
+script = ExtResource("3_2ewe7")
+bend_binding = Dictionary[Vector3i, ExtResource("1_om6qg")]({
+Vector3i(0, 0, 0): SubResource("Resource_67o5f"),
+Vector3i(0, 0, 1): SubResource("Resource_2ewe7"),
+Vector3i(0, 1, 0): SubResource("Resource_ximew"),
+Vector3i(0, 1, 1): SubResource("Resource_1iesh"),
+Vector3i(1, 0, 0): SubResource("Resource_6hfrw"),
+Vector3i(1, 0, 1): SubResource("Resource_b3rbs"),
+Vector3i(1, 1, 0): SubResource("Resource_p0eo5"),
+Vector3i(1, 1, 1): SubResource("Resource_bg858")
+})
+metadata/_custom_type_script = "uid://cyyslm2d8sue8"

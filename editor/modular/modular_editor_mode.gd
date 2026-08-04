@@ -1,0 +1,2 @@
+class_name ModularEditorMode
+extends EditorMode

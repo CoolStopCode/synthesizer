@@ -1,0 +1,231 @@
+[gd_resource type="Resource" script_class="Node_Layout" format=3 uid="uid://dc6e3lk1jh1ne"]
+
+[ext_resource type="Script" uid="uid://cf2vraxdg7h7c" path="res://audio/modular/modules/modular_module.gd" id="1_6bc58"]
+[ext_resource type="Script" uid="uid://bpehx0osaw18w" path="res://audio/modular/modular_connection.gd" id="2_3hlwa"]
+[ext_resource type="Script" uid="uid://fcmxj7baxak3" path="res://audio/modular/modular_layout.gd" id="2_43y4u"]
+[ext_resource type="Script" uid="uid://o6sgy334ngbl" path="res://audio/modular/modules/modular_input_module.gd" id="2_dxcrk"]
+[ext_resource type="Script" uid="uid://dygpklgpthpwc" path="res://audio/modular/modules/modular_oscillator_module.gd" id="3_00ahx"]
+[ext_resource type="Script" uid="uid://dd87xat4ign3w" path="res://audio/modular/modules/modular_output_module.gd" id="4_1kjgo"]
+[ext_resource type="Script" uid="uid://bdg7g06rox480" path="res://audio/modular/modules/modular_constant_module.gd" id="4_841op"]
+[ext_resource type="Script" uid="uid://bqo3y3g087w23" path="res://audio/modular/modules/modular_arithmatic_module.gd" id="5_urbqt"]
+[ext_resource type="Script" uid="uid://djyl4qpu8nq3c" path="res://audio/modular/modules/modular_envelope_module.gd" id="7_06aow"]
+[ext_resource type="Script" uid="uid://cxndkphpyeral" path="res://audio/modular/modules/modular_filter_module.gd" id="8_urbqt"]
+
+[sub_resource type="Resource" id="Resource_7qrb4"]
+script = ExtResource("2_3hlwa")
+name = "ACTIVE"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_o1vw1"]
+script = ExtResource("2_3hlwa")
+name = "FREQUENCY"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_j3pel"]
+script = ExtResource("2_dxcrk")
+frequency = SubResource("Resource_o1vw1")
+active = SubResource("Resource_7qrb4")
+metadata/_custom_type_script = "uid://o6sgy334ngbl"
+
+[sub_resource type="Resource" id="Resource_h3tjm"]
+script = ExtResource("2_3hlwa")
+name = "sine_detune"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_6l36a"]
+script = ExtResource("4_841op")
+output = SubResource("Resource_h3tjm")
+metadata/_custom_type_script = "uid://bdg7g06rox480"
+
+[sub_resource type="Resource" id="Resource_qws1d"]
+script = ExtResource("2_3hlwa")
+name = "sine_frequency"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_qk1u2"]
+script = ExtResource("5_urbqt")
+operand_a = SubResource("Resource_o1vw1")
+operand_b = SubResource("Resource_h3tjm")
+result = SubResource("Resource_qws1d")
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_fnsft"]
+script = ExtResource("2_3hlwa")
+name = "triangle1_detune"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_8o7pc"]
+script = ExtResource("4_841op")
+output = SubResource("Resource_fnsft")
+value = 0.1
+metadata/_custom_type_script = "uid://bdg7g06rox480"
+
+[sub_resource type="Resource" id="Resource_uukuc"]
+script = ExtResource("2_3hlwa")
+name = "triangle1_frequency"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_kv3d2"]
+script = ExtResource("5_urbqt")
+operand_a = SubResource("Resource_o1vw1")
+operand_b = SubResource("Resource_fnsft")
+result = SubResource("Resource_uukuc")
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_t8aab"]
+script = ExtResource("2_3hlwa")
+name = "triangle2_detune"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_ies8m"]
+script = ExtResource("4_841op")
+output = SubResource("Resource_t8aab")
+value = -0.1
+metadata/_custom_type_script = "uid://bdg7g06rox480"
+
+[sub_resource type="Resource" id="Resource_rpqi8"]
+script = ExtResource("2_3hlwa")
+name = "triangle2_frequency"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_kkcsv"]
+script = ExtResource("5_urbqt")
+operand_a = SubResource("Resource_o1vw1")
+operand_b = SubResource("Resource_t8aab")
+result = SubResource("Resource_rpqi8")
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_w6ilt"]
+script = ExtResource("2_3hlwa")
+name = "sine_output"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_n8wo2"]
+script = ExtResource("3_00ahx")
+frequency = SubResource("Resource_qws1d")
+sample = SubResource("Resource_w6ilt")
+waveform = 2
+metadata/_custom_type_script = "uid://dygpklgpthpwc"
+
+[sub_resource type="Resource" id="Resource_44qbg"]
+script = ExtResource("2_3hlwa")
+name = "triangle1_output"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_5t1r3"]
+script = ExtResource("3_00ahx")
+frequency = SubResource("Resource_uukuc")
+sample = SubResource("Resource_44qbg")
+waveform = 1
+metadata/_custom_type_script = "uid://dygpklgpthpwc"
+
+[sub_resource type="Resource" id="Resource_agic6"]
+script = ExtResource("2_3hlwa")
+name = "triangle2_output"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_cenje"]
+script = ExtResource("3_00ahx")
+frequency = SubResource("Resource_rpqi8")
+sample = SubResource("Resource_agic6")
+waveform = 3
+metadata/_custom_type_script = "uid://dygpklgpthpwc"
+
+[sub_resource type="Resource" id="Resource_xat5p"]
+script = ExtResource("2_3hlwa")
+name = "add1"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_nndlu"]
+script = ExtResource("5_urbqt")
+operand_a = SubResource("Resource_w6ilt")
+operand_b = SubResource("Resource_44qbg")
+result = SubResource("Resource_xat5p")
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_26hvv"]
+script = ExtResource("2_3hlwa")
+name = "harmonic1_sum"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_h8yrx"]
+script = ExtResource("5_urbqt")
+operand_a = SubResource("Resource_xat5p")
+operand_b = SubResource("Resource_agic6")
+result = SubResource("Resource_26hvv")
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_n6ggg"]
+script = ExtResource("2_3hlwa")
+name = "three"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_cdmb6"]
+script = ExtResource("4_841op")
+output = SubResource("Resource_n6ggg")
+value = 1.0
+metadata/_custom_type_script = "uid://bdg7g06rox480"
+
+[sub_resource type="Resource" id="Resource_vgstu"]
+script = ExtResource("2_3hlwa")
+name = "harmonic1_average"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_k2vjg"]
+script = ExtResource("5_urbqt")
+operand_a = SubResource("Resource_26hvv")
+operand_b = SubResource("Resource_n6ggg")
+result = SubResource("Resource_vgstu")
+operation = 3
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_utdjr"]
+script = ExtResource("2_3hlwa")
+name = "harmonic1_evelope_out"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_csgd5"]
+script = ExtResource("7_06aow")
+gate = SubResource("Resource_7qrb4")
+level = SubResource("Resource_utdjr")
+attack = 0.005
+decay = 5.0
+release = 2.0
+decay_curve = 0.8
+release_curve = 0.7
+metadata/_custom_type_script = "uid://djyl4qpu8nq3c"
+
+[sub_resource type="Resource" id="Resource_rn20q"]
+script = ExtResource("2_3hlwa")
+name = "harmonic1_out"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_447kd"]
+script = ExtResource("5_urbqt")
+operand_a = SubResource("Resource_vgstu")
+operand_b = SubResource("Resource_utdjr")
+result = SubResource("Resource_rn20q")
+operation = 2
+metadata/_custom_type_script = "uid://bqo3y3g087w23"
+
+[sub_resource type="Resource" id="Resource_urbqt"]
+script = ExtResource("2_3hlwa")
+name = "OUTPUT"
+metadata/_custom_type_script = "uid://bpehx0osaw18w"
+
+[sub_resource type="Resource" id="Resource_841op"]
+script = ExtResource("8_urbqt")
+audio_in = SubResource("Resource_rn20q")
+audio_out = SubResource("Resource_urbqt")
+cutoff = 2000.0
+metadata/_custom_type_script = "uid://cxndkphpyeral"
+
+[sub_resource type="Resource" id="Resource_s03hb"]
+script = ExtResource("4_1kjgo")
+sample = SubResource("Resource_urbqt")
+metadata/_custom_type_script = "uid://dd87xat4ign3w"
+
+[resource]
+script = ExtResource("2_43y4u")
+modules = Array[ExtResource("1_6bc58")]([SubResource("Resource_j3pel"), null, SubResource("Resource_6l36a"), SubResource("Resource_qk1u2"), SubResource("Resource_8o7pc"), SubResource("Resource_kv3d2"), SubResource("Resource_ies8m"), SubResource("Resource_kkcsv"), null, SubResource("Resource_n8wo2"), SubResource("Resource_5t1r3"), SubResource("Resource_cenje"), null, SubResource("Resource_nndlu"), SubResource("Resource_h8yrx"), SubResource("Resource_cdmb6"), SubResource("Resource_k2vjg"), null, SubResource("Resource_csgd5"), SubResource("Resource_447kd"), SubResource("Resource_841op"), SubResource("Resource_s03hb"), null, null, null, null, null])
+metadata/_custom_type_script = "uid://fcmxj7baxak3"

@@ -1,0 +1,39 @@
+class_name Modular_FilterModule
+extends Modular_Module
+
+enum FilterMode {
+	LOWPASS,
+	BANDPASS,
+	HIGHPASS
+}
+
+@export_category("inputs") 
+@export var audio_in : Modular_Connection
+
+@export_category("outputs")
+@export var audio_out : Modular_Connection
+
+@export_group("states")
+@export var lowpass : float
+@export var bandpass : float
+
+
+@export_category("parameters")
+@export var cutoff : float
+@export var resonance: float
+@export var filter_mode: FilterMode
+
+func get_type() -> int:
+	return 5
+
+func get_inputs() -> Array[Modular_Connection]:
+	return [audio_in]
+
+func get_outputs() -> Array[Modular_Connection]:
+	return [audio_out]
+
+func get_states() -> Array[float]:
+	return [lowpass, bandpass]
+
+func get_parameters() -> Array[float]:
+	return [cutoff, resonance, float(filter_mode)]

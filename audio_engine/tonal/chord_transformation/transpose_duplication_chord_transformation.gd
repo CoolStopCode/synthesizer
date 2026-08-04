@@ -9,6 +9,6 @@ func apply(chord : Chord) -> void:
 	for semitone in chord.semitones:
 		var new := Semitone.new()
 		new.semitone = semitone.semitone + semitones
-		duplicates.append(duplicate)
+		duplicates.append(new)
 
 	chord.semitones.append_array(duplicates)

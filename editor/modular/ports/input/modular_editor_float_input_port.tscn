@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c5y1a4u7pyner"]
+
+[ext_resource type="Script" uid="uid://blprh6otaw0h1" path="res://editor/modular/ports/input/modular_editor_float_input_port.gd" id="1_wwb7m"]
+[ext_resource type="Texture2D" uid="uid://dpfsg14ortyla" path="res://editor/modular/ports/input/input_outline.png" id="2_0toxb"]
+[ext_resource type="Texture2D" uid="uid://bde3jidt2viwb" path="res://editor/modular/ports/input/float_input_port.png" id="2_l50u4"]
+
+[node name="modular_editor_float_input_port" type="Control" unique_id=690055534 node_paths=PackedStringArray("outline", "port")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_wwb7m")
+outline = NodePath("outline")
+port = NodePath("port")
+
+[node name="outline" type="TextureRect" parent="." unique_id=1349887676]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0toxb")
+
+[node name="port" type="TextureRect" parent="." unique_id=1330594761]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l50u4")

@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://dma58ukp803ln"]
 
 [ext_resource type="Script" uid="uid://mltqyqor0lr0" path="res://editor/modular/modular_editor_mode.gd" id="1_xaffx"]
+[ext_resource type="Texture2D" uid="uid://lqwjs5iu888g" path="res://editor/modular/background.png" id="2_i5pqe"]
+[ext_resource type="PackedScene" uid="uid://cl0ho64bpmm3k" path="res://editor/modular/modules/input/modular_editor_input_module.tscn" id="3_6dr8x"]
 
 [node name="node_interface_mode" type="Control" unique_id=1176748786]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -80.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xaffx")
@@ -16,10 +21,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -32,4 +33,41 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.6117647, 1, 1)
 
-[node name="modules" type="Node" parent="." unique_id=1559859477]
+[node name="Parallax2D" type="Parallax2D" parent="workspace" unique_id=1245090353]
+scroll_offset = Vector2(0, 8)
+repeat_size = Vector2(96, 0)
+autoscroll = Vector2(-30, 0)
+repeat_times = 99999
+ignore_camera_scroll = true
+
+[node name="TextureRect" type="TextureRect" parent="workspace/Parallax2D" unique_id=1340448467]
+offset_right = 88.0
+offset_bottom = 88.0
+texture = ExtResource("2_i5pqe")
+
+[node name="modules" type="Control" parent="workspace" unique_id=713797222]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="modular_editor_input_module" parent="workspace/modules" unique_id=539617064 instance=ExtResource("3_6dr8x")]
+layout_mode = 0
+offset_top = 8.0
+offset_bottom = 52.0
+
+[node name="scrollbar" type="HScrollBar" parent="." unique_id=1093139201]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="topbar" type="Control" parent="." unique_id=346954901]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2

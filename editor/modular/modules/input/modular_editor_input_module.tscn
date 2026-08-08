@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://cl0ho64bpmm3k"]
+
+[ext_resource type="Script" uid="uid://dl1s0tulxragg" path="res://editor/modular/modules/input/modular_editor_input_module.gd" id="1_3h4vm"]
+[ext_resource type="Texture2D" uid="uid://blapydde6n6h4" path="res://editor/modular/modules/input/background.png" id="2_mt65y"]
+[ext_resource type="Texture2D" uid="uid://dbp0m4ev7wbwg" path="res://editor/modular/modules/input/white_key.png" id="3_2hsq7"]
+[ext_resource type="Texture2D" uid="uid://dh4flip42fxv0" path="res://editor/modular/modules/input/black_key.png" id="4_csn4p"]
+[ext_resource type="Texture2D" uid="uid://er1l2gpu5ymx" path="res://interface/icon/5x4/sound.png" id="5_8tkyb"]
+[ext_resource type="Texture2D" uid="uid://t03h4to2fjir" path="res://interface/icon/5x4/button.png" id="6_b1ol4"]
+[ext_resource type="PackedScene" uid="uid://ci3j0j46kf824" path="res://editor/modular/ports/output/modular_editor_float_output_port.tscn" id="7_b1ol4"]
+[ext_resource type="PackedScene" uid="uid://j30api05fdq" path="res://editor/modular/ports/output/modular_editor_bool_output_port.tscn" id="8_7cpb5"]
+
+[node name="modular_editor_input_module" type="Control" unique_id=539617064]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 44.0
+script = ExtResource("1_3h4vm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2048303460]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mt65y")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="keys" type="Control" parent="." unique_id=513411308]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="white1" type="TextureRect" parent="keys" unique_id=1625128651]
+layout_mode = 1
+offset_left = 1.0
+offset_right = 24.0
+offset_bottom = 7.0
+texture = ExtResource("3_2hsq7")
+
+[node name="white2" type="TextureRect" parent="keys" unique_id=633634165]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 7.0
+offset_right = 24.0
+offset_bottom = 14.0
+texture = ExtResource("3_2hsq7")
+
+[node name="white3" type="TextureRect" parent="keys" unique_id=1685925181]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 14.0
+offset_right = 24.0
+offset_bottom = 21.0
+texture = ExtResource("3_2hsq7")
+
+[node name="white4" type="TextureRect" parent="keys" unique_id=38300754]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 21.0
+offset_right = 24.0
+offset_bottom = 28.0
+texture = ExtResource("3_2hsq7")
+
+[node name="black1" type="TextureRect" parent="keys" unique_id=654614437]
+layout_mode = 1
+offset_top = 3.0
+offset_right = 15.0
+offset_bottom = 8.0
+texture = ExtResource("4_csn4p")
+
+[node name="black2" type="TextureRect" parent="keys" unique_id=544229556]
+layout_mode = 1
+offset_top = 10.0
+offset_right = 15.0
+offset_bottom = 15.0
+texture = ExtResource("4_csn4p")
+
+[node name="black3" type="TextureRect" parent="keys" unique_id=938698717]
+layout_mode = 1
+offset_top = 17.0
+offset_right = 15.0
+offset_bottom = 22.0
+texture = ExtResource("4_csn4p")
+
+[node name="frequency_icon" type="TextureRect" parent="." unique_id=9375674]
+self_modulate = Color(0.7764706, 0.8117647, 0.8, 1)
+layout_mode = 1
+offset_left = 5.0
+offset_top = 30.0
+offset_right = 10.0
+offset_bottom = 34.0
+texture = ExtResource("5_8tkyb")
+
+[node name="frequency_port" parent="." unique_id=940905405 instance=ExtResource("7_b1ol4")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 28.0
+offset_right = 20.0
+offset_bottom = 36.0
+
+[node name="pressed_icon" type="TextureRect" parent="." unique_id=519447845]
+self_modulate = Color(0.7764706, 0.8117647, 0.8, 1)
+layout_mode = 1
+offset_left = 5.0
+offset_top = 37.0
+offset_right = 10.0
+offset_bottom = 41.0
+texture = ExtResource("6_b1ol4")
+
+[node name="pressed_port" parent="." unique_id=745013693 instance=ExtResource("8_7cpb5")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 35.0
+offset_right = 20.0
+offset_bottom = 43.0

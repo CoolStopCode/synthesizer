@@ -1,0 +1,2 @@
+class_name ModularEditorFloatOutputPort
+extends ModularEditorOutputPort

@@ -5,7 +5,6 @@ var recorder: AudioEffectRecord
 var recordings: Array[AudioStreamWAV] = []
 var players: Array[AudioStreamPlayer] = []
 
-
 func _ready() -> void:
 	var bus_index := AudioServer.get_bus_index("Active")
 	for i in AudioServer.get_bus_effect_count(bus_index):

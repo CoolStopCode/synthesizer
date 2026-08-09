@@ -12,6 +12,9 @@ extends AudioStreamPlayer
 var playback: AudioStreamGeneratorPlayback
 
 func _ready() -> void:
+	build()
+
+func build():
 	stream = AudioStreamGenerator.new()
 	stream.mix_rate = mix_rate
 	stream.buffer_length = buffer_length

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Tonal_BendBinding" format=3 uid="uid://b34n6atb8dcqh"]
+[gd_resource type="Resource" script_class="TonalBendBinding" format=3 uid="uid://b34n6atb8dcqh"]
 
 [ext_resource type="Script" uid="uid://vmjvtatt83va" path="res://audio/tonal/tonal_bend_behavior.gd" id="1_om6qg"]
 [ext_resource type="Script" uid="uid://c76xcxl64e8kr" path="res://audio/tonal/chord_transformation/chord_transformation.gd" id="2_uksfa"]

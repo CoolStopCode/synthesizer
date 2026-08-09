@@ -18,6 +18,6 @@ func shift_octave(octave : int) -> Semitone:
 	semitone += 12 * octave
 	return self
 
-func transpose(amount :int ) -> Semitone:
+func transpose(amount : int) -> Semitone:
 	semitone += amount
 	return self

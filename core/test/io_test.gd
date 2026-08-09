@@ -6,6 +6,9 @@ func _process(_delta: float) -> void:
 	handle_input()
 
 func handle_input() -> void:
+	if Input.is_action_just_pressed("Debug"):
+		audio_engine.build()
+	
 	for i in range(7):
 		var action := "Key%d" % (i + 1)
 		if Input.is_action_just_pressed(action):

@@ -36,8 +36,7 @@ color = Color(1, 0.6117647, 1, 1)
 [node name="Parallax2D" type="Parallax2D" parent="workspace" unique_id=1245090353]
 scroll_offset = Vector2(0, 8)
 repeat_size = Vector2(96, 0)
-autoscroll = Vector2(-30, 0)
-repeat_times = 99999
+repeat_times = 100
 ignore_camera_scroll = true
 
 [node name="TextureRect" type="TextureRect" parent="workspace/Parallax2D" unique_id=1340448467]

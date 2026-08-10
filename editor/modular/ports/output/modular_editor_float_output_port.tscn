@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://ci3j0j46kf824"]
 
 [ext_resource type="Script" uid="uid://btksfwtju1hr6" path="res://editor/modular/ports/output/modular_editor_float_output_port.gd" id="1_ufy3f"]
-[ext_resource type="Texture2D" uid="uid://c3x3nhu4ji22r" path="res://editor/modular/ports/output/output_outline.png" id="2_eas5n"]
+[ext_resource type="Texture2D" uid="uid://b7dcq04g32rpt" path="res://editor/modular/ports/output/outline.png" id="2_eas5n"]
 [ext_resource type="Texture2D" uid="uid://5lqht4cysq03" path="res://editor/modular/ports/output/float_output_port.png" id="3_4ntlo"]
 
 [node name="modular_editor_float_output_port" type="Control" unique_id=940905405 node_paths=PackedStringArray("outline", "port")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 10.0
+offset_bottom = 10.0
 script = ExtResource("1_ufy3f")
 outline = NodePath("outline")
 port = NodePath("port")

@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://7tucverecgk0"]
 
 [ext_resource type="Script" uid="uid://b0u11qn6m36ks" path="res://editor/modular/ports/input/modular_editor_bool_input_port.gd" id="1_3sece"]
-[ext_resource type="Texture2D" uid="uid://dpfsg14ortyla" path="res://editor/modular/ports/input/input_outline.png" id="2_8cat6"]
+[ext_resource type="Texture2D" uid="uid://bsbggnabcqfoh" path="res://editor/modular/ports/input/outline.png" id="2_3sece"]
 [ext_resource type="Texture2D" uid="uid://boi5m1w7x8fut" path="res://editor/modular/ports/input/bool_input_port.png" id="3_rj6ss"]
 
 [node name="modular_editor_bool_input_port" type="Control" unique_id=2089427986 node_paths=PackedStringArray("outline", "port")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 10.0
+offset_bottom = 10.0
 script = ExtResource("1_3sece")
 outline = NodePath("outline")
 port = NodePath("port")
@@ -27,7 +27,7 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_8cat6")
+texture = ExtResource("2_3sece")
 
 [node name="port" type="TextureRect" parent="." unique_id=376418866]
 layout_mode = 1

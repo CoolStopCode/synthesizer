@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpfsg14ortyla"
-path="res://.godot/imported/input_outline.png-86ec16b89dfaa939aa891b2385a56522.ctex"
+uid="uid://bt553jcw4f0xu"
+path="res://.godot/imported/background.png-7f468f4eb4d8ea812afa2eb7b3e5468a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/modular/ports/input/input_outline.png"
-dest_files=["res://.godot/imported/input_outline.png-86ec16b89dfaa939aa891b2385a56522.ctex"]
+source_file="res://editor/modular/modules/output/background.png"
+dest_files=["res://.godot/imported/background.png-7f468f4eb4d8ea812afa2eb7b3e5468a.ctex"]
 
 [params]
 

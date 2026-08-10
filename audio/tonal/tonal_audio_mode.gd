@@ -9,7 +9,7 @@ enum Allocation {
 }
 
 @export var polyvoice_count: int = 7
-@export var voice_count: int = 5 ## Voices per polyvoiceuiop
+@export var voice_count: int = 5 ## Voices per polyvoice
 @export var allocation: Allocation
 @export var fade_duration : float = 0.05 ## Used for legato allocation, prevents clipping
 @export var chord_bend_duration : float = 0.1 ## Linear fade time for bending an active polyvoice
@@ -23,3 +23,6 @@ func build_chord(index: int) -> Chord:
 
 func build() -> void:
 	scale = key.build_scale()
+	
+	for i in range(polyvoice_count):
+		print(scale.get_semitone(i).to_string_name())

@@ -336,7 +336,12 @@ void ModularAudioVoice::process_envelope_module(
 
     bool gated = double_to_bool(gate);
 
-    // guard against degenerate/garbage exponents
+    // Convert
+    attack_curve  = std::pow(12.0, attack_curve * 2.0 - 1.0);
+    decay_curve   = std::pow(12.0, decay_curve * 2.0 - 1.0);
+    release_curve = std::pow(12.0, release_curve * 2.0 - 1.0);
+
+    // Guard against evil exponenets
     attack_curve  = std::max(attack_curve, 0.001);
     decay_curve   = std::max(decay_curve, 0.001);
     release_curve = std::max(release_curve, 0.001);
@@ -383,8 +388,8 @@ void ModularAudioVoice::process_envelope_module(
                 level = sustain;
                 stage = 3;
             } else {
-                double shaped = std::pow(phase, decay_curve);
-                level = 1.0 + (sustain - 1.0) * shaped;
+                double shaped = std::pow(1.0 - phase, decay_curve);
+                level = sustain + (1.0 - sustain) * shaped;
             }
             break;
         }
@@ -399,8 +404,8 @@ void ModularAudioVoice::process_envelope_module(
                 level = 0.0;
                 stage = 0;
             } else {
-                double shaped = std::pow(phase, release_curve);
-                level = release_start_level * (1.0 - shaped);
+                double shaped = std::pow(1.0 - phase, release_curve);
+                level = release_start_level * shaped;
             }
             break;
         }

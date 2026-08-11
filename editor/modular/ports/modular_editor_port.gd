@@ -4,5 +4,12 @@ extends Control
 @export var outline : TextureRect
 @export var port : TextureRect
 
+signal pressed
+signal released
+
 func _gui_input(event: InputEvent) -> void:
-	pass
+	if event is InputEventScreenTouch or event is InputEventMouseButton:
+		if event.pressed:
+			pressed.emit()
+		else:
+			released.emit()

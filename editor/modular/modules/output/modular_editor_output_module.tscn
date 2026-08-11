@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://sqilf3deybow"]
 
 [ext_resource type="Texture2D" uid="uid://bt553jcw4f0xu" path="res://editor/modular/modules/output/background.png" id="1_jgmfc"]
+[ext_resource type="Script" uid="uid://domegclqw6dmt" path="res://editor/modular/modules/output/modular_editor_output_module.gd" id="1_q7ab7"]
 [ext_resource type="Texture2D" uid="uid://ba0d151vwsbah" path="res://editor/modular/modules/output/big_speaker.png" id="2_arkj2"]
 [ext_resource type="Texture2D" uid="uid://cykm1pdlv5fo0" path="res://editor/modular/modules/output/small_speaker.png" id="3_q66be"]
 [ext_resource type="Texture2D" uid="uid://cdbx3hhqsbcpx" path="res://interface/icon/6x6/music.png" id="4_4bcaw"]
 [ext_resource type="PackedScene" uid="uid://c5y1a4u7pyner" path="res://editor/modular/ports/input/modular_editor_float_input_port.tscn" id="5_q7ab7"]
 
-[node name="modular_editor_output_module" type="Control" unique_id=54119580]
+[node name="modular_editor_output_module" type="Control" unique_id=54119580 node_paths=PackedStringArray("ports")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 24.0
 offset_bottom = 44.0
+script = ExtResource("1_q7ab7")
+ports = [NodePath("modular_editor_float_input_port")]
 
 [node name="background" type="NinePatchRect" parent="." unique_id=144974053]
 texture_filter = 1

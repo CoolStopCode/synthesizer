@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://blprh6otaw0h1" path="res://editor/modular/ports/input/modular_editor_float_input_port.gd" id="1_wwb7m"]
 [ext_resource type="Texture2D" uid="uid://bsbggnabcqfoh" path="res://editor/modular/ports/input/outline.png" id="2_0toxb"]
-[ext_resource type="Texture2D" uid="uid://bde3jidt2viwb" path="res://editor/modular/ports/input/float_input_port.png" id="2_l50u4"]
+[ext_resource type="Texture2D" uid="uid://cm5be4cay3un6" path="res://editor/modular/ports/input/float_input_port.png" id="2_l50u4"]
 
 [node name="modular_editor_float_input_port" type="Control" unique_id=690055534 node_paths=PackedStringArray("outline", "port")]
 layout_mode = 3

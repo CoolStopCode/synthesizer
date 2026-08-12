@@ -5,6 +5,8 @@
 [node name="connection" type="Node2D" unique_id=1332460625 node_paths=PackedStringArray("line")]
 script = ExtResource("1_20r2h")
 line = NodePath("Line2D")
+point_count = 10
+sag = 10.0
 snap_radius = 10.0
 
 [node name="Line2D" type="Line2D" parent="." unique_id=623597348]

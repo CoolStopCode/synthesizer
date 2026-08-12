@@ -5,6 +5,8 @@ extends Node2D
 @export var to : InterfacePort
 @export var line : Line2D
 @export var modules_parent : Control
+@export var point_count : int
+@export var sag : float
 @export var snap_radius : float
 
 func _ready() -> void:
@@ -61,18 +63,28 @@ func _input(event: InputEvent) -> void:
 
 func cancel():
 	if from:
-		from.port_down.disconnect(from_lifted)
+		if from.port_down.is_connected(from_lifted): from.port_down.disconnect(from_lifted)
 		from.in_use = false
 	if to:
-		to.port_down.disconnect(from_lifted)
+		if to.port_down.is_connected(to_lifted): to.port_down.disconnect(to_lifted)
 		to.in_use = false
 	queue_free()
-	
+
 func update_positions(from_position : Vector2, to_position : Vector2):
 	var local_from_position := to_local(from_position)
 	var local_to_position := to_local(to_position)
-	line.set_point_position(0, local_from_position)
-	line.set_point_position(1, local_to_position)
+	line.clear_points()
+	for i in range(point_count):
+		var progress : float = float(i) / float(point_count - 1)
+		var point_position := calculate_point_position(local_from_position, local_to_position, progress)
+		line.add_point(point_position)
+
+func calculate_point_position(from_position : Vector2, to_position : Vector2, progress : float) -> Vector2:
+	var linear_point : Vector2 = lerp(from_position, to_position, progress)
+	
+	var sag_offset : float = 4.0 * (progress - (progress * progress)) * sag
+	
+	return linear_point + Vector2(0, sag_offset)
 
 func closest_port_to(point : Vector2) -> InterfacePort:
 	var closest_distance : float = INF

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InterfacePortStyle" format=3 uid="uid://bcgp7pmsv5wrb"]
+
+[ext_resource type="Script" uid="uid://bvc3p0fai7gkq" path="res://interface/element/interface_port/interface_port_style.gd" id="1_h2rua"]
+[ext_resource type="Texture2D" uid="uid://c1i27nd55101m" path="res://interface/styles/interface_port_style/input_outline.png" id="1_k0s5f"]
+[ext_resource type="Texture2D" uid="uid://ba4j7n75312ft" path="res://interface/styles/interface_port_style/input_highlight.png" id="2_ldebt"]
+[ext_resource type="Texture2D" uid="uid://mpo5spivr4n" path="res://interface/styles/interface_port_style/input_hole.png" id="3_o346l"]
+[ext_resource type="Texture2D" uid="uid://cjbybof3bxkjj" path="res://interface/styles/interface_port_style/input_outside.png" id="4_oimsx"]
+
+[resource]
+script = ExtResource("1_h2rua")
+hole_color = Color(0.09803922, 0.2, 0.1764706, 1)
+highlight_color = Color(0.8156863, 0.85490197, 0.5686275, 1)
+outside_color = Color(0.45882353, 0.654902, 0.2627451, 1)
+outline_color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+hole_texture = ExtResource("3_o346l")
+highlight_texture = ExtResource("2_ldebt")
+outside_texture = ExtResource("4_oimsx")
+outline_texture = ExtResource("1_k0s5f")
+metadata/_custom_type_script = "uid://bvc3p0fai7gkq"

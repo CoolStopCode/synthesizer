@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bg46urym7tphs"]
+
+[ext_resource type="Script" uid="uid://bvkoc7plq4rjb" path="res://interface/element/interface_port/interface_port.gd" id="1_elo36"]
+[ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://interface/styles/interface_port_style/output_outside.png" id="2_l6qmj"]
+
+[node name="interface_port" type="Control" unique_id=27721473 node_paths=PackedStringArray("hole_node", "highlight_node", "outside_node", "outline_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 10.0
+offset_bottom = 10.0
+script = ExtResource("1_elo36")
+hole_node = NodePath("port_hole")
+highlight_node = NodePath("port_highlight")
+outside_node = NodePath("port_outside")
+outline_node = NodePath("outline")
+
+[node name="port_hole" type="TextureRect" parent="." unique_id=1009515779]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="port_highlight" type="TextureRect" parent="." unique_id=424413762]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="port_outside" type="TextureRect" parent="." unique_id=327171713]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l6qmj")
+
+[node name="outline" type="TextureRect" parent="." unique_id=974556916]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

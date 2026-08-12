@@ -67,10 +67,11 @@ folder_colors={
 "res://editor/tonal/": "purple",
 "res://interface/": "teal",
 "res://interface/art/": "red",
-"res://interface/font/": "orange",
-"res://interface/icon/": "yellow",
-"res://interface/interface_box/": "green",
-"res://interface/interface_button/": "green",
+"res://interface/element/": "orange",
+"res://interface/element/interface_box/": "orange",
+"res://interface/element/interface_button/": "orange",
+"res://interface/font/": "yellow",
+"res://interface/icon/": "green",
 "res://interface/styles/": "blue"
 }
 

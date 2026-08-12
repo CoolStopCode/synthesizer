@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dma58ukp803ln"]
 
 [ext_resource type="Script" uid="uid://mltqyqor0lr0" path="res://editor/modular/modular_editor_mode.gd" id="1_xaffx"]
+[ext_resource type="PackedScene" uid="uid://df13c3g85r7ph" path="res://editor/modular/connection/connection.tscn" id="2_6dr8x"]
 [ext_resource type="Texture2D" uid="uid://lqwjs5iu888g" path="res://editor/modular/background.png" id="2_i5pqe"]
 
 [node name="node_interface_mode" type="Control" unique_id=1176748786 node_paths=PackedStringArray("workspace", "modules_parent", "connections_parent")]
@@ -17,6 +18,7 @@ script = ExtResource("1_xaffx")
 workspace = NodePath("workspace")
 modules_parent = NodePath("workspace/modules")
 connections_parent = NodePath("workspace/connections")
+connection_scene = ExtResource("2_6dr8x")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1263612102]
 layout_mode = 1
@@ -73,5 +75,4 @@ anchor_right = 1.0
 offset_bottom = 8.0
 grow_horizontal = 2
 
-[connection signal="port_pressed" from="." to="." method="_on_port_pressed"]
-[connection signal="port_released" from="." to="." method="_on_port_released"]
+[connection signal="port_down" from="." to="." method="_on_port_down"]

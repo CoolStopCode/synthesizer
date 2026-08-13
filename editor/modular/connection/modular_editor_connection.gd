@@ -1,9 +1,10 @@
 class_name ModularEditorConnection
 extends Node2D
 
-@export var from : InterfacePort
-@export var to : InterfacePort
-@export var line : Line2D
+@export var from : ModularEditorPort
+@export var to : ModularEditorPort
+@export var highlight_line : Line2D
+@export var shadow_line : Line2D
 @export var modules_parent : Control
 @export var point_count : int
 @export var sag : float
@@ -49,6 +50,10 @@ func _input(event: InputEvent) -> void:
 			if closest_port.in_use:
 				cancel()
 				return
+			if from != null and closest_port.is_input_port() == from.is_input_port()\
+			or to != null   and closest_port.is_input_port() == to.is_input_port():
+				cancel()
+				return
 			
 			if to == null:
 				to = closest_port
@@ -73,11 +78,13 @@ func cancel():
 func update_positions(from_position : Vector2, to_position : Vector2):
 	var local_from_position := to_local(from_position)
 	var local_to_position := to_local(to_position)
-	line.clear_points()
+	highlight_line.clear_points()
+	shadow_line.clear_points()
 	for i in range(point_count):
 		var progress : float = float(i) / float(point_count - 1)
 		var point_position := calculate_point_position(local_from_position, local_to_position, progress)
-		line.add_point(point_position)
+		highlight_line.add_point(point_position)
+		shadow_line.add_point(point_position)
 
 func calculate_point_position(from_position : Vector2, to_position : Vector2, progress : float) -> Vector2:
 	var linear_point : Vector2 = lerp(from_position, to_position, progress)
@@ -86,11 +93,11 @@ func calculate_point_position(from_position : Vector2, to_position : Vector2, pr
 	
 	return linear_point + Vector2(0, sag_offset)
 
-func closest_port_to(point : Vector2) -> InterfacePort:
+func closest_port_to(point : Vector2) -> ModularEditorPort:
 	var closest_distance : float = INF
-	var closest_port : InterfacePort
+	var closest_port : ModularEditorPort
 	for module : ModularEditorModule in modules_parent.get_children():
-		for port : InterfacePort in module.ports:
+		for port : ModularEditorPort in module.ports:
 			var distance := point.distance_to(port.get_global_center_position())
 			if distance < closest_distance:
 				closest_distance = distance

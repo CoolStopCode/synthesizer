@@ -6,9 +6,10 @@ extends EditorMode
 @export var connections_parent : Control
 @export var connection_scene : PackedScene
 
-signal port_down(port : InterfacePort)
-signal port_up(port : InterfacePort)
+signal port_down(port : ModularEditorPort)
+signal port_up(port : ModularEditorPort)
 
+var searching
 # IN PROGRESS
 func _ready() -> void:
 	var input := create_module(preload("res://editor/modular/modules/input/modular_editor_input_module.tscn"))
@@ -73,10 +74,10 @@ func get_position_for_new_module(dimensions : Vector2) -> Vector2:
 	
 	return closest
 
-func _on_port_down(port: InterfacePort) -> void:
+func _on_port_down(port: ModularEditorPort) -> void:
 	if not port.in_use: create_connection(port)
 
-func create_connection(from : InterfacePort) -> void:
+func create_connection(from : ModularEditorPort) -> void:
 	var connection_instance : ModularEditorConnection = connection_scene.instantiate()
 	
 	connection_instance.from = from

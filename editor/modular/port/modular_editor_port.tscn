@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://bg46urym7tphs"]
 
-[ext_resource type="Script" uid="uid://bvkoc7plq4rjb" path="res://interface/element/interface_port/interface_port.gd" id="1_elo36"]
-[ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://interface/styles/interface_port_style/output_outside.png" id="2_l6qmj"]
+[ext_resource type="Script" uid="uid://bvkoc7plq4rjb" path="res://editor/modular/port/modular_editor_port.gd" id="1_fof3w"]
+[ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://editor/modular/port/modular_editor_port_data/output_outside.png" id="2_4qt13"]
 
 [node name="interface_port" type="Control" unique_id=27721473 node_paths=PackedStringArray("hole_node", "highlight_node", "outside_node", "outline_node")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 10.0
 offset_bottom = 10.0
-script = ExtResource("1_elo36")
+script = ExtResource("1_fof3w")
+in_use = null
 hole_node = NodePath("port_hole")
 highlight_node = NodePath("port_highlight")
 outside_node = NodePath("port_outside")
@@ -55,7 +56,7 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_l6qmj")
+texture = ExtResource("2_4qt13")
 
 [node name="outline" type="TextureRect" parent="." unique_id=974556916]
 layout_mode = 1

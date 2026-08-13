@@ -1,18 +1,12 @@
-class_name InterfacePort
+class_name ModularEditorPort
 extends Control
 
 signal pressed
 signal port_down
 signal port_up
 
-enum PortType {
-	INPUT,
-	OUTPUT
-}
-
 @export var in_use : bool
-@export var interface_port_style: InterfacePortStyle
-@export var port_type : PortType
+@export var interface_port_data: ModularEditorPortData
 
 @export_group("private")
 @export var hole_node: TextureRect
@@ -51,20 +45,20 @@ func _on_gui_input(event: InputEvent) -> void:
 	update_visuals()
 
 func update_visuals() -> void:
-	hole_node.texture = interface_port_style.hole_texture
-	highlight_node.texture = interface_port_style.highlight_texture
-	outside_node.texture = interface_port_style.outside_texture
-	outline_node.texture = interface_port_style.outline_texture
+	hole_node.texture = interface_port_data.hole_texture
+	highlight_node.texture = interface_port_data.highlight_texture
+	outside_node.texture = interface_port_data.outside_texture
+	outline_node.texture = interface_port_data.outline_texture
 	
-	hole_node.self_modulate = interface_port_style.hole_color
-	highlight_node.self_modulate = interface_port_style.highlight_color
-	outside_node.self_modulate = interface_port_style.outside_color
-	outline_node.self_modulate = interface_port_style.outline_color
+	hole_node.self_modulate = interface_port_data.hole_color
+	highlight_node.self_modulate = interface_port_data.highlight_color
+	outside_node.self_modulate = interface_port_data.outside_color
+	outline_node.self_modulate = interface_port_data.outline_color
 	
 	outline_node.visible = is_pressed and in_use
 
 func is_input_port():
-	return port_type == PortType.INPUT
+	return interface_port_data.is_input_port()
 
 func is_output_port():
-	return port_type == PortType.OUTPUT
+	return interface_port_data.is_output_port()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c2cewwkdwuuhp" path="res://core/main.gd" id="1_3gdo0"]
 [ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio/audio_engine.gd" id="2_brq4u"]
 [ext_resource type="PackedScene" uid="uid://dgcq4s20e6ms4" path="res://interface/interface.tscn" id="2_csopv"]
-[ext_resource type="Resource" uid="uid://b34n6atb8dcqh" path="res://audio/tonal/bend_bindings/harmonic.tres" id="3_510js"]
+[ext_resource type="Resource" uid="uid://dlcbpadla7fys" path="res://audio/tonal/bend_bindings/melodic.tres" id="3_510js"]
 [ext_resource type="Script" uid="uid://ejtqccpgvur5" path="res://core/test/record_test.gd" id="3_kagtj"]
 [ext_resource type="PackedScene" uid="uid://dg5if6yvk0syd" path="res://core/tooltip/tooltip.tscn" id="3_xa854"]
 [ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio/tonal/inspector/note.gd" id="4_rayt5"]
@@ -15,7 +15,7 @@
 
 [sub_resource type="Resource" id="Resource_rayt5"]
 script = ExtResource("4_rayt5")
-note = 8
+note = 4
 octave = 4
 metadata/_custom_type_script = "uid://wwstsyg87ftc"
 

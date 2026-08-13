@@ -1,10 +1,10 @@
 @abstract class_name ModularEditorModule
 extends Control
 
-signal port_up(port : InterfacePort)
-signal port_down(port : InterfacePort)
+signal port_up(port : ModularEditorPort)
+signal port_down(port : ModularEditorPort)
 
-@export var ports : Array[InterfacePort]
+@export var ports : Array[ModularEditorPort]
 
 func build():
 	for port in ports:

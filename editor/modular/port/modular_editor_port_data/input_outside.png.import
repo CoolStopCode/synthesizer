@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1i27nd55101m"
-path="res://.godot/imported/input_outline.png-3a8ccd248b327d4e90fc46f02a86a931.ctex"
+uid="uid://cjbybof3bxkjj"
+path="res://.godot/imported/input_outside.png-d0c48d57b40856e8491fbe49e6c12d35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/styles/interface_port_style/input_outline.png"
-dest_files=["res://.godot/imported/input_outline.png-3a8ccd248b327d4e90fc46f02a86a931.ctex"]
+source_file="res://editor/modular/port/modular_editor_port_data/input_outside.png"
+dest_files=["res://.godot/imported/input_outside.png-d0c48d57b40856e8491fbe49e6c12d35.ctex"]
 
 [params]
 

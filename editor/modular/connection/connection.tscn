@@ -2,13 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bjs5awfm22r6f" path="res://editor/modular/connection/modular_editor_connection.gd" id="1_20r2h"]
 
-[node name="connection" type="Node2D" unique_id=1332460625 node_paths=PackedStringArray("line")]
+[node name="connection" type="Node2D" unique_id=1332460625 node_paths=PackedStringArray("highlight_line", "shadow_line")]
 script = ExtResource("1_20r2h")
-line = NodePath("Line2D")
+highlight_line = NodePath("highlight")
+shadow_line = NodePath("shadow")
 point_count = 10
 sag = 10.0
 snap_radius = 10.0
 
-[node name="Line2D" type="Line2D" parent="." unique_id=623597348]
-points = PackedVector2Array(0, 0, 0, 0)
-width = 2.0
+[node name="shadow" type="Line2D" parent="." unique_id=1139536167]
+position = Vector2(0, 1)
+width = 1.2
+default_color = Color(0.87058824, 0.61960787, 0.25490198, 1)
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="highlight" type="Line2D" parent="." unique_id=623597348]
+width = 1.2
+default_color = Color(0.9098039, 0.75686276, 0.4392157, 1)

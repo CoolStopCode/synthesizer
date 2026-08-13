@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://ba0d151vwsbah" path="res://editor/modular/modules/output/big_speaker.png" id="2_arkj2"]
 [ext_resource type="Texture2D" uid="uid://cykm1pdlv5fo0" path="res://editor/modular/modules/output/small_speaker.png" id="3_q66be"]
 [ext_resource type="Texture2D" uid="uid://cdbx3hhqsbcpx" path="res://interface/icon/6x6/music.png" id="4_4bcaw"]
-[ext_resource type="PackedScene" uid="uid://bg46urym7tphs" path="res://interface/element/interface_port/interface_port.tscn" id="6_q7ab7"]
-[ext_resource type="Resource" uid="uid://uouevnnyf4ad" path="res://interface/styles/interface_port_style/input_float.tres" id="7_uklve"]
+[ext_resource type="PackedScene" uid="uid://bg46urym7tphs" path="res://editor/modular/port/modular_editor_port.tscn" id="6_q7ab7"]
+[ext_resource type="Resource" uid="uid://uouevnnyf4ad" path="res://editor/modular/port/modular_editor_port_data/input_float.tres" id="7_uklve"]
 
 [node name="modular_editor_output_module" type="Control" unique_id=54119580 node_paths=PackedStringArray("ports")]
 layout_mode = 3
@@ -82,4 +82,4 @@ offset_left = 11.0
 offset_top = 33.0
 offset_right = 21.0
 offset_bottom = 43.0
-interface_port_style = ExtResource("7_uklve")
+interface_port_data = ExtResource("7_uklve")

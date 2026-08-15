@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ModularEditorPortShape" format=3 uid="uid://dkanlnxxq34ms"]
+
+[ext_resource type="Texture2D" uid="uid://bujcqdlmngedy" path="res://editor/modular/port/modular_editor_port_shape/output_highlight.png" id="1_hii5b"]
+[ext_resource type="Texture2D" uid="uid://c4ndfmqicfi0e" path="res://editor/modular/port/modular_editor_port_shape/output_hole.png" id="2_qulak"]
+[ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://editor/modular/port/modular_editor_port_shape/output_outside.png" id="4_x4jwt"]
+[ext_resource type="Script" uid="uid://xrfvdb6oyjpo" path="res://editor/modular/port/modular_editor_port_shape.gd" id="5_23n7b"]
+
+[resource]
+script = ExtResource("5_23n7b")
+hole_texture = ExtResource("2_qulak")
+highlight_texture = ExtResource("1_hii5b")
+outside_texture = ExtResource("4_x4jwt")
+outline_texture = ExtResource("1_hii5b")
+metadata/_custom_type_script = "uid://xrfvdb6oyjpo"

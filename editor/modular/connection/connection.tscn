@@ -14,8 +14,6 @@ snap_radius = 10.0
 position = Vector2(0, 1)
 width = 1.2
 default_color = Color(0.87058824, 0.61960787, 0.25490198, 1)
-begin_cap_mode = 1
-end_cap_mode = 1
 
 [node name="highlight" type="Line2D" parent="." unique_id=623597348]
 width = 1.2

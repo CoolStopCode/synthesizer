@@ -5,37 +5,40 @@ extends EditorMode
 @export var modules_parent : Control
 @export var connections_parent : Control
 @export var connection_scene : PackedScene
+@export var input_module_scene : PackedScene
+@export var output_module_scene : PackedScene
+@export var modules : Array[ModularEditorModule]
+@export var connections : Array[ModularEditorConnection]
 
 signal port_down(port : ModularEditorPort)
 signal port_up(port : ModularEditorPort)
+signal start_connection_search(from : ModularEditorPort)
+signal stop_connection_search(to : ModularEditorPort)
 
-var searching
-# IN PROGRESS
 func _ready() -> void:
-	var input := create_module(preload("res://editor/modular/modules/input/modular_editor_input_module.tscn"))
-	var output := create_module(preload("res://editor/modular/modules/output/modular_editor_output_module.tscn"))
+	var input := create_module(input_module_scene)
+	var output := create_module(output_module_scene)
 	input.position = Vector2(0, 0)
 	output.position = Vector2(0, 44)
 
-# FINAL
 func create_module(module_scene : PackedScene) -> ModularEditorModule:
-	var module_instance : ModularEditorModule = module_scene.instantiate()
-	
-	if not module_instance is ModularEditorModule: return
+	var module_instance := module_scene.instantiate() as ModularEditorModule
 	
 	module_instance.build()
 	module_instance.port_down.connect(port_down.emit)
 	module_instance.port_up.connect(port_up.emit)
 	module_instance.position = get_position_for_new_module(module_instance.size)
+	
+	for port in module_instance.ports:
+		start_connection_search.connect(port.start_connection_search)
+		stop_connection_search.connect(port.stop_connection_search)
+	
+	modules.append(module_instance)
 	modules_parent.add_child(module_instance)
 	
 	return module_instance
 
-# FINAL
 func get_position_for_new_module(dimensions : Vector2) -> Vector2:
-	var modules: Array[ModularEditorModule] = []
-	modules.assign(modules_parent.get_children())
-	
 	var origin : Vector2 = Vector2(0, 0)
 	
 	var corner_points : Array[Vector2]
@@ -53,8 +56,7 @@ func get_position_for_new_module(dimensions : Vector2) -> Vector2:
 	var candidate_points : Array[Vector2]
 	var workspace_bottom : float = workspace.size.y
 	for corner_point in corner_points:
-		if corner_point.y + dimensions.y > workspace_bottom:
-			continue
+		if corner_point.y + dimensions.y > workspace_bottom: continue
 		
 		var should_continue : bool = false
 		for module in modules:
@@ -67,14 +69,16 @@ func get_position_for_new_module(dimensions : Vector2) -> Vector2:
 	
 	# Find the closest point to the origin
 	var closest : Vector2 = Vector2(INF, INF)
+	var closest_distance : float = INF
 	for candidate_point in candidate_points:
 		var distance := candidate_point.distance_to(origin)
-		if distance < closest.distance_to(origin):
+		if distance < closest_distance:
 			closest = candidate_point
+			closest_distance = distance
 	
 	return closest
 
-func _on_port_down(port: ModularEditorPort) -> void:
+func _on_port_down(port : ModularEditorPort) -> void:
 	if not port.in_use: create_connection(port)
 
 func create_connection(from : ModularEditorPort) -> void:
@@ -82,6 +86,11 @@ func create_connection(from : ModularEditorPort) -> void:
 	
 	connection_instance.from = from
 	connection_instance.to = null
-	connection_instance.modules_parent = modules_parent
+	connection_instance.modules = modules
 	
+	start_connection_search.emit(from)
+	connection_instance.start_connection_search.connect(start_connection_search.emit)
+	connection_instance.stop_connection_search.connect(stop_connection_search.emit)
+	
+	connections.append(connection_instance)
 	connections_parent.add_child(connection_instance)

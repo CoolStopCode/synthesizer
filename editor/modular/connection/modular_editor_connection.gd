@@ -3,12 +3,17 @@ extends Node2D
 
 @export var from : ModularEditorPort
 @export var to : ModularEditorPort
+@export var modules : Array[ModularEditorModule]
+
 @export var highlight_line : Line2D
 @export var shadow_line : Line2D
-@export var modules_parent : Control
+
 @export var point_count : int
 @export var sag : float
 @export var snap_radius : float
+
+signal start_connection_search(from : ModularEditorPort)
+signal stop_connection_search(to : ModularEditorPort)
 
 func _ready() -> void:
 	from.in_use = true
@@ -18,11 +23,13 @@ func from_lifted():
 	from.in_use = false
 	if from.port_down.is_connected(from_lifted): from.port_down.disconnect(from_lifted)
 	from = null
+	start_connection_search.emit(to)
 
 func to_lifted():
 	to.in_use = false
 	if to.port_down.is_connected(to_lifted): to.port_down.disconnect(to_lifted)
 	to = null
+	start_connection_search.emit(from)
 
 func _input(event: InputEvent) -> void:
 	if from == null and to == null: return
@@ -50,8 +57,8 @@ func _input(event: InputEvent) -> void:
 			if closest_port.in_use:
 				cancel()
 				return
-			if from != null and closest_port.is_input_port() == from.is_input_port()\
-			or to != null   and closest_port.is_input_port() == to.is_input_port():
+			if from != null and closest_port.shape == from.shape\
+			or to != null   and closest_port.shape == to.shape:
 				cancel()
 				return
 			
@@ -59,10 +66,12 @@ func _input(event: InputEvent) -> void:
 				to = closest_port
 				to.port_down.connect(to_lifted)
 				to.in_use = true
+				stop_connection_search.emit(to)
 			if from == null:
 				from = closest_port
 				from.port_down.connect(from_lifted)
 				from.in_use = true
+				stop_connection_search.emit(from)
 			
 			update_positions(from.get_global_center_position(), to.get_global_center_position())
 
@@ -73,6 +82,7 @@ func cancel():
 	if to:
 		if to.port_down.is_connected(to_lifted): to.port_down.disconnect(to_lifted)
 		to.in_use = false
+	stop_connection_search.emit(null)
 	queue_free()
 
 func update_positions(from_position : Vector2, to_position : Vector2):
@@ -96,7 +106,7 @@ func calculate_point_position(from_position : Vector2, to_position : Vector2, pr
 func closest_port_to(point : Vector2) -> ModularEditorPort:
 	var closest_distance : float = INF
 	var closest_port : ModularEditorPort
-	for module : ModularEditorModule in modules_parent.get_children():
+	for module : ModularEditorModule in modules:
 		for port : ModularEditorPort in module.ports:
 			var distance := point.distance_to(port.get_global_center_position())
 			if distance < closest_distance:

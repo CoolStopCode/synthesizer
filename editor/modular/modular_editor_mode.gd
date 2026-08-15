@@ -94,3 +94,79 @@ func create_connection(from : ModularEditorPort) -> void:
 	
 	connections.append(connection_instance)
 	connections_parent.add_child(connection_instance)
+
+func build_voice() -> ModularAudioVoice: # TODO: Redo this
+	var voice := ModularAudioVoice.new()
+	
+	var types : PackedByteArray
+	
+	var input_offsets : PackedInt32Array
+	var output_offsets : PackedInt32Array
+	var state_offsets : PackedInt32Array
+	var parameter_offsets : PackedInt32Array
+	
+	var input_routes : PackedInt32Array 
+	var initial_memory_data : PackedFloat64Array
+	initial_memory_data.append_array([0.0, 0.0, 0.0, 0.0])
+	
+	for module in modules:
+		var type := module.type_id
+		
+		var module_states := module.states
+		var module_parameters := module.parameters
+		
+		types.append(type)
+		
+		var state_data: Array[float] = module.get_states()
+		state_offsets.append(initial_memory_data.size())
+		initial_memory_data.append_array(state_data)
+		
+		var parameter_data: Array[float] = module.get_parameters()
+		parameter_offsets.append(initial_memory_data.size())
+		initial_memory_data.append_array(parameter_data)
+	
+	var connection_map : Dictionary[ModularEditorPort, ModularEditorPort]
+	for connection in connections:
+		if connection.from.shape == ModularEditorPort.PortShape.INPUT:
+			connection_map[connection.from] = connection.to
+		elif connection.from.shape == ModularEditorPort.PortShape.OUTPUT:
+			connection_map[connection.to] = connection.from
+	
+	var output_index_map : Dictionary[ModularEditorPort, int]
+	for module in modules:
+		var output_ports : Array[ModularEditorPort]
+		for port in module.ports:
+			if port.shape == ModularEditorPort.PortShape.OUTPUT:
+				output_ports.append(port)
+		
+		for i in range(output_ports.size()):
+			var output_port := output_ports[i]
+			output_index_map[output_port] = initial_memory_data.size() + i
+		
+		var output_data: Array[float]
+		output_data.resize(output_ports.size())
+		output_offsets.append(initial_memory_data.size())
+		initial_memory_data.append_array(output_data)
+	
+	for module in modules:
+		var input_ports : Array[ModularEditorPort]
+		for port in module.ports:
+			if port.shape == ModularEditorPort.PortShape.INPUT:
+				input_ports.append(port)
+		
+		input_offsets.append(input_routes.size())
+		
+		for input_port in input_ports:
+			input_routes.append(output_index_map[connection_map[input_port]])
+	
+	voice.set_layout(
+		types,
+		input_offsets,
+		output_offsets,
+		state_offsets,
+		parameter_offsets,
+		input_routes,
+		initial_memory_data
+	)
+	
+	return voice

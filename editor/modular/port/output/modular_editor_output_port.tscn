@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://d4gjg1mpimrhp"]
+
+[ext_resource type="Script" uid="uid://bpu4t8yo0ujue" path="res://editor/modular/port/input/modular_editor_input_port.gd" id="1_try3c"]
+[ext_resource type="Script" uid="uid://bvc3p0fai7gkq" path="res://editor/modular/port/modular_editor_port_color.gd" id="2_xofvd"]
+[ext_resource type="Resource" uid="uid://dupwtd48dbcu2" path="res://editor/modular/port/color/audio.tres" id="3_wgu7h"]
+[ext_resource type="Resource" uid="uid://bcgp7pmsv5wrb" path="res://editor/modular/port/color/bool.tres" id="4_oonfa"]
+[ext_resource type="Resource" uid="uid://uouevnnyf4ad" path="res://editor/modular/port/color/float.tres" id="5_85m6p"]
+[ext_resource type="Texture2D" uid="uid://c4ndfmqicfi0e" path="res://editor/modular/port/output/hole.png" id="6_d3n0i"]
+[ext_resource type="Texture2D" uid="uid://bujcqdlmngedy" path="res://editor/modular/port/output/highlight.png" id="7_towmk"]
+[ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://editor/modular/port/output/outside.png" id="8_ijxtn"]
+
+[node name="modular_editor_input_port" type="Control" unique_id=27721473 node_paths=PackedStringArray("hole_node", "highlight_node", "outside_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 10.0
+offset_bottom = 10.0
+script = ExtResource("1_try3c")
+shape = 1
+color_table = Dictionary[int, ExtResource("2_xofvd")]({
+0: ExtResource("5_85m6p"),
+1: ExtResource("3_wgu7h"),
+2: ExtResource("4_oonfa")
+})
+hole_node = NodePath("hole")
+highlight_node = NodePath("highlight")
+outside_node = NodePath("outside")
+
+[node name="hole" type="TextureRect" parent="." unique_id=1009515779]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_d3n0i")
+
+[node name="highlight" type="TextureRect" parent="." unique_id=424413762]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_towmk")
+
+[node name="outside" type="TextureRect" parent="." unique_id=327171713]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_ijxtn")

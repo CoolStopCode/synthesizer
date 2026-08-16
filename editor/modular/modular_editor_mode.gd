@@ -20,6 +20,7 @@ func _ready() -> void:
 	var output := create_module(output_module_scene)
 	input.position = Vector2(0, 0)
 	output.position = Vector2(0, 44)
+	create_module(preload("res://editor/modular/modules/envelope/modular_editor_envelope.tscn"))
 
 func create_module(module_scene : PackedScene) -> ModularEditorModule:
 	var module_instance := module_scene.instantiate() as ModularEditorModule
@@ -61,6 +62,11 @@ func get_position_for_new_module(dimensions : Vector2) -> Vector2:
 		var should_continue : bool = false
 		for module in modules:
 			if corner_point == module.position:
+				should_continue = true
+				break
+			if corner_point.x == module.position.x\
+			and corner_point.y > module.position.y\
+			and corner_point.y < module.position.y + module.size.y:
 				should_continue = true
 				break
 		if should_continue: continue
@@ -127,16 +133,16 @@ func build_voice() -> ModularAudioVoice: # TODO: Redo this
 	
 	var connection_map : Dictionary[ModularEditorPort, ModularEditorPort]
 	for connection in connections:
-		if connection.from.shape == ModularEditorPort.PortShape.INPUT:
+		if connection.from.is_input_port():
 			connection_map[connection.from] = connection.to
-		elif connection.from.shape == ModularEditorPort.PortShape.OUTPUT:
+		elif connection.from.is_output_port():
 			connection_map[connection.to] = connection.from
 	
 	var output_index_map : Dictionary[ModularEditorPort, int]
 	for module in modules:
 		var output_ports : Array[ModularEditorPort]
 		for port in module.ports:
-			if port.shape == ModularEditorPort.PortShape.OUTPUT:
+			if port.is_output_port():
 				output_ports.append(port)
 		
 		for i in range(output_ports.size()):
@@ -151,7 +157,7 @@ func build_voice() -> ModularAudioVoice: # TODO: Redo this
 	for module in modules:
 		var input_ports : Array[ModularEditorPort]
 		for port in module.ports:
-			if port.shape == ModularEditorPort.PortShape.INPUT:
+			if port.is_input_port():
 				input_ports.append(port)
 		
 		input_offsets.append(input_routes.size())

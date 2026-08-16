@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://bp0kshitssiub"]
+
+[ext_resource type="Texture2D" uid="uid://c5swpeiby2j0t" path="res://editor/modular/modules/envelope/background.png" id="1_3ge0g"]
+[ext_resource type="Script" uid="uid://fy28p7fnpd2s" path="res://editor/modular/modules/envelope/modular_editor_envelope_module.gd" id="1_5lggi"]
+[ext_resource type="Texture2D" uid="uid://bkyllow8s1yvw" path="res://interface/icon/6x6/gate.png" id="2_7g0fg"]
+[ext_resource type="Texture2D" uid="uid://jqcxq082jnb4" path="res://interface/icon/6x6/power.png" id="3_n3epk"]
+[ext_resource type="PackedScene" uid="uid://bg46urym7tphs" path="res://editor/modular/port/input/modular_editor_input_port.tscn" id="4_twh7w"]
+[ext_resource type="PackedScene" uid="uid://d4gjg1mpimrhp" path="res://editor/modular/port/output/modular_editor_output_port.tscn" id="5_t5b2k"]
+[ext_resource type="PackedScene" uid="uid://bsha8ffxdts07" path="res://editor/modular/port/dial/modular_editor_dial.tscn" id="6_t5b2k"]
+
+[node name="modular_editor_envelope_module" type="Control" unique_id=2125357410 node_paths=PackedStringArray("ports")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 72.0
+offset_bottom = 32.0
+script = ExtResource("1_5lggi")
+ports = [NodePath("gate"), NodePath("output"), NodePath("a"), NodePath("d"), NodePath("s"), NodePath("r")]
+
+[node name="background" type="NinePatchRect" parent="." unique_id=1721373857]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3ge0g")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=715061650]
+self_modulate = Color(0.1254902, 0.18039216, 0.21568628, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 9.0
+offset_bottom = 11.0
+grow_vertical = 2
+texture = ExtResource("2_7g0fg")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=985739167]
+self_modulate = Color(0.1254902, 0.18039216, 0.21568628, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = 5.0
+offset_right = -3.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("3_n3epk")
+
+[node name="gate" parent="." unique_id=27721473 instance=ExtResource("4_twh7w")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -5.0
+offset_right = 11.0
+offset_bottom = 5.0
+grow_vertical = 2
+color = 2
+
+[node name="output" parent="." unique_id=1493290262 instance=ExtResource("5_t5b2k")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -5.0
+offset_right = -1.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="a" parent="." unique_id=447151730 instance=ExtResource("6_t5b2k")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 18.0
+offset_right = 24.0
+offset_bottom = 30.0
+
+[node name="d" parent="." unique_id=2132221693 instance=ExtResource("6_t5b2k")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 36.0
+offset_bottom = 30.0
+
+[node name="s" parent="." unique_id=1058439803 instance=ExtResource("6_t5b2k")]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 18.0
+offset_right = 48.0
+offset_bottom = 30.0
+
+[node name="r" parent="." unique_id=1772931580 instance=ExtResource("6_t5b2k")]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 18.0
+offset_right = 60.0
+offset_bottom = 30.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1456938386]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.0
+offset_right = 25.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1254902, 0.18039216, 0.21568628, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=992827867]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

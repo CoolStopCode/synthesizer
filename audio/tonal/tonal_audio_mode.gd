@@ -24,5 +24,5 @@ func build_chord(index: int) -> Chord:
 func build() -> void:
 	scale = key.build_scale()
 	
-	for i in range(polyvoice_count):
-		print(scale.get_semitone(i).to_string_name())
+	#for i in range(polyvoice_count):
+		#print(scale.get_semitone(i).to_string_name())

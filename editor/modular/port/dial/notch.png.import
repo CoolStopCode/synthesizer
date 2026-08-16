@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1i27nd55101m"
-path="res://.godot/imported/input_outline.png-d0bd136b0052f3ac27c6e1c45e2218e0.ctex"
+uid="uid://d3nyqh0wyxvbd"
+path="res://.godot/imported/notch.png-1bb464fcb61bf455256d5a4b737866be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/modular/port/modular_editor_port_shape/input_outline.png"
-dest_files=["res://.godot/imported/input_outline.png-d0bd136b0052f3ac27c6e1c45e2218e0.ctex"]
+source_file="res://editor/modular/port/dial/notch.png"
+dest_files=["res://.godot/imported/notch.png-1bb464fcb61bf455256d5a4b737866be.ctex"]
 
 [params]
 

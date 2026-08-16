@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://bsha8ffxdts07"]
+
+[ext_resource type="Script" uid="uid://cuyy2u15p54me" path="res://editor/modular/port/dial/modular_editor_dial.gd" id="1_le0jt"]
+[ext_resource type="Script" uid="uid://bvc3p0fai7gkq" path="res://editor/modular/port/modular_editor_port_color.gd" id="2_lxmeg"]
+[ext_resource type="Texture2D" uid="uid://c0uiqmbonnc7w" path="res://editor/modular/port/dial/hole.png" id="2_vflw6"]
+[ext_resource type="Texture2D" uid="uid://djitbnss87fsk" path="res://editor/modular/port/dial/shadow.png" id="3_le0jt"]
+[ext_resource type="Texture2D" uid="uid://c56djv2v338of" path="res://editor/modular/port/dial/highlight.png" id="3_liu80"]
+[ext_resource type="Resource" uid="uid://dupwtd48dbcu2" path="res://editor/modular/port/color/audio.tres" id="3_navdq"]
+[ext_resource type="Resource" uid="uid://bcgp7pmsv5wrb" path="res://editor/modular/port/color/bool.tres" id="4_xbhqn"]
+[ext_resource type="Texture2D" uid="uid://p2nc7hns7vm0" path="res://editor/modular/port/dial/outside.png" id="4_xvq0d"]
+[ext_resource type="Resource" uid="uid://uouevnnyf4ad" path="res://editor/modular/port/color/float.tres" id="5_3dq6e"]
+[ext_resource type="Texture2D" uid="uid://d3nyqh0wyxvbd" path="res://editor/modular/port/dial/notch.png" id="10_navdq"]
+
+[node name="modular_editor_dial" type="Control" unique_id=447151730 node_paths=PackedStringArray("notch", "hole_node", "highlight_node", "outside_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 12.0
+offset_bottom = 12.0
+script = ExtResource("1_le0jt")
+notch = NodePath("notch")
+color_table = Dictionary[int, ExtResource("2_lxmeg")]({
+0: ExtResource("5_3dq6e"),
+1: ExtResource("3_navdq"),
+2: ExtResource("4_xbhqn")
+})
+hole_node = NodePath("hole")
+highlight_node = NodePath("highlight")
+outside_node = NodePath("outside")
+
+[node name="hole" type="TextureRect" parent="." unique_id=2139847099]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vflw6")
+
+[node name="highlight" type="TextureRect" parent="." unique_id=1099899273]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_liu80")
+
+[node name="outside" type="TextureRect" parent="." unique_id=1541745898]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_xvq0d")
+
+[node name="shadow" type="TextureRect" parent="." unique_id=1362604234]
+self_modulate = Color(0.1254902, 0.18039216, 0.21568628, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_le0jt")
+
+[node name="notch" type="TextureRect" parent="." unique_id=841661055]
+self_modulate = Color(0.1254902, 0.18039216, 0.21568628, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -5.0
+offset_right = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1, 5)
+texture = ExtResource("10_navdq")

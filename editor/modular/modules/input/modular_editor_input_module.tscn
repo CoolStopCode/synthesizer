@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dh4flip42fxv0" path="res://editor/modular/modules/input/black_key.png" id="4_csn4p"]
 [ext_resource type="Texture2D" uid="uid://bdo4s5pof4k6q" path="res://interface/icon/6x4/wave.png" id="5_8tkyb"]
 [ext_resource type="Texture2D" uid="uid://ds52fffsjrsa0" path="res://interface/icon/6x4/button.png" id="6_8tkyb"]
-[ext_resource type="PackedScene" uid="uid://bg46urym7tphs" path="res://editor/modular/port/modular_editor_port.tscn" id="7_b1ol4"]
+[ext_resource type="PackedScene" uid="uid://d4gjg1mpimrhp" path="res://editor/modular/port/output/modular_editor_output_port.tscn" id="7_b1ol4"]
 
 [node name="modular_editor_input_module" type="Control" unique_id=539617064 node_paths=PackedStringArray("ports")]
 layout_mode = 3
@@ -14,7 +14,7 @@ anchors_preset = 0
 offset_right = 24.0
 offset_bottom = 44.0
 script = ExtResource("1_3h4vm")
-ports = [NodePath("interface_port"), NodePath("interface_port2")]
+ports = [NodePath("pressed_port"), NodePath("frequency_port")]
 
 [node name="background" type="NinePatchRect" parent="." unique_id=2048303460]
 texture_filter = 1
@@ -109,19 +109,17 @@ offset_right = 21.0
 offset_bottom = 42.0
 texture = ExtResource("5_8tkyb")
 
-[node name="interface_port" parent="." unique_id=27721473 instance=ExtResource("7_b1ol4")]
+[node name="pressed_port" parent="." unique_id=27721473 instance=ExtResource("7_b1ol4")]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 33.0
 offset_right = 11.0
 offset_bottom = 43.0
 color = 2
-shape = 1
 
-[node name="interface_port2" parent="." unique_id=938254737 instance=ExtResource("7_b1ol4")]
+[node name="frequency_port" parent="." unique_id=1985472577 instance=ExtResource("7_b1ol4")]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 28.0
 offset_right = 23.0
 offset_bottom = 38.0
-shape = 1

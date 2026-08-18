@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d4gjg1mpimrhp"]
 
-[ext_resource type="Script" uid="uid://bpu4t8yo0ujue" path="res://editor/modular/port/input/modular_editor_input_port.gd" id="1_try3c"]
+[ext_resource type="Script" uid="uid://b6mann0pbnlem" path="res://editor/modular/port/output/modular_editor_output_port.gd" id="1_ku1kk"]
 [ext_resource type="Script" uid="uid://bvc3p0fai7gkq" path="res://editor/modular/port/modular_editor_port_color.gd" id="2_xofvd"]
 [ext_resource type="Resource" uid="uid://dupwtd48dbcu2" path="res://editor/modular/port/color/audio.tres" id="3_wgu7h"]
 [ext_resource type="Resource" uid="uid://bcgp7pmsv5wrb" path="res://editor/modular/port/color/bool.tres" id="4_oonfa"]
@@ -9,13 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://bujcqdlmngedy" path="res://editor/modular/port/output/highlight.png" id="7_towmk"]
 [ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://editor/modular/port/output/outside.png" id="8_ijxtn"]
 
-[node name="modular_editor_input_port" type="Control" unique_id=27721473 node_paths=PackedStringArray("hole_node", "highlight_node", "outside_node")]
+[node name="modular_editor_output_port" type="Control" unique_id=27721473 node_paths=PackedStringArray("hole_node", "highlight_node", "outside_node")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 10.0
 offset_bottom = 10.0
-script = ExtResource("1_try3c")
-shape = 1
+script = ExtResource("1_ku1kk")
+click_radius = 8.0
 color_table = Dictionary[int, ExtResource("2_xofvd")]({
 0: ExtResource("5_85m6p"),
 1: ExtResource("3_wgu7h"),

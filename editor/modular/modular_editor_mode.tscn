@@ -5,8 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://lqwjs5iu888g" path="res://editor/modular/background.png" id="2_i5pqe"]
 [ext_resource type="PackedScene" uid="uid://cl0ho64bpmm3k" path="res://editor/modular/modules/input/modular_editor_input_module.tscn" id="3_miyht"]
 [ext_resource type="PackedScene" uid="uid://sqilf3deybow" path="res://editor/modular/modules/output/modular_editor_output_module.tscn" id="4_qnjyn"]
+[ext_resource type="Script" uid="uid://li5n3fl84vg6" path="res://editor/modular/modular_editor_modules_layer.gd" id="6_qnjyn"]
+[ext_resource type="Script" uid="uid://dfjmgbsrrm63m" path="res://editor/modular/modular_editor_connections_layer.gd" id="7_lb4se"]
 
-[node name="modular_editor_mode" type="Control" unique_id=1176748786 node_paths=PackedStringArray("workspace", "modules_parent", "connections_parent")]
+[node name="modular_editor_mode" type="Control" unique_id=1176748786 node_paths=PackedStringArray("modules_layer", "connections_layer")]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -17,10 +19,8 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xaffx")
-workspace = NodePath("workspace")
-modules_parent = NodePath("workspace/modules")
-connections_parent = NodePath("workspace/connections")
-connection_scene = ExtResource("2_6dr8x")
+modules_layer = NodePath("workspace/modules_layer")
+connections_layer = NodePath("workspace/connections_layer")
 input_module_scene = ExtResource("3_miyht")
 output_module_scene = ExtResource("4_qnjyn")
 
@@ -53,14 +53,17 @@ offset_right = 88.0
 offset_bottom = 88.0
 texture = ExtResource("2_i5pqe")
 
-[node name="modules" type="Control" parent="workspace" unique_id=713797222]
+[node name="modules_layer" type="Control" parent="workspace" unique_id=713797222]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("6_qnjyn")
 
-[node name="connections" type="Control" parent="workspace" unique_id=758049982]
+[node name="connections_layer" type="Control" parent="workspace" unique_id=758049982]
 layout_mode = 1
 anchors_preset = 0
+script = ExtResource("7_lb4se")
+connection_scene = ExtResource("2_6dr8x")
 
 [node name="scrollbar" type="HScrollBar" parent="." unique_id=1093139201]
 layout_mode = 1
@@ -78,5 +81,3 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 8.0
 grow_horizontal = 2
-
-[connection signal="port_down" from="." to="." method="_on_port_down"]

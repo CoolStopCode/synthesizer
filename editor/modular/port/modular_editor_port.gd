@@ -9,7 +9,9 @@ enum PortColor {
 
 @export var color : PortColor
 @export var click_radius : float
-@export var connection : ModularEditorConnection
+@export var can_create_connection : bool
+
+var connection : ModularEditorConnection
 
 @export_group("private")
 @export var color_table : Dictionary[PortColor, ModularEditorPortColor]
@@ -59,3 +61,5 @@ func is_input_port() -> bool:
 
 func is_output_port() -> bool:
 	return self is ModularEditorOutputPort
+
+@abstract func clicked() -> void

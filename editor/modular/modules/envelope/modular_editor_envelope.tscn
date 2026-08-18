@@ -91,6 +91,11 @@ offset_left = 12.0
 offset_top = 18.0
 offset_right = 24.0
 offset_bottom = 30.0
+minimum_value = 0.05
+maximum_value = 1.0
+minimum_rotation = -150.0
+maximum_rotation = 150.0
+rotation_speed = 0.1
 
 [node name="d" parent="." unique_id=2132221693 instance=ExtResource("6_t5b2k")]
 layout_mode = 0
@@ -98,6 +103,11 @@ offset_left = 24.0
 offset_top = 18.0
 offset_right = 36.0
 offset_bottom = 30.0
+minimum_value = 0.05
+maximum_value = 1.0
+minimum_rotation = -150.0
+maximum_rotation = 150.0
+rotation_speed = 0.1
 
 [node name="s" parent="." unique_id=1058439803 instance=ExtResource("6_t5b2k")]
 layout_mode = 0
@@ -105,6 +115,10 @@ offset_left = 36.0
 offset_top = 18.0
 offset_right = 48.0
 offset_bottom = 30.0
+maximum_value = 1.0
+minimum_rotation = -150.0
+maximum_rotation = 150.0
+rotation_speed = 0.1
 
 [node name="r" parent="." unique_id=1772931580 instance=ExtResource("6_t5b2k")]
 layout_mode = 0
@@ -112,6 +126,11 @@ offset_left = 48.0
 offset_top = 18.0
 offset_right = 60.0
 offset_bottom = 30.0
+minimum_value = 0.05
+maximum_value = 10.0
+minimum_rotation = -150.0
+maximum_rotation = 150.0
+rotation_speed = 0.1
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1456938386]
 layout_mode = 1

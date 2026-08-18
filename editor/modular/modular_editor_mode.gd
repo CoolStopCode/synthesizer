@@ -38,13 +38,17 @@ func release_connection(port: ModularEditorPort, event_position : Vector2) -> vo
 	or (not dragging_connection.can_connect_to(port)):
 		dragging_connection.queue_free()
 		return
-
+	
 	dragging_connection.connect_to_port(port)
+	dragging_connection = null
 
 func port_clicked(port: ModularEditorPort) -> void:
 	if port.is_empty():
-		modules_layer.highlight_on(port)
-		dragging_connection = connections_layer.create_connection(port)
+		if port.can_create_connection:
+			modules_layer.highlight_on(port)
+			dragging_connection = connections_layer.create_connection(port)
+		else:
+			port.clicked()
 	else:
 		var connection := port.connection
 		dragging_connection = connection

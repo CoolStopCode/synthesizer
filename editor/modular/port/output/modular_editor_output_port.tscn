@@ -16,6 +16,7 @@ offset_right = 10.0
 offset_bottom = 10.0
 script = ExtResource("1_ku1kk")
 click_radius = 8.0
+can_create_connection = true
 color_table = Dictionary[int, ExtResource("2_xofvd")]({
 0: ExtResource("5_85m6p"),
 1: ExtResource("3_wgu7h"),

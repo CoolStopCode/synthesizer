@@ -5,9 +5,9 @@
 [ext_resource type="Resource" uid="uid://dupwtd48dbcu2" path="res://editor/modular/port/color/audio.tres" id="3_dj3jk"]
 [ext_resource type="Resource" uid="uid://bcgp7pmsv5wrb" path="res://editor/modular/port/color/bool.tres" id="4_o85tc"]
 [ext_resource type="Resource" uid="uid://uouevnnyf4ad" path="res://editor/modular/port/color/float.tres" id="5_avky3"]
-[ext_resource type="Texture2D" uid="uid://mpo5spivr4n" path="res://editor/modular/port/input/hole.png" id="6_q1mdf"]
-[ext_resource type="Texture2D" uid="uid://ba4j7n75312ft" path="res://editor/modular/port/input/highlight.png" id="7_f5nwm"]
-[ext_resource type="Texture2D" uid="uid://cjbybof3bxkjj" path="res://editor/modular/port/input/outside.png" id="8_nt5h7"]
+[ext_resource type="Texture2D" uid="uid://c4ndfmqicfi0e" path="res://editor/modular/port/input/hole.png" id="6_q1mdf"]
+[ext_resource type="Texture2D" uid="uid://bujcqdlmngedy" path="res://editor/modular/port/input/highlight.png" id="7_f5nwm"]
+[ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://editor/modular/port/input/outside.png" id="8_nt5h7"]
 
 [node name="modular_editor_input_port" type="Control" unique_id=27721473 node_paths=PackedStringArray("hole_node", "highlight_node", "outside_node")]
 layout_mode = 3

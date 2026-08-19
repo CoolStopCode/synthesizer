@@ -54,14 +54,23 @@ offset_bottom = 88.0
 texture = ExtResource("2_i5pqe")
 
 [node name="modules_layer" type="Control" parent="workspace" unique_id=713797222]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("6_qnjyn")
 
 [node name="connections_layer" type="Control" parent="workspace" unique_id=758049982]
 layout_mode = 1
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("7_lb4se")
 connection_scene = ExtResource("2_6dr8x")
 
@@ -81,3 +90,5 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 8.0
 grow_horizontal = 2
+
+[connection signal="gui_input" from="workspace" to="." method="_on_workspace_gui_input"]

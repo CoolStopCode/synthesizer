@@ -18,12 +18,11 @@ func _ready() -> void:
 	modules_layer.create_module(preload("res://editor/modular/modules/envelope/modular_editor_envelope.tscn"))
 	modules_layer.create_module(preload("res://editor/modular/modules/envelope/modular_editor_envelope.tscn"))
 
-func _input(event: InputEvent) -> void:
-	if not event is InputEventMouseButton and not event is InputEventScreenTouch:
-		return
-
+func _on_workspace_gui_input(event: InputEvent) -> void:
+	if not (event is InputEventMouseButton or event is InputEventScreenTouch): return
+	
 	var closest_port := modules_layer.closest_port_to(event.global_position)
-
+	
 	if event.is_pressed():
 		if closest_port.in_click_area(event.global_position):
 			port_clicked(closest_port)

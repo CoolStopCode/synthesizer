@@ -18,6 +18,12 @@ func clicked() -> void:
 	previous_mouse_position = get_global_mouse_position()
 	dragging = true
 
+func connected() -> void:
+	notch.hide()
+
+func disconnected() -> void:
+	notch.show()
+
 func _input(event: InputEvent) -> void:
 	if not dragging: return
 	

@@ -62,4 +62,6 @@ func is_input_port() -> bool:
 func is_output_port() -> bool:
 	return self is ModularEditorOutputPort
 
-@abstract func clicked() -> void
+func clicked() -> void: pass
+func connected() -> void: pass
+func disconnected() -> void: pass

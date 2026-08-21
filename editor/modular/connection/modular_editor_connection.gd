@@ -12,6 +12,7 @@ extends Node2D
 
 func lift_port(port : ModularEditorPort) -> void:
 	if port != input and port != output: return
+	port.disconnected()
 	
 	if port == input:
 		input.connection = null
@@ -35,6 +36,7 @@ func get_connected_port() -> ModularEditorPort:
 
 func connect_to_port(port : ModularEditorPort) -> void:
 	port.connection = self
+	port.connected()
 	
 	if port.is_input_port():
 		input = port

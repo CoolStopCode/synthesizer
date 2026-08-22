@@ -58,15 +58,23 @@ func get_position_for_new_module(module_size : Vector2, workspace_height : float
 	
 	return closest
 
+func get_all_ports() -> Array[ModularEditorPort]:
+	var ports : Array[ModularEditorPort]
+	
+	for module : ModularEditorModule in modules:
+		for port : ModularEditorPort in module.ports:
+			ports.append(port)
+	
+	return ports
+
 func closest_port_to(point : Vector2) -> ModularEditorPort:
 	var closest_distance : float = INF
 	var closest_port : ModularEditorPort
-	for module : ModularEditorModule in modules:
-		for port : ModularEditorPort in module.ports:
-			var distance := point.distance_to(port.global_center_position())
-			if distance < closest_distance:
-				closest_distance = distance
-				closest_port = port
+	for port : ModularEditorPort in get_all_ports():
+		var distance := point.distance_to(port.global_center_position())
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_port = port
 	
 	return closest_port
 

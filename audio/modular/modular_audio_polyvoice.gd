@@ -2,7 +2,7 @@ class_name ModularAudioPolyvoice
 extends RefCounted
 
 var voices : Array[ModularAudioVoice]
-var active : bool
+var pressed : bool
 
 var amplitude : float = 1.0
 var amplitude_fade_start : float = 1.0
@@ -12,14 +12,14 @@ var amplitude_fade_elapsed : float = 0.0
 var amplitude_fading : bool = false
 
 func polyvoice_on():
-	active = true
+	pressed = true
 	for voice in voices:
-		voice.active = true
+		voice.pressed = true
 
 func polyvoice_off():
-	active = false
+	pressed = false
 	for voice in voices:
-		voice.active = false
+		voice.pressed = false
 
 func fade_amplitude_to(target: float, duration: float) -> void:
 	if duration <= 0.0:

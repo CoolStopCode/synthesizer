@@ -13,7 +13,7 @@ anchors_preset = 0
 offset_right = 24.0
 offset_bottom = 44.0
 script = ExtResource("1_q7ab7")
-ports = [NodePath("modular_editor_input_port")]
+ports = [NodePath("sample_port")]
 
 [node name="background" type="NinePatchRect" parent="." unique_id=144974053]
 texture_filter = 1
@@ -75,7 +75,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_4bcaw")
 
-[node name="modular_editor_input_port" parent="." unique_id=27721473 instance=ExtResource("6_q7ab7")]
+[node name="sample_port" parent="." unique_id=27721473 instance=ExtResource("6_q7ab7")]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 33.0

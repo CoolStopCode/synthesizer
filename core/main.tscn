@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio/tonal/inspector/note.gd" id="4_rayt5"]
 [ext_resource type="Script" uid="uid://2st765u0dv45" path="res://audio/tonal/inspector/key.gd" id="5_510js"]
 [ext_resource type="PackedScene" uid="uid://bypq5q5ltosea" path="res://core/stats/stats.tscn" id="5_xa854"]
-[ext_resource type="Resource" uid="uid://bh08wlyd8apok" path="res://audio/modular/node_layouts/default_saw.tres" id="6_rayt5"]
+[ext_resource type="Script" uid="uid://cjhydh6ou7sf5" path="res://audio/modular/modular_audio_layout.gd" id="6_510js"]
 [ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio/modular/modular_audio_mode.gd" id="7_510js"]
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://core/test/io_test.gd" id="9_ntwa4"]
 
@@ -25,9 +25,13 @@ root = SubResource("Resource_rayt5")
 mode = 1
 metadata/_custom_type_script = "uid://2st765u0dv45"
 
+[sub_resource type="Resource" id="Resource_7ua4h"]
+script = ExtResource("6_510js")
+memory_data = PackedFloat64Array(0, 0, 0, 0)
+
 [sub_resource type="Resource" id="Resource_brq4u"]
 script = ExtResource("7_510js")
-layout = ExtResource("6_rayt5")
+layout = SubResource("Resource_7ua4h")
 voice_count = 4
 allocation = 2
 key = SubResource("Resource_xhu5d")

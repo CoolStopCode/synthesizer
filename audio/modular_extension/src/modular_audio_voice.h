@@ -59,11 +59,11 @@ private:
     double amplitude_bend_duration = 0.0;
     double amplitude_bend_elapsed  = 0.0;
 
-    bool active = false;
+    bool pressed = false;
 
     // memory_data[0]:  unused
     // memory_data[1]:  frequency input
-    // memory_data[2]:  active input
+    // memory_data[2]:  pressed input
     // memory_data[3]:  sample output
     // memory_data[4+]: module use (outputs, states, parameters)
     std::vector<double>   memory_data;
@@ -85,8 +85,8 @@ public:
     double get_amplitude();
     void   bend_amplitude_to(double target, double duration);
 
-    void set_active(bool active_p); // memory_data[2]
-    bool get_active();
+    void set_pressed(bool pressed_p); // memory_data[2]
+    bool get_pressed();
 
     void set_layout(
         const PackedByteArray&    types, // Array of ModuleType

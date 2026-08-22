@@ -54,78 +54,69 @@ func port_clicked(port: ModularEditorPort) -> void:
 		connection.lift_port(port)
 		modules_layer.highlight_on(connection.get_connected_port())
 
-#func build_voice() -> ModularAudioVoice: # TODO: Redo this
-	#var voice := ModularAudioVoice.new()
-	#
-	#var types : PackedByteArray
-	#
-	#var input_offsets : PackedInt32Array
-	#var output_offsets : PackedInt32Array
-	#var state_offsets : PackedInt32Array
-	#var parameter_offsets : PackedInt32Array
-	#
-	#var input_routes : PackedInt32Array 
-	#var initial_memory_data : PackedFloat64Array
-	#initial_memory_data.append_array([0.0, 0.0, 0.0, 0.0])
-	#
-	#for module in modules:
-		#var type := module.type_id
-		#
-		#var module_states := module.states
-		#var module_parameters := module.parameters
-		#
-		#types.append(type)
-		#
-		#var state_data: Array[float] = module.get_states()
-		#state_offsets.append(initial_memory_data.size())
-		#initial_memory_data.append_array(state_data)
-		#
-		#var parameter_data: Array[float] = module.get_parameters()
-		#parameter_offsets.append(initial_memory_data.size())
-		#initial_memory_data.append_array(parameter_data)
-	#
-	#var connection_map : Dictionary[ModularEditorPort, ModularEditorPort]
-	#for connection in connections:
-		#if connection.from.is_input_port():
-			#connection_map[connection.from] = connection.to
-		#elif connection.from.is_output_port():
-			#connection_map[connection.to] = connection.from
-	#
-	#var output_index_map : Dictionary[ModularEditorPort, int]
-	#for module in modules:
-		#var output_ports : Array[ModularEditorPort]
-		#for port in module.ports:
-			#if port.is_output_port():
-				#output_ports.append(port)
-		#
-		#for i in range(output_ports.size()):
-			#var output_port := output_ports[i]
-			#output_index_map[output_port] = initial_memory_data.size() + i
-		#
-		#var output_data: Array[float]
-		#output_data.resize(output_ports.size())
-		#output_offsets.append(initial_memory_data.size())
-		#initial_memory_data.append_array(output_data)
-	#
-	#for module in modules:
-		#var input_ports : Array[ModularEditorPort]
-		#for port in module.ports:
-			#if port.is_input_port():
-				#input_ports.append(port)
-		#
-		#input_offsets.append(input_routes.size())
-		#
-		#for input_port in input_ports:
-			#input_routes.append(output_index_map[connection_map[input_port]])
-	#
-	#voice.set_layout(
-		#types,
-		#input_offsets,
-		#output_offsets,
-		#state_offsets,
-		#parameter_offsets,
-		#input_routes,
-		#initial_memory_data
-	#)
-	#
-	#return voice
+func build_layout() -> ModularAudioLayout:
+	var layout := ModularAudioLayout.new()
+	
+	var types : PackedByteArray
+	var module_offsets : PackedInt32Array
+	var output_offsets : PackedInt32Array
+	
+	var output_routes : PackedInt32Array
+	var memory_data : PackedFloat64Array = PackedFloat64Array([0.0, 0.0, 0.0, 0.0])
+	
+	for module in modules_layer.modules:
+		var type := module.type_id
+		types.append(type)
+		
+		var module_data := module.get_module_data()
+		
+		module_offsets.append(memory_data.size())
+		memory_data.append_array(module_data)
+	
+	var connection_map : Dictionary[ModularEditorOutputPort, ModularEditorInputPort]
+	for connection in connections_layer.connections:
+		connection_map[connection.output] = connection.input
+	
+	var input_map : Dictionary[ModularEditorInputPort, int] # Input port -> memory index
+	for i in range(modules_layer.modules.size()):
+		var module : ModularEditorModule = modules_layer.modules[i]
+		var module_input_map : Array[ModularEditorInputPort] = module.get_input_map()
+		var module_offset : int = module_offsets[i]
+		
+		for j in range(module_input_map.size()):
+			var module_input : ModularEditorInputPort = module_input_map[j]
+			if module_input == null: continue
+			input_map[module_input] = module_offset + j
+			
+	
+	var output_map : Dictionary[ModularEditorOutputPort, int] # Output port -> memory index
+	for i in range(modules_layer.modules.size()):
+		var module : ModularEditorModule = modules_layer.modules[i]
+		var module_output_map : Array[ModularEditorOutputPort] = module.get_output_map()
+		
+		for j in range(module_output_map.size()):
+			var module_output : ModularEditorOutputPort = module_output_map[j]
+			if module_output == null: continue
+			if not connection_map.has(module_output): continue
+			output_map[module_output] = input_map[connection_map[module_output]]
+	
+	for i in range(modules_layer.modules.size()):
+		var module : ModularEditorModule = modules_layer.modules[i]
+		var module_output_map : Array[ModularEditorOutputPort] = module.get_output_map()
+		
+		output_offsets.append(output_routes.size())
+		for j in range(module_output_map.size()):
+			var module_output : ModularEditorOutputPort = module_output_map[j]
+			if module_output == null: continue
+			if output_map.has(module_output):
+				output_routes.append(output_map[module_output])
+			else:
+				output_routes.append(0) # Unconnected -> unused slot 0
+	
+	layout.types = types
+	layout.module_offsets = module_offsets
+	layout.output_offsets = output_offsets
+	layout.output_routes = output_routes
+	layout.memory_data = memory_data
+	
+	return layout

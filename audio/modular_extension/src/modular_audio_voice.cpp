@@ -9,8 +9,8 @@
 void ModularAudioVoice::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_frequency", "frequency"),  &ModularAudioVoice::set_frequency);
     ClassDB::bind_method(D_METHOD("get_frequency"),  &ModularAudioVoice::get_frequency);
-    ClassDB::bind_method(D_METHOD("set_active", "active"),  &ModularAudioVoice::set_active);
-    ClassDB::bind_method(D_METHOD("get_active"),  &ModularAudioVoice::get_active);
+    ClassDB::bind_method(D_METHOD("set_pressed", "pressed"),  &ModularAudioVoice::set_pressed);
+    ClassDB::bind_method(D_METHOD("get_pressed"),  &ModularAudioVoice::get_pressed);
     ClassDB::bind_method(D_METHOD("set_amplitude", "amplitude"),  &ModularAudioVoice::set_amplitude);
     ClassDB::bind_method(D_METHOD("get_amplitude"),  &ModularAudioVoice::get_amplitude);
 
@@ -28,7 +28,7 @@ void ModularAudioVoice::_bind_methods() {
     ), &ModularAudioVoice::set_layout);
 
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "frequency"), "set_frequency", "get_frequency");
-    ADD_PROPERTY(PropertyInfo(Variant::BOOL, "active"), "set_active", "get_active");
+    ADD_PROPERTY(PropertyInfo(Variant::BOOL, "pressed"), "set_pressed", "get_pressed");
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "amplitude"), "set_amplitude", "get_amplitude");
 }
 
@@ -54,8 +54,8 @@ void ModularAudioVoice::bend_amplitude_to(const double target, const double dura
 	amplitude_bend_elapsed = 0.0;
 }
 
-void ModularAudioVoice::set_active(const bool active_p) { active = active_p; }
-bool ModularAudioVoice::get_active() { return active; }
+void ModularAudioVoice::set_pressed(const bool pressed_p) { pressed = pressed_p; }
+bool ModularAudioVoice::get_pressed() { return pressed; }
 
 std::array<ModularAudioVoice::ModuleFunction, ModularAudioVoice::MODULE_TYPE_COUNT> ModularAudioVoice::dispatch_table = {
     ModularAudioVoice::process_input_module,
@@ -129,7 +129,7 @@ double ModularAudioVoice::process(double delta) {
 
     write_memory(0, 0.0,                    memory_data.data()); 
     write_memory(1, frequency,              memory_data.data()); 
-    write_memory(2, bool_to_double(active), memory_data.data()); 
+    write_memory(2, bool_to_double(pressed), memory_data.data()); 
     write_memory(3, 0.0,                    memory_data.data()); 
     
     for (int i = 0; i < modules.size(); i++) {
@@ -191,7 +191,7 @@ inline double ModularAudioVoice::lerp(double a, double b, double t) {
 // INPUT module
 //
 // Output 1    = frequency : float
-// Output 1    = active : bool
+// Output 1    = pressed : bool
 //
 // =========================================================
 
@@ -202,9 +202,9 @@ void ModularAudioVoice::process_input_module(
     double delta
 ) {
     double frequency_in = read_memory(1, memory_data);
-    double active_in    = read_memory(2, memory_data);
+    double pressed_in    = read_memory(2, memory_data);
     write_output(m.output_offset + 0, frequency_in, memory_data, output_routes);
-    write_output(m.output_offset + 1, active_in   , memory_data, output_routes);
+    write_output(m.output_offset + 1, pressed_in   , memory_data, output_routes);
 }
 
 // =====================================================================
@@ -305,7 +305,7 @@ void ModularAudioVoice::process_noise_module(
 // Parameter 11 = decay_curve   : float
 // Parameter 12 = release_curve : float
 // Parameter 13 = reset         : bool
-// Output 0     = level : float
+// Output 0     = output : float
 //
 // =====================================================================
 

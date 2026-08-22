@@ -33,6 +33,7 @@ func bend_changed(bend : Vector3i) -> void:
 
 func _process(delta: float) -> void: # Generates chunks of audio processes per frame
 	fill_audio_buffer()
+	pass
 
 func fill_audio_buffer() -> void:
 	var frames_to_fill : int = playback.get_frames_available()

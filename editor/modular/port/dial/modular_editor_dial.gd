@@ -1,4 +1,4 @@
-class_name ModularEditorDial
+class_name ModularEditorDialPort
 extends ModularEditorInputPort
 
 @export var minimum_value : float

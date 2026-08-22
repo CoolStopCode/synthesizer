@@ -48,8 +48,6 @@ folder_colors={
 "res://audio/analog/": "red",
 "res://audio/drums/": "yellow",
 "res://audio/modular/": "green",
-"res://audio/modular/modules/": "green",
-"res://audio/modular/node_layouts/": "teal",
 "res://audio/modular_extension/": "green",
 "res://audio/sampler/": "blue",
 "res://audio/sampler/samples/": "teal",

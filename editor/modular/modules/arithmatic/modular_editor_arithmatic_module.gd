@@ -1,4 +1,4 @@
-class_name ModularEditorInputModule
+class_name ModularEditorArithmaticModule
 extends ModularEditorModule
 
 @export var frequency_port : ModularEditorOutputPort

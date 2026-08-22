@@ -21,12 +21,10 @@ void ModularAudioVoice::_bind_methods() {
     ClassDB::bind_method(D_METHOD(
         "set_layout",
         "types",
-        "input_offsets",
+        "module_offsets",
         "output_offsets",
-        "state_offsets",
-        "parameter_offsets",
-        "input_routes",
-        "initial_memory_data"
+        "output_routes",
+        "memory_data"
     ), &ModularAudioVoice::set_layout);
 
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "frequency"), "set_frequency", "get_frequency");
@@ -76,36 +74,32 @@ std::array<ModularAudioVoice::ModuleFunction, ModularAudioVoice::MODULE_TYPE_COU
 void ModularAudioVoice::set_layout(
     const PackedByteArray &types_p, // Array of ModuleType
 
-    const PackedInt32Array &input_offsets_p,
+    const PackedInt32Array &module_offsets_p,
     const PackedInt32Array &output_offsets_p,
-    const PackedInt32Array &state_offsets_p,
-    const PackedInt32Array &parameter_offsets_p,
     
-    const PackedInt32Array &input_routes_p, // Array of memory_data indices
-    const PackedFloat64Array &initial_memory_data_p // memory_data
+    const PackedInt32Array &output_routes_p, // Array of memory_data indices
+    const PackedFloat64Array &memory_data_p // memory_data
 ) {
     int module_count = types_p.size();
     modules.resize(module_count);
     for (int i = 0; i < module_count; i++) {
-        Module &m          = modules[i];
+        Module &module     = modules[i];
         
-        m.type             = types_p[i];
-        m.input_offset     = input_offsets_p[i];
-        m.output_offset    = output_offsets_p[i];
-        m.state_offset     = state_offsets_p[i];
-        m.parameter_offset = parameter_offsets_p[i];
+        module.type             = types_p[i];
+        module.module_offset    = module_offsets_p[i];
+        module.output_offset    = output_offsets_p[i];
     }
 
-    int input_routes_count = input_routes_p.size();
-    input_routes.resize(input_routes_count);
-    for (int i = 0; i < input_routes_count; i++) {
-        input_routes[i] = (uint32_t)input_routes_p[i];
+    int output_routes_count = output_routes_p.size();
+    output_routes.resize(output_routes_count);
+    for (int i = 0; i < output_routes_count; i++) {
+        output_routes[i] = (uint32_t)output_routes_p[i];
     }
 
-    int initial_memory_data_count = initial_memory_data_p.size();
-    memory_data.resize(initial_memory_data_count);
-    for (int i = 0; i < initial_memory_data_count; i++) {
-        memory_data[i] = initial_memory_data_p[i];
+    int memory_data_count = memory_data_p.size();
+    memory_data.resize(memory_data_count);
+    for (int i = 0; i < memory_data_count; i++) {
+        memory_data[i] = memory_data_p[i];
     }
 }
 
@@ -131,13 +125,15 @@ double ModularAudioVoice::process(double delta) {
     }
 
     double *memory_data_pointer = memory_data.data();
-    const u_int32_t *input_routes_pointer = input_routes.data();
+    const u_int32_t *output_routes_pointer = output_routes.data();
 
-    write_memory(1, frequency, memory_data.data()); 
+    write_memory(0, 0.0,                    memory_data.data()); 
+    write_memory(1, frequency,              memory_data.data()); 
     write_memory(2, bool_to_double(active), memory_data.data()); 
+    write_memory(3, 0.0,                    memory_data.data()); 
     
     for (int i = 0; i < modules.size(); i++) {
-        dispatch_table[modules[i].type](modules[i], memory_data_pointer, input_routes_pointer, delta);
+        dispatch_table[modules[i].type](modules[i], memory_data_pointer, output_routes_pointer, delta);
     }
 
     return read_memory(3, memory_data_pointer) * amplitude;
@@ -147,12 +143,13 @@ double ModularAudioVoice::process(double delta) {
 // ======================   HELPERS   ======================
 // =========================================================
 
-inline double ModularAudioVoice::read_input(
+inline void ModularAudioVoice::write_output(
     uint32_t index,
+    double value,
     double* memory_data,
-    const uint32_t* input_routes
+    const uint32_t* output_routes
 ) {
-    return memory_data[input_routes[index]];
+    memory_data[output_routes[index]] = value;
 }
 
 inline double ModularAudioVoice::read_memory(
@@ -193,37 +190,37 @@ inline double ModularAudioVoice::lerp(double a, double b, double t) {
 // =========================================================
 // INPUT module
 //
-// outputs[0]    = frequency : float
-// outputs[1]    = active : bool
+// Output 1    = frequency : float
+// Output 1    = active : bool
 //
 // =========================================================
 
 void ModularAudioVoice::process_input_module(
     const Module &m,
     double* memory_data,
-    const uint32_t* input_routes,
+    const uint32_t* output_routes,
     double delta
 ) {
     double frequency_in = read_memory(1, memory_data);
     double active_in    = read_memory(2, memory_data);
-    write_memory(m.output_offset + 0, frequency_in, memory_data); // frequency
-    write_memory(m.output_offset + 1, active_in   , memory_data); // active
+    write_output(m.output_offset + 0, frequency_in, memory_data, output_routes);
+    write_output(m.output_offset + 1, active_in   , memory_data, output_routes);
 }
 
 // =====================================================================
 // OUTPUT module
 //
-// inputs[0]     = sample : float
+// Input 0     = sample : float
 //
 // =====================================================================
 
 void ModularAudioVoice::process_output_module(
     const Module &m,
     double* memory_data,
-    const uint32_t* input_routes,
+    const uint32_t* output_routes,
     double delta
 ) {
-    double input_value = read_input(m.input_offset, memory_data, input_routes);
+    double input_value = read_memory(m.module_offset, memory_data);
 
     write_memory(3, input_value, memory_data);
 }
@@ -231,25 +228,25 @@ void ModularAudioVoice::process_output_module(
 // =========================================================
 // OSCILLATOR module
 //
-// inputs[0]     = frequency : float
-// outputs[0]    = sample : float
-// states[0]     = phase accumulation : float
-// parameters[0] = waveform : enum { SINE, SQUARE, SAW, TRIANGLE }
+// Input 0     = frequency : float
+// State 1     = phase accumulation : float
+// Parameter 2 = waveform : enum { SINE, SQUARE, SAW, TRIANGLE }
+// Output 0    = sample : float
 // 
 // =========================================================
 
 void ModularAudioVoice::process_oscillator_module(
     const Module &m,
     double* memory_data,
-    const uint32_t* input_routes,
+    const uint32_t* output_routes,
     double delta
 ) {
-    double frequency = read_input(m.input_offset + 0, memory_data, input_routes);
-    int    waveform  = double_to_int(read_memory(m.parameter_offset + 0, memory_data));
-    double phase = read_memory(m.state_offset + 0, memory_data);
+    double frequency = read_memory(m.module_offset + 0, memory_data);
+    double phase     = read_memory(m.module_offset + 1, memory_data);
+    int    waveform  = double_to_int(read_memory(m.module_offset + 2, memory_data));
 
     double next_phase = std::fmod(phase + Math_TAU * frequency * delta, Math_TAU);
-    write_memory(m.state_offset + 0, next_phase, memory_data);
+    write_memory(m.module_offset + 1, next_phase, memory_data);
 
     double sample = 0.0;
     switch (waveform) {
@@ -271,21 +268,21 @@ void ModularAudioVoice::process_oscillator_module(
             sample = 0.0;
     }
 
-    write_memory(m.output_offset, sample, memory_data);
+    write_output(m.output_offset, sample, memory_data, output_routes);
 }
 
 // =========================================================
 // NOISE module
 //
-// outputs[0]    = sample : float
-// parameters[0] = spectrum : enum { WHITE, PINK, BROWN, VIOLET, }
+// Parameter 0 = spectrum : enum { WHITE, PINK, BROWN, VIOLET, }
+// Output 0    = sample : float
 // 
 // =========================================================
 
 void ModularAudioVoice::process_noise_module(
     const Module &m,
     double* memory_data,
-    const uint32_t* input_routes,
+    const uint32_t* output_routes,
     double delta
 ) {
 
@@ -294,47 +291,44 @@ void ModularAudioVoice::process_noise_module(
 // =====================================================================
 // ENVELOPE module
 //
-// inputs[0]     = gate : bool
-// outputs[0]    = level : float
-// states[0]     = level : float
-// states[1]     = stage : enum { IDLE, ATTACK, DECAY, SUSTAIN, RELEASE }
-// states[2]     = phase : float
-// states[3]     = attack_start_level : float
-// states[4]     = release_start_level : float
-// parameters[0] = attack        : float
-// parameters[1] = decay         : float
-// parameters[2] = sustain       : float
-// parameters[3] = release       : float
-// parameters[4] = attack_curve  : float
-// parameters[5] = decay_curve   : float
-// parameters[6] = release_curve : float
-// parameters[7] = reset         : bool
+// Input 0      = gate : bool
+// State 1      = level : float
+// State 2      = stage : enum { IDLE, ATTACK, DECAY, SUSTAIN, RELEASE }
+// State 3      = phase : float
+// State 4      = attack_start_level : float
+// State 5      = release_start_level : float
+// Parameter 6  = attack        : float
+// Parameter 7  = decay         : float
+// Parameter 8  = sustain       : float
+// Parameter 9  = release       : float
+// Parameter 10 = attack_curve  : float
+// Parameter 11 = decay_curve   : float
+// Parameter 12 = release_curve : float
+// Parameter 13 = reset         : bool
+// Output 0     = level : float
 //
 // =====================================================================
 
 void ModularAudioVoice::process_envelope_module(
     const Module &m,
     double* memory_data,
-    const uint32_t* input_routes,
+    const uint32_t* output_routes,
     double delta
 ) {
-    double gate          = read_input(m.input_offset, memory_data, input_routes);
-    double attack        = read_memory(m.parameter_offset + 0, memory_data);
-    double decay         = read_memory(m.parameter_offset + 1, memory_data);
-    double sustain       = read_memory(m.parameter_offset + 2, memory_data);
-    double release       = read_memory(m.parameter_offset + 3, memory_data);
-    double attack_curve  = read_memory(m.parameter_offset + 4, memory_data);
-    double decay_curve   = read_memory(m.parameter_offset + 5, memory_data);
-    double release_curve = read_memory(m.parameter_offset + 6, memory_data);
-    bool reset = double_to_bool(read_memory(m.parameter_offset + 7, memory_data));
-
-    double level                = read_memory(m.state_offset + 0, memory_data);
-    int stage                   = double_to_int(read_memory(m.state_offset + 1, memory_data));
-    double phase                = read_memory(m.state_offset + 2, memory_data);
-    double attack_start_level   = read_memory(m.state_offset + 3, memory_data);
-    double release_start_level  = read_memory(m.state_offset + 4, memory_data);
-
-    bool gated = double_to_bool(gate);
+    bool gate                  = double_to_bool(read_memory(m.module_offset + 0, memory_data));
+    double level               = read_memory(m.module_offset + 1,  memory_data);
+    int stage                  = double_to_int(read_memory(m.module_offset + 2, memory_data));
+    double phase               = read_memory(m.module_offset + 3,  memory_data);
+    double attack_start_level  = read_memory(m.module_offset + 4,  memory_data);
+    double release_start_level = read_memory(m.module_offset + 5,  memory_data);
+    double attack              = read_memory(m.module_offset + 6,  memory_data);
+    double decay               = read_memory(m.module_offset + 7,  memory_data);
+    double sustain             = read_memory(m.module_offset + 8,  memory_data);
+    double release             = read_memory(m.module_offset + 9,  memory_data);
+    double attack_curve        = read_memory(m.module_offset + 10, memory_data);
+    double decay_curve         = read_memory(m.module_offset + 11, memory_data);
+    double release_curve       = read_memory(m.module_offset + 12, memory_data);
+    bool reset                 = double_to_bool(read_memory(m.module_offset + 13, memory_data));
 
     // Convert
     attack_curve  = std::pow(12.0, attack_curve * 2.0 - 1.0);
@@ -346,8 +340,8 @@ void ModularAudioVoice::process_envelope_module(
     decay_curve   = std::max(decay_curve, 0.001);
     release_curve = std::max(release_curve, 0.001);
 
-    bool entering_attack  = gated  && (stage == 0 || stage == 4);
-    bool entering_release = !gated && stage != 0 && stage != 4;
+    bool entering_attack  = gate  && (stage == 0 || stage == 4);
+    bool entering_release = !gate && stage != 0 && stage != 4;
 
     if (entering_attack)  {
         stage = 1;
@@ -415,41 +409,40 @@ void ModularAudioVoice::process_envelope_module(
             break;
     }
 
-    write_memory(m.state_offset + 0, level, memory_data);
-    write_memory(m.state_offset + 1, int_to_double(stage), memory_data);
-    write_memory(m.state_offset + 2, phase, memory_data);
-    write_memory(m.state_offset + 3, attack_start_level, memory_data);
-    write_memory(m.state_offset + 4, release_start_level, memory_data);
-    write_memory(m.output_offset, level, memory_data);
+    write_memory(m.module_offset + 1, level, memory_data);
+    write_memory(m.module_offset + 2, int_to_double(stage), memory_data);
+    write_memory(m.module_offset + 3, phase, memory_data);
+    write_memory(m.module_offset + 4, attack_start_level, memory_data);
+    write_memory(m.module_offset + 5, release_start_level, memory_data);
+    write_output(m.output_offset + 0, level, memory_data, output_routes);
 }
 
 // =====================================================================
 // FILTER module
 //
-// inputs[0]     = audio_in     : float
-// outputs[0]    = audio_out    : float
-// states[0]     = lowpass      : float
-// states[1]     = bandpass     : float
-// parameters[0] = cutoff       : float
-// parameters[1] = resonance    : float  (0..1)
-// parameters[2] = filter_mode  : enum    { LP=0, BP=1, HP=2 }
+// Input 0     = audio_in     : float
+// State 1     = lowpass      : float
+// State 2     = bandpass     : float
+// Parameter 3 = cutoff       : float
+// Parameter 4 = resonance    : float  (0..1)
+// Parameter 5 = filter_mode  : enum    { LP=0, BP=1, HP=2 }
+// Output 0    = audio_out    : float
 //
 // =====================================================================
 
 void ModularAudioVoice::process_filter_module(
     const Module &m,
     double* memory_data,
-    const uint32_t* input_routes,
+    const uint32_t* output_routes,
     double delta
 ) {
-    double audio_in   = read_input(m.input_offset + 0, memory_data, input_routes);
+    double audio_in    = read_memory(m.module_offset + 0, memory_data);
+    double lowpass     = read_memory(m.module_offset + 1, memory_data);
+    double bandpass    = read_memory(m.module_offset + 2, memory_data);
+    double cutoff      = read_memory(m.module_offset + 3, memory_data);
+    double resonance   = read_memory(m.module_offset + 4, memory_data);
+    int    filter_mode = double_to_int(read_memory(m.module_offset + 5, memory_data));
 
-    double cutoff     = read_memory(m.parameter_offset + 0, memory_data);
-    double resonance  = read_memory(m.parameter_offset + 1, memory_data);
-    int    mode       = double_to_int(read_memory(m.parameter_offset + 2, memory_data));
-
-    double lowpass = read_memory(m.state_offset + 0, memory_data);
-    double bandpass = read_memory(m.state_offset + 1, memory_data);
     double highpass = 0.0;
 
     const int iteration_count = 2;
@@ -465,36 +458,36 @@ void ModularAudioVoice::process_filter_module(
     }
 
     double audio_out = 0.0;
-    switch (mode) {
+    switch (filter_mode) {
         case 0:  audio_out = lowpass;  break;
         case 1:  audio_out = bandpass; break;
         case 2:  audio_out = highpass; break;
         default: audio_out = lowpass;  break;
     }
 
-    write_memory(m.output_offset + 0, audio_out, memory_data);
+    write_memory(m.module_offset + 1, lowpass,  memory_data);
+    write_memory(m.module_offset + 2, bandpass, memory_data);
 
-    write_memory(m.state_offset + 0, lowpass, memory_data);
-    write_memory(m.state_offset + 1, bandpass, memory_data);
+    write_output(m.output_offset + 0, audio_out, memory_data, output_routes);
 }
 
 // =====================================================================
 // BITCRUSHER module
 // 
-// inputs[0]     = audio_in : float
-// outputs[0]    = audio_out : float
-// states[0]     = sample_hold_value : float
-// states[1]     = phase_accumulation : float
-// parameters[0] = bit_depth : float
-// parameters[1] = downsample_factor : float
-// parameters[2] = mix : float
+// Input 0     = audio_in : float
+// State 1     = sample_hold_value : float
+// State 2     = phase_accumulation : float
+// Parameter 3 = bit_depth : float
+// Parameter 4 = downsample_factor : float
+// Parameter 5 = mix : float
+// Output 0    = audio_out : float
 //
 // =====================================================================
 
 void ModularAudioVoice::process_bitcrusher_module(
     const Module &m,
     double* memory_data,
-    const uint32_t* input_routes,
+    const uint32_t* output_routes,
     double delta
 ) {
 
@@ -503,26 +496,25 @@ void ModularAudioVoice::process_bitcrusher_module(
 // =====================================================================
 // ARITHMETIC module
 //
-// inputs[0]     = operand_a : float
-// inputs[1]     = operand_b : float
-// outputs[0]    = result : float
-// parameters[0] = operation : enum { ADD, SUBTRACT, MULTIPLY, DIVIDE }
+// Input 0     = operand_a : float
+// Input 1     = operand_b : float
+// Parameter 2 = operation : enum { ADD, SUBTRACT, MULTIPLY, DIVIDE }
+// Output 0  = result : float
 //
 // =====================================================================
 
 void ModularAudioVoice::process_arithmetic_module(
     const Module &m,
     double* memory_data,
-    const uint32_t* input_routes,
+    const uint32_t* output_routes,
     double delta
 ) {
-    double a = read_input(m.input_offset + 0, memory_data, input_routes);
-    double b = read_input(m.input_offset + 1, memory_data, input_routes);
-    
-    int op = double_to_int(read_memory(m.parameter_offset, memory_data));
+    double a      = read_memory(m.module_offset + 0, memory_data);
+    double b      = read_memory(m.module_offset + 1, memory_data);
+    int operation = double_to_int(read_memory(m.module_offset + 2, memory_data));
 
     double result = 0.0;
-    switch (op) {
+    switch (operation) {
         case 0: result = a + b;                                break; // Addition
         case 1: result = a - b;                                break; // Subtraction
         case 2: result = a * b;                                break; // Multiplication
@@ -530,5 +522,5 @@ void ModularAudioVoice::process_arithmetic_module(
         default: result = 0.0;
     }
 
-    write_memory(m.output_offset, result, memory_data);
+    write_output(m.output_offset, result, memory_data, output_routes);
 }

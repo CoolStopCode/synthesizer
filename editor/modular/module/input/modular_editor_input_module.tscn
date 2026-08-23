@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://cl0ho64bpmm3k"]
+
+[ext_resource type="Script" uid="uid://dl1s0tulxragg" path="res://editor/modular/module/input/modular_editor_input_module.gd" id="1_3h4vm"]
+[ext_resource type="Texture2D" uid="uid://blapydde6n6h4" path="res://editor/modular/module/input/background.png" id="2_mt65y"]
+[ext_resource type="Texture2D" uid="uid://dbp0m4ev7wbwg" path="res://editor/modular/module/input/white_key.png" id="3_2hsq7"]
+[ext_resource type="Texture2D" uid="uid://dh4flip42fxv0" path="res://editor/modular/module/input/black_key.png" id="4_csn4p"]
+[ext_resource type="Texture2D" uid="uid://bdo4s5pof4k6q" path="res://interface/icon/6x4/wave.png" id="5_8tkyb"]
+[ext_resource type="Texture2D" uid="uid://ds52fffsjrsa0" path="res://interface/icon/6x4/button.png" id="6_8tkyb"]
+[ext_resource type="PackedScene" uid="uid://d4gjg1mpimrhp" path="res://editor/modular/port/output/modular_editor_output_port.tscn" id="7_b1ol4"]
+
+[node name="modular_editor_input_module" type="Control" unique_id=539617064 node_paths=PackedStringArray("frequency_port", "pressed_port", "ports")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 44.0
+script = ExtResource("1_3h4vm")
+frequency_port = NodePath("frequency_port")
+pressed_port = NodePath("pressed_port")
+ports = [NodePath("frequency_port"), NodePath("pressed_port")]
+
+[node name="background" type="NinePatchRect" parent="." unique_id=2048303460]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mt65y")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="keys" type="Control" parent="." unique_id=513411308]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="white1" type="TextureRect" parent="keys" unique_id=1625128651]
+layout_mode = 1
+offset_left = 1.0
+offset_right = 24.0
+offset_bottom = 7.0
+texture = ExtResource("3_2hsq7")
+
+[node name="white2" type="TextureRect" parent="keys" unique_id=633634165]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 7.0
+offset_right = 24.0
+offset_bottom = 14.0
+texture = ExtResource("3_2hsq7")
+
+[node name="white3" type="TextureRect" parent="keys" unique_id=1685925181]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 14.0
+offset_right = 24.0
+offset_bottom = 21.0
+texture = ExtResource("3_2hsq7")
+
+[node name="white4" type="TextureRect" parent="keys" unique_id=38300754]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 21.0
+offset_right = 24.0
+offset_bottom = 28.0
+texture = ExtResource("3_2hsq7")
+
+[node name="black1" type="TextureRect" parent="keys" unique_id=654614437]
+layout_mode = 1
+offset_top = 3.0
+offset_right = 15.0
+offset_bottom = 8.0
+texture = ExtResource("4_csn4p")
+
+[node name="black2" type="TextureRect" parent="keys" unique_id=544229556]
+layout_mode = 1
+offset_top = 10.0
+offset_right = 15.0
+offset_bottom = 15.0
+texture = ExtResource("4_csn4p")
+
+[node name="black3" type="TextureRect" parent="keys" unique_id=938698717]
+layout_mode = 1
+offset_top = 17.0
+offset_right = 15.0
+offset_bottom = 22.0
+texture = ExtResource("4_csn4p")
+
+[node name="pressed_icon" type="TextureRect" parent="." unique_id=519447845]
+self_modulate = Color(0.7764706, 0.8117647, 0.8, 1)
+layout_mode = 1
+offset_left = 3.0
+offset_top = 29.0
+offset_right = 9.0
+offset_bottom = 33.0
+texture = ExtResource("6_8tkyb")
+
+[node name="frequency_icon" type="TextureRect" parent="." unique_id=9375674]
+self_modulate = Color(0.7764706, 0.8117647, 0.8, 1)
+layout_mode = 1
+offset_left = 15.0
+offset_top = 38.0
+offset_right = 21.0
+offset_bottom = 42.0
+texture = ExtResource("5_8tkyb")
+
+[node name="frequency_port" parent="." unique_id=1985472577 instance=ExtResource("7_b1ol4")]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 28.0
+offset_right = 23.0
+offset_bottom = 38.0
+
+[node name="pressed_port" parent="." unique_id=27721473 instance=ExtResource("7_b1ol4")]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 33.0
+offset_right = 11.0
+offset_bottom = 43.0
+color = 2

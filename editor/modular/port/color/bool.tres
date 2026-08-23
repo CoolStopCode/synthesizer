@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_irevd")
-hole_color = Color(0.09803922, 0.2, 0.1764706, 1)
-highlight_color = Color(0.8156863, 0.85490197, 0.5686275, 1)
-outside_color = Color(0.45882353, 0.654902, 0.2627451, 1)
-outline_color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+black_color = Color(0.09803922, 0.2, 0.1764706, 1)
+dark_color = Color(0.27450982, 0.50980395, 0.19607843, 1)
+medium_color = Color(0.45882353, 0.654902, 0.2627451, 1)
+light_color = Color(0.8156863, 0.85490197, 0.5686275, 1)
+highlight_color = Color(0.92156863, 0.92941177, 0.9137255, 1)
 metadata/_custom_type_script = "uid://bvc3p0fai7gkq"

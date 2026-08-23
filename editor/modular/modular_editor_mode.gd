@@ -14,9 +14,9 @@ func _ready() -> void:
 	var output := modules_layer.create_module(output_module_scene)
 	input.position = Vector2(0, 0)
 	output.position = Vector2(0, 44)
-	modules_layer.create_module(preload("res://editor/modular/modules/envelope/modular_editor_envelope.tscn"))
-	modules_layer.create_module(preload("res://editor/modular/modules/envelope/modular_editor_envelope.tscn"))
-	modules_layer.create_module(preload("res://editor/modular/modules/envelope/modular_editor_envelope.tscn"))
+	modules_layer.create_module(preload("res://editor/modular/module/envelope/modular_editor_envelope.tscn"))
+	modules_layer.create_module(preload("res://editor/modular/module/envelope/modular_editor_envelope.tscn"))
+	modules_layer.create_module(preload("res://editor/modular/module/envelope/modular_editor_envelope.tscn"))
 
 func _on_workspace_gui_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton or event is InputEventScreenTouch): return

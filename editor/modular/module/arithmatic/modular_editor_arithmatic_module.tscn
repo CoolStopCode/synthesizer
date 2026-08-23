@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://sqx1qh3n1qq7"]
+
+[ext_resource type="Texture2D" uid="uid://bt553jcw4f0xu" path="res://editor/modular/module/output/background.png" id="1_fmljo"]
+
+[node name="modular_editor_arithmatic_module" type="Control" unique_id=917580838]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="NinePatchRect" parent="." unique_id=1608922054]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fmljo")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1

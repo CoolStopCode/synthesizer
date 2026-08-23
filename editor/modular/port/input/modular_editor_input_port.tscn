@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bujcqdlmngedy" path="res://editor/modular/port/input/highlight.png" id="7_f5nwm"]
 [ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://editor/modular/port/input/outside.png" id="8_nt5h7"]
 
-[node name="modular_editor_input_port" type="Control" unique_id=27721473 node_paths=PackedStringArray("hole_node", "highlight_node", "outside_node")]
+[node name="modular_editor_input_port" type="Control" unique_id=27721473 node_paths=PackedStringArray("hole_node", "rim_node", "body_node")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 10.0
@@ -23,8 +23,8 @@ color_table = Dictionary[int, ExtResource("2_axew4")]({
 2: ExtResource("4_o85tc")
 })
 hole_node = NodePath("hole")
-highlight_node = NodePath("highlight")
-outside_node = NodePath("outside")
+rim_node = NodePath("rim")
+body_node = NodePath("body")
 
 [node name="hole" type="TextureRect" parent="." unique_id=1009515779]
 layout_mode = 1
@@ -41,7 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_q1mdf")
 
-[node name="highlight" type="TextureRect" parent="." unique_id=424413762]
+[node name="rim" type="TextureRect" parent="." unique_id=424413762]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,7 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_f5nwm")
 
-[node name="outside" type="TextureRect" parent="." unique_id=327171713]
+[node name="body" type="TextureRect" parent="." unique_id=327171713]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

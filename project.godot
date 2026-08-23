@@ -50,9 +50,9 @@ folder_colors={
 "res://audio/modular/": "green",
 "res://audio/modular_extension/": "green",
 "res://audio/sampler/": "blue",
-"res://audio/sampler/samples/": "teal",
+"res://audio/sampler/sample/": "teal",
 "res://audio/tonal/": "purple",
-"res://audio/tonal/bend_bindings/": "pink",
+"res://audio/tonal/bend_binding/": "pink",
 "res://audio/tonal/chord_transformation/": "blue",
 "res://audio/tonal/composition/": "red",
 "res://audio/tonal/inspector/": "red",
@@ -70,7 +70,8 @@ folder_colors={
 "res://interface/element/interface_button/": "orange",
 "res://interface/font/": "yellow",
 "res://interface/icon/": "green",
-"res://interface/styles/": "blue"
+"res://interface/palette/": "blue",
+"res://interface/styles/": "purple"
 }
 
 [input]

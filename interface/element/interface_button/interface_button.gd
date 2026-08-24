@@ -64,6 +64,19 @@ func update_visuals() -> void:
 	
 	press_node.position = interface_button_shape.get_offset(is_pressed)
 	
+	fill_node.patch_margin_top       = interface_button_shape.margin
+	fill_node.patch_margin_bottom    = interface_button_shape.margin
+	fill_node.patch_margin_left      = interface_button_shape.margin
+	fill_node.patch_margin_right     = interface_button_shape.margin
+	outline_node.patch_margin_top    = interface_button_shape.margin
+	outline_node.patch_margin_bottom = interface_button_shape.margin
+	outline_node.patch_margin_left   = interface_button_shape.margin
+	outline_node.patch_margin_right  = interface_button_shape.margin
+	shadow_node.patch_margin_top     = interface_button_shape.margin
+	shadow_node.patch_margin_bottom  = interface_button_shape.margin
+	shadow_node.patch_margin_left    = interface_button_shape.margin
+	shadow_node.patch_margin_right   = interface_button_shape.margin
+	
 	icon_node.texture = icon
 
 func _on_tooltip_timer_timeout() -> void:

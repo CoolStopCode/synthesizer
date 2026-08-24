@@ -9,8 +9,12 @@ enum Waveform {
 }
 
 @export var waveform : Waveform
+
+@export var waveform_button : InterfaceButton
 @export var frequency_port : ModularEditorInputPort
 @export var sample_port : ModularEditorOutputPort
+
+@export var waveform_textures : Dictionary[Waveform, Texture]
 
 func get_module_data() -> Array[float]:
 	return [
@@ -30,3 +34,9 @@ func get_output_map() -> Array[ModularEditorOutputPort]:
 	return [
 		sample_port
 	]
+
+func _on_waveform_pressed() -> void:
+	waveform = (waveform + 1) % Waveform.size() as Waveform
+	
+	waveform_button.icon = waveform_textures[waveform]
+	waveform_button.update_visuals()

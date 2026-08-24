@@ -10,4 +10,5 @@ script = ExtResource("1_2s4ro")
 fill_texture = ExtResource("1_t1m3j")
 shadow_texture = ExtResource("4_tpvqs")
 outline_texture = ExtResource("2_gwsdj")
+margin = 6
 metadata/_custom_type_script = "uid://b3xnaqned1md2"

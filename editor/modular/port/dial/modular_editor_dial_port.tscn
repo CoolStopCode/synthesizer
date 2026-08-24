@@ -19,6 +19,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 10.0
 offset_bottom = 10.0
+mouse_filter = 1
 script = ExtResource("1_1qojm")
 hole_disconnected_texture = ExtResource("6_1qojm")
 hole_connected_texture = ExtResource("3_6bb2l")

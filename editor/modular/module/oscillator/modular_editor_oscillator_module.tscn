@@ -1,12 +1,34 @@
 [gd_scene format=3 uid="uid://dahtgb4by7fd5"]
 
 [ext_resource type="Texture2D" uid="uid://sqfrhjiql1ad" path="res://editor/modular/module/oscillator/background.png" id="1_n7x63"]
+[ext_resource type="Script" uid="uid://m0pjcwn4tsax" path="res://editor/modular/module/oscillator/modular_editor_oscillator_module.gd" id="1_y2ote"]
+[ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://interface/element/interface_button/interface_button.tscn" id="2_8b5y6"]
+[ext_resource type="Texture2D" uid="uid://cdt7v7y5xys37" path="res://editor/modular/module/oscillator/sine.png" id="2_tnjgp"]
+[ext_resource type="Texture2D" uid="uid://citjif12131cy" path="res://editor/modular/module/oscillator/saw.png" id="3_pu4nx"]
+[ext_resource type="PackedScene" uid="uid://d4gjg1mpimrhp" path="res://editor/modular/port/output/modular_editor_output_port.tscn" id="4_4hid5"]
+[ext_resource type="Resource" uid="uid://ub2i2fcoe4hn" path="res://interface/element/interface_button/color/blue.tres" id="4_cyswa"]
+[ext_resource type="Texture2D" uid="uid://61staagwmt22" path="res://editor/modular/module/oscillator/square.png" id="4_pyqdj"]
+[ext_resource type="Resource" uid="uid://cbacgmqo68blg" path="res://interface/element/interface_button/shape/square/square.tres" id="5_040n3"]
+[ext_resource type="Texture2D" uid="uid://ijdlpcw04g32" path="res://editor/modular/module/oscillator/triangle.png" id="5_pu4nx"]
+[ext_resource type="PackedScene" uid="uid://bg46urym7tphs" path="res://editor/modular/port/input/modular_editor_input_port.tscn" id="7_cyswa"]
 
-[node name="ModularEditorOscillatorModule" type="Control" unique_id=13409132]
+[node name="ModularEditorOscillatorModule" type="Control" unique_id=13409132 node_paths=PackedStringArray("waveform_button", "frequency_port", "sample_port", "ports")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 16.0
+mouse_filter = 1
+script = ExtResource("1_y2ote")
+waveform_button = NodePath("waveform")
+frequency_port = NodePath("frequency")
+sample_port = NodePath("sample")
+waveform_textures = Dictionary[int, Texture]({
+0: ExtResource("2_tnjgp"),
+1: ExtResource("3_pu4nx"),
+2: ExtResource("4_pyqdj"),
+3: ExtResource("5_pu4nx")
+})
+ports = [NodePath("frequency"), NodePath("sample")]
 
 [node name="background" type="NinePatchRect" parent="." unique_id=1064706492]
 texture_filter = 1
@@ -21,3 +43,29 @@ patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
+
+[node name="waveform" parent="." unique_id=127682664 instance=ExtResource("2_8b5y6")]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 1.0
+offset_right = 27.0
+tooltip = "Waveform"
+interface_button_color = ExtResource("4_cyswa")
+interface_button_shape = ExtResource("5_040n3")
+
+[node name="frequency" parent="." unique_id=649197797 instance=ExtResource("7_cyswa")]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 12.0
+offset_bottom = 13.0
+
+[node name="sample" parent="." unique_id=27721473 instance=ExtResource("4_4hid5")]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 3.0
+offset_right = 38.0
+offset_bottom = 13.0
+color = 1
+
+[connection signal="pressed" from="waveform" to="." method="_on_waveform_pressed"]

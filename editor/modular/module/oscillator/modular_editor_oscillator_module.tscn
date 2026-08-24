@@ -19,16 +19,16 @@ offset_right = 40.0
 offset_bottom = 16.0
 mouse_filter = 1
 script = ExtResource("1_y2ote")
-waveform_button = NodePath("waveform")
-frequency_port = NodePath("frequency")
-sample_port = NodePath("sample")
+waveform_button = NodePath("waveform_button")
+frequency_port = NodePath("frequency_port")
+sample_port = NodePath("sample_port")
 waveform_textures = Dictionary[int, Texture]({
 0: ExtResource("2_tnjgp"),
 1: ExtResource("3_pu4nx"),
 2: ExtResource("4_pyqdj"),
 3: ExtResource("5_pu4nx")
 })
-ports = [NodePath("frequency"), NodePath("sample")]
+ports = [NodePath("frequency_port"), NodePath("sample_port")]
 
 [node name="background" type="NinePatchRect" parent="." unique_id=1064706492]
 texture_filter = 1
@@ -44,7 +44,7 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
-[node name="waveform" parent="." unique_id=127682664 instance=ExtResource("2_8b5y6")]
+[node name="waveform_button" parent="." unique_id=127682664 instance=ExtResource("2_8b5y6")]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 1.0
@@ -53,14 +53,14 @@ tooltip = "Waveform"
 interface_button_color = ExtResource("4_cyswa")
 interface_button_shape = ExtResource("5_040n3")
 
-[node name="frequency" parent="." unique_id=649197797 instance=ExtResource("7_cyswa")]
+[node name="frequency_port" parent="." unique_id=649197797 instance=ExtResource("7_cyswa")]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 3.0
 offset_right = 12.0
 offset_bottom = 13.0
 
-[node name="sample" parent="." unique_id=27721473 instance=ExtResource("4_4hid5")]
+[node name="sample_port" parent="." unique_id=27721473 instance=ExtResource("4_4hid5")]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 3.0
@@ -68,4 +68,4 @@ offset_right = 38.0
 offset_bottom = 13.0
 color = 1
 
-[connection signal="pressed" from="waveform" to="." method="_on_waveform_pressed"]
+[connection signal="pressed" from="waveform_button" to="." method="_on_waveform_button_pressed"]

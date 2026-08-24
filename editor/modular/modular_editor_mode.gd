@@ -16,9 +16,9 @@ func _ready() -> void:
 	output.position = Vector2(0, 44)
 	modules_layer.create_module(preload("res://editor/modular/module/envelope/modular_editor_envelope_module.tscn"))
 	modules_layer.create_module(preload("res://editor/modular/module/oscillator/modular_editor_oscillator_module.tscn"))
+	modules_layer.create_module(preload("res://editor/modular/module/arithmatic/modular_editor_arithmatic_module.tscn"))
 
 func _on_modules_layer_gui_input(event: InputEvent) -> void:
-	print("EEE")
 	if not (event is InputEventMouseButton or event is InputEventScreenTouch): return
 	
 	var closest_port := modules_layer.closest_port_to(event.global_position)

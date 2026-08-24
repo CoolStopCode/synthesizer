@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://sqx1qh3n1qq7"]
+
+[ext_resource type="Script" uid="uid://bd4t3irv025cy" path="res://editor/modular/module/arithmetic/modular_editor_arithmetic_module.gd" id="1_iyk4q"]
+[ext_resource type="Texture2D" uid="uid://bd00mv51y50hi" path="res://interface/icon/6x6/plus.png" id="2_xjgm7"]
+[ext_resource type="Texture2D" uid="uid://whh0nde8powt" path="res://interface/icon/6x6/minus.png" id="3_ks5e6"]
+[ext_resource type="Texture2D" uid="uid://grcp6wktvy3d" path="res://interface/icon/6x6/times.png" id="4_ad6pp"]
+[ext_resource type="Texture2D" uid="uid://bcckwnwnqcox3" path="res://interface/icon/6x6/slash.png" id="5_dpbcc"]
+[ext_resource type="Texture2D" uid="uid://utwgjjr4v06w" path="res://editor/modular/module/arithmetic/background.png" id="6_rx3p5"]
+[ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://interface/element/interface_button/interface_button.tscn" id="7_6awxr"]
+[ext_resource type="Resource" uid="uid://qn17wrfaos8f" path="res://interface/element/interface_button/color/red.tres" id="8_1c7ep"]
+[ext_resource type="Resource" uid="uid://cbacgmqo68blg" path="res://interface/element/interface_button/shape/square/square.tres" id="9_62ekj"]
+[ext_resource type="PackedScene" uid="uid://bg46urym7tphs" path="res://editor/modular/port/input/modular_editor_input_port.tscn" id="10_talhl"]
+[ext_resource type="PackedScene" uid="uid://bsha8ffxdts07" path="res://editor/modular/port/dial/modular_editor_dial_port.tscn" id="11_2u4da"]
+[ext_resource type="PackedScene" uid="uid://d4gjg1mpimrhp" path="res://editor/modular/port/output/modular_editor_output_port.tscn" id="12_r4yy0"]
+[ext_resource type="Texture2D" uid="uid://dlmqy26ngxru4" path="res://interface/icon/6x6/arrow_right.png" id="13_ejf8h"]
+
+[node name="modular_editor_arithmetic_module" type="Control" unique_id=917580838 node_paths=PackedStringArray("operation_button", "operand_a_port", "operand_b_port", "result_port", "ports")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 16.0
+mouse_filter = 1
+script = ExtResource("1_iyk4q")
+operation_button = NodePath("operation_button")
+operand_a_port = NodePath("operand_a_port")
+operand_b_port = NodePath("operand_a_port")
+result_port = NodePath("result_port")
+operation_textures = Dictionary[int, Texture]({
+0: ExtResource("2_xjgm7"),
+1: ExtResource("3_ks5e6"),
+2: ExtResource("4_ad6pp"),
+3: ExtResource("5_dpbcc")
+})
+ports = [NodePath("operand_a_port"), NodePath("operand_b_port"), NodePath("result_port")]
+
+[node name="background" type="NinePatchRect" parent="." unique_id=1608922054]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+texture = ExtResource("6_rx3p5")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="operation_button" parent="." unique_id=127682664 instance=ExtResource("7_6awxr")]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 2.0
+offset_right = 26.0
+tooltip = "Operation"
+interface_button_color = ExtResource("8_1c7ep")
+interface_button_shape = ExtResource("9_62ekj")
+
+[node name="operand_a_port" parent="." unique_id=27721473 instance=ExtResource("10_talhl")]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 13.0
+offset_bottom = 13.0
+
+[node name="operand_b_port" parent="." unique_id=447151730 instance=ExtResource("11_2u4da")]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 3.0
+offset_right = 37.0
+offset_bottom = 13.0
+
+[node name="result_port" parent="." unique_id=1015431628 instance=ExtResource("12_r4yy0")]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 3.0
+offset_right = 61.0
+offset_bottom = 13.0
+
+[node name="arrow" type="TextureRect" parent="." unique_id=1845578593]
+self_modulate = Color(0.08627451, 0.11372549, 0.15686275, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -3.0
+offset_right = 15.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_ejf8h")
+
+[connection signal="pressed" from="operation_button" to="." method="_on_operation_button_pressed"]

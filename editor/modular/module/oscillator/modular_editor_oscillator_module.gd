@@ -35,7 +35,11 @@ func get_output_map() -> Array[ModularEditorOutputPort]:
 		sample_port
 	]
 
-func _on_waveform_pressed() -> void:
+func _ready() -> void:
+	waveform_button.icon = waveform_textures[waveform]
+	waveform_button.update_visuals()
+
+func _on_waveform_button_pressed() -> void:
 	waveform = (waveform + 1) % Waveform.size() as Waveform
 	
 	waveform_button.icon = waveform_textures[waveform]

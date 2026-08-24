@@ -7,8 +7,7 @@ script = ExtResource("1_20r2h")
 highlight_line = NodePath("highlight")
 shadow_line = NodePath("shadow")
 point_count = 10
-sag = 10.0
-snap_radius = 10.0
+sag = 15.0
 
 [node name="shadow" type="Line2D" parent="." unique_id=1139536167]
 position = Vector2(0, 1)

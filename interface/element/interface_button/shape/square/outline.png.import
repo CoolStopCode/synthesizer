@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4fxopbbrul6v"
-path="res://.godot/imported/outline.png-262660544084071bb614d774ceadbada.ctex"
+uid="uid://bsi7ouai4dh4t"
+path="res://.godot/imported/outline.png-8e0481b90a0112078f665373065f0083.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/element/interface_button/outline.png"
-dest_files=["res://.godot/imported/outline.png-262660544084071bb614d774ceadbada.ctex"]
+source_file="res://interface/element/interface_button/shape/square/outline.png"
+dest_files=["res://.godot/imported/outline.png-8e0481b90a0112078f665373065f0083.ctex"]
 
 [params]
 

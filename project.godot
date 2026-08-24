@@ -70,8 +70,7 @@ folder_colors={
 "res://interface/element/interface_button/": "orange",
 "res://interface/font/": "yellow",
 "res://interface/icon/": "green",
-"res://interface/palette/": "blue",
-"res://interface/styles/": "purple"
+"res://interface/palette/": "blue"
 }
 
 [input]

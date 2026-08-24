@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://npdevkowq413"]
 
 [ext_resource type="Script" uid="uid://bqthjgqhrp5ik" path="res://interface/element/interface_button/interface_button.gd" id="1_rajel"]
-[ext_resource type="Texture2D" uid="uid://cjegouwjxm4nh" path="res://interface/element/interface_button/shadow.png" id="2_rnefd"]
-[ext_resource type="Texture2D" uid="uid://dednbl6gohlea" path="res://interface/element/interface_button/fill.png" id="3_pwsdf"]
-[ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://interface/element/interface_button/outline.png" id="4_xqggl"]
+[ext_resource type="Texture2D" uid="uid://cjegouwjxm4nh" path="res://interface/element/interface_button/shape/round/shadow.png" id="2_rnefd"]
+[ext_resource type="Texture2D" uid="uid://dednbl6gohlea" path="res://interface/element/interface_button/shape/round/fill.png" id="3_pwsdf"]
+[ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://interface/element/interface_button/shape/round/outline.png" id="4_xqggl"]
 
 [node name="interface_button" type="Control" unique_id=127682664 node_paths=PackedStringArray("tooltip_timer", "press_node", "fill_node", "outline_node", "shadow_node", "icon_node")]
 custom_minimum_size = Vector2(14, 14)

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InterfaceButtonColor" format=3 uid="uid://qn17wrfaos8f"]
+
+[ext_resource type="Script" uid="uid://b4sn7r42178di" path="res://interface/element/interface_button/interface_button_color.gd" id="1_nslba"]
+
+[resource]
+script = ExtResource("1_nslba")
+light_color = Color(0.64705884, 0.1882353, 0.1882353, 1)
+medium_color = Color(0.45882353, 0.14117648, 0.21960784, 1)
+dark_color = Color(0.25490198, 0.11372549, 0.19215687, 1)
+metadata/_custom_type_script = "uid://b4sn7r42178di"

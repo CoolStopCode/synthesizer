@@ -6,8 +6,10 @@ signal button_down
 signal button_up
 
 @export var icon: Texture2D
-@export var interface_button_style: InterfaceButtonStyle
-@export_multiline var tooltip : String = ""
+@export var tooltip : String = ""
+
+@export var interface_button_color: InterfaceButtonColor
+@export var interface_button_shape: InterfaceButtonShape
 
 @export_group("private")
 @export var tooltip_timer : Timer
@@ -20,10 +22,8 @@ signal button_up
 var is_pressed : bool = false
 var is_hovered : bool = false
 
-
 func _ready() -> void:
 	update_visuals()
-
 
 func _on_mouse_entered() -> void:
 	is_hovered = true
@@ -33,16 +33,15 @@ func _on_mouse_exited() -> void:
 	is_hovered = false
 	update_visuals()
 
-
 func _on_gui_input(event: InputEvent) -> void:
-	if not (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT):
+	if not (event is InputEventMouseButton or event is InputEventScreenTouch):
 		return
 
-	if event.pressed: # Press
+	if event.pressed:
 		is_pressed = true
 		button_down.emit()
 		tooltip_timer.start()
-	else: # Release
+	else:
 		if is_pressed:
 			is_pressed = false
 			button_up.emit()
@@ -53,21 +52,19 @@ func _on_gui_input(event: InputEvent) -> void:
 	
 	update_visuals()
 
-func is_visually_pressed() -> bool:
-	return is_pressed
-	# return is_pressed and is_hovered
-
 func update_visuals() -> void:
-	var is_pressed_visual := is_visually_pressed()
+	fill_node.self_modulate = interface_button_color.get_fill_color(is_pressed)
+	outline_node.self_modulate = interface_button_color.get_outline_color(is_pressed)
+	shadow_node.self_modulate = interface_button_color.get_shadow_color(is_pressed)
+	icon_node.self_modulate = interface_button_color.get_icon_color(is_pressed)
 	
-	fill_node.self_modulate = interface_button_style.get_fill_color(is_pressed_visual)
-	outline_node.self_modulate = interface_button_style.get_outline_color(is_pressed_visual)
-	shadow_node.self_modulate = interface_button_style.get_shadow_color(is_pressed_visual)
-	icon_node.self_modulate = interface_button_style.get_icon_color(is_pressed_visual)
+	fill_node.texture = interface_button_shape.fill_texture
+	outline_node.texture = interface_button_shape.outline_texture
+	shadow_node.texture = interface_button_shape.shadow_texture
+	
+	press_node.position = interface_button_shape.get_offset(is_pressed)
 	
 	icon_node.texture = icon
-	
-	press_node.position.y = interface_button_style.get_offset(is_pressed_visual)
 
 func _on_tooltip_timer_timeout() -> void:
 	if is_pressed and not tooltip.is_empty():

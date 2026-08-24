@@ -4,15 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://dma58ukp803ln" path="res://editor/modular/modular_editor_mode.tscn" id="2_21s64"]
 [ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://interface/element/interface_button/interface_button.tscn" id="2_tq5ti"]
 [ext_resource type="Texture2D" uid="uid://50uiip3cle52" path="res://interface/icon/12x12/sound.png" id="3_talkl"]
-[ext_resource type="Resource" uid="uid://ccjvwttdoqhpi" path="res://interface/styles/interface_button_style/yellow.tres" id="4_b27bm"]
-[ext_resource type="Resource" uid="uid://myibeubq6l4p" path="res://interface/styles/interface_button_style/blue.tres" id="4_tq5ti"]
 [ext_resource type="Texture2D" uid="uid://cq6gflw0avxfe" path="res://interface/icon/12x12/key.png" id="5_rrsvm"]
-[ext_resource type="Resource" uid="uid://c2vsl3nmcaxmx" path="res://interface/styles/interface_button_style/red.tres" id="6_k5wfx"]
+[ext_resource type="Resource" uid="uid://y1o5exdu7fj0" path="res://interface/element/interface_button/color/yellow.tres" id="5_y6t7f"]
+[ext_resource type="Resource" uid="uid://bw65ag2eause" path="res://interface/element/interface_button/shape/round/round.tres" id="6_qfydk"]
 [ext_resource type="Texture2D" uid="uid://dkk3b5b6ywxvu" path="res://interface/icon/6x6/metronome.png" id="7_ai3xk"]
 [ext_resource type="Texture2D" uid="uid://476fe1fbyeb3" path="res://interface/icon/12x12/layers.png" id="7_uxvr6"]
 [ext_resource type="Texture2D" uid="uid://h6po6smca61m" path="res://interface/icon/6x6/settings.png" id="8_gu1y1"]
+[ext_resource type="Resource" uid="uid://ub2i2fcoe4hn" path="res://interface/element/interface_button/color/blue.tres" id="8_xqxdt"]
 [ext_resource type="Texture2D" uid="uid://crfqrvu5lde3j" path="res://interface/icon/6x6/dial.png" id="9_c13xy"]
-[ext_resource type="Resource" uid="uid://yjrdwjegerbm" path="res://interface/styles/interface_button_style/gray.tres" id="10_13l2x"]
+[ext_resource type="Resource" uid="uid://qn17wrfaos8f" path="res://interface/element/interface_button/color/red.tres" id="10_dnkkt"]
+[ext_resource type="Resource" uid="uid://bl4s71ii8xvhd" path="res://interface/element/interface_button/color/gray.tres" id="12_sps04"]
 
 [node name="interface" type="Control" unique_id=1389423360]
 layout_mode = 3
@@ -74,8 +75,9 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("3_talkl")
-interface_button_style = ExtResource("4_b27bm")
 tooltip = "Sound"
+interface_button_color = ExtResource("5_y6t7f")
+interface_button_shape = ExtResource("6_qfydk")
 
 [node name="interface_button3" parent="sidebar/right" unique_id=1130688192 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
@@ -91,8 +93,9 @@ offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("5_rrsvm")
-interface_button_style = ExtResource("4_tq5ti")
 tooltip = "Key"
+interface_button_color = ExtResource("8_xqxdt")
+interface_button_shape = ExtResource("6_qfydk")
 
 [node name="interface_button2" parent="sidebar/right" unique_id=2039112307 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
@@ -108,8 +111,9 @@ offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("7_uxvr6")
-interface_button_style = ExtResource("6_k5wfx")
 tooltip = "Layers"
+interface_button_color = ExtResource("10_dnkkt")
+interface_button_shape = ExtResource("6_qfydk")
 
 [node name="left" type="Control" parent="sidebar" unique_id=738732446]
 layout_mode = 1
@@ -136,8 +140,9 @@ offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("9_c13xy")
-interface_button_style = ExtResource("10_13l2x")
 tooltip = "Mode"
+interface_button_color = ExtResource("12_sps04")
+interface_button_shape = ExtResource("6_qfydk")
 
 [node name="interface_button5" parent="sidebar/left" unique_id=1626598368 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
@@ -153,8 +158,9 @@ offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("7_ai3xk")
-interface_button_style = ExtResource("10_13l2x")
 tooltip = "Metronome"
+interface_button_color = ExtResource("12_sps04")
+interface_button_shape = ExtResource("6_qfydk")
 
 [node name="interface_button7" parent="sidebar/left" unique_id=171411916 instance=ExtResource("2_tq5ti")]
 layout_mode = 1
@@ -170,5 +176,6 @@ offset_bottom = 44.0
 grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("8_gu1y1")
-interface_button_style = ExtResource("10_13l2x")
 tooltip = "Settings"
+interface_button_color = ExtResource("12_sps04")
+interface_button_shape = ExtResource("6_qfydk")

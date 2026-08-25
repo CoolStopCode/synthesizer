@@ -26,8 +26,8 @@ frequency_port = NodePath("frequency_port")
 sample_port = NodePath("sample_port")
 waveform_textures = Dictionary[int, Texture]({
 0: ExtResource("2_tnjgp"),
-1: ExtResource("3_pu4nx"),
-2: ExtResource("4_pyqdj"),
+1: ExtResource("4_pyqdj"),
+2: ExtResource("3_pu4nx"),
 3: ExtResource("5_pu4nx")
 })
 type_id = 2

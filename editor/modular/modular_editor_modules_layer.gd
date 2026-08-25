@@ -81,7 +81,7 @@ func closest_port_to(point : Vector2) -> ModularEditorPort:
 func highlight_on(from : ModularEditorPort) -> void:
 	for module in modules:
 		for port in module.ports:
-			if port.is_compatible_with(from):
+			if port.can_connect_to(from):
 				port.highlight_on()
 
 func highlight_off() -> void:

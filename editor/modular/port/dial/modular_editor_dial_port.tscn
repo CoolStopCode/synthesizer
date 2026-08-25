@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://bsha8ffxdts07"]
 
 [ext_resource type="Script" uid="uid://cuyy2u15p54me" path="res://editor/modular/port/dial/modular_editor_dial_port.gd" id="1_1qojm"]
-[ext_resource type="Script" uid="uid://bvc3p0fai7gkq" path="res://editor/modular/port/modular_editor_port_color.gd" id="2_lfrai"]
 [ext_resource type="Texture2D" uid="uid://07fdmknc55l5" path="res://editor/modular/port/dial/hole_connected.png" id="3_6bb2l"]
-[ext_resource type="Resource" uid="uid://uouevnnyf4ad" path="res://editor/modular/port/color/float.tres" id="3_x0gsp"]
-[ext_resource type="Resource" uid="uid://dupwtd48dbcu2" path="res://editor/modular/port/color/audio.tres" id="4_6bb2l"]
-[ext_resource type="Resource" uid="uid://bcgp7pmsv5wrb" path="res://editor/modular/port/color/bool.tres" id="5_2lyem"]
 [ext_resource type="Texture2D" uid="uid://cnpeds34kxm5i" path="res://editor/modular/port/dial/rim_connected.png" id="5_s6ikn"]
 [ext_resource type="Texture2D" uid="uid://p7ejec27bln6" path="res://editor/modular/port/dial/hole_disconnected.png" id="6_1qojm"]
 [ext_resource type="Texture2D" uid="uid://3mnss18axtv4" path="res://editor/modular/port/dial/body_connected.png" id="6_6bb2l"]
@@ -14,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d3nyqh0wyxvbd" path="res://editor/modular/port/dial/notch.png" id="10_hselj"]
 [ext_resource type="Texture2D" uid="uid://844t85s3jhnh" path="res://editor/modular/port/dial/body_disconnected.png" id="10_x0gsp"]
 
-[node name="modular_editor_dial_port" type="Control" unique_id=447151730 node_paths=PackedStringArray("outline_node", "notch_node", "hole_node", "rim_node", "body_node")]
+[node name="modular_editor_dial_port" type="Control" unique_id=447151730 node_paths=PackedStringArray("notch_node", "outline_node", "body_node", "rim_node", "hole_node")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 10.0
@@ -22,22 +18,17 @@ offset_bottom = 10.0
 mouse_filter = 1
 script = ExtResource("1_1qojm")
 hole_disconnected_texture = ExtResource("6_1qojm")
-hole_connected_texture = ExtResource("3_6bb2l")
 rim_disconnected_texture = ExtResource("7_lfrai")
-rim_connected_texture = ExtResource("5_s6ikn")
 body_connected_texture = ExtResource("6_6bb2l")
+hole_connected_texture = ExtResource("3_6bb2l")
+rim_connected_texture = ExtResource("5_s6ikn")
 body_disconnected_texture = ExtResource("10_x0gsp")
-outline_node = NodePath("outline")
 notch_node = NodePath("notch")
 click_radius = 8.0
-color_table = Dictionary[int, ExtResource("2_lfrai")]({
-0: ExtResource("3_x0gsp"),
-1: ExtResource("4_6bb2l"),
-2: ExtResource("5_2lyem")
-})
-hole_node = NodePath("hole")
-rim_node = NodePath("rim")
+outline_node = NodePath("outline")
 body_node = NodePath("body")
+rim_node = NodePath("rim")
+hole_node = NodePath("hole")
 
 [node name="hole" type="TextureRect" parent="." unique_id=2139847099]
 layout_mode = 1

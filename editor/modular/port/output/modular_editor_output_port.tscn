@@ -1,15 +1,12 @@
 [gd_scene format=3 uid="uid://d4gjg1mpimrhp"]
 
 [ext_resource type="Script" uid="uid://b6mann0pbnlem" path="res://editor/modular/port/output/modular_editor_output_port.gd" id="1_ku1kk"]
-[ext_resource type="Script" uid="uid://bvc3p0fai7gkq" path="res://editor/modular/port/modular_editor_port_color.gd" id="2_xofvd"]
-[ext_resource type="Resource" uid="uid://dupwtd48dbcu2" path="res://editor/modular/port/color/audio.tres" id="3_wgu7h"]
-[ext_resource type="Resource" uid="uid://bcgp7pmsv5wrb" path="res://editor/modular/port/color/bool.tres" id="4_oonfa"]
-[ext_resource type="Resource" uid="uid://uouevnnyf4ad" path="res://editor/modular/port/color/float.tres" id="5_85m6p"]
+[ext_resource type="Texture2D" uid="uid://cwtcbbv136mmy" path="res://editor/modular/port/output/outline.png" id="5_d6jvn"]
 [ext_resource type="Texture2D" uid="uid://mpo5spivr4n" path="res://editor/modular/port/output/hole.png" id="6_d3n0i"]
-[ext_resource type="Texture2D" uid="uid://ba4j7n75312ft" path="res://editor/modular/port/output/highlight.png" id="7_towmk"]
-[ext_resource type="Texture2D" uid="uid://cjbybof3bxkjj" path="res://editor/modular/port/output/outside.png" id="8_ijxtn"]
+[ext_resource type="Texture2D" uid="uid://ba4j7n75312ft" path="res://editor/modular/port/output/rim.png" id="7_towmk"]
+[ext_resource type="Texture2D" uid="uid://cjbybof3bxkjj" path="res://editor/modular/port/output/body.png" id="8_ijxtn"]
 
-[node name="modular_editor_output_port" type="Control" unique_id=27721473 node_paths=PackedStringArray("hole_node", "rim_node", "body_node")]
+[node name="modular_editor_output_port" type="Control" unique_id=27721473 node_paths=PackedStringArray("outline_node", "body_node", "rim_node", "hole_node")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 10.0
@@ -18,14 +15,10 @@ mouse_filter = 2
 script = ExtResource("1_ku1kk")
 click_radius = 8.0
 can_create_connection = true
-color_table = Dictionary[int, ExtResource("2_xofvd")]({
-0: ExtResource("5_85m6p"),
-1: ExtResource("3_wgu7h"),
-2: ExtResource("4_oonfa")
-})
-hole_node = NodePath("hole")
-rim_node = NodePath("rim")
+outline_node = NodePath("outline")
 body_node = NodePath("body")
+rim_node = NodePath("rim")
+hole_node = NodePath("hole")
 
 [node name="hole" type="TextureRect" parent="." unique_id=1009515779]
 layout_mode = 1
@@ -71,3 +64,19 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_ijxtn")
+
+[node name="outline" type="TextureRect" parent="." unique_id=1779305449]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_d6jvn")

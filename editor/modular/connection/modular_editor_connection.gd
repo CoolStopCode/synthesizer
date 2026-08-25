@@ -22,9 +22,7 @@ func lift_port(port : ModularEditorPort) -> void:
 		output = null
 
 func can_connect_to(port : ModularEditorPort) -> bool:
-	if not port.is_compatible_with(get_connected_port()): return false
-	if not port.can_connect(): return false
-	return true
+	return port.can_connect_to(get_connected_port())
 
 func get_connected_port() -> ModularEditorPort:
 	if input != null and output != null: return

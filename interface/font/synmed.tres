@@ -1,8 +1,0 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://cowybiqytq2j8"]
-
-[ext_resource type="FontFile" uid="uid://dh1sa0lf0fsoq" path="res://interface/font/Synmed.ttf" id="1_va5s1"]
-
-[resource]
-line_spacing = 0.0
-font = ExtResource("1_va5s1")
-font_size = 6

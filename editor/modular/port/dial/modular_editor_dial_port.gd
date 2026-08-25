@@ -10,13 +10,13 @@ extends ModularEditorInputPort
 
 @export_group("private")
 @export var hole_disconnected_texture : Texture
-@export var hole_connected_texture : Texture
 @export var rim_disconnected_texture : Texture
-@export var rim_connected_texture : Texture
 @export var body_connected_texture : Texture
+
+@export var hole_connected_texture : Texture
+@export var rim_connected_texture : Texture
 @export var body_disconnected_texture : Texture
 
-@export var outline_node : TextureRect
 @export var notch_node : TextureRect
 
 var previous_mouse_position : Vector2
@@ -41,16 +41,7 @@ func disconnected() -> void:
 func update_color(highlighted : bool) -> void:
 	super.update_color(highlighted)
 	
-	var modular_editor_port_color : ModularEditorPortColor = color_table[color] 
-	
-	var black := modular_editor_port_color.black_color
-	var dark := modular_editor_port_color.dark_color
-	var medium := modular_editor_port_color.medium_color
-	var light := modular_editor_port_color.light_color
-	var highlight := modular_editor_port_color.highlight_color
-	
-	notch_node.self_modulate = black
-	outline_node.self_modulate = dark
+	notch_node.self_modulate = color.get_hole_color(highlighted)
 
 func _ready() -> void:
 	super._ready()

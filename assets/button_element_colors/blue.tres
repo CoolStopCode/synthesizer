@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ButtonElementColor" format=3 uid="uid://dyoh1wgv2seep"]
+
+[ext_resource type="ColorPalette" uid="uid://bpfta1idhku1a" path="res://assets/palettes/blue.tres" id="1_c50cl"]
+[ext_resource type="Script" uid="uid://b4sn7r42178di" path="res://elements/button_element/button_element_color.gd" id="2_dqcfx"]
+
+[resource]
+script = ExtResource("2_dqcfx")
+palette = ExtResource("1_c50cl")
+metadata/_custom_type_script = "uid://b4sn7r42178di"

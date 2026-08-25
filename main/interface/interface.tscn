@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://dgcq4s20e6ms4"]
+
+[ext_resource type="Script" uid="uid://dgyqn3y7laxf8" path="res://main/interface/interface.gd" id="1_brjpu"]
+[ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://elements/button_element/button_element.tscn" id="2_tq5ti"]
+[ext_resource type="Texture2D" uid="uid://50uiip3cle52" path="res://assets/icons/12x12/sound.png" id="3_talkl"]
+[ext_resource type="Resource" uid="uid://s6iki5doqmj4" path="res://assets/button_element_colors/yellow.tres" id="4_21s64"]
+[ext_resource type="Resource" uid="uid://bw65ag2eause" path="res://assets/button_element_shapes/round/round.tres" id="5_21s64"]
+[ext_resource type="Texture2D" uid="uid://cq6gflw0avxfe" path="res://assets/icons/12x12/key.png" id="5_rrsvm"]
+[ext_resource type="Texture2D" uid="uid://dkk3b5b6ywxvu" path="res://assets/icons/6x6/metronome.png" id="7_ai3xk"]
+[ext_resource type="Texture2D" uid="uid://476fe1fbyeb3" path="res://assets/icons/12x12/layers.png" id="7_uxvr6"]
+[ext_resource type="Resource" uid="uid://dyoh1wgv2seep" path="res://assets/button_element_colors/blue.tres" id="7_y6t7f"]
+[ext_resource type="Texture2D" uid="uid://h6po6smca61m" path="res://assets/icons/6x6/settings.png" id="8_gu1y1"]
+[ext_resource type="Texture2D" uid="uid://crfqrvu5lde3j" path="res://assets/icons/6x6/dial.png" id="9_c13xy"]
+[ext_resource type="Resource" uid="uid://o3ivdql2i4ye" path="res://assets/button_element_colors/red.tres" id="9_qfydk"]
+[ext_resource type="Resource" uid="uid://cfthyknmayl5x" path="res://assets/button_element_colors/light_gray.tres" id="11_xqxdt"]
+
+[node name="interface" type="Control" unique_id=1389423360]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_brjpu")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=155417484]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
+[node name="sidebar" type="Control" parent="." unique_id=379291883]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="right" type="Control" parent="sidebar" unique_id=852116357]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="interface_button" parent="sidebar/right" unique_id=127682664 instance=ExtResource("2_tq5ti")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -45.0
+offset_right = 15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("3_talkl")
+tooltip = "Sound"
+color = ExtResource("4_21s64")
+shape = ExtResource("5_21s64")
+
+[node name="interface_button3" parent="sidebar/right" unique_id=1130688192 instance=ExtResource("2_tq5ti")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("5_rrsvm")
+tooltip = "Key"
+color = ExtResource("7_y6t7f")
+shape = ExtResource("5_21s64")
+
+[node name="interface_button2" parent="sidebar/right" unique_id=2039112307 instance=ExtResource("2_tq5ti")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 15.0
+offset_right = 15.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("7_uxvr6")
+tooltip = "Layers"
+color = ExtResource("9_qfydk")
+shape = ExtResource("5_21s64")
+
+[node name="left" type="Control" parent="sidebar" unique_id=738732446]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_right = -32.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="interface_button4" parent="sidebar/left" unique_id=1541533215 instance=ExtResource("2_tq5ti")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -44.0
+offset_right = 0.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("9_c13xy")
+tooltip = "Mode"
+color = ExtResource("11_xqxdt")
+shape = ExtResource("5_21s64")
+
+[node name="interface_button5" parent="sidebar/left" unique_id=1626598368 instance=ExtResource("2_tq5ti")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -22.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("7_ai3xk")
+tooltip = "Metronome"
+color = ExtResource("11_xqxdt")
+shape = ExtResource("5_21s64")
+
+[node name="interface_button7" parent="sidebar/left" unique_id=171411916 instance=ExtResource("2_tq5ti")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = 22.0
+offset_right = 0.0
+offset_bottom = 44.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("8_gu1y1")
+tooltip = "Settings"
+color = ExtResource("11_xqxdt")
+shape = ExtResource("5_21s64")

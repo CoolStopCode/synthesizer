@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ButtonElementColor" format=3 uid="uid://s6iki5doqmj4"]
+
+[ext_resource type="ColorPalette" uid="uid://by2v87kega880" path="res://assets/palettes/yellow.tres" id="1_5dr4r"]
+[ext_resource type="Script" uid="uid://b4sn7r42178di" path="res://elements/button_element/button_element_color.gd" id="2_4lo4h"]
+
+[resource]
+script = ExtResource("2_4lo4h")
+palette = ExtResource("1_5dr4r")
+fill_unpressed = 4
+shadow_unpressed = 2
+outline_unpressed = 3
+icon_unpressed = 3
+fill_pressed = 3
+outline_pressed = 2
+icon_pressed = 2
+metadata/_custom_type_script = "uid://b4sn7r42178di"

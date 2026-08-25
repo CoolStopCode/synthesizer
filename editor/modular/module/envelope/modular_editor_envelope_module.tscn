@@ -2,11 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://c5swpeiby2j0t" path="res://editor/modular/module/envelope/background.png" id="1_3ge0g"]
 [ext_resource type="Script" uid="uid://fy28p7fnpd2s" path="res://editor/modular/module/envelope/modular_editor_envelope_module.gd" id="1_5lggi"]
-[ext_resource type="Texture2D" uid="uid://bkyllow8s1yvw" path="res://interface/icon/6x6/gate.png" id="2_7g0fg"]
-[ext_resource type="Texture2D" uid="uid://jqcxq082jnb4" path="res://interface/icon/6x6/power.png" id="3_n3epk"]
+[ext_resource type="Texture2D" uid="uid://bkyllow8s1yvw" path="res://assets/icons/6x6/gate.png" id="2_7g0fg"]
+[ext_resource type="Texture2D" uid="uid://jqcxq082jnb4" path="res://assets/icons/6x6/power.png" id="3_n3epk"]
 [ext_resource type="PackedScene" uid="uid://bg46urym7tphs" path="res://editor/modular/port/input/modular_editor_input_port.tscn" id="4_twh7w"]
 [ext_resource type="PackedScene" uid="uid://d4gjg1mpimrhp" path="res://editor/modular/port/output/modular_editor_output_port.tscn" id="5_t5b2k"]
+[ext_resource type="Resource" uid="uid://bcgp7pmsv5wrb" path="res://editor/modular/port/color/bool.tres" id="6_gou7y"]
 [ext_resource type="PackedScene" uid="uid://bsha8ffxdts07" path="res://editor/modular/port/dial/modular_editor_dial_port.tscn" id="6_t5b2k"]
+[ext_resource type="Resource" uid="uid://uouevnnyf4ad" path="res://editor/modular/port/color/float.tres" id="8_ilonx"]
 
 [node name="modular_editor_envelope_module" type="Control" unique_id=2125357410 node_paths=PackedStringArray("gate_port", "a_port", "d_port", "s_port", "r_port", "output_port", "ports")]
 layout_mode = 3
@@ -77,7 +79,7 @@ offset_top = -5.0
 offset_right = 11.0
 offset_bottom = 5.0
 grow_vertical = 2
-color = 2
+color = ExtResource("6_gou7y")
 
 [node name="a_port" parent="." unique_id=447151730 instance=ExtResource("6_t5b2k")]
 layout_mode = 0
@@ -91,6 +93,7 @@ minimum_rotation = -150.0
 maximum_rotation = 150.0
 rotation_speed = 0.1
 dial_rotation = -150.0
+color = ExtResource("8_ilonx")
 
 [node name="d_port" parent="." unique_id=2132221693 instance=ExtResource("6_t5b2k")]
 layout_mode = 0
@@ -104,6 +107,7 @@ minimum_rotation = -150.0
 maximum_rotation = 150.0
 rotation_speed = 0.1
 dial_rotation = -150.0
+color = ExtResource("8_ilonx")
 
 [node name="s_port" parent="." unique_id=1058439803 instance=ExtResource("6_t5b2k")]
 layout_mode = 0
@@ -115,6 +119,7 @@ maximum_value = 1.0
 minimum_rotation = -150.0
 maximum_rotation = 150.0
 rotation_speed = 0.1
+color = ExtResource("8_ilonx")
 
 [node name="r_port" parent="." unique_id=1772931580 instance=ExtResource("6_t5b2k")]
 layout_mode = 0
@@ -127,6 +132,7 @@ maximum_value = 10.0
 minimum_rotation = -150.0
 maximum_rotation = 150.0
 rotation_speed = 0.1
+color = ExtResource("8_ilonx")
 
 [node name="output_port" parent="." unique_id=1493290262 instance=ExtResource("5_t5b2k")]
 layout_mode = 1
@@ -141,6 +147,7 @@ offset_right = -1.0
 offset_bottom = 5.0
 grow_horizontal = 0
 grow_vertical = 2
+color = ExtResource("8_ilonx")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1456938386]
 layout_mode = 1

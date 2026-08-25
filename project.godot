@@ -44,7 +44,14 @@ window/vsync/vsync_mode=0
 [file_customization]
 
 folder_colors={
-"res://audio/": "purple",
+"res://assets/": "red",
+"res://assets/button_element_colors/": "red",
+"res://assets/button_element_shapes/": "orange",
+"res://assets/concept/": "yellow",
+"res://assets/fonts/": "green",
+"res://assets/icons/": "blue",
+"res://assets/palettes/": "purple",
+"res://audio/": "orange",
 "res://audio/analog/": "red",
 "res://audio/drums/": "yellow",
 "res://audio/modular/": "green",
@@ -56,21 +63,19 @@ folder_colors={
 "res://audio/tonal/chord_transformation/": "blue",
 "res://audio/tonal/composition/": "red",
 "res://audio/tonal/inspector/": "red",
-"res://core/": "gray",
-"res://editor/": "pink",
+"res://editor/": "yellow",
 "res://editor/analog/": "red",
 "res://editor/drums/": "yellow",
 "res://editor/modular/": "green",
 "res://editor/sampler/": "blue",
 "res://editor/tonal/": "purple",
-"res://interface/": "teal",
-"res://interface/art/": "red",
-"res://interface/element/": "orange",
-"res://interface/element/interface_box/": "orange",
-"res://interface/element/interface_button/": "orange",
-"res://interface/font/": "yellow",
-"res://interface/icon/": "green",
-"res://interface/palette/": "blue"
+"res://elements/": "green",
+"res://elements/button_element/": "red",
+"res://main/": "blue",
+"res://main/interface/": "red",
+"res://main/stats/": "orange",
+"res://main/test/": "yellow",
+"res://main/tooltip/": "green"
 }
 
 [input]

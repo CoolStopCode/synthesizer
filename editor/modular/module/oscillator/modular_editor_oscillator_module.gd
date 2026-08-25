@@ -10,7 +10,7 @@ enum Waveform {
 
 @export var waveform : Waveform
 
-@export var waveform_button : InterfaceButton
+@export var waveform_button : ButtonElement
 @export var frequency_port : ModularEditorInputPort
 @export var sample_port : ModularEditorOutputPort
 

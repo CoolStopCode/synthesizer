@@ -1,12 +1,15 @@
 [gd_resource type="Resource" script_class="ModularEditorPortColor" format=3 uid="uid://uouevnnyf4ad"]
 
+[ext_resource type="ColorPalette" uid="uid://bpfta1idhku1a" path="res://assets/palettes/blue.tres" id="1_nqci0"]
 [ext_resource type="Script" uid="uid://bvc3p0fai7gkq" path="res://editor/modular/port/modular_editor_port_color.gd" id="1_sqtxi"]
 
 [resource]
 script = ExtResource("1_sqtxi")
-black_color = Color(0.09019608, 0.1254902, 0.21960784, 1)
-dark_color = Color(0.23529412, 0.36862746, 0.54509807, 1)
-medium_color = Color(0.30980393, 0.56078434, 0.7294118, 1)
-light_color = Color(0.6431373, 0.8666667, 0.85882354, 1)
-highlight_color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+palette = ExtResource("1_nqci0")
+outline_unhighlighted = 2
+body_unhighlighted = 3
+rim_unhighlighted = 5
+outline_highlighted = 2
+body_highlighted = 3
+rim_highlighted = 6
 metadata/_custom_type_script = "uid://bvc3p0fai7gkq"

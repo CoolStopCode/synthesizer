@@ -9,7 +9,7 @@ enum Operation {
 }
 
 @export var operation : Operation
-@export var operation_button : InterfaceButton
+@export var operation_button : ButtonElement
 @export var operand_a_port : ModularEditorInputPort
 @export var operand_b_port : ModularEditorInputPort
 @export var result_port : ModularEditorOutputPort

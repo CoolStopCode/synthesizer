@@ -4,9 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://blapydde6n6h4" path="res://editor/modular/module/input/background.png" id="2_mt65y"]
 [ext_resource type="Texture2D" uid="uid://dbp0m4ev7wbwg" path="res://editor/modular/module/input/white_key.png" id="3_2hsq7"]
 [ext_resource type="Texture2D" uid="uid://dh4flip42fxv0" path="res://editor/modular/module/input/black_key.png" id="4_csn4p"]
-[ext_resource type="Texture2D" uid="uid://bdo4s5pof4k6q" path="res://interface/icon/6x4/wave.png" id="5_8tkyb"]
-[ext_resource type="Texture2D" uid="uid://ds52fffsjrsa0" path="res://interface/icon/6x4/button.png" id="6_8tkyb"]
+[ext_resource type="Texture2D" uid="uid://bdo4s5pof4k6q" path="res://assets/icons/6x4/wave.png" id="5_8tkyb"]
+[ext_resource type="Texture2D" uid="uid://ds52fffsjrsa0" path="res://assets/icons/6x4/button.png" id="6_8tkyb"]
 [ext_resource type="PackedScene" uid="uid://d4gjg1mpimrhp" path="res://editor/modular/port/output/modular_editor_output_port.tscn" id="7_b1ol4"]
+[ext_resource type="Resource" uid="uid://uouevnnyf4ad" path="res://editor/modular/port/color/float.tres" id="8_g3pby"]
+[ext_resource type="Resource" uid="uid://bcgp7pmsv5wrb" path="res://editor/modular/port/color/bool.tres" id="9_audp4"]
 
 [node name="modular_editor_input_module" type="Control" unique_id=539617064 node_paths=PackedStringArray("frequency_port", "pressed_port", "ports")]
 layout_mode = 3
@@ -118,6 +120,7 @@ offset_left = 13.0
 offset_top = 28.0
 offset_right = 23.0
 offset_bottom = 38.0
+color = ExtResource("8_g3pby")
 
 [node name="pressed_port" parent="." unique_id=27721473 instance=ExtResource("7_b1ol4")]
 layout_mode = 0
@@ -125,4 +128,4 @@ offset_left = 1.0
 offset_top = 33.0
 offset_right = 11.0
 offset_bottom = 43.0
-color = 2
+color = ExtResource("9_audp4")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InterfaceButtonShape" format=3 uid="uid://cbacgmqo68blg"]
+
+[ext_resource type="Texture2D" uid="uid://bsl2bvpxh0vhs" path="res://assets/button_element_shapes/square/fill.png" id="1_2tsdc"]
+[ext_resource type="Texture2D" uid="uid://bsi7ouai4dh4t" path="res://assets/button_element_shapes/square/outline.png" id="2_bd4rv"]
+[ext_resource type="Script" uid="uid://b3xnaqned1md2" path="res://elements/button_element/button_element_shape.gd" id="3_cpepv"]
+[ext_resource type="Texture2D" uid="uid://ckeqepmsdode" path="res://assets/button_element_shapes/square/shadow.png" id="4_uxr0p"]
+
+[resource]
+script = ExtResource("3_cpepv")
+fill_texture = ExtResource("1_2tsdc")
+shadow_texture = ExtResource("4_uxr0p")
+outline_texture = ExtResource("2_bd4rv")
+margin = 1
+metadata/_custom_type_script = "uid://b3xnaqned1md2"

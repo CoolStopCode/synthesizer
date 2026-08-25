@@ -48,5 +48,5 @@ func key_released(index: int) -> void:
 func bend_changed() -> void:
 	for i in polyvoices.size():
 		var polyvoice = polyvoices[i]
-		if polyvoice.active:
+		if polyvoice.pressed:
 			polyvoice.bend_polyvoice(build_chord(i), chord_bend_duration)

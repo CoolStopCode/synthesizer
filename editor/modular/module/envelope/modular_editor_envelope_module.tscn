@@ -21,6 +21,7 @@ d_port = NodePath("d_port")
 s_port = NodePath("s_port")
 r_port = NodePath("r_port")
 output_port = NodePath("output_port")
+type_id = 4
 ports = [NodePath("gate_port"), NodePath("output_port"), NodePath("a_port"), NodePath("d_port"), NodePath("s_port"), NodePath("r_port")]
 
 [node name="background" type="NinePatchRect" parent="." unique_id=1721373857]
@@ -89,6 +90,7 @@ maximum_value = 1.0
 minimum_rotation = -150.0
 maximum_rotation = 150.0
 rotation_speed = 0.1
+dial_rotation = -150.0
 
 [node name="d_port" parent="." unique_id=2132221693 instance=ExtResource("6_t5b2k")]
 layout_mode = 0
@@ -97,10 +99,11 @@ offset_top = 18.0
 offset_right = 36.0
 offset_bottom = 30.0
 minimum_value = 0.05
-maximum_value = 1.0
+maximum_value = 10.0
 minimum_rotation = -150.0
 maximum_rotation = 150.0
 rotation_speed = 0.1
+dial_rotation = -150.0
 
 [node name="s_port" parent="." unique_id=1058439803 instance=ExtResource("6_t5b2k")]
 layout_mode = 0

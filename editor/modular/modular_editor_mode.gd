@@ -16,7 +16,7 @@ func _ready() -> void:
 	output.position = Vector2(0, 44)
 	modules_layer.create_module(preload("res://editor/modular/module/envelope/modular_editor_envelope_module.tscn"))
 	modules_layer.create_module(preload("res://editor/modular/module/oscillator/modular_editor_oscillator_module.tscn"))
-	modules_layer.create_module(preload("res://editor/modular/module/arithmatic/modular_editor_arithmatic_module.tscn"))
+	modules_layer.create_module(preload("res://editor/modular/module/arithmetic/modular_editor_arithmetic_module.tscn"))
 
 func _on_modules_layer_gui_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton or event is InputEventScreenTouch): return
@@ -35,7 +35,7 @@ func release_connection(port: ModularEditorPort, event_position : Vector2) -> vo
 	
 	if (not port.in_click_area(event_position))\
 	or (not dragging_connection.can_connect_to(port)):
-		dragging_connection.queue_free()
+		connections_layer.delete_connection(dragging_connection)
 		return
 	
 	dragging_connection.connect_to_port(port)

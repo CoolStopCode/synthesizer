@@ -52,6 +52,11 @@ func update_color(highlighted : bool) -> void:
 	notch_node.self_modulate = black
 	outline_node.self_modulate = dark
 
+func _ready() -> void:
+	super._ready()
+	dial_rotation = deg_to_rad(dial_rotation)
+	notch_node.rotation = clamp(dial_rotation, deg_to_rad(minimum_rotation), deg_to_rad(maximum_rotation))
+
 func _input(event: InputEvent) -> void:
 	if not dragging: return
 	
@@ -66,7 +71,7 @@ func _input(event: InputEvent) -> void:
 			dial_rotation = clamp(dial_rotation, deg_to_rad(minimum_rotation), deg_to_rad(maximum_rotation))
 
 func get_value() -> float:
-	var progress := inverse_lerp(minimum_rotation, maximum_rotation, dial_rotation)
+	var progress := inverse_lerp(minimum_rotation, maximum_rotation, rad_to_deg(dial_rotation))
 	var value := lerpf(minimum_value, maximum_value, progress)
 	value = clamp(value, minimum_value, maximum_value)
 	

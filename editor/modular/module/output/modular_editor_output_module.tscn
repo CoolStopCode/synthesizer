@@ -7,13 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://cdbx3hhqsbcpx" path="res://interface/icon/6x6/music.png" id="4_4bcaw"]
 [ext_resource type="PackedScene" uid="uid://bg46urym7tphs" path="res://editor/modular/port/input/modular_editor_input_port.tscn" id="6_q7ab7"]
 
-[node name="modular_editor_output_module" type="Control" unique_id=54119580 node_paths=PackedStringArray("ports")]
+[node name="modular_editor_output_module" type="Control" unique_id=54119580 node_paths=PackedStringArray("sample_port", "ports")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 24.0
 offset_bottom = 44.0
 mouse_filter = 1
 script = ExtResource("1_q7ab7")
+sample_port = NodePath("sample_port")
+type_id = 1
 ports = [NodePath("sample_port")]
 
 [node name="background" type="NinePatchRect" parent="." unique_id=144974053]

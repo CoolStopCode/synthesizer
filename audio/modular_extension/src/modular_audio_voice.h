@@ -17,17 +17,17 @@ class ModularAudioVoice : public RefCounted {
 
 public:
     enum ModuleType : uint8_t {
-        INPUT,
-        OUTPUT,
+        INPUT, // 0
+        OUTPUT, // 1
 
-        OSCILLATOR,
-        NOISE,
+        OSCILLATOR, // 2
+        NOISE, // 3
 
-        ENVELOPE,
-        FILTER,
-        BITCRUSHER,
+        ENVELOPE, // 4
+        FILTER, // 5
+        BITCRUSHER, // 6
 
-        ARITHMETIC,
+        ARITHMETIC, // 7
 
         MODULE_TYPE_COUNT
     };

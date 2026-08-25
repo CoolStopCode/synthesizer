@@ -13,3 +13,7 @@ func create_connection(from : ModularEditorPort) -> ModularEditorConnection:
 	connection_instance.connect_to_port(from)
 	
 	return connection_instance
+
+func delete_connection(connection : ModularEditorConnection):
+	connections.erase(connection)
+	connection.queue_free()

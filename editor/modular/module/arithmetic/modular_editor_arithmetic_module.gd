@@ -16,6 +16,7 @@ enum Operation {
 @export var operation_textures : Dictionary[Operation, Texture]
 
 func get_module_data() -> Array[float]:
+	print(operand_b_port.get_value())
 	return [
 		operand_a_port.get_value(),
 		operand_b_port.get_value(),

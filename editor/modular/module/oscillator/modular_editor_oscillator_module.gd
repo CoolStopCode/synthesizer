@@ -3,8 +3,8 @@ extends ModularEditorModule
 
 enum Waveform {
 	SINE,
-	SAW,
 	SQUARE,
+	SAW,
 	TRIANGLE
 }
 

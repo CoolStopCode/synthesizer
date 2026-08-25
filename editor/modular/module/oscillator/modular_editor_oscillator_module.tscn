@@ -28,6 +28,7 @@ waveform_textures = Dictionary[int, Texture]({
 2: ExtResource("4_pyqdj"),
 3: ExtResource("5_pu4nx")
 })
+type_id = 2
 ports = [NodePath("frequency_port"), NodePath("sample_port")]
 
 [node name="background" type="NinePatchRect" parent="." unique_id=1064706492]

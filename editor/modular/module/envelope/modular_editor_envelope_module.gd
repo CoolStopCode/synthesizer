@@ -16,10 +16,10 @@ func get_module_data() -> Array[float]:
 		d_port.get_value(),
 		s_port.get_value(),
 		r_port.get_value(),
+		0.3,
+		0.7,
 		1.0,
-		1.0,
-		1.0,
-		true
+		false
 	]
 
 func get_input_map() -> Array[ModularEditorInputPort]:

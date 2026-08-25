@@ -363,27 +363,29 @@ void ModularAudioVoice::process_envelope_module(
             level = 0.0;
             break;
 
-        case 1: { // Attack: phase 0->1 over attack seconds, level = phase^attack_curve
+        case 1: { // Attack: phase 0->1 over attack seconds
             phase += delta / std::max(attack, 1e-6);
             if (phase >= 1.0) {
                 level = 1.0;
                 stage = 2;
                 phase = 0.0;
             } else {
-                double shaped = std::pow(phase, attack_curve);
-                level = attack_start_level + (1.0 - attack_start_level) * shaped;
+                double shaped   = std::pow(phase, attack_curve);
+                double start_db = 20.0 * std::log10(std::max(attack_start_level, 0.001));
+                level = std::pow(10.0, (start_db * (1.0 - shaped)) / 20.0);
             }
             break;
         }
 
-        case 2: { // Decay: phase 0->1 over decay seconds, level: 1 -> sustain
+        case 2: { // Decay: phase 0->1 over decay seconds
             phase += delta / std::max(decay, 1e-6);
             if (phase >= 1.0) {
                 level = sustain;
                 stage = 3;
             } else {
-                double shaped = std::pow(1.0 - phase, decay_curve);
-                level = sustain + (1.0 - sustain) * shaped;
+                double shaped = std::pow(phase, decay_curve);
+                double end_db  = 20.0 * std::log10(std::max(sustain, 0.001));
+                level = std::pow(10.0, (end_db * shaped) / 20.0);
             }
             break;
         }
@@ -392,14 +394,15 @@ void ModularAudioVoice::process_envelope_module(
             level = sustain;
             break;
 
-        case 4: { // Release: phase 0->1 over release seconds, level: release_start_level -> 0
+        case 4: { // Release: phase 0->1 over release seconds
             phase += delta / std::max(release, 1e-6);
             if (phase >= 1.0) {
                 level = 0.0;
                 stage = 0;
             } else {
-                double shaped = std::pow(1.0 - phase, release_curve);
-                level = release_start_level * shaped;
+                double shaped   = std::pow(phase, release_curve);
+                double start_db = 20.0 * std::log10(std::max(release_start_level, 0.001));
+                level = std::pow(10.0, (start_db + (-60.0 - start_db) * shaped) / 20.0);
             }
             break;
         }

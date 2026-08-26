@@ -4,14 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://ckeqepmsdode" path="res://assets/button_element_shapes/square/shadow.png" id="2_1ixtc"]
 [ext_resource type="Texture2D" uid="uid://bsl2bvpxh0vhs" path="res://assets/button_element_shapes/square/fill.png" id="3_mbq7e"]
 [ext_resource type="Texture2D" uid="uid://bsi7ouai4dh4t" path="res://assets/button_element_shapes/square/outline.png" id="4_0n3am"]
+[ext_resource type="LabelSettings" uid="uid://d0kws5alkuuv1" path="res://assets/fonts/synmin.tres" id="5_qm3t6"]
 
-[node name="interface_button" type="Control" unique_id=127682664 node_paths=PackedStringArray("tooltip_timer", "press_node", "fill_node", "outline_node", "shadow_node", "icon_node")]
+[node name="interface_button" type="Control" unique_id=127682664 node_paths=PackedStringArray("tooltip_timer", "tooltip_node", "tooltip_label", "press_node", "fill_node", "outline_node", "shadow_node", "icon_node")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 14.0
 offset_bottom = 14.0
 script = ExtResource("1_rajel")
 tooltip_timer = NodePath("tooltip_timer")
+tooltip_node = NodePath("tooltip")
+tooltip_label = NodePath("tooltip/Label")
 press_node = NodePath("press")
 fill_node = NodePath("press/fill")
 outline_node = NodePath("press/outline")
@@ -99,6 +102,44 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="tooltip" type="Control" parent="." unique_id=254771028]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 6.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="tooltip" unique_id=66610530]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
+[node name="Label" type="Label" parent="tooltip" unique_id=1207122872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "dfsg"
+label_settings = ExtResource("5_qm3t6")
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="tooltip_timer" to="." method="_on_tooltip_timer_timeout"]

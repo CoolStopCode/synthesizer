@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dgcq4s20e6ms4" path="res://main/interface/interface.tscn" id="2_csopv"]
 [ext_resource type="Resource" uid="uid://b34n6atb8dcqh" path="res://audio/tonal/bend_binding/harmonic.tres" id="3_7ua4h"]
 [ext_resource type="Script" uid="uid://ejtqccpgvur5" path="res://main/test/record_test.gd" id="3_kagtj"]
-[ext_resource type="PackedScene" uid="uid://dg5if6yvk0syd" path="res://main/tooltip/tooltip.tscn" id="3_xa854"]
 [ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio/tonal/inspector/note.gd" id="4_rayt5"]
 [ext_resource type="Script" uid="uid://2st765u0dv45" path="res://audio/tonal/inspector/key.gd" id="5_510js"]
 [ext_resource type="PackedScene" uid="uid://bypq5q5ltosea" path="res://main/stats/stats.tscn" id="5_xa854"]
@@ -23,6 +22,7 @@ metadata/_custom_type_script = "uid://wwstsyg87ftc"
 [sub_resource type="Resource" id="Resource_xhu5d"]
 script = ExtResource("5_510js")
 root = SubResource("Resource_rayt5")
+mode = 1
 metadata/_custom_type_script = "uid://2st765u0dv45"
 
 [sub_resource type="Resource" id="Resource_510js"]
@@ -73,9 +73,6 @@ offset_right = -48.0
 offset_bottom = -2.0
 
 [node name="info" type="CanvasLayer" parent="." unique_id=1274727178]
-
-[node name="tooltip" parent="info" unique_id=560822963 instance=ExtResource("3_xa854")]
-visible = false
 
 [node name="stats" parent="info" unique_id=1913815094 instance=ExtResource("5_xa854")]
 visible = false

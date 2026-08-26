@@ -13,6 +13,8 @@ signal button_up
 
 @export_group("private")
 @export var tooltip_timer : Timer
+@export var tooltip_node : Control
+@export var tooltip_label : Label
 @export var press_node: Control
 @export var fill_node: NinePatchRect
 @export var outline_node: NinePatchRect
@@ -46,6 +48,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			is_pressed = false
 			button_up.emit()
 			tooltip_timer.stop()
+			tooltip_node.hide()
 			if is_hovered:
 				pressed.emit()
 	
@@ -78,9 +81,14 @@ func update_visuals() -> void:
 	
 	icon_node.texture = icon
 
-#func _on_tooltip_timer_timeout() -> void:
-	#if is_pressed and not tooltip.is_empty():
-		#var tooltip_position : Vector2
-		#tooltip_position.x = global_position.x + size.x / 2
-		#tooltip_position.y = global_position.y
-		#Tooltip.create_tooltip(tooltip, tooltip_position)
+func _on_tooltip_timer_timeout() -> void:
+	if not is_pressed: return
+	if tooltip.is_empty(): return
+	
+	tooltip_label.text = tooltip
+	var tooltip_minimum_size : Vector2 = tooltip_label.get_minimum_size()
+	
+	tooltip_node.position.x = (size.x / 2) - (tooltip_minimum_size.x / 2) - 1
+	tooltip_node.size = tooltip_minimum_size + Vector2(1, 1)
+	
+	tooltip_node.show()

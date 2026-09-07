@@ -50,33 +50,13 @@ func get_module_parameter(module_index : int, parameter_index : int) -> ModularE
 	return modules_layer.get_module_parameter(module_index, parameter_index)
 
 func to_save() -> ModularEditorSave:
-	var patch := ModularEditorSave.new()
+	var save := ModularEditorSave.new()
 	
-	var module_indices    : Dictionary[ModularEditorParameter, int]
-	var parameter_indices : Dictionary[ModularEditorParameter, int]
-	for module_index in range(modules_layer.modules.size()):
-		var module : ModularEditorModule = modules_layer.modules[module_index]
-		for parameter_index in range(module.parameters.size()):
-			module_indices[module.parameters[module_index]] = module_index
-			parameter_indices[module.parameters[parameter_index]] = parameter_index
-		
-		patch.new_module_definition(
-			module.id,
-			module.position,
-			module.get_parameter_values(),
-			module.output_count
-		)
+	var parameter_map := modules_layer.get_parameter_map()
+	var module_definitions := modules_layer.get_module_definitions()
+	var connection_definitions := connections_layer.get_connection_definitions(parameter_map)
 	
-	for connection in connections_layer.connections:
-		var input_module_index     : int = module_indices[connection.input_port     as ModularEditorParameter]
-		var input_parameter_index  : int = parameter_indices[connection.input_port  as ModularEditorParameter]
-		var output_module_index    : int = module_indices[connection.output_port    as ModularEditorParameter]
-		var output_parameter_index : int = parameter_indices[connection.output_port as ModularEditorParameter]
-		patch.new_connection_definition(
-			input_module_index,
-			input_parameter_index,
-			output_module_index,
-			output_parameter_index
-		)
+	save.module_definitions = module_definitions
+	save.connection_definitions = connection_definitions
 	
-	return patch
+	return save

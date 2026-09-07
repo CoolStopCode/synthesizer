@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cjhydh6ou7sf5" path="res://audio/modular/modular_audio_layout.gd" id="6_510js"]
 [ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio/modular/modular_audio_mode.gd" id="7_510js"]
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://main/test/io_test.gd" id="9_ntwa4"]
-[ext_resource type="PackedScene" uid="uid://dma58ukp803ln" path="res://editor/modular/modular_editor_mode.tscn" id="11_7ua4h"]
+[ext_resource type="PackedScene" uid="uid://d2twykyfktbfw" path="res://editor/modular/modular_editor_mode.tscn" id="11_na0o7"]
 
 [sub_resource type="Resource" id="Resource_rayt5"]
 script = ExtResource("4_rayt5")
@@ -47,7 +47,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3gdo0")
-editor_mode = NodePath("interface/node_interface_mode")
+editor_mode = NodePath("interface/modular_editor_mode")
 
 [node name="AudioEngine" type="AudioStreamPlayer" parent="." unique_id=1346665500]
 bus = &"Active"
@@ -66,7 +66,7 @@ audio_engine = NodePath("../AudioEngine")
 
 [node name="interface" parent="interface" unique_id=1389423360 instance=ExtResource("2_csopv")]
 
-[node name="node_interface_mode" parent="interface" unique_id=1176748786 instance=ExtResource("11_7ua4h")]
+[node name="modular_editor_mode" parent="interface" unique_id=1342845703 instance=ExtResource("11_na0o7")]
 offset_left = 16.0
 offset_top = 2.0
 offset_right = -48.0

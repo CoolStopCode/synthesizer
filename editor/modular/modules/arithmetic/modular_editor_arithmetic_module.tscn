@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://xtatgx378c10"]
+
+[ext_resource type="Script" uid="uid://s4gp6gld61cq" path="res://editor/modular/modules/arithmetic/modular_editor_arithmatic_module.gd" id="1_cdra5"]
+[ext_resource type="PackedScene" uid="uid://ci4u7feyjehn4" path="res://elements/rectangle_element/rectangle_element.tscn" id="1_wfsuo"]
+[ext_resource type="Resource" uid="uid://l4jvhlnxwgk3" path="res://assets/rectangle_element_colors/gray2.tres" id="2_iqcw7"]
+[ext_resource type="Resource" uid="uid://dvfouy26jxkkf" path="res://assets/rectangle_element_shapes/square/square.tres" id="3_0l4wc"]
+[ext_resource type="PackedScene" uid="uid://b8mayuqirfhew" path="res://editor/modular/parameters/button/modular_editor_button.tscn" id="4_iqcw7"]
+[ext_resource type="PackedScene" uid="uid://nvxy80mgr217" path="res://editor/modular/parameters/ports/input/modular_editor_input_port.tscn" id="5_yvd3p"]
+[ext_resource type="Resource" uid="uid://x5warkss7ywi" path="res://editor/modular/parameters/ports/color/variant.tres" id="6_ayddj"]
+[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://editor/modular/parameters/ports/output/modular_editor_output_port.tscn" id="6_ix13h"]
+[ext_resource type="Texture2D" uid="uid://bd00mv51y50hi" path="res://assets/icons/6x6/plus.png" id="6_jgy5v"]
+[ext_resource type="Texture2D" uid="uid://whh0nde8powt" path="res://assets/icons/6x6/minus.png" id="7_v5c3h"]
+[ext_resource type="PackedScene" uid="uid://bvpifohy0mb0" path="res://elements/icon_element/icon_element.tscn" id="7_ynsi3"]
+[ext_resource type="Texture2D" uid="uid://dlmqy26ngxru4" path="res://assets/icons/6x6/arrow_right.png" id="8_ayddj"]
+[ext_resource type="Texture2D" uid="uid://grcp6wktvy3d" path="res://assets/icons/6x6/times.png" id="8_tp6yk"]
+[ext_resource type="Resource" uid="uid://dfl2obfhu1ax5" path="res://assets/icon_element_colors/gray2.tres" id="9_cdra5"]
+[ext_resource type="Texture2D" uid="uid://bcckwnwnqcox3" path="res://assets/icons/6x6/slash.png" id="9_yn1pf"]
+[ext_resource type="Resource" uid="uid://o3ivdql2i4ye" path="res://assets/button_element_colors/red.tres" id="10_tp6yk"]
+[ext_resource type="Resource" uid="uid://cbacgmqo68blg" path="res://assets/button_element_shapes/square/square.tres" id="11_yn1pf"]
+
+[node name="modular_editor_arithmetic_module" type="Control" unique_id=763916784 node_paths=PackedStringArray("parameters")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 56.0
+offset_bottom = 16.0
+script = ExtResource("1_cdra5")
+parameters = [NodePath("operation"), NodePath("operand_a"), NodePath("operand_b"), NodePath("result")]
+
+[node name="background" parent="." unique_id=611869492 instance=ExtResource("1_wfsuo")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+color = ExtResource("2_iqcw7")
+shape = ExtResource("3_0l4wc")
+
+[node name="operation" parent="." unique_id=2036377758 instance=ExtResource("4_iqcw7")]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 2.0
+offset_right = 24.0
+icons = Array[Texture]([ExtResource("6_jgy5v"), ExtResource("7_v5c3h"), ExtResource("8_tp6yk"), ExtResource("9_yn1pf")])
+tooltip = "Operation"
+color = ExtResource("10_tp6yk")
+shape = ExtResource("11_yn1pf")
+
+[node name="operand_a" parent="." unique_id=2021418910 instance=ExtResource("5_yvd3p")]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 12.0
+offset_bottom = 13.0
+color = ExtResource("6_ayddj")
+
+[node name="operand_b" parent="." unique_id=569214791 instance=ExtResource("5_yvd3p")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 3.0
+offset_right = 34.0
+offset_bottom = 13.0
+color = ExtResource("6_ayddj")
+
+[node name="result" parent="." unique_id=8079301 instance=ExtResource("6_ix13h")]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 3.0
+offset_right = 54.0
+offset_bottom = 13.0
+color = ExtResource("6_ayddj")
+
+[node name="icon_element" parent="." unique_id=1389549536 instance=ExtResource("7_ynsi3")]
+layout_mode = 1
+offset_left = 36.0
+offset_top = 5.0
+offset_right = 42.0
+offset_bottom = 11.0
+icon = ExtResource("8_ayddj")
+color = ExtResource("9_cdra5")

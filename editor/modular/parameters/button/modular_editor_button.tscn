@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b8mayuqirfhew"]
+
+[ext_resource type="Script" uid="uid://baj7w1vdmgpoc" path="res://editor/modular/parameters/button/modular_editor_button.gd" id="1_jr2be"]
+[ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://elements/button_element/button_element.tscn" id="1_rj63x"]
+[ext_resource type="Resource" uid="uid://o3ivdql2i4ye" path="res://assets/button_element_colors/red.tres" id="3_tys8j"]
+[ext_resource type="Resource" uid="uid://cbacgmqo68blg" path="res://assets/button_element_shapes/square/square.tres" id="4_gs51u"]
+
+[node name="modular_editor_button" type="Control" unique_id=2036377758 node_paths=PackedStringArray("button")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 14.0
+offset_bottom = 14.0
+script = ExtResource("1_jr2be")
+button = NodePath("button_element")
+
+[node name="button_element" parent="." unique_id=127682664 instance=ExtResource("1_rj63x")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+color = ExtResource("3_tys8j")
+shape = ExtResource("4_gs51u")
+
+[connection signal="pressed" from="button_element" to="." method="_on_button_element_pressed"]

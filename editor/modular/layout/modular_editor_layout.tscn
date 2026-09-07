@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bd0ehapjlqsn1"]
+
+[ext_resource type="Script" uid="uid://ce2hmqlduqp8i" path="res://editor/modular/layout/modular_editor_layout.gd" id="1_febvo"]
+[ext_resource type="Script" uid="uid://duagydihh5hhk" path="res://editor/modular/layout/modular_editor_modules_layer.gd" id="2_flot4"]
+[ext_resource type="Script" uid="uid://bya5tby4j6qel" path="res://editor/modular/layout/modular_editor_connections_layer.gd" id="4_0ovbf"]
+[ext_resource type="PackedScene" uid="uid://jygsifgflcqc" path="res://editor/modular/connection/modular_editor_connection.tscn" id="4_flot4"]
+
+[node name="modular_editor_layout" type="Control" unique_id=330153262 node_paths=PackedStringArray("modules_layer", "connections_layer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_febvo")
+modules_layer = NodePath("modules_layer")
+connections_layer = NodePath("connections_layer")
+
+[node name="modules_layer" type="Control" parent="." unique_id=671804985]
+anchors_preset = 0
+script = ExtResource("2_flot4")
+
+[node name="connections_layer" type="Control" parent="." unique_id=267579240]
+anchors_preset = 0
+script = ExtResource("4_0ovbf")
+connection_scene = ExtResource("4_flot4")

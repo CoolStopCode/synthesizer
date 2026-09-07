@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IconElementColor" format=3 uid="uid://cy4vxbt0ql3c3"]
+
+[ext_resource type="ColorPalette" uid="uid://bpfta1idhku1a" path="res://assets/palettes/blue.tres" id="1_7j783"]
+[ext_resource type="Script" uid="uid://dmrfafbvqndoo" path="res://elements/icon_element/icon_element_color.gd" id="2_l7jsn"]
+
+[resource]
+script = ExtResource("2_l7jsn")
+palette = ExtResource("1_7j783")
+icon = 1
+metadata/_custom_type_script = "uid://dmrfafbvqndoo"

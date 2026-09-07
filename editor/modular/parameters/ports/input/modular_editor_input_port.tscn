@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://nvxy80mgr217"]
+
+[ext_resource type="Script" uid="uid://blk6145qb8pj0" path="res://editor/modular/parameters/ports/input/modular_editor_input_port.gd" id="1_da8mi"]
+[ext_resource type="Texture2D" uid="uid://c4ndfmqicfi0e" path="res://editor/old_modular/port/input/hole.png" id="2_awh2o"]
+[ext_resource type="Texture2D" uid="uid://bujcqdlmngedy" path="res://editor/old_modular/port/input/rim.png" id="3_op4ly"]
+[ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://editor/old_modular/port/input/body.png" id="4_35322"]
+[ext_resource type="Texture2D" uid="uid://cvlvde3wqpnhi" path="res://editor/old_modular/port/input/outline.png" id="5_oryc3"]
+
+[node name="modular_editor_input_port" type="Control" unique_id=2021418910 node_paths=PackedStringArray("outline_node", "body_node", "rim_node", "hole_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 10.0
+offset_bottom = 10.0
+script = ExtResource("1_da8mi")
+click_radius = 8.0
+can_create_connection = true
+outline_node = NodePath("outline")
+body_node = NodePath("body")
+rim_node = NodePath("rim")
+hole_node = NodePath("hole")
+
+[node name="hole" type="TextureRect" parent="." unique_id=360082026]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_awh2o")
+
+[node name="rim" type="TextureRect" parent="." unique_id=141575852]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_op4ly")
+
+[node name="body" type="TextureRect" parent="." unique_id=624047983]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_35322")
+
+[node name="outline" type="TextureRect" parent="." unique_id=51623854]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_oryc3")

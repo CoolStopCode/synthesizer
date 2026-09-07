@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bvpifohy0mb0"]
+
+[ext_resource type="Script" uid="uid://dvq2f5605wfjk" path="res://elements/icon_element/icon_element.gd" id="1_1mr3d"]
+[ext_resource type="Texture2D" uid="uid://h6po6smca61m" path="res://assets/icons/6x6/settings.png" id="2_rudoc"]
+
+[node name="icon_element" type="Control" unique_id=1389549536 node_paths=PackedStringArray("icon_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 6.0
+offset_bottom = 6.0
+script = ExtResource("1_1mr3d")
+icon_node = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=98613099]
+self_modulate = Color(0.8666668, 0, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rudoc")

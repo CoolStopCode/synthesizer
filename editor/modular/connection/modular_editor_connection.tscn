@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://jygsifgflcqc"]
+
+[ext_resource type="Script" uid="uid://ccvu3dd8qyafk" path="res://editor/modular/connection/modular_editor_connection.gd" id="1_xl0fo"]
+
+[node name="connection" type="Node2D" unique_id=1662014696 node_paths=PackedStringArray("highlight_line", "shadow_line")]
+script = ExtResource("1_xl0fo")
+highlight_line = NodePath("highlight")
+shadow_line = NodePath("shadow")
+
+[node name="shadow" type="Line2D" parent="." unique_id=1375848908]
+position = Vector2(0, 1)
+width = 1.2
+default_color = Color(0.87058824, 0.61960787, 0.25490198, 1)
+
+[node name="highlight" type="Line2D" parent="." unique_id=754916525]
+width = 1.2
+default_color = Color(0.9098039, 0.75686276, 0.4392157, 1)

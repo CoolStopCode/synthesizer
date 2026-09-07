@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RectangleElementShape" format=3 uid="uid://dicraqa48tx4c"]
+
+[ext_resource type="Texture2D" uid="uid://ta732wm5luge" path="res://assets/rectangle_element_shapes/round/fill.png" id="1_dtmsr"]
+[ext_resource type="Script" uid="uid://ducvmdf642arg" path="res://elements/rectangle_element/rectangle_element_shape.gd" id="1_vk5sa"]
+[ext_resource type="Texture2D" uid="uid://c268l5kkdmmw3" path="res://assets/rectangle_element_shapes/round/outline.png" id="2_88xxh"]
+[ext_resource type="Texture2D" uid="uid://b3t05vqj3x6eo" path="res://assets/rectangle_element_shapes/round/shadow.png" id="4_em4n3"]
+
+[resource]
+script = ExtResource("1_vk5sa")
+fill_texture = ExtResource("1_dtmsr")
+shadow_texture = ExtResource("4_em4n3")
+outline_texture = ExtResource("2_88xxh")
+margin = 6
+metadata/_custom_type_script = "uid://ducvmdf642arg"

@@ -125,7 +125,7 @@ double ModularAudioVoice::process(double delta) {
     }
 
     double *memory_data_pointer = memory_data.data();
-    const u_int32_t *output_routes_pointer = output_routes.data();
+    const uint32_t *output_routes_pointer = output_routes.data();
 
     write_memory(0, 0.0,                    memory_data.data()); 
     write_memory(1, frequency,              memory_data.data()); 

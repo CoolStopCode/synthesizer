@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsi7ouai4dh4t" path="res://assets/button_element_shapes/square/outline.png" id="4_0n3am"]
 [ext_resource type="LabelSettings" uid="uid://d0kws5alkuuv1" path="res://assets/fonts/synmin.tres" id="5_qm3t6"]
 
-[node name="interface_button" type="Control" unique_id=127682664 node_paths=PackedStringArray("tooltip_timer", "tooltip_node", "tooltip_label", "press_node", "fill_node", "outline_node", "shadow_node", "icon_node")]
+[node name="button_element" type="Control" unique_id=127682664 node_paths=PackedStringArray("tooltip_timer", "tooltip_node", "tooltip_label", "press_node", "fill_node", "outline_node", "shadow_node", "icon_node")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 14.0

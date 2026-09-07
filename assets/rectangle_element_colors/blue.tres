@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RectangleElementColor" format=3 uid="uid://bcpo4wxu3kbv1"]
+
+[ext_resource type="ColorPalette" uid="uid://bpfta1idhku1a" path="res://assets/palettes/blue.tres" id="1_nyp3a"]
+[ext_resource type="Script" uid="uid://byal5fgn2ai1w" path="res://elements/rectangle_element/rectangle_element_color.gd" id="1_r44d3"]
+
+[resource]
+script = ExtResource("1_r44d3")
+palette = ExtResource("1_nyp3a")
+metadata/_custom_type_script = "uid://byal5fgn2ai1w"

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ci4u7feyjehn4"]
+
+[ext_resource type="Script" uid="uid://vamlfm7e7mbn" path="res://elements/rectangle_element/rectangle_element.gd" id="1_741oa"]
+[ext_resource type="Texture2D" uid="uid://bbn6piv75mdlh" path="res://assets/rectangle_element_shapes/square/fill.png" id="2_71mk0"]
+[ext_resource type="Texture2D" uid="uid://bplx8ncmsvc" path="res://assets/rectangle_element_shapes/square/outline.png" id="3_x0vku"]
+
+[node name="rectangle_element" type="Control" unique_id=611869492 node_paths=PackedStringArray("fill_node", "outline_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 14.0
+offset_bottom = 14.0
+script = ExtResource("1_741oa")
+fill_node = NodePath("fill")
+outline_node = NodePath("outline")
+
+[node name="fill" type="NinePatchRect" parent="." unique_id=1522407938]
+self_modulate = Color(0, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_71mk0")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="outline" type="NinePatchRect" parent="." unique_id=1576429325]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_x0vku")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1

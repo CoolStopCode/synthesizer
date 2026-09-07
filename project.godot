@@ -40,6 +40,7 @@ window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 window/handheld/orientation=4
 window/vsync/vsync_mode=0
+window/ios/hide_home_indicator=false
 
 [file_customization]
 
@@ -67,10 +68,13 @@ folder_colors={
 "res://editor/analog/": "red",
 "res://editor/drums/": "yellow",
 "res://editor/modular/": "green",
+"res://editor/old_modular/": "green",
 "res://editor/sampler/": "blue",
 "res://editor/tonal/": "purple",
 "res://elements/": "green",
 "res://elements/button_element/": "red",
+"res://elements/icon_element/": "red",
+"res://elements/rectangle_element/": "red",
 "res://main/": "blue",
 "res://main/interface/": "red",
 "res://main/stats/": "orange",

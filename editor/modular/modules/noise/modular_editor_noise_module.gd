@@ -1,0 +1,2 @@
+class_name ModularEditorNoiseModule
+extends ModularEditorModule

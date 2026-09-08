@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bsha8ffxdts07"]
 
 [ext_resource type="Script" uid="uid://cuyy2u15p54me" path="res://editor/old_modular/port/dial/modular_editor_dial_port.gd" id="1_1qojm"]
-[ext_resource type="Texture2D" uid="uid://07fdmknc55l5" path="res://editor/old_modular/port/dial/hole_connected.png" id="3_6bb2l"]
-[ext_resource type="Texture2D" uid="uid://cnpeds34kxm5i" path="res://editor/old_modular/port/dial/rim_connected.png" id="5_s6ikn"]
-[ext_resource type="Texture2D" uid="uid://p7ejec27bln6" path="res://editor/old_modular/port/dial/hole_disconnected.png" id="6_1qojm"]
-[ext_resource type="Texture2D" uid="uid://3mnss18axtv4" path="res://editor/old_modular/port/dial/body_connected.png" id="6_6bb2l"]
-[ext_resource type="Texture2D" uid="uid://cx05gc6ymp277" path="res://editor/old_modular/port/dial/rim_disconnected.png" id="7_lfrai"]
-[ext_resource type="Texture2D" uid="uid://cd0upvs7np7ri" path="res://editor/old_modular/port/dial/outline.png" id="9_6bb2l"]
-[ext_resource type="Texture2D" uid="uid://d3nyqh0wyxvbd" path="res://editor/old_modular/port/dial/notch.png" id="10_hselj"]
-[ext_resource type="Texture2D" uid="uid://844t85s3jhnh" path="res://editor/old_modular/port/dial/body_disconnected.png" id="10_x0gsp"]
+[ext_resource type="Texture2D" uid="uid://07fdmknc55l5" path="res://editor/modular/parameters/ports/dial/hole_connected.png" id="3_6bb2l"]
+[ext_resource type="Texture2D" uid="uid://cnpeds34kxm5i" path="res://editor/modular/parameters/ports/dial/rim_connected.png" id="5_s6ikn"]
+[ext_resource type="Texture2D" uid="uid://p7ejec27bln6" path="res://editor/modular/parameters/ports/dial/hole_disconnected.png" id="6_1qojm"]
+[ext_resource type="Texture2D" uid="uid://3mnss18axtv4" path="res://editor/modular/parameters/ports/dial/body_connected.png" id="6_6bb2l"]
+[ext_resource type="Texture2D" uid="uid://cx05gc6ymp277" path="res://editor/modular/parameters/ports/dial/rim_disconnected.png" id="7_lfrai"]
+[ext_resource type="Texture2D" uid="uid://cd0upvs7np7ri" path="res://editor/modular/parameters/ports/dial/outline.png" id="9_6bb2l"]
+[ext_resource type="Texture2D" uid="uid://d3nyqh0wyxvbd" path="res://editor/modular/parameters/ports/dial/notch.png" id="10_hselj"]
+[ext_resource type="Texture2D" uid="uid://844t85s3jhnh" path="res://editor/modular/parameters/ports/dial/body_disconnected.png" id="10_x0gsp"]
 
 [node name="modular_editor_dial_port" type="Control" unique_id=447151730 node_paths=PackedStringArray("notch_node", "outline_node", "body_node", "rim_node", "hole_node")]
 layout_mode = 3

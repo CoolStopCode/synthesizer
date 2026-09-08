@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p7ejec27bln6"
-path="res://.godot/imported/hole_disconnected.png-41eec6c477b27dc855e6a0aec42711bb.ctex"
+uid="uid://cnpeds34kxm5i"
+path="res://.godot/imported/rim_connected.png-f18eab44d2820994bb89dd2a3c15c309.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/port/dial/hole_disconnected.png"
-dest_files=["res://.godot/imported/hole_disconnected.png-41eec6c477b27dc855e6a0aec42711bb.ctex"]
+source_file="res://editor/modular/parameters/ports/dial/rim_connected.png"
+dest_files=["res://.godot/imported/rim_connected.png-f18eab44d2820994bb89dd2a3c15c309.ctex"]
 
 [params]
 

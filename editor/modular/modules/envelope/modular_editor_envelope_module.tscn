@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://03uv8urr5sbc"]
+
+[ext_resource type="Script" uid="uid://2stmq4t3rw6a" path="res://editor/modular/modules/envelope/modular_editor_envelope_module.gd" id="1_02h4w"]
+[ext_resource type="PackedScene" uid="uid://ci4u7feyjehn4" path="res://elements/rectangle_element/rectangle_element.tscn" id="2_gh7yl"]
+[ext_resource type="Resource" uid="uid://cf0lnoq7tp1ia" path="res://assets/rectangle_element_colors/gray1.tres" id="3_qp7tm"]
+[ext_resource type="Resource" uid="uid://dvfouy26jxkkf" path="res://assets/rectangle_element_shapes/square/square.tres" id="4_xeb3a"]
+[ext_resource type="PackedScene" uid="uid://bvpifohy0mb0" path="res://elements/icon_element/icon_element.tscn" id="5_vvptq"]
+[ext_resource type="ColorPalette" uid="uid://cddno18sgg5e" path="res://assets/palettes/gray.tres" id="6_6m70m"]
+[ext_resource type="Texture2D" uid="uid://bkyllow8s1yvw" path="res://assets/icons/6x6/gate.png" id="6_ny0gp"]
+[ext_resource type="Script" uid="uid://dmrfafbvqndoo" path="res://elements/icon_element/icon_element_color.gd" id="7_ny0gp"]
+[ext_resource type="Texture2D" uid="uid://jqcxq082jnb4" path="res://assets/icons/6x6/power.png" id="9_ny0gp"]
+[ext_resource type="PackedScene" uid="uid://nvxy80mgr217" path="res://editor/modular/parameters/ports/input/modular_editor_input_port.tscn" id="10_qp7tm"]
+[ext_resource type="Resource" uid="uid://iyyqbryjjjmm" path="res://editor/modular/parameters/ports/color/bool.tres" id="11_yoy44"]
+[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://editor/modular/parameters/ports/output/modular_editor_output_port.tscn" id="12_r0wqj"]
+[ext_resource type="PackedScene" uid="uid://b2xwinqql82b3" path="res://editor/modular/parameters/ports/dial/modular_editor_dial_port.tscn" id="12_yoy44"]
+[ext_resource type="Resource" uid="uid://bhl1uaglbdrt8" path="res://editor/modular/parameters/ports/color/float.tres" id="13_e0cw4"]
+
+[sub_resource type="Resource" id="Resource_t7f72"]
+script = ExtResource("7_ny0gp")
+palette = ExtResource("6_6m70m")
+icon = 2
+metadata/_custom_type_script = "uid://dmrfafbvqndoo"
+
+[node name="modular_editor_envelope_module" type="Control" unique_id=1796839355 node_paths=PackedStringArray("parameters")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 72.0
+offset_bottom = 32.0
+script = ExtResource("1_02h4w")
+id = 4
+parameters = [NodePath("gate"), NodePath("a"), NodePath("d"), NodePath("s"), NodePath("r"), NodePath("power")]
+
+[node name="background" parent="." unique_id=611869492 instance=ExtResource("2_gh7yl")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+color = ExtResource("3_qp7tm")
+shape = ExtResource("4_xeb3a")
+
+[node name="gate_icon" parent="." unique_id=1389549536 instance=ExtResource("5_vvptq")]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 20.0
+offset_right = 9.0
+offset_bottom = 26.0
+icon = ExtResource("6_ny0gp")
+color = SubResource("Resource_t7f72")
+
+[node name="power_icon" parent="." unique_id=913397705 instance=ExtResource("5_vvptq")]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 20.0
+offset_right = 69.0
+offset_bottom = 26.0
+icon = ExtResource("9_ny0gp")
+color = SubResource("Resource_t7f72")
+
+[node name="gate" parent="." unique_id=2021418910 instance=ExtResource("10_qp7tm")]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 10.0
+offset_right = 11.0
+offset_bottom = 20.0
+color = ExtResource("11_yoy44")
+
+[node name="a" parent="." unique_id=704340714 instance=ExtResource("12_yoy44")]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 20.0
+offset_right = 23.0
+offset_bottom = 30.0
+minimum_rotation = -2.356
+maximum_rotation = 2.356
+color = ExtResource("13_e0cw4")
+
+[node name="d" parent="." unique_id=1438600050 instance=ExtResource("12_yoy44")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 35.0
+offset_bottom = 30.0
+minimum_rotation = -2.356
+maximum_rotation = 2.356
+color = ExtResource("13_e0cw4")
+
+[node name="s" parent="." unique_id=460870603 instance=ExtResource("12_yoy44")]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 20.0
+offset_right = 47.0
+offset_bottom = 30.0
+minimum_rotation = -2.356
+maximum_rotation = 2.356
+color = ExtResource("13_e0cw4")
+
+[node name="r" parent="." unique_id=1360815127 instance=ExtResource("12_yoy44")]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 20.0
+offset_right = 59.0
+offset_bottom = 30.0
+minimum_rotation = -2.356
+maximum_rotation = 2.356
+color = ExtResource("13_e0cw4")
+
+[node name="power" parent="." unique_id=8079301 instance=ExtResource("12_r0wqj")]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 10.0
+offset_right = 71.0
+offset_bottom = 20.0
+color = ExtResource("13_e0cw4")

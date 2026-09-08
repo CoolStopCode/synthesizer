@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ne8gk40t46uu"
-path="res://.godot/imported/body.png-78ab1660059220eabb3dcdb0cafd99d3.ctex"
+uid="uid://d3nyqh0wyxvbd"
+path="res://.godot/imported/notch.png-1ed676931715f9bc6cd47d51f7d997d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/port/input/body.png"
-dest_files=["res://.godot/imported/body.png-78ab1660059220eabb3dcdb0cafd99d3.ctex"]
+source_file="res://editor/modular/parameters/ports/dial/notch.png"
+dest_files=["res://.godot/imported/notch.png-1ed676931715f9bc6cd47d51f7d997d5.ctex"]
 
 [params]
 

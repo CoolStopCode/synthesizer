@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx05gc6ymp277"
-path="res://.godot/imported/rim_disconnected.png-4d953ece3cca8fadd0c1e905cd5492bb.ctex"
+uid="uid://cvlvde3wqpnhi"
+path="res://.godot/imported/outline.png-62e7238324a1248d496ec8d0976ec574.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/port/dial/rim_disconnected.png"
-dest_files=["res://.godot/imported/rim_disconnected.png-4d953ece3cca8fadd0c1e905cd5492bb.ctex"]
+source_file="res://editor/modular/parameters/ports/input/outline.png"
+dest_files=["res://.godot/imported/outline.png-62e7238324a1248d496ec8d0976ec574.ctex"]
 
 [params]
 

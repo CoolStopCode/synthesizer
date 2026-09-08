@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://844t85s3jhnh"
-path="res://.godot/imported/body_disconnected.png-9670323f9cfae9c8506baf1bd5b98d44.ctex"
+uid="uid://cjbybof3bxkjj"
+path="res://.godot/imported/body.png-afcb2b5107daae703ba4b6ca2dd91185.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/port/dial/body_disconnected.png"
-dest_files=["res://.godot/imported/body_disconnected.png-9670323f9cfae9c8506baf1bd5b98d44.ctex"]
+source_file="res://editor/modular/parameters/ports/output/body.png"
+dest_files=["res://.godot/imported/body.png-afcb2b5107daae703ba4b6ca2dd91185.ctex"]
 
 [params]
 

@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://b2xwinqql82b3"]
+
+[ext_resource type="Script" uid="uid://eh1i5id0sfyy" path="res://editor/modular/parameters/ports/dial/modular_editor_dial_port.gd" id="1_1t30i"]
+[ext_resource type="Texture2D" uid="uid://p7ejec27bln6" path="res://editor/modular/parameters/ports/dial/hole_disconnected.png" id="1_ahudc"]
+[ext_resource type="Texture2D" uid="uid://cx05gc6ymp277" path="res://editor/modular/parameters/ports/dial/rim_disconnected.png" id="2_1t30i"]
+[ext_resource type="Texture2D" uid="uid://844t85s3jhnh" path="res://editor/modular/parameters/ports/dial/body_disconnected.png" id="3_7hrkm"]
+[ext_resource type="Texture2D" uid="uid://cd0upvs7np7ri" path="res://editor/modular/parameters/ports/dial/outline.png" id="4_kieur"]
+[ext_resource type="Texture2D" uid="uid://3mnss18axtv4" path="res://editor/modular/parameters/ports/dial/body_connected.png" id="4_rhgmq"]
+[ext_resource type="Texture2D" uid="uid://07fdmknc55l5" path="res://editor/modular/parameters/ports/dial/hole_connected.png" id="5_e4gdt"]
+[ext_resource type="Texture2D" uid="uid://d3nyqh0wyxvbd" path="res://editor/modular/parameters/ports/dial/notch.png" id="5_rhgmq"]
+[ext_resource type="Texture2D" uid="uid://cnpeds34kxm5i" path="res://editor/modular/parameters/ports/dial/rim_connected.png" id="6_5xwc3"]
+
+[node name="modular_editor_dial_port" type="Control" unique_id=704340714 node_paths=PackedStringArray("notch_node", "outline_node", "body_node", "rim_node", "hole_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 10.0
+offset_bottom = 10.0
+script = ExtResource("1_1t30i")
+rotation_speed = 0.05
+hole_disconnected_texture = ExtResource("1_ahudc")
+rim_disconnected_texture = ExtResource("2_1t30i")
+body_connected_texture = ExtResource("4_rhgmq")
+hole_connected_texture = ExtResource("5_e4gdt")
+rim_connected_texture = ExtResource("6_5xwc3")
+body_disconnected_texture = ExtResource("3_7hrkm")
+notch_node = NodePath("notch")
+click_radius = 8.0
+outline_node = NodePath("outline")
+body_node = NodePath("body")
+rim_node = NodePath("rim")
+hole_node = NodePath("hole")
+
+[node name="hole" type="TextureRect" parent="." unique_id=1204977372]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ahudc")
+
+[node name="rim" type="TextureRect" parent="." unique_id=404606967]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1t30i")
+
+[node name="body" type="TextureRect" parent="." unique_id=1450566591]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7hrkm")
+
+[node name="outline" type="TextureRect" parent="." unique_id=45504413]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_kieur")
+
+[node name="notch" type="TextureRect" parent="." unique_id=1349138415]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -5.0
+offset_right = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1, 5)
+texture = ExtResource("5_rhgmq")

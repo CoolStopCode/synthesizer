@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://nvxy80mgr217"]
 
 [ext_resource type="Script" uid="uid://blk6145qb8pj0" path="res://editor/modular/parameters/ports/input/modular_editor_input_port.gd" id="1_da8mi"]
-[ext_resource type="Texture2D" uid="uid://c4ndfmqicfi0e" path="res://editor/old_modular/port/input/hole.png" id="2_awh2o"]
-[ext_resource type="Texture2D" uid="uid://bujcqdlmngedy" path="res://editor/old_modular/port/input/rim.png" id="3_op4ly"]
-[ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://editor/old_modular/port/input/body.png" id="4_35322"]
-[ext_resource type="Texture2D" uid="uid://cvlvde3wqpnhi" path="res://editor/old_modular/port/input/outline.png" id="5_oryc3"]
+[ext_resource type="Texture2D" uid="uid://c4ndfmqicfi0e" path="res://editor/modular/parameters/ports/input/hole.png" id="2_awh2o"]
+[ext_resource type="Texture2D" uid="uid://bujcqdlmngedy" path="res://editor/modular/parameters/ports/input/rim.png" id="3_op4ly"]
+[ext_resource type="Texture2D" uid="uid://ne8gk40t46uu" path="res://editor/modular/parameters/ports/input/body.png" id="4_35322"]
+[ext_resource type="Texture2D" uid="uid://cvlvde3wqpnhi" path="res://editor/modular/parameters/ports/input/outline.png" id="5_oryc3"]
 
 [node name="modular_editor_input_port" type="Control" unique_id=2021418910 node_paths=PackedStringArray("outline_node", "body_node", "rim_node", "hole_node")]
 layout_mode = 3

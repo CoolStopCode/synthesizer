@@ -3,7 +3,5 @@ extends Control
 
 @export var value : float
 
-func get_value() -> float:
-	return value
-
+@abstract func get_value() -> float
 @abstract func set_value(_value : float) -> void

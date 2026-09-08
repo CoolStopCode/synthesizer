@@ -16,10 +16,6 @@ func _ready() -> void:
 	button.update_visuals()
 	update_button_icon()
 
-func set_value(_value : float) -> void:
-	value = _value
-	update_button_icon()
-
 func _on_button_element_pressed() -> void:
 	var new_value := float((int(value) + 1) % icons.size())
 	value = new_value
@@ -28,3 +24,10 @@ func _on_button_element_pressed() -> void:
 func update_button_icon() -> void:
 	button.icon = icons[int(value)]
 	button.update_visuals()
+
+func set_value(_value : float) -> void:
+	value = _value
+	update_button_icon()
+
+func get_value() -> float:
+	return value

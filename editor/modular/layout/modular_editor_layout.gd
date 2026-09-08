@@ -6,6 +6,9 @@ extends Control
 
 func _ready() -> void:
 	modules_layer.create_new_module(preload("res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn"))
+	modules_layer.create_new_module(preload("res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn"))
+	modules_layer.create_new_module(preload("res://editor/modular/modules/envelope/modular_editor_envelope_module.tscn"))
+	modules_layer.create_new_module(preload("res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn"))
 
 func _input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton or event is InputEventScreenTouch): return

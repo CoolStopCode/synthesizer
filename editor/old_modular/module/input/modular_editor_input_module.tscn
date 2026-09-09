@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dl1s0tulxragg" path="res://editor/old_modular/module/input/modular_editor_input_module.gd" id="1_3h4vm"]
 [ext_resource type="Texture2D" uid="uid://blapydde6n6h4" path="res://editor/old_modular/module/input/background.png" id="2_mt65y"]
-[ext_resource type="Texture2D" uid="uid://dbp0m4ev7wbwg" path="res://editor/old_modular/module/input/white_key.png" id="3_2hsq7"]
-[ext_resource type="Texture2D" uid="uid://dh4flip42fxv0" path="res://editor/old_modular/module/input/black_key.png" id="4_csn4p"]
+[ext_resource type="Texture2D" uid="uid://dbp0m4ev7wbwg" path="res://editor/modular/modules/input/white_key.png" id="3_2hsq7"]
+[ext_resource type="Texture2D" uid="uid://dh4flip42fxv0" path="res://editor/modular/modules/input/black_key.png" id="4_csn4p"]
 [ext_resource type="Texture2D" uid="uid://bdo4s5pof4k6q" path="res://assets/icons/6x4/wave.png" id="5_8tkyb"]
 [ext_resource type="Texture2D" uid="uid://ds52fffsjrsa0" path="res://assets/icons/6x4/button.png" id="6_8tkyb"]
 [ext_resource type="PackedScene" uid="uid://d4gjg1mpimrhp" path="res://editor/old_modular/port/output/modular_editor_output_port.tscn" id="7_b1ol4"]

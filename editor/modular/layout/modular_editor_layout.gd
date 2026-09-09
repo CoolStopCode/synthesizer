@@ -4,13 +4,11 @@ extends Control
 @export var modules_layer : ModularEditorModulesLayer
 @export var connections_layer : ModularEditorConnectionsLayer
 
-func _ready() -> void:
-	modules_layer.create_new_module(preload("res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn"))
-	modules_layer.create_new_module(preload("res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn"))
-	modules_layer.create_new_module(preload("res://editor/modular/modules/envelope/modular_editor_envelope_module.tscn"))
-	modules_layer.create_new_module(preload("res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn"))
-
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Debug"):
+		var save := to_save()
+		ResourceSaver.save(save, "res://editor/modular/save/default_save.tres")
+	
 	if not (event is InputEventMouseButton or event is InputEventScreenTouch): return
 	
 	var closest_port := modules_layer.closest_port_to(event.position)
@@ -30,7 +28,7 @@ func _input(event: InputEvent) -> void:
 			closest_port.clicked()
 			return
 		
-		connections_layer.create_connection_from(closest_port)
+		connections_layer.create_new_connection(closest_port)
 	
 	if not event.is_pressed():
 		if closest_port == null:

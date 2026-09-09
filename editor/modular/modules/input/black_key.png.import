@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buhgfghvmaga5"
-path="res://.godot/imported/black_key_pressed.png-2f5dfd33072c7e4aa1874859ae25c78e.ctex"
+uid="uid://dh4flip42fxv0"
+path="res://.godot/imported/black_key.png-130e4b6f8a6cb4a58661db940ed78146.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/module/input/black_key_pressed.png"
-dest_files=["res://.godot/imported/black_key_pressed.png-2f5dfd33072c7e4aa1874859ae25c78e.ctex"]
+source_file="res://editor/modular/modules/input/black_key.png"
+dest_files=["res://.godot/imported/black_key.png-130e4b6f8a6cb4a58661db940ed78146.ctex"]
 
 [params]
 

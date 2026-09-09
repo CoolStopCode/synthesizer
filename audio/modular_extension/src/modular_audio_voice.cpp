@@ -190,7 +190,7 @@ inline double ModularAudioVoice::lerp(double a, double b, double t) {
 // =========================================================
 // INPUT module
 //
-// Output 1    = frequency : float
+// Output 0    = frequency : float
 // Output 1    = pressed : bool
 //
 // =========================================================
@@ -230,8 +230,9 @@ void ModularAudioVoice::process_output_module(
 //
 // Input 0     = frequency : float
 // State 1     = phase accumulation : float
-// Parameter 2 = waveform : enum { SINE, SQUARE, SAW, TRIANGLE }
-// Output 0    = sample : float
+// Const 2 = waveform : enum { SINE, SQUARE, SAW, TRIANGLE }
+//
+// Output 3    = sample : float
 // 
 // =========================================================
 
@@ -274,8 +275,9 @@ void ModularAudioVoice::process_oscillator_module(
 // =========================================================
 // NOISE module
 //
-// Parameter 0 = spectrum : enum { WHITE, PINK, BROWN, VIOLET, }
-// Output 0    = sample : float
+// Const 0 = spectrum : enum { WHITE, PINK, BROWN, VIOLET, }
+//
+// Output 1    = sample : float
 // 
 // =========================================================
 
@@ -297,15 +299,16 @@ void ModularAudioVoice::process_noise_module(
 // State 3      = phase : float
 // State 4      = attack_start_level : float
 // State 5      = release_start_level : float
-// Parameter 6  = attack        : float
-// Parameter 7  = decay         : float
-// Parameter 8  = sustain       : float
-// Parameter 9  = release       : float
-// Parameter 10 = attack_curve  : float
-// Parameter 11 = decay_curve   : float
-// Parameter 12 = release_curve : float
-// Parameter 13 = reset         : bool
-// Output 0     = output : float
+// Const 6  = attack        : float
+// Const 7  = decay         : float
+// Const 8  = sustain       : float
+// Const 9  = release       : float
+// Const 10 = attack_curve  : float
+// Const 11 = decay_curve   : float
+// Const 12 = release_curve : float
+// Const 13 = reset         : bool
+//
+// Output 14     = output : float
 //
 // =====================================================================
 
@@ -426,10 +429,11 @@ void ModularAudioVoice::process_envelope_module(
 // Input 0     = audio_in     : float
 // State 1     = lowpass      : float
 // State 2     = bandpass     : float
-// Parameter 3 = cutoff       : float
-// Parameter 4 = resonance    : float  (0..1)
-// Parameter 5 = filter_mode  : enum    { LP=0, BP=1, HP=2 }
-// Output 0    = audio_out    : float
+// Const 3 = cutoff       : float
+// Const 4 = resonance    : float  (0..1)
+// Const 5 = filter_mode  : enum    { LP=0, BP=1, HP=2 }
+//
+// Output 6    = audio_out    : float
 //
 // =====================================================================
 
@@ -480,10 +484,11 @@ void ModularAudioVoice::process_filter_module(
 // Input 0     = audio_in : float
 // State 1     = sample_hold_value : float
 // State 2     = phase_accumulation : float
-// Parameter 3 = bit_depth : float
-// Parameter 4 = downsample_factor : float
-// Parameter 5 = mix : float
-// Output 0    = audio_out : float
+// Const 3 = bit_depth : float
+// Const 4 = downsample_factor : float
+// Const 5 = mix : float
+//
+// Output 6    = audio_out : float
 //
 // =====================================================================
 
@@ -501,8 +506,9 @@ void ModularAudioVoice::process_bitcrusher_module(
 //
 // Input 0     = operand_a : float
 // Input 1     = operand_b : float
-// Parameter 2 = operation : enum { ADD, SUBTRACT, MULTIPLY, DIVIDE }
-// Output 0  = result : float
+// Const 2 = operation : enum { ADD, SUBTRACT, MULTIPLY, DIVIDE }
+//
+// Output 3  = result : float
 //
 // =====================================================================
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbp0m4ev7wbwg"
-path="res://.godot/imported/white_key.png-05924621670c2d9ad63833b47e3b48a5.ctex"
+uid="uid://cykm1pdlv5fo0"
+path="res://.godot/imported/small_speaker.png-2c001c04dfb6ba31c42d5b6c1aa024c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/module/input/white_key.png"
-dest_files=["res://.godot/imported/white_key.png-05924621670c2d9ad63833b47e3b48a5.ctex"]
+source_file="res://editor/modular/modules/output/small_speaker.png"
+dest_files=["res://.godot/imported/small_speaker.png-2c001c04dfb6ba31c42d5b6c1aa024c8.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cykm1pdlv5fo0"
-path="res://.godot/imported/small_speaker.png-1af33510c61cafc84c70ec616bea270f.ctex"
+uid="uid://ba0d151vwsbah"
+path="res://.godot/imported/big_speaker.png-7cbbe9f4e66e12abb188476f48f42670.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/module/output/small_speaker.png"
-dest_files=["res://.godot/imported/small_speaker.png-1af33510c61cafc84c70ec616bea270f.ctex"]
+source_file="res://editor/modular/modules/output/big_speaker.png"
+dest_files=["res://.godot/imported/big_speaker.png-7cbbe9f4e66e12abb188476f48f42670.ctex"]
 
 [params]
 

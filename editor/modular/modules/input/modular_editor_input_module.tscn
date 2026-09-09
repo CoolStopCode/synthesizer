@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://4rcj7ugomg28"]
+
+[ext_resource type="Texture2D" uid="uid://dbp0m4ev7wbwg" path="res://editor/modular/modules/input/white_key.png" id="1_3h4vm"]
+[ext_resource type="PackedScene" uid="uid://ci4u7feyjehn4" path="res://elements/rectangle_element/rectangle_element.tscn" id="1_csn4p"]
+[ext_resource type="Script" uid="uid://bu2v0v17800do" path="res://editor/modular/modules/input/modular_editor_input_module.gd" id="1_vnrjw"]
+[ext_resource type="Resource" uid="uid://dtopixmd1ntn5" path="res://assets/rectangle_element_colors/white.tres" id="2_8tkyb"]
+[ext_resource type="Resource" uid="uid://dvfouy26jxkkf" path="res://assets/rectangle_element_shapes/square/square.tres" id="3_b1ol4"]
+[ext_resource type="Texture2D" uid="uid://dh4flip42fxv0" path="res://editor/modular/modules/input/black_key.png" id="5_7cpb5"]
+[ext_resource type="PackedScene" uid="uid://bvpifohy0mb0" path="res://elements/icon_element/icon_element.tscn" id="6_8tkyb"]
+[ext_resource type="Texture2D" uid="uid://ds52fffsjrsa0" path="res://assets/icons/6x4/button.png" id="7_7cpb5"]
+[ext_resource type="Resource" uid="uid://byj3xokpvcwhb" path="res://assets/icon_element_colors/white.tres" id="8_oq336"]
+[ext_resource type="Texture2D" uid="uid://bdo4s5pof4k6q" path="res://assets/icons/6x4/wave.png" id="9_oq336"]
+[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://editor/modular/parameters/ports/output/modular_editor_output_port.tscn" id="10_i0nqb"]
+[ext_resource type="Resource" uid="uid://iyyqbryjjjmm" path="res://editor/modular/parameters/ports/color/bool.tres" id="11_8qwql"]
+[ext_resource type="Resource" uid="uid://bhl1uaglbdrt8" path="res://editor/modular/parameters/ports/color/float.tres" id="12_vnrjw"]
+
+[node name="modular_editor_input_module" type="Control" unique_id=388998138 node_paths=PackedStringArray("parameters")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 44.0
+script = ExtResource("1_vnrjw")
+parameters = [NodePath("frequency"), NodePath("pressed")]
+output_count = 2
+
+[node name="rectangle_element" parent="." unique_id=611869492 instance=ExtResource("1_csn4p")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+color = ExtResource("2_8tkyb")
+shape = ExtResource("3_b1ol4")
+
+[node name="keys" type="Control" parent="." unique_id=76044050]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="keys" unique_id=1592052759]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 24.0
+offset_bottom = 7.0
+texture = ExtResource("1_3h4vm")
+
+[node name="TextureRect2" type="TextureRect" parent="keys" unique_id=2109426578]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 7.0
+offset_right = 24.0
+offset_bottom = 14.0
+texture = ExtResource("1_3h4vm")
+
+[node name="TextureRect3" type="TextureRect" parent="keys" unique_id=1064978298]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 14.0
+offset_right = 24.0
+offset_bottom = 21.0
+texture = ExtResource("1_3h4vm")
+
+[node name="TextureRect4" type="TextureRect" parent="keys" unique_id=1416855624]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 21.0
+offset_right = 24.0
+offset_bottom = 28.0
+texture = ExtResource("1_3h4vm")
+
+[node name="TextureRect5" type="TextureRect" parent="keys" unique_id=1101741920]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 15.0
+offset_bottom = 8.0
+texture = ExtResource("5_7cpb5")
+
+[node name="TextureRect6" type="TextureRect" parent="keys" unique_id=1040676112]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 15.0
+offset_bottom = 15.0
+texture = ExtResource("5_7cpb5")
+
+[node name="TextureRect7" type="TextureRect" parent="keys" unique_id=319981295]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 15.0
+offset_bottom = 22.0
+texture = ExtResource("5_7cpb5")
+
+[node name="pressed_icon" parent="." unique_id=1389549536 instance=ExtResource("6_8tkyb")]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 29.0
+offset_right = 9.0
+offset_bottom = 33.0
+icon = ExtResource("7_7cpb5")
+color = ExtResource("8_oq336")
+
+[node name="frequency_icon" parent="pressed_icon" unique_id=347367339 instance=ExtResource("6_8tkyb")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 18.0
+offset_bottom = 13.0
+icon = ExtResource("9_oq336")
+color = ExtResource("8_oq336")
+
+[node name="frequency" parent="." unique_id=1553455504 instance=ExtResource("10_i0nqb")]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 28.0
+offset_right = 23.0
+offset_bottom = 38.0
+color = ExtResource("12_vnrjw")
+
+[node name="pressed" parent="." unique_id=8079301 instance=ExtResource("10_i0nqb")]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 33.0
+offset_right = 11.0
+offset_bottom = 43.0
+color = ExtResource("11_8qwql")

@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://editor/modular/parameters/ports/output/modular_editor_output_port.tscn" id="12_r0wqj"]
 [ext_resource type="PackedScene" uid="uid://b2xwinqql82b3" path="res://editor/modular/parameters/ports/dial/modular_editor_dial_port.tscn" id="12_yoy44"]
 [ext_resource type="Resource" uid="uid://bhl1uaglbdrt8" path="res://editor/modular/parameters/ports/color/float.tres" id="13_e0cw4"]
+[ext_resource type="PackedScene" uid="uid://5k7h115onybd" path="res://editor/modular/parameters/value/modular_editor_value.tscn" id="14_r0wqj"]
 
 [sub_resource type="Resource" id="Resource_t7f72"]
 script = ExtResource("7_ny0gp")
@@ -28,7 +29,8 @@ offset_right = 72.0
 offset_bottom = 32.0
 script = ExtResource("1_02h4w")
 id = 4
-parameters = [NodePath("gate"), NodePath("a"), NodePath("d"), NodePath("s"), NodePath("r"), NodePath("power")]
+parameters = [NodePath("gate"), null, null, null, null, null, NodePath("a"), NodePath("d"), NodePath("s"), NodePath("r"), NodePath("attack_curve"), NodePath("decay_curve"), NodePath("release_curve"), NodePath("reset"), NodePath("power")]
+output_count = 1
 
 [node name="background" parent="." unique_id=611869492 instance=ExtResource("2_gh7yl")]
 layout_mode = 1
@@ -107,6 +109,45 @@ offset_bottom = 30.0
 minimum_rotation = -2.356
 maximum_rotation = 2.356
 color = ExtResource("13_e0cw4")
+
+[node name="attack_curve" parent="." unique_id=1323958376 instance=ExtResource("14_r0wqj")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+value = 0.5
+
+[node name="decay_curve" parent="." unique_id=1376766923 instance=ExtResource("14_r0wqj")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+value = 0.5
+
+[node name="release_curve" parent="." unique_id=1569989598 instance=ExtResource("14_r0wqj")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+value = 0.5
+
+[node name="reset" parent="." unique_id=1279054478 instance=ExtResource("14_r0wqj")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="power" parent="." unique_id=8079301 instance=ExtResource("12_r0wqj")]
 layout_mode = 0

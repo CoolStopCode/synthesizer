@@ -88,21 +88,23 @@ func get_module_parameter(module_index : int, parameter_index : int) -> ModularE
 
 func get_module_definitions() -> Array[ModularEditorModuleDefinition]:
 	var module_definitions : Array[ModularEditorModuleDefinition]
+	
 	for module in modules:
-		var module_definition := ModularEditorModuleDefinition.new(
-			module.id,
-			module.position,
-			module.get_parameter_values(),
-			module.output_count
-		)
+		var module_definition := ModularEditorModuleDefinition.new()
+		module_definition.id               = module.id
+		module_definition.position         = module.position
+		module_definition.parameter_values = module.get_parameter_values()
+		module_definition.output_count     = module.output_count
 		module_definitions.append(module_definition)
 	
 	return module_definitions
 
 func get_parameter_map() -> Dictionary[ModularEditorParameter, Vector2i]:
 	var parameter_map : Dictionary[ModularEditorParameter, Vector2i] # (module index, parameter index
+	
 	for module_index in range(modules.size()):
 		var module := modules[module_index]
 		for parameter_index in range(module.parameters.size()):
 			parameter_map[modules[module_index].parameters[parameter_index]] = Vector2i(module_index, parameter_index)
+	
 	return parameter_map

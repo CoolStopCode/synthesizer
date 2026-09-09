@@ -10,35 +10,31 @@ var output_port: ModularEditorOutputPort
 @export var point_count := 20
 @export var sag := 20.0
 
-
 func lift_port(port: ModularEditorPort) -> void:
 	if port == input_port:
 		input_port.disconnected()
 		input_port.connection = null
 		input_port = null
-
+	
 	if port == output_port:
 		output_port.disconnected()
 		output_port.connection = null
 		output_port = null
 
-
 func can_connect_to(port: ModularEditorPort) -> bool:
 	return port.can_connect_to(get_connected_port())
-
 
 func get_connected_port() -> ModularEditorPort:
 	if input_port != null and output_port != null:
 		return null
-
+	
 	if input_port != null:
 		return input_port
-
+	
 	if output_port != null:
 		return output_port
-
+	
 	return null
-
 
 func connect_to(port: ModularEditorPort) -> void:
 	port.connection = self
@@ -51,6 +47,17 @@ func connect_to(port: ModularEditorPort) -> void:
 
 	update_positions()
 
+func connect_input_output(input: ModularEditorInputPort, output: ModularEditorOutputPort) -> void:
+	input.connection = self
+	input.connected()
+	
+	output.connection = self
+	output.connected()
+	
+	input_port = input
+	output_port = output
+	
+	update_positions()
 
 func _input(event: InputEvent) -> void:
 	if not (event is InputEventMouseMotion or event is InputEventScreenDrag):

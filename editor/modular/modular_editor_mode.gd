@@ -3,14 +3,16 @@ extends EditorMode
 
 func load_save(save : EditorSave):
 	if save != null:
-		layout = save.to_editor_layout(module_bindings, layout_scene)
+		layout = save.to_editor_layout(layout_scene, module_bindings)
 	else:
-		layout = layout_scene.instantiate()
+		layout = default_save.to_editor_layout(layout_scene, module_bindings)
 	
 	workspace_node.add_child(layout)
 
+@export var default_save : ModularEditorSave
+
 @export_group("private")
-@export var module_bindings : ModularEditorModuleBindings
+@export var module_bindings : Dictionary[int, PackedScene]
 
 @export var layout_scene : PackedScene
 

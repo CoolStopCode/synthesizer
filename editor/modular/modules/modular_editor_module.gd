@@ -9,6 +9,9 @@ func get_parameter_values() -> Array[float]:
 	var parameter_values : Array[float]
 	
 	for parameter in parameters:
-		parameter_values.append(parameter.get_value())
+		if parameter == null:
+			parameter_values.append(0.0)
+		else:
+			parameter_values.append(parameter.get_value())
 	
 	return parameter_values

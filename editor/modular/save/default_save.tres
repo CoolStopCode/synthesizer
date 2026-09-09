@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ModularEditorSave" format=3]
+
+[ext_resource type="Script" path="res://editor/modular/save/modular_editor_connection_definition.gd" id="1_uj2n3"]
+[ext_resource type="Script" path="res://editor/modular/save/modular_editor_module_definition.gd" id="2_ph8j0"]
+[ext_resource type="Script" path="res://editor/modular/save/modular_editor_save.gd" id="3_sum32"]
+
+[sub_resource type="Resource" id="Resource_u24cr"]
+script = ExtResource("1_uj2n3")
+input_module_index = 1
+
+[sub_resource type="Resource" id="Resource_4kqwu"]
+script = ExtResource("2_ph8j0")
+parameter_values = Array[float]([0.0, 0.0])
+output_count = 2
+
+[sub_resource type="Resource" id="Resource_1klpb"]
+script = ExtResource("2_ph8j0")
+id = 1
+position = Vector2(0, 44)
+parameter_values = Array[float]([0.0])
+
+[resource]
+script = ExtResource("3_sum32")
+module_definitions = Array[ExtResource("2_ph8j0")]([SubResource("Resource_4kqwu"), SubResource("Resource_1klpb")])
+connection_definitions = Array[ExtResource("1_uj2n3")]([SubResource("Resource_u24cr")])

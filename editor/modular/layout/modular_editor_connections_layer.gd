@@ -5,9 +5,14 @@ extends Control
 @export var connections : Array[ModularEditorConnection]
 @export var dragging_connection : ModularEditorConnection
 
-func create_connection_from(port : ModularEditorPort) -> ModularEditorConnection:
+func create_connection_at(input : ModularEditorInputPort, output : ModularEditorOutputPort) -> ModularEditorConnection:
 	var connection = create_connection()
-	connection.connect_to(port)
+	connection.connect_input_output(input, output)
+	return connection
+
+func create_new_connection(from : ModularEditorPort) -> ModularEditorConnection:
+	var connection = create_connection()
+	connection.connect_to(from)
 	dragging_connection = connection
 	return connection
 
@@ -51,10 +56,11 @@ func get_connection_definitions(
 	for connection in connections:
 		var input_location  : Vector2i = parameter_locations[connection.input_port  as ModularEditorParameter]
 		var output_location : Vector2i = parameter_locations[connection.output_port as ModularEditorParameter]
-		var connection_definition := ModularEditorConnectionDefinition.new(
-			input_location.x, input_location.y,
-			output_location.x, output_location.y
-		)
+		var connection_definition := ModularEditorConnectionDefinition.new()
+		connection_definition.input_module_index     = input_location.x
+		connection_definition.input_parameter_index  = input_location.y
+		connection_definition.output_module_index    = output_location.x
+		connection_definition.output_parameter_index = output_location.y
 		connection_definitions.append(connection_definition)
 	
 	return connection_definitions

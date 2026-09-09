@@ -24,7 +24,9 @@ anchors_preset = 0
 offset_right = 56.0
 offset_bottom = 16.0
 script = ExtResource("1_cdra5")
+id = 7
 parameters = [NodePath("operation"), NodePath("operand_a"), NodePath("operand_b"), NodePath("result")]
+output_count = 1
 
 [node name="background" parent="." unique_id=611869492 instance=ExtResource("1_wfsuo")]
 layout_mode = 1

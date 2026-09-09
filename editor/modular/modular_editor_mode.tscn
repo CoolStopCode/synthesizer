@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://d2twykyfktbfw"]
 
 [ext_resource type="Script" uid="uid://cjaopmh0llkim" path="res://editor/modular/modular_editor_mode.gd" id="1_di1av"]
-[ext_resource type="Resource" uid="uid://bqe3djx81p7j7" path="res://editor/modular/modules/module_bindings.tres" id="2_6dr8x"]
+[ext_resource type="Resource" path="res://editor/modular/save/default_save.tres" id="2_miyht"]
 [ext_resource type="PackedScene" uid="uid://bd0ehapjlqsn1" path="res://editor/modular/layout/modular_editor_layout.tscn" id="3_cy6l7"]
+[ext_resource type="PackedScene" uid="uid://4rcj7ugomg28" path="res://editor/modular/modules/input/modular_editor_input_module.tscn" id="3_fjy8e"]
 [ext_resource type="Texture2D" uid="uid://501mtcwdmb6l" path="res://editor/modular/background.png" id="4_cy6l7"]
+[ext_resource type="PackedScene" uid="uid://b0h8hrnp8s3sh" path="res://editor/modular/modules/output/modular_editor_output_module.tscn" id="4_l7st6"]
+[ext_resource type="PackedScene" uid="uid://03uv8urr5sbc" path="res://editor/modular/modules/envelope/modular_editor_envelope_module.tscn" id="5_ivaro"]
+[ext_resource type="PackedScene" uid="uid://xtatgx378c10" path="res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn" id="6_n61td"]
 
 [node name="modular_editor_mode" type="Control" unique_id=1342845703 node_paths=PackedStringArray("top_node", "workspace_node", "bottom_node")]
 layout_mode = 3
@@ -14,7 +18,17 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_di1av")
-module_bindings = ExtResource("2_6dr8x")
+default_save = ExtResource("2_miyht")
+module_bindings = Dictionary[int, PackedScene]({
+0: ExtResource("3_fjy8e"),
+1: ExtResource("4_l7st6"),
+2: null,
+3: null,
+4: ExtResource("5_ivaro"),
+5: null,
+6: null,
+7: ExtResource("6_n61td")
+})
 layout_scene = ExtResource("3_cy6l7")
 top_node = NodePath("top")
 workspace_node = NodePath("workspace")

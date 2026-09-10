@@ -11,7 +11,7 @@ extends EditorMode
 @export var bottom_node : Control
 
 @export var layout_scene : PackedScene
-@export var layout : ModularEditorLayout
+var layout : ModularEditorLayout
 
 func load_save(save : EditorSave):
 	if save != null:

@@ -14,14 +14,13 @@
 [ext_resource type="Resource" uid="uid://iyyqbryjjjmm" path="res://editor/modular/parameters/ports/color/bool.tres" id="11_8qwql"]
 [ext_resource type="Resource" uid="uid://bhl1uaglbdrt8" path="res://editor/modular/parameters/ports/color/float.tres" id="12_vnrjw"]
 
-[node name="modular_editor_input_module" type="Control" unique_id=388998138 node_paths=PackedStringArray("parameters")]
+[node name="modular_editor_input_module" type="Control" unique_id=388998138 node_paths=PackedStringArray("outputs")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 24.0
 offset_bottom = 44.0
 script = ExtResource("1_vnrjw")
-parameters = [NodePath("frequency"), NodePath("pressed")]
-output_count = 2
+outputs = [NodePath("frequency"), NodePath("pressed")]
 
 [node name="rectangle_element" parent="." unique_id=611869492 instance=ExtResource("1_csn4p")]
 layout_mode = 1

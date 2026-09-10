@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://501mtcwdmb6l" path="res://editor/modular/background.png" id="4_cy6l7"]
 [ext_resource type="PackedScene" uid="uid://b0h8hrnp8s3sh" path="res://editor/modular/modules/output/modular_editor_output_module.tscn" id="4_l7st6"]
 [ext_resource type="PackedScene" uid="uid://03uv8urr5sbc" path="res://editor/modular/modules/envelope/modular_editor_envelope_module.tscn" id="5_ivaro"]
+[ext_resource type="PackedScene" uid="uid://dd2v3d2iuvt6" path="res://editor/modular/modules/oscillator/modular_editor_oscillator_module.tscn" id="5_l7st6"]
 [ext_resource type="PackedScene" uid="uid://xtatgx378c10" path="res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn" id="6_n61td"]
 
 [node name="modular_editor_mode" type="Control" unique_id=1342845703 node_paths=PackedStringArray("top_node", "workspace_node", "bottom_node")]
@@ -22,17 +23,17 @@ default_save = ExtResource("2_miyht")
 module_bindings = Dictionary[int, PackedScene]({
 0: ExtResource("3_fjy8e"),
 1: ExtResource("4_l7st6"),
-2: null,
+2: ExtResource("5_l7st6"),
 3: null,
 4: ExtResource("5_ivaro"),
 5: null,
 6: null,
 7: ExtResource("6_n61td")
 })
-layout_scene = ExtResource("3_cy6l7")
 top_node = NodePath("top")
 workspace_node = NodePath("workspace")
 bottom_node = NodePath("bottom")
+layout_scene = ExtResource("3_cy6l7")
 
 [node name="top" type="Control" parent="." unique_id=1757403071]
 layout_mode = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://61staagwmt22"
-path="res://.godot/imported/square.png-c3b8d8bb52e278214abbbe8930f6051f.ctex"
+uid="uid://ijdlpcw04g32"
+path="res://.godot/imported/triangle.png-0b6d940611fa483bfbd7272ead7ebd7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/module/oscillator/square.png"
-dest_files=["res://.godot/imported/square.png-c3b8d8bb52e278214abbbe8930f6051f.ctex"]
+source_file="res://editor/modular/modules/oscillator/triangle.png"
+dest_files=["res://.godot/imported/triangle.png-0b6d940611fa483bfbd7272ead7ebd7c.ctex"]
 
 [params]
 

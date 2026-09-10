@@ -1,8 +1,8 @@
 class_name Main
 extends Control
 
-@export var audio_mode : AudioMode
 @export var editor_mode : EditorMode
+@export var audio_mode : AudioMode
 
-func _ready() -> void: # temporary
-	editor_mode.audio_mode = $AudioEngine.audio_mode
+func _ready() -> void:
+	editor_mode.audio_mode = audio_mode

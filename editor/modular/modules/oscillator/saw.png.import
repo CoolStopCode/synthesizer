@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://utwgjjr4v06w"
-path="res://.godot/imported/background.png-3bfd36a5c79c97aab0b41955e832a5ce.ctex"
+uid="uid://citjif12131cy"
+path="res://.godot/imported/saw.png-545580a9b0dcea925e5ffb1c33847444.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/module/arithmetic/background.png"
-dest_files=["res://.godot/imported/background.png-3bfd36a5c79c97aab0b41955e832a5ce.ctex"]
+source_file="res://editor/modular/modules/oscillator/saw.png"
+dest_files=["res://.godot/imported/saw.png-545580a9b0dcea925e5ffb1c33847444.ctex"]
 
 [params]
 

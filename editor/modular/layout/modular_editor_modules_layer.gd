@@ -60,6 +60,8 @@ func get_all_ports() -> Array[ModularEditorPort]:
 		for parameter : ModularEditorParameter in module.parameters:
 			if parameter is ModularEditorPort:
 				ports.append(parameter)
+		for output : ModularEditorOutputPort in module.outputs:
+			ports.append(output)
 	
 	return ports
 
@@ -83,9 +85,6 @@ func closest_port_to(point : Vector2) -> ModularEditorPort:
 	#for port in get_all_ports():
 		#port.highlight_off()
 
-func get_module_parameter(module_index : int, parameter_index : int) -> ModularEditorParameter:
-	return modules[module_index].parameters[parameter_index]
-
 func get_module_definitions() -> Array[ModularEditorModuleDefinition]:
 	var module_definitions : Array[ModularEditorModuleDefinition]
 	
@@ -94,17 +93,29 @@ func get_module_definitions() -> Array[ModularEditorModuleDefinition]:
 		module_definition.id               = module.id
 		module_definition.position         = module.position
 		module_definition.parameter_values = module.get_parameter_values()
-		module_definition.output_count     = module.output_count
+		module_definition.output_count     = module.outputs.size()
 		module_definitions.append(module_definition)
 	
 	return module_definitions
 
-func get_parameter_map() -> Dictionary[ModularEditorParameter, Vector2i]:
-	var parameter_map : Dictionary[ModularEditorParameter, Vector2i] # (module index, parameter index
+func get_input_map() -> Dictionary[ModularEditorInputPort, Vector2i]:
+	var input_map : Dictionary[ModularEditorInputPort, Vector2i]
 	
 	for module_index in range(modules.size()):
 		var module := modules[module_index]
 		for parameter_index in range(module.parameters.size()):
-			parameter_map[modules[module_index].parameters[parameter_index]] = Vector2i(module_index, parameter_index)
+			var parameter := module.parameters[parameter_index]
+			if parameter is ModularEditorInputPort:
+				var input := parameter as ModularEditorInputPort
+				input_map[input] = Vector2i(module_index, parameter_index)
 	
-	return parameter_map
+	return input_map
+
+func get_output_map() -> Dictionary[ModularEditorOutputPort, Vector2i]:
+	var output_map : Dictionary[ModularEditorOutputPort, Vector2i]
+	for module_index in range(modules.size()):
+		var module := modules[module_index]
+		for output_index in range(module.outputs.size()):
+			var output := module.outputs[output_index]
+			output_map[output] = Vector2i(module_index, output_index)
+	return output_map

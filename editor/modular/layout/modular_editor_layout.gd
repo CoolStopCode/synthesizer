@@ -4,11 +4,15 @@ extends Control
 @export var modules_layer : ModularEditorModulesLayer
 @export var connections_layer : ModularEditorConnectionsLayer
 
+func _ready() -> void:
+	pass
+	#modules_layer.create_new_module(preload("res://editor/modular/modules/input/modular_editor_input_module.tscn"))
+	#modules_layer.create_new_module(preload("res://editor/modular/modules/output/modular_editor_output_module.tscn")).position = Vector2(0, 44)
+	#modules_layer.create_new_module(preload("res://editor/modular/modules/oscillator/modular_editor_oscillator_module.tscn"))
+	#modules_layer.create_new_module(preload("res://editor/modular/modules/envelope/modular_editor_envelope_module.tscn"))
+	#modules_layer.create_new_module(preload("res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn"))
+
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("Debug"):
-		var save := to_save()
-		ResourceSaver.save(save, "res://editor/modular/save/default_save.tres")
-	
 	if not (event is InputEventMouseButton or event is InputEventScreenTouch): return
 	
 	var closest_port := modules_layer.closest_port_to(event.position)
@@ -47,15 +51,14 @@ func _input(event: InputEvent) -> void:
 		
 		connections_layer.connect_dragging(closest_port)
 
-func get_module_parameter(module_index : int, parameter_index : int) -> ModularEditorParameter:
-	return modules_layer.get_module_parameter(module_index, parameter_index)
-
 func to_save() -> ModularEditorSave:
 	var save := ModularEditorSave.new()
 	
-	var parameter_map := modules_layer.get_parameter_map()
 	var module_definitions := modules_layer.get_module_definitions()
-	var connection_definitions := connections_layer.get_connection_definitions(parameter_map)
+	var connection_definitions := connections_layer.get_connection_definitions(
+		modules_layer.get_input_map(),
+		modules_layer.get_output_map()
+	)
 	
 	save.module_definitions = module_definitions
 	save.connection_definitions = connection_definitions
@@ -63,11 +66,13 @@ func to_save() -> ModularEditorSave:
 	return save
 
 func to_audio_layout() -> ModularAudioLayout:
-	var parameter_map := modules_layer.get_parameter_map()
-	var module_definitions := modules_layer.get_module_definitions()
-	var connection_definitions := connections_layer.get_connection_definitions(parameter_map)
-	
 	var layout := ModularAudioLayout.new()
+	
+	var module_definitions := modules_layer.get_module_definitions()
+	var connection_definitions := connections_layer.get_connection_definitions(
+		modules_layer.get_input_map(),
+		modules_layer.get_output_map()
+	)
 	
 	var types : PackedByteArray
 	var module_offsets : PackedInt32Array
@@ -88,7 +93,7 @@ func to_audio_layout() -> ModularAudioLayout:
 	
 	output_routes.resize(total_outputs)
 	for connection_definition in connection_definitions:
-		var output_route_index : int      = output_offsets[connection_definition.output_module_index] + connection_definition.output_parameter_index
+		var output_route_index : int      = output_offsets[connection_definition.output_module_index] + connection_definition.output_output_index
 		output_routes[output_route_index] = module_offsets[connection_definition.input_module_index ] + connection_definition.input_parameter_index
 	
 	layout.types = types

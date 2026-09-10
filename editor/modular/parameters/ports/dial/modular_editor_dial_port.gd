@@ -61,7 +61,7 @@ func set_value(_value : float) -> void:
 	value = _value
 	var progress := inverse_lerp(minimum_value, maximum_value, value)
 	dial_rotation = clamp(lerpf(minimum_rotation, maximum_rotation, progress), minimum_rotation, maximum_rotation)
-	notch_node.rotation_degrees = dial_rotation
+	notch_node.rotation = dial_rotation
 
 func get_value() -> float:
 	var progress := inverse_lerp(minimum_rotation, maximum_rotation, dial_rotation)

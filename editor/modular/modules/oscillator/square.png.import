@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://citjif12131cy"
-path="res://.godot/imported/saw.png-ee40b1730b2c73328a1c0a12511ff555.ctex"
+uid="uid://61staagwmt22"
+path="res://.godot/imported/square.png-112d0f5c80df65533a43576395293c04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/module/oscillator/saw.png"
-dest_files=["res://.godot/imported/saw.png-ee40b1730b2c73328a1c0a12511ff555.ctex"]
+source_file="res://editor/modular/modules/oscillator/square.png"
+dest_files=["res://.godot/imported/square.png-112d0f5c80df65533a43576395293c04.ctex"]
 
 [params]
 

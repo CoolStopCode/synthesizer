@@ -48,6 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3gdo0")
 editor_mode = NodePath("interface/modular_editor_mode")
+audio_mode = SubResource("Resource_brq4u")
 
 [node name="AudioEngine" type="AudioStreamPlayer" parent="." unique_id=1346665500]
 bus = &"Active"

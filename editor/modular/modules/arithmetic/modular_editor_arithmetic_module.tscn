@@ -18,15 +18,15 @@
 [ext_resource type="Resource" uid="uid://o3ivdql2i4ye" path="res://assets/button_element_colors/red.tres" id="10_tp6yk"]
 [ext_resource type="Resource" uid="uid://cbacgmqo68blg" path="res://assets/button_element_shapes/square/square.tres" id="11_yn1pf"]
 
-[node name="modular_editor_arithmetic_module" type="Control" unique_id=763916784 node_paths=PackedStringArray("parameters")]
+[node name="modular_editor_arithmetic_module" type="Control" unique_id=763916784 node_paths=PackedStringArray("parameters", "outputs")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 56.0
 offset_bottom = 16.0
 script = ExtResource("1_cdra5")
 id = 7
-parameters = [NodePath("operation"), NodePath("operand_a"), NodePath("operand_b"), NodePath("result")]
-output_count = 1
+parameters = [NodePath("operand_a"), NodePath("operand_b"), NodePath("operation")]
+outputs = [NodePath("result")]
 
 [node name="background" parent="." unique_id=611869492 instance=ExtResource("1_wfsuo")]
 layout_mode = 1

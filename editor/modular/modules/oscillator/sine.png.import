@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt553jcw4f0xu"
-path="res://.godot/imported/background.png-538089ec35657c16908472b9f8473ec7.ctex"
+uid="uid://cdt7v7y5xys37"
+path="res://.godot/imported/sine.png-3825cb97d8ff7c87f6a47e4fa94e619e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://editor/old_modular/module/output/background.png"
-dest_files=["res://.godot/imported/background.png-538089ec35657c16908472b9f8473ec7.ctex"]
+source_file="res://editor/modular/modules/oscillator/sine.png"
+dest_files=["res://.godot/imported/sine.png-3825cb97d8ff7c87f6a47e4fa94e619e.ctex"]
 
 [params]
 

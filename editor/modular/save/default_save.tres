@@ -1,25 +1,67 @@
-[gd_resource type="Resource" script_class="ModularEditorSave" format=3]
+[gd_resource type="Resource" script_class="ModularEditorSave" format=3 uid="uid://dlsx0oebug5dt"]
 
-[ext_resource type="Script" path="res://editor/modular/save/modular_editor_connection_definition.gd" id="1_uj2n3"]
-[ext_resource type="Script" path="res://editor/modular/save/modular_editor_module_definition.gd" id="2_ph8j0"]
-[ext_resource type="Script" path="res://editor/modular/save/modular_editor_save.gd" id="3_sum32"]
+[ext_resource type="Script" uid="uid://bcthap2l4pvqr" path="res://editor/modular/save/modular_editor_connection_definition.gd" id="1_uj2n3"]
+[ext_resource type="Script" uid="uid://dph261vyedm13" path="res://editor/modular/save/modular_editor_module_definition.gd" id="2_ph8j0"]
+[ext_resource type="Script" uid="uid://dup54ynq8mph6" path="res://editor/modular/save/modular_editor_save.gd" id="3_sum32"]
 
 [sub_resource type="Resource" id="Resource_u24cr"]
 script = ExtResource("1_uj2n3")
-input_module_index = 1
+input_module_index = 2
 
 [sub_resource type="Resource" id="Resource_4kqwu"]
-script = ExtResource("2_ph8j0")
-parameter_values = Array[float]([0.0, 0.0])
-output_count = 2
+script = ExtResource("1_uj2n3")
+input_module_index = 1
+output_module_index = 4
 
 [sub_resource type="Resource" id="Resource_1klpb"]
+script = ExtResource("1_uj2n3")
+input_module_index = 3
+output_output_index = 1
+
+[sub_resource type="Resource" id="Resource_b2ckn"]
+script = ExtResource("1_uj2n3")
+input_module_index = 4
+input_parameter_index = 1
+output_module_index = 3
+
+[sub_resource type="Resource" id="Resource_yh44q"]
+script = ExtResource("1_uj2n3")
+input_module_index = 4
+output_module_index = 2
+
+[sub_resource type="Resource" id="Resource_8a1f5"]
+script = ExtResource("2_ph8j0")
+output_count = 2
+
+[sub_resource type="Resource" id="Resource_j4run"]
 script = ExtResource("2_ph8j0")
 id = 1
 position = Vector2(0, 44)
 parameter_values = Array[float]([0.0])
 
+[sub_resource type="Resource" id="Resource_k3w3r"]
+script = ExtResource("2_ph8j0")
+id = 2
+position = Vector2(24, 0)
+parameter_values = Array[float]([200.5, 0.0, 2.0])
+output_count = 1
+
+[sub_resource type="Resource" id="Resource_m6as3"]
+script = ExtResource("2_ph8j0")
+id = 4
+position = Vector2(24, 16)
+parameter_values = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.01, 10.0, 0.0, 3.068740540036516, 0.5, 0.5, 0.5, 0.0])
+output_count = 1
+
+[sub_resource type="Resource" id="Resource_1qsti"]
+script = ExtResource("2_ph8j0")
+id = 7
+position = Vector2(24, 48)
+parameter_values = Array[float]([0.0, 0.0, 2.0])
+output_count = 1
+
 [resource]
 script = ExtResource("3_sum32")
-module_definitions = Array[ExtResource("2_ph8j0")]([SubResource("Resource_4kqwu"), SubResource("Resource_1klpb")])
-connection_definitions = Array[ExtResource("1_uj2n3")]([SubResource("Resource_u24cr")])
+module_definitions = Array[ExtResource("2_ph8j0")]([SubResource("Resource_8a1f5"), SubResource("Resource_j4run"), SubResource("Resource_k3w3r"), SubResource("Resource_m6as3"), SubResource("Resource_1qsti")])
+connection_definitions = Array[ExtResource("1_uj2n3")]([SubResource("Resource_u24cr"), SubResource("Resource_4kqwu"), SubResource("Resource_1klpb"), SubResource("Resource_b2ckn"), SubResource("Resource_yh44q")])
+metadata/_custom_type_script = "uid://dup54ynq8mph6"

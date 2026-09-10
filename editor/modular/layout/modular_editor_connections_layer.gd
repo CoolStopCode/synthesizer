@@ -49,18 +49,19 @@ func delete_connection(connection : ModularEditorConnection) -> void:
 	connection.queue_free()
 
 func get_connection_definitions(
-	parameter_locations: Dictionary[ModularEditorParameter, Vector2i]
+	input_map : Dictionary[ModularEditorInputPort , Vector2i],
+	output_map: Dictionary[ModularEditorOutputPort, Vector2i]
 ) -> Array[ModularEditorConnectionDefinition]:
 	var connection_definitions : Array[ModularEditorConnectionDefinition]
 	
 	for connection in connections:
-		var input_location  : Vector2i = parameter_locations[connection.input_port  as ModularEditorParameter]
-		var output_location : Vector2i = parameter_locations[connection.output_port as ModularEditorParameter]
+		var input_location  : Vector2i = input_map [connection.input_port ]
+		var output_location : Vector2i = output_map[connection.output_port]
 		var connection_definition := ModularEditorConnectionDefinition.new()
-		connection_definition.input_module_index     = input_location.x
-		connection_definition.input_parameter_index  = input_location.y
+		connection_definition.input_module_index     = input_location .x
+		connection_definition.input_parameter_index  = input_location .y
 		connection_definition.output_module_index    = output_location.x
-		connection_definition.output_parameter_index = output_location.y
+		connection_definition.output_output_index    = output_location.y
 		connection_definitions.append(connection_definition)
 	
 	return connection_definitions

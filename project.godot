@@ -68,7 +68,6 @@ folder_colors={
 "res://editor/analog/": "red",
 "res://editor/drums/": "yellow",
 "res://editor/modular/": "green",
-"res://editor/old_modular/": "green",
 "res://editor/sampler/": "blue",
 "res://editor/tonal/": "purple",
 "res://elements/": "green",

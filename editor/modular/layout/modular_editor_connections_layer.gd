@@ -46,6 +46,13 @@ func connection_connected_to(port: ModularEditorPort) -> ModularEditorConnection
 
 func delete_connection(connection : ModularEditorConnection) -> void:
 	connections.erase(connection)
+	if connection.input_port:
+		connection.input_port .disconnected()
+		connection.input_port .connection = null
+	if connection.output_port:
+		connection.output_port.disconnected()
+		connection.output_port.connection = null
+	
 	connection.queue_free()
 
 func get_connection_definitions(

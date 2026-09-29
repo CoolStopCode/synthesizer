@@ -23,5 +23,5 @@ func _init(_note : NoteEnum = NoteEnum.C, _octave : int = 4) -> void:
 	note = _note
 	octave = _octave
 
-func to_semitone() -> Semitone:
-	return Semitone.new(octave * 12 + note)
+func to_semitone() -> TonalAudioSemitone:
+	return TonalAudioSemitone.new(octave * 12 + note)

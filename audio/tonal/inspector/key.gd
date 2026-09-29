@@ -28,8 +28,8 @@ const INTERVALS : Dictionary = {
 @export var root : Note
 @export var mode : Mode
 
-func build_scale() -> Scale:
-	var scale := Scale.new()
+func build_scale() -> TonalAudioScale:
+	var scale := TonalAudioScale.new()
 	scale.root = root.to_semitone()
 	scale.intervals.assign(INTERVALS[mode])
 	return scale

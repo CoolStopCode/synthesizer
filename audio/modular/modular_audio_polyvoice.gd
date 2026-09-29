@@ -41,7 +41,7 @@ func update_amplitude_fade(delta: float) -> void:
 	else:
 		amplitude = lerp(amplitude_fade_start, amplitude_fade_target, progress)
 
-func bend_polyvoice(chord: Chord, chord_bend_duration : float) -> void:
+func bend_polyvoice(chord: TonalAudioChord, chord_bend_duration : float) -> void:
 	for i in voices.size():
 		var voice : ModularAudioVoice = voices[i]
 		var has_note := i < chord.semitones.size()

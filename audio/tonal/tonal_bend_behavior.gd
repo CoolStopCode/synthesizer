@@ -1,10 +1,10 @@
-class_name TonalBendBehavior
+class_name TonalAudioBendBehavior
 extends Resource
 
 @export var degrees : Array[int]
-@export var transformations : Array[ChordTransformation]
+@export var transformations : Array[TonalAudioChordTransformation]
 
-func build_chord(scale : Scale, index : int) -> Chord:
+func build_chord(scale : TonalAudioScale, index : int) -> TonalAudioChord:
 	var chord := scale.get_chord(index, degrees)
 	
 	for transformation in transformations:

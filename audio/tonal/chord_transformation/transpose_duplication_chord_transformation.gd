@@ -3,11 +3,11 @@ extends TonalAudioChordTransformation
 
 @export var semitones : int = 12
 
-func apply(chord : Chord) -> void:
-	var duplicates : Array[Semitone] = []
+func apply(chord : TonalAudioChord) -> void:
+	var duplicates : Array[TonalAudioSemitone] = []
 
 	for semitone in chord.semitones:
-		var new := Semitone.new()
+		var new := TonalAudioSemitone.new()
 		new.semitone = semitone.semitone + semitones
 		duplicates.append(new)
 

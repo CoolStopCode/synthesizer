@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://grcp6wktvy3d"
-path="res://.godot/imported/times.png-b95f7ddee4242d613530314d1cbd9407.ctex"
+path="res://.godot/imported/multiply.png-3943b42b4cc48d2085a24681d34d63de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/6x6/times.png"
-dest_files=["res://.godot/imported/times.png-b95f7ddee4242d613530314d1cbd9407.ctex"]
+source_file="res://assets/icons/6x6/multiply.png"
+dest_files=["res://.godot/imported/multiply.png-3943b42b4cc48d2085a24681d34d63de.ctex"]
 
 [params]
 

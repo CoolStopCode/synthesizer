@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvxvsod8xfkf6"
-path="res://.godot/imported/metronome1.png-f2e44e5c2281b0318d55068d5015d5e9.ctex"
+uid="uid://jqcxq082jnb4"
+path="res://.godot/imported/lightning.png-1706169f799169ff31ae0de2d2993dac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/6x6/metronome1.png"
-dest_files=["res://.godot/imported/metronome1.png-f2e44e5c2281b0318d55068d5015d5e9.ctex"]
+source_file="res://assets/icons/6x6/lightning.png"
+dest_files=["res://.godot/imported/lightning.png-1706169f799169ff31ae0de2d2993dac.ctex"]
 
 [params]
 

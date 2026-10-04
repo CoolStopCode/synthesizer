@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0afyi0pqlrwb"
-path="res://.godot/imported/divide.png-bdce18277071c7ffae1e46ab04a54810.ctex"
+uid="uid://cdbx3hhqsbcpx"
+path="res://.godot/imported/note.png-f207c1c376da596c9654d4acaf4c7c53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/6x6/divide.png"
-dest_files=["res://.godot/imported/divide.png-bdce18277071c7ffae1e46ab04a54810.ctex"]
+source_file="res://assets/icons/6x6/note.png"
+dest_files=["res://.godot/imported/note.png-f207c1c376da596c9654d4acaf4c7c53.ctex"]
 
 [params]
 

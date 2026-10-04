@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio/modular/modular_audio_mode.gd" id="7_510js"]
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://main/test/io_test.gd" id="9_ntwa4"]
 [ext_resource type="PackedScene" uid="uid://d2twykyfktbfw" path="res://editor/modular/modular_editor_mode.tscn" id="11_na0o7"]
+[ext_resource type="Texture2D" uid="uid://cyohq8uaqhgb" path="res://assets/concept/notch.png" id="13_na0o7"]
 
 [sub_resource type="Resource" id="Resource_rayt5"]
 script = ExtResource("4_rayt5")
@@ -77,3 +78,13 @@ offset_bottom = -2.0
 
 [node name="stats" parent="info" unique_id=1913815094 instance=ExtResource("5_xa854")]
 offset_right = 97.0
+
+[node name="TextureRect" type="TextureRect" parent="info" unique_id=1256094888]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -23.0
+offset_right = 9.0
+offset_bottom = 23.0
+grow_vertical = 2
+texture = ExtResource("13_na0o7")

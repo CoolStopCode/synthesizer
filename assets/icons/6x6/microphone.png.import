@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jqcxq082jnb4"
-path="res://.godot/imported/power.png-c1cfcc1b16b25b629b4b3dc8c1f56161.ctex"
+uid="uid://gt4aq85whyiy"
+path="res://.godot/imported/microphone.png-0289ec65e3667acea3197a06349cb70c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/6x6/power.png"
-dest_files=["res://.godot/imported/power.png-c1cfcc1b16b25b629b4b3dc8c1f56161.ctex"]
+source_file="res://assets/icons/6x6/microphone.png"
+dest_files=["res://.godot/imported/microphone.png-0289ec65e3667acea3197a06349cb70c.ctex"]
 
 [params]
 

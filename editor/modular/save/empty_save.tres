@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ModularEditorSave" format=3 uid="uid://d1xrkj8araxnu"]
+
+[ext_resource type="Script" uid="uid://bcthap2l4pvqr" path="res://editor/modular/save/modular_editor_connection_definition.gd" id="1_yhu0h"]
+[ext_resource type="Script" uid="uid://dph261vyedm13" path="res://editor/modular/save/modular_editor_module_definition.gd" id="2_8j72b"]
+[ext_resource type="Script" uid="uid://dup54ynq8mph6" path="res://editor/modular/save/modular_editor_save.gd" id="3_v3ik2"]
+
+[sub_resource type="Resource" id="Resource_8a1f5"]
+script = ExtResource("2_8j72b")
+output_count = 2
+
+[sub_resource type="Resource" id="Resource_j4run"]
+script = ExtResource("2_8j72b")
+id = 1
+position = Vector2(0, 44)
+parameter_values = Array[float]([0.0])
+
+[resource]
+script = ExtResource("3_v3ik2")
+module_definitions = Array[ExtResource("2_8j72b")]([SubResource("Resource_8a1f5"), SubResource("Resource_j4run")])

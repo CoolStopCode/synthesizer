@@ -8,7 +8,7 @@
 [ext_resource type="ColorPalette" uid="uid://cddno18sgg5e" path="res://assets/palettes/gray.tres" id="6_6m70m"]
 [ext_resource type="Texture2D" uid="uid://bkyllow8s1yvw" path="res://assets/icons/6x6/gate.png" id="6_ny0gp"]
 [ext_resource type="Script" uid="uid://dmrfafbvqndoo" path="res://elements/icon_element/icon_element_color.gd" id="7_ny0gp"]
-[ext_resource type="Texture2D" uid="uid://jqcxq082jnb4" path="res://assets/icons/6x6/power.png" id="9_ny0gp"]
+[ext_resource type="Texture2D" uid="uid://jqcxq082jnb4" path="res://assets/icons/6x6/lightning.png" id="9_ny0gp"]
 [ext_resource type="PackedScene" uid="uid://nvxy80mgr217" path="res://editor/modular/parameters/ports/input/modular_editor_input_port.tscn" id="10_qp7tm"]
 [ext_resource type="Resource" uid="uid://iyyqbryjjjmm" path="res://editor/modular/parameters/ports/color/bool.tres" id="11_yoy44"]
 [ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://editor/modular/parameters/ports/output/modular_editor_output_port.tscn" id="12_r0wqj"]

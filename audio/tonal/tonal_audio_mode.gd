@@ -9,7 +9,7 @@ enum Allocation {
 }
 
 @export var polyvoice_count: int = 7
-@export var voice_count: int = 5 ## Voices per polyvoice
+@export var voice_count: int = 5 ## Voices per polyvoice (Max notes in a chord)
 @export var allocation: Allocation
 @export var fade_duration : float = 0.05 ## Used for legato allocation, prevents clipping
 @export var chord_bend_duration : float = 0.1 ## Linear fade time for bending a pressed polyvoice

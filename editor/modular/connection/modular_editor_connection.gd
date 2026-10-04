@@ -60,32 +60,31 @@ func connect_input_output(input: ModularEditorInputPort, output: ModularEditorOu
 	update_positions()
 
 func _input(event: InputEvent) -> void:
-	if not (event is InputEventMouseMotion or event is InputEventScreenDrag):
-		return
-
+	if not (event is InputEventMouseMotion or event is InputEventScreenDrag): return
+	
 	if input_port == null and output_port == null:
 		return
-
+	
 	if input_port != null and output_port != null:
 		return
+	
+	update_positions(event.position)
 
-	update_positions()
 
-
-func update_positions() -> void:
+func update_positions(mouse_position : Vector2 = Vector2(0, 0)) -> void:
 	var from_position: Vector2
 	var to_position: Vector2
 
 	if input_port != null:
 		from_position = input_port.global_center_position()
 	else:
-		from_position = get_global_mouse_position()
+		from_position = mouse_position
 
 	if output_port != null:
 		to_position = output_port.global_center_position()
 	else:
-		to_position = get_global_mouse_position()
-
+		to_position = mouse_position
+	
 	set_positions(from_position, to_position)
 
 

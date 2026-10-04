@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton or event is InputEventScreenTouch): return
-	
+	print("A")
 	var closest_port := modules_layer.closest_port_to(event.position)
 	
 	if event.is_pressed():

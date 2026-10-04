@@ -26,13 +26,13 @@ func _input(event: InputEvent) -> void:
 	if not dragging:
 		return
 	
-	if event is InputEventMouseMotion or event is InputEventScreenDrag:
+	if (event is InputEventMouseMotion or event is InputEventScreenDrag):
 		raw_rotation += (event.global_position - previous_mouse_position).x * rotation_speed
 		previous_mouse_position = event.global_position
 		dial_rotation = clamp(raw_rotation, minimum_rotation, maximum_rotation)
 		notch_node.rotation = dial_rotation
 	
-	if event is InputEventMouseButton or event is InputEventScreenTouch:
+	if (event is InputEventMouseButton or event is InputEventScreenTouch):
 		if not event.is_pressed():
 			dragging = false
 

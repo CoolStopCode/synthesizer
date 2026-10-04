@@ -69,7 +69,7 @@ func update_transition_fade(delta: float) -> void:
 	if progress >= 1.0:
 		transition_fading = false
 
-func bend_polyvoice(chord: Chord, chord_bend_duration : float) -> void:
+func bend_polyvoice(chord: TonalAudioChord, chord_bend_duration : float) -> void:
 	for i in voices.size():
 		var voice : SamplerAudioVoice = voices[i]
 		var has_note := i < chord.semitones.size()

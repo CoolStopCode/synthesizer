@@ -36,7 +36,7 @@ func _on_mouse_exited() -> void:
 	update_visuals()
 
 func _on_gui_input(event: InputEvent) -> void:
-	if not (event is InputEventMouseButton or event is InputEventScreenTouch):
+	if not event is InputEventScreenTouch:
 		return
 
 	if event.pressed:

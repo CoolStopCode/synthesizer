@@ -3,17 +3,22 @@ extends Control
 
 @export var connection_scene : PackedScene
 @export var connections : Array[ModularEditorConnection]
-@export var dragging_connection : ModularEditorConnection
 
-func create_connection_at(input : ModularEditorInputPort, output : ModularEditorOutputPort) -> ModularEditorConnection:
+func create_finished_connection(input : ModularEditorInputPort, output : ModularEditorOutputPort) -> ModularEditorConnection:
 	var connection = create_connection()
-	connection.connect_input_output(input, output)
+	
+	connection.connect_port(input)
+	connection.connect_port(output)
+	
 	return connection
 
-func create_new_connection(from : ModularEditorPort) -> ModularEditorConnection:
+func create_dragging_connection(from : ModularEditorPort, finger_index : int) -> ModularEditorConnection:
 	var connection = create_connection()
-	connection.connect_to(from)
-	dragging_connection = connection
+	
+	connection.connect_port(from)
+	connection.dragging = true
+	connection.dragging_finger_index = finger_index
+	
 	return connection
 
 func create_connection() -> ModularEditorConnection:
@@ -24,19 +29,13 @@ func create_connection() -> ModularEditorConnection:
 	
 	return connection
 
-func connect_dragging(port: ModularEditorPort) -> void:
-	dragging_connection.connect_to(port)
-	dragging_connection = null
-
-func delete_dragging() -> void:
-	delete_connection(dragging_connection)
-
-func lift_port(port: ModularEditorPort) -> void:
-	var connection = connection_connected_to(port)
+func disconnect_port(port: ModularEditorPort, finger_index) -> void:
+	var connection := connection_connected_to(port)
 	if connection == null: return
 	
-	dragging_connection = connection
-	dragging_connection.lift_port(port)
+	connection.disconnect_port(port)
+	connection.dragging = true
+	connection.dragging_finger_index = finger_index
 
 func connection_connected_to(port: ModularEditorPort) -> ModularEditorConnection:
 	for connection in connections:
@@ -47,13 +46,22 @@ func connection_connected_to(port: ModularEditorPort) -> ModularEditorConnection
 func delete_connection(connection : ModularEditorConnection) -> void:
 	connections.erase(connection)
 	if connection.input_port:
-		connection.input_port .disconnected()
+		connection.input_port .disconnected.emit()
 		connection.input_port .connection = null
 	if connection.output_port:
-		connection.output_port.disconnected()
+		connection.output_port.disconnected.emit()
 		connection.output_port.connection = null
 	
 	connection.queue_free()
+
+func connection_from_finger_index(finger_index : int) -> ModularEditorConnection:
+	for connection in connections:
+		if not connection.dragging: continue
+		
+		if connection.dragging_finger_index == finger_index:
+			return connection
+	
+	return null
 
 func get_connection_definitions(
 	input_map : Dictionary[ModularEditorInputPort , Vector2i],

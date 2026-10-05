@@ -4,98 +4,84 @@ extends Node2D
 var input_port: ModularEditorInputPort
 var output_port: ModularEditorOutputPort
 
+var dragging : bool
+var dragging_finger_index : int
+
 @export var highlight_line: Line2D
 @export var shadow_line: Line2D
 
-@export var point_count := 20
-@export var sag := 20.0
+@export var point_count : int
+@export var sag : float
 
-func lift_port(port: ModularEditorPort) -> void:
+func disconnect_port(port: ModularEditorPort) -> void:
 	if port == input_port:
-		input_port.disconnected()
+		input_port.disconnected.emit()
 		input_port.connection = null
 		input_port = null
 	
 	if port == output_port:
-		output_port.disconnected()
+		output_port.disconnected.emit()
 		output_port.connection = null
 		output_port = null
+	
+	update_point_positions(port.global_center_position())
+
+func connect_port(port: ModularEditorPort) -> void:
+	if port is ModularEditorInputPort:
+		port.connected.emit()
+		port.connection = self
+		input_port = port
+	
+	if port is ModularEditorOutputPort:
+		port.connected.emit()
+		port.connection = self
+		output_port = port
+	
+	update_point_positions(port.global_center_position())
 
 func can_connect_to(port: ModularEditorPort) -> bool:
-	return port.can_connect_to(get_connected_port())
-
-func get_connected_port() -> ModularEditorPort:
-	if input_port != null and output_port != null:
-		return null
+	if input_port == null and output_port == null: return false
+	if input_port != null and output_port != null: return false
 	
 	if input_port != null:
-		return input_port
+		return input_port.can_connect_to(port)
 	
 	if output_port != null:
-		return output_port
+		return output_port.can_connect_to(port)
 	
-	return null
-
-func connect_to(port: ModularEditorPort) -> void:
-	port.connection = self
-	port.connected()
-
-	if port.is_input_port():
-		input_port = port
-	elif port.is_output_port():
-		output_port = port
-
-	update_positions()
-
-func connect_input_output(input: ModularEditorInputPort, output: ModularEditorOutputPort) -> void:
-	input.connection = self
-	input.connected()
-	
-	output.connection = self
-	output.connected()
-	
-	input_port = input
-	output_port = output
-	
-	update_positions()
+	return false
 
 func _input(event: InputEvent) -> void:
-	if not (event is InputEventMouseMotion or event is InputEventScreenDrag): return
+	if not dragging: return
 	
-	if input_port == null and output_port == null:
-		return
-	
-	if input_port != null and output_port != null:
-		return
-	
-	update_positions(event.position)
+	if event is InputEventScreenDrag:
+		if event.index == dragging_finger_index:
+			update_point_positions(event.position)
 
-
-func update_positions(mouse_position : Vector2 = Vector2(0, 0)) -> void:
+func update_point_positions(event_position : Vector2) -> void:
 	var from_position: Vector2
 	var to_position: Vector2
 
 	if input_port != null:
 		from_position = input_port.global_center_position()
 	else:
-		from_position = mouse_position
+		from_position = event_position
 
 	if output_port != null:
 		to_position = output_port.global_center_position()
 	else:
-		to_position = mouse_position
+		to_position = event_position
 	
-	set_positions(from_position, to_position)
+	set_point_positions(from_position, to_position)
 
-
-func set_positions(from_position: Vector2, to_position: Vector2) -> void:
+func set_point_positions(from_position: Vector2, to_position: Vector2) -> void:
 	var local_from_position := to_local(from_position)
 	var local_to_position := to_local(to_position)
 	
-	var points := PackedVector2Array()
+	var points : PackedVector2Array
 	
-	for i in point_count:
-		var progress := float(i) / float(point_count - 1)
+	for point_index in point_count:
+		var progress := float(point_index) / float(point_count - 1)
 	
 		points.append(
 			calculate_point_position(

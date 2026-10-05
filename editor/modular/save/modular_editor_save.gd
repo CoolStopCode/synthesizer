@@ -25,6 +25,6 @@ func to_editor_layout(layout_scene : PackedScene, module_bindings : Dictionary[i
 			.modules[connection_definition.output_module_index]\
 			.outputs[connection_definition.output_output_index]
 		
-		layout.connections_layer.create_connection_at(input_port, output_port)
+		layout.connections_layer.create_finished_connection(input_port, output_port)
 	
 	return layout

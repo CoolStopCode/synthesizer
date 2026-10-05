@@ -4,17 +4,9 @@ extends Control
 @export var modules_layer : ModularEditorModulesLayer
 @export var connections_layer : ModularEditorConnectionsLayer
 
-func _ready() -> void:
-	pass
-	#modules_layer.create_new_module(preload("res://editor/modular/modules/input/modular_editor_input_module.tscn"))
-	#modules_layer.create_new_module(preload("res://editor/modular/modules/output/modular_editor_output_module.tscn")).position = Vector2(0, 44)
-	#modules_layer.create_new_module(preload("res://editor/modular/modules/oscillator/modular_editor_oscillator_module.tscn"))
-	#modules_layer.create_new_module(preload("res://editor/modular/modules/envelope/modular_editor_envelope_module.tscn"))
-	#modules_layer.create_new_module(preload("res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn"))
-
 func _input(event: InputEvent) -> void:
-	if not (event is InputEventMouseButton or event is InputEventScreenTouch): return
-	print("A")
+	if not event is InputEventScreenTouch: return
+	
 	var closest_port := modules_layer.closest_port_to(event.position)
 	
 	if event.is_pressed():
@@ -24,32 +16,36 @@ func _input(event: InputEvent) -> void:
 		if not closest_port.in_click_radius(event.position):
 			return
 		
-		if not closest_port.is_disconnected():
-			connections_layer.lift_port(closest_port)
+		if closest_port.has_connected():
+			closest_port.connection.dragging = true
+			closest_port.connection.disconnect_port(closest_port)
 			return
 		
 		if not closest_port.can_create_connection:
-			closest_port.clicked()
+			closest_port.pressed.emit(event)
 			return
 		
-		connections_layer.create_new_connection(closest_port)
+		connections_layer.create_dragging_connection(closest_port, event.index)
 	
 	if not event.is_pressed():
 		if closest_port == null:
 			return
 		
-		if connections_layer.dragging_connection == null:
+		var released_connection := connections_layer.connection_from_finger_index(event.index)
+		
+		if released_connection == null:
 			return
 		
 		if not closest_port.in_click_radius(event.position):
-			connections_layer.delete_dragging()
+			connections_layer.delete_connection(released_connection)
 			return
 			
-		if not connections_layer.dragging_connection.can_connect_to(closest_port):
-			connections_layer.delete_dragging()
+		if not released_connection.can_connect_to(closest_port):
+			connections_layer.delete_connection(released_connection)
 			return
 		
-		connections_layer.connect_dragging(closest_port)
+		released_connection.dragging = false
+		released_connection.connect_port(closest_port)
 
 func to_save() -> ModularEditorSave:
 	var save := ModularEditorSave.new()

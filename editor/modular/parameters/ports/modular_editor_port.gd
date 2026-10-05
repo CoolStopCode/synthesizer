@@ -13,6 +13,10 @@ extends ModularEditorParameter
 
 var connection : ModularEditorConnection
 
+signal pressed(event : InputEvent)
+signal connected
+signal disconnected
+
 func global_center_position():
 	return global_position + (size / 2)
 
@@ -31,24 +35,14 @@ func highlight_on() -> void:
 func highlight_off() -> void:
 	update_color(false)
 
-func is_compatible_with(port : ModularEditorPort) -> bool:
-	return port.is_input_port() != is_input_port()
-
-func is_disconnected() -> bool:
-	return connection == null
+func has_connected() -> bool:
+	return connection != null
 
 func in_click_radius(point : Vector2):
 	return global_center_position().distance_to(point) <= click_radius
 
 func can_connect_to(port : ModularEditorPort) -> bool:
-	return is_disconnected() and is_compatible_with(port)
-
-func is_input_port() -> bool:
-	return self is ModularEditorInputPort
-
-func is_output_port() -> bool:
-	return self is ModularEditorOutputPort
-
-func clicked() -> void: pass
-func connected() -> void: pass
-func disconnected() -> void: pass
+	if port.has_connected(): return false
+	if (self is ModularEditorInputPort) == (port is ModularEditorInputPort): return false
+	
+	return true

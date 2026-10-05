@@ -105,3 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1, 5)
 texture = ExtResource("5_rhgmq")
+
+[connection signal="connected" from="." to="." method="when_connected"]
+[connection signal="disconnected" from="." to="." method="when_disconnected"]
+[connection signal="pressed" from="." to="." method="when_pressed"]

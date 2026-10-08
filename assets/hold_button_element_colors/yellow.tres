@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="HoldButtonElementColor" format=3 uid="uid://cmldr6ni8wqa3"]
+
+[ext_resource type="ColorPalette" uid="uid://by2v87kega880" path="res://assets/palettes/yellow.tres" id="1_73suv"]
+[ext_resource type="Script" uid="uid://brxsmn4fggbm8" path="res://elements/hold_button_element/hold_button_element_color.gd" id="2_6sc4i"]
+
+[resource]
+script = ExtResource("2_6sc4i")
+progress_pressed = 6
+palette = ExtResource("1_73suv")
+fill_unpressed = 4
+shadow_unpressed = 2
+outline_unpressed = 3
+icon_unpressed = 3
+fill_pressed = 3
+outline_pressed = 2
+icon_pressed = 2
+metadata/_custom_type_script = "uid://brxsmn4fggbm8"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ModularEditorSave" format=3 uid="uid://bps5n8xdlda1w"]
+[gd_resource type="Resource" script_class="ModularEditorSave" format=3 uid="uid://0je2wra8sh2i"]
 
 [ext_resource type="Script" uid="uid://bcthap2l4pvqr" path="res://editor/modular/save/modular_editor_connection_definition.gd" id="1_uj2n3"]
 [ext_resource type="Script" uid="uid://dph261vyedm13" path="res://editor/modular/save/modular_editor_module_definition.gd" id="2_ph8j0"]

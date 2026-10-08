@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://ccyhsm0wwae6h"]
+
+[ext_resource type="Script" uid="uid://dy22x46csap18" path="res://elements/hold_button_element/hold_button_element.gd" id="1_nq1ib"]
+[ext_resource type="Texture2D" uid="uid://ckeqepmsdode" path="res://assets/button_element_shapes/square/shadow.png" id="2_ninqy"]
+[ext_resource type="Texture2D" uid="uid://bsl2bvpxh0vhs" path="res://assets/button_element_shapes/square/fill.png" id="3_r7beg"]
+[ext_resource type="Texture2D" uid="uid://bsi7ouai4dh4t" path="res://assets/button_element_shapes/square/outline.png" id="4_wwmo6"]
+[ext_resource type="LabelSettings" uid="uid://d0kws5alkuuv1" path="res://assets/fonts/synmin.tres" id="5_7xrmn"]
+[ext_resource type="Shader" uid="uid://cir2hcjifrlnt" path="res://elements/hold_button_element/radial_wipe.gdshader" id="5_seyyf"]
+[ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://assets/button_element_shapes/round/outline.png" id="6_seyyf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4f33v"]
+shader = ExtResource("5_seyyf")
+shader_parameter/progress = 1.0
+shader_parameter/start = 0.0
+shader_parameter/size = Vector2(12, 12)
+
+[node name="hold_button_element" type="Control" unique_id=127682664 node_paths=PackedStringArray("progress_node", "tooltip_timer", "tooltip_node", "tooltip_label", "press_node", "fill_node", "outline_node", "shadow_node", "icon_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 14.0
+offset_bottom = 14.0
+script = ExtResource("1_nq1ib")
+progress_node = NodePath("press/progress")
+tooltip_timer = NodePath("tooltip_timer")
+tooltip_node = NodePath("tooltip")
+tooltip_label = NodePath("tooltip/Label")
+press_node = NodePath("press")
+fill_node = NodePath("press/fill")
+outline_node = NodePath("press/outline")
+shadow_node = NodePath("shadow")
+icon_node = NodePath("press/icon")
+
+[node name="tooltip_timer" type="Timer" parent="." unique_id=104841338]
+wait_time = 9999999999999.002
+one_shot = true
+
+[node name="shadow" type="NinePatchRect" parent="." unique_id=1441110782]
+self_modulate = Color(0, 0, 1, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ninqy")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="press" type="Control" parent="." unique_id=1673912321]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="fill" type="NinePatchRect" parent="press" unique_id=196602864]
+self_modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_r7beg")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="outline" type="NinePatchRect" parent="press" unique_id=1577740348]
+self_modulate = Color(0, 1, 0, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wwmo6")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="progress" type="NinePatchRect" parent="press" unique_id=1781483230]
+self_modulate = Color(0, 1, 0, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_4f33v")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_seyyf")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="icon" type="TextureRect" parent="press" unique_id=534161686]
+self_modulate = Color(0, 1, 0, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="tooltip" type="Control" parent="." unique_id=254771028]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 6.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="tooltip" unique_id=66610530]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
+[node name="Label" type="Label" parent="tooltip" unique_id=1207122872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "dfsg"
+label_settings = ExtResource("5_7xrmn")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="tooltip_timer" to="." method="_on_tooltip_timer_timeout"]

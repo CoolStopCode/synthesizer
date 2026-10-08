@@ -71,6 +71,7 @@ folder_colors={
 "res://editor/tonal/": "purple",
 "res://elements/": "green",
 "res://elements/button_element/": "red",
+"res://elements/hold_button_element/": "red",
 "res://elements/icon_element/": "red",
 "res://elements/rectangle_element/": "red",
 "res://main/": "blue",

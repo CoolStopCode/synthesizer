@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d2twykyfktbfw"]
 
 [ext_resource type="Script" uid="uid://cjaopmh0llkim" path="res://editor/modular/modular_editor_mode.gd" id="1_di1av"]
-[ext_resource type="Resource" uid="uid://grwx7veqr038" path="res://editor/modular/save/default_save.tres" id="2_l7st6"]
+[ext_resource type="Resource" uid="uid://0je2wra8sh2i" path="res://editor/modular/save/default_save.tres" id="2_l7st6"]
 [ext_resource type="PackedScene" uid="uid://bd0ehapjlqsn1" path="res://editor/modular/layout/modular_editor_layout.tscn" id="3_cy6l7"]
 [ext_resource type="PackedScene" uid="uid://4rcj7ugomg28" path="res://editor/modular/modules/input/modular_editor_input_module.tscn" id="3_fjy8e"]
 [ext_resource type="Texture2D" uid="uid://501mtcwdmb6l" path="res://editor/modular/background.png" id="4_cy6l7"]
@@ -9,6 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://03uv8urr5sbc" path="res://editor/modular/modules/envelope/modular_editor_envelope_module.tscn" id="5_ivaro"]
 [ext_resource type="PackedScene" uid="uid://dd2v3d2iuvt6" path="res://editor/modular/modules/oscillator/modular_editor_oscillator_module.tscn" id="5_l7st6"]
 [ext_resource type="PackedScene" uid="uid://xtatgx378c10" path="res://editor/modular/modules/arithmetic/modular_editor_arithmetic_module.tscn" id="6_n61td"]
+[ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://elements/button_element/button_element.tscn" id="9_6f44b"]
+[ext_resource type="Texture2D" uid="uid://duno46brgdjkt" path="res://assets/icons/6x6/folder.png" id="10_5c8aa"]
+[ext_resource type="Texture2D" uid="uid://c0k7xxylanvda" path="res://assets/icons/6x6/trash.png" id="10_x1ql1"]
+[ext_resource type="Resource" uid="uid://cfthyknmayl5x" path="res://assets/button_element_colors/light_gray.tres" id="11_em275"]
+[ext_resource type="Resource" uid="uid://bw65ag2eause" path="res://assets/button_element_shapes/round/round.tres" id="12_em275"]
+[ext_resource type="PackedScene" uid="uid://ccyhsm0wwae6h" path="res://elements/hold_button_element/hold_button_element.tscn" id="13_5c8aa"]
+[ext_resource type="Resource" uid="uid://d0ok7wk4jih1d" path="res://assets/hold_button_element_colors/red.tres" id="15_em275"]
 
 [node name="modular_editor_mode" type="Control" unique_id=1342845703 node_paths=PackedStringArray("top_node", "workspace_node", "bottom_node")]
 layout_mode = 3
@@ -35,10 +42,50 @@ workspace_node = NodePath("workspace")
 bottom_node = NodePath("bottom")
 layout_scene = ExtResource("3_cy6l7")
 
+[node name="left" type="Control" parent="." unique_id=28351299]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 14.0
+grow_vertical = 2
+
+[node name="saves" parent="left" unique_id=127682664 instance=ExtResource("9_6f44b")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -7.0
+offset_right = 7.0
+offset_bottom = 22.0
+grow_horizontal = 2
+icon = ExtResource("10_5c8aa")
+tooltip = "Saves"
+color = ExtResource("11_em275")
+shape = ExtResource("12_em275")
+
+[node name="delete" parent="left" unique_id=1056810616 instance=ExtResource("13_5c8aa")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -22.0
+offset_right = 7.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+hold_time = 1.5
+icon = ExtResource("10_x1ql1")
+color = ExtResource("15_em275")
+shape = ExtResource("12_em275")
+
 [node name="top" type="Control" parent="." unique_id=1757403071]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_left = 16.0
 offset_bottom = 8.0
 grow_horizontal = 2
 
@@ -57,6 +104,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
 offset_top = 8.0
 offset_bottom = -8.0
 grow_horizontal = 2
@@ -77,6 +125,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
 offset_top = -8.0
 grow_horizontal = 2
 grow_vertical = 0

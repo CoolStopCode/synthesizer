@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func start_triggering():
 	triggering = true
+	Haptics.start_vibration()
 	
 	if tween:
 		tween.kill()
@@ -41,6 +42,8 @@ func end_triggering():
 		return
 	
 	triggering = false
+	Haptics.stop_vibration()
+	
 	if tween:
 		tween.kill()
 		tween = null
@@ -52,6 +55,7 @@ func on_hold_finished() -> void:
 		return
 	
 	triggering = false
+	Haptics.stop_vibration()
 	
 	if tween:
 		tween.kill()

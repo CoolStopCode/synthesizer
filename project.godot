@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://cgd5hs18bevdo"
 
+[autoload]
+
+Haptics="*uid://c5nqskvwcuypv"
+
 [debug]
 
 gdscript/warnings/unused_variable=0
@@ -75,6 +79,7 @@ folder_colors={
 "res://elements/icon_element/": "red",
 "res://elements/rectangle_element/": "red",
 "res://main/": "blue",
+"res://main/haptics/": "pink",
 "res://main/interface/": "red",
 "res://main/stats/": "orange",
 "res://main/test/": "yellow"

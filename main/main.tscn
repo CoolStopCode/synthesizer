@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c2cewwkdwuuhp" path="res://main/main.gd" id="1_3gdo0"]
 [ext_resource type="Script" uid="uid://cjmiewo2qj7kc" path="res://audio/audio_engine.gd" id="2_brq4u"]
-[ext_resource type="PackedScene" uid="uid://dgcq4s20e6ms4" path="res://main/interface/interface.tscn" id="2_csopv"]
 [ext_resource type="Resource" uid="uid://b34n6atb8dcqh" path="res://audio/tonal/bend_binding/harmonic.tres" id="3_7ua4h"]
 [ext_resource type="Script" uid="uid://ejtqccpgvur5" path="res://main/test/record_test.gd" id="3_kagtj"]
 [ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://audio/tonal/inspector/note.gd" id="4_rayt5"]
@@ -11,7 +10,7 @@
 [ext_resource type="Script" uid="uid://cjhydh6ou7sf5" path="res://audio/modular/modular_audio_layout.gd" id="6_510js"]
 [ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio/modular/modular_audio_mode.gd" id="7_510js"]
 [ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://main/test/io_test.gd" id="9_ntwa4"]
-[ext_resource type="PackedScene" uid="uid://d2twykyfktbfw" path="res://editor/modular/modular_editor_mode.tscn" id="11_na0o7"]
+[ext_resource type="PackedScene" uid="uid://di6tpby6rjspk" path="res://editor/modular/modular_editor_mode.tscn" id="11_na0o7"]
 [ext_resource type="Texture2D" uid="uid://cyohq8uaqhgb" path="res://assets/concept/notch.png" id="13_na0o7"]
 
 [sub_resource type="Resource" id="Resource_rayt5"]
@@ -40,7 +39,7 @@ key = SubResource("Resource_xhu5d")
 bend_binding = ExtResource("3_7ua4h")
 metadata/_custom_type_script = "uid://bvkaggdqljufp"
 
-[node name="main" type="Control" unique_id=721855015 node_paths=PackedStringArray("editor_mode")]
+[node name="main" type="Control" unique_id=721855015]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,8 +47,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3gdo0")
-editor_mode = NodePath("interface/modular_editor_mode")
-audio_mode = SubResource("Resource_brq4u")
 
 [node name="AudioEngine" type="AudioStreamPlayer" parent="." unique_id=1346665500]
 bus = &"Active"
@@ -66,13 +63,15 @@ audio_engine = NodePath("../AudioEngine")
 
 [node name="interface" type="CanvasLayer" parent="." unique_id=593906995]
 
-[node name="interface" parent="interface" unique_id=1389423360 instance=ExtResource("2_csopv")]
+[node name="backround" type="ColorRect" parent="interface" unique_id=479496105]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
 
-[node name="modular_editor_mode" parent="interface" unique_id=1342845703 instance=ExtResource("11_na0o7")]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -48.0
-offset_bottom = -2.0
+[node name="modular_editor_mode" parent="interface" unique_id=209435061 instance=ExtResource("11_na0o7")]
 
 [node name="info" type="CanvasLayer" parent="." unique_id=1274727178]
 
@@ -80,7 +79,7 @@ offset_bottom = -2.0
 visible = false
 offset_right = 97.0
 
-[node name="TextureRect" type="TextureRect" parent="info" unique_id=1256094888]
+[node name="notch" type="TextureRect" parent="info" unique_id=1256094888]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5

@@ -1,5 +1,5 @@
 class_name ModularEditorSave
-extends EditorSave
+extends Resource
 
 @export var module_definitions : Array[ModularEditorModuleDefinition]
 @export var connection_definitions : Array[ModularEditorConnectionDefinition]

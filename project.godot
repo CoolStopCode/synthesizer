@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://cgd5hs18bevdo"
 
-[autoload]
-
-Haptics="*uid://c5nqskvwcuypv"
-
 [debug]
 
 gdscript/warnings/unused_variable=0
@@ -69,18 +65,16 @@ folder_colors={
 "res://audio/tonal/inspector/": "red",
 "res://editor/": "yellow",
 "res://editor/analog/": "red",
+"res://editor/control_bar/": "orange",
 "res://editor/drums/": "yellow",
 "res://editor/modular/": "green",
 "res://editor/sampler/": "blue",
-"res://editor/tonal/": "purple",
 "res://elements/": "green",
 "res://elements/button_element/": "red",
 "res://elements/hold_button_element/": "red",
 "res://elements/icon_element/": "red",
 "res://elements/rectangle_element/": "red",
 "res://main/": "blue",
-"res://main/haptics/": "pink",
-"res://main/interface/": "red",
 "res://main/stats/": "orange",
 "res://main/test/": "yellow"
 }

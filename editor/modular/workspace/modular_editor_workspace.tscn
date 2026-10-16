@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://d2twykyfktbfw"]
+
+[ext_resource type="Script" uid="uid://cjaopmh0llkim" path="res://editor/modular/modular_editor_mode.gd" id="1_jg4cs"]
+[ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://elements/button_element/button_element.tscn" id="9_bgvft"]
+[ext_resource type="Texture2D" uid="uid://duno46brgdjkt" path="res://assets/icons/6x6/folder.png" id="10_l4ifc"]
+[ext_resource type="Resource" uid="uid://cfthyknmayl5x" path="res://assets/button_element_colors/light_gray.tres" id="11_lfbbl"]
+[ext_resource type="Resource" uid="uid://bw65ag2eause" path="res://assets/button_element_shapes/round/round.tres" id="12_v5ro0"]
+[ext_resource type="PackedScene" uid="uid://ccyhsm0wwae6h" path="res://elements/hold_button_element/hold_button_element.tscn" id="13_xcf3e"]
+[ext_resource type="Texture2D" uid="uid://c0k7xxylanvda" path="res://assets/icons/6x6/trash.png" id="14_0c62h"]
+[ext_resource type="Resource" uid="uid://d0ok7wk4jih1d" path="res://assets/hold_button_element_colors/red.tres" id="15_iv01s"]
+[ext_resource type="Texture2D" uid="uid://501mtcwdmb6l" path="res://editor/modular/workspace/background.png" id="16_kwdbu"]
+
+[node name="modular_editor_workspace" type="Control" unique_id=1342845703]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jg4cs")
+
+[node name="left" type="Control" parent="." unique_id=1933782768]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_right = 14.0
+offset_bottom = -2.0
+grow_vertical = 2
+
+[node name="saves" parent="left" unique_id=127682664 instance=ExtResource("9_bgvft")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -7.0
+offset_right = 7.0
+offset_bottom = 22.0
+grow_horizontal = 2
+icon = ExtResource("10_l4ifc")
+tooltip = "Saves"
+color = ExtResource("11_lfbbl")
+shape = ExtResource("12_v5ro0")
+
+[node name="delete" parent="left" unique_id=54720154 instance=ExtResource("13_xcf3e")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -22.0
+offset_right = 7.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+hold_time = 1.5
+icon = ExtResource("14_0c62h")
+color = ExtResource("15_iv01s")
+shape = ExtResource("12_v5ro0")
+
+[node name="top" type="Control" parent="." unique_id=1757403071]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_bottom = 8.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="top" unique_id=1490964880]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8634999, 0.089999974, 1, 1)
+
+[node name="workspace" type="Control" parent="." unique_id=1472975863]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Parallax2D" type="Parallax2D" parent="workspace" unique_id=1344432718]
+repeat_size = Vector2(160, 0)
+repeat_times = 5
+
+[node name="TextureRect" type="TextureRect" parent="workspace/Parallax2D" unique_id=1614227523]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("16_kwdbu")
+
+[node name="bottom" type="Control" parent="." unique_id=911275221]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="bottom" unique_id=189883447]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8634999, 0.089999974, 1, 1)

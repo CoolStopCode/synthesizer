@@ -1,20 +1,20 @@
 extends Node
 
-@export var audio_engine : AudioEngine
+@export var audio_mode : AudioMode
 
 func _process(_delta: float) -> void:
 	handle_input()
 
 func handle_input() -> void:
 	if Input.is_action_just_pressed("Debug"):
-		audio_engine.build()
+		audio_mode.build()
 	
 	for i in range(7):
 		var action := "Key%d" % (i + 1)
 		if Input.is_action_just_pressed(action):
-			audio_engine.key_pressed(i)
+			audio_mode.key_pressed(i)
 		if Input.is_action_just_released(action):
-			audio_engine.key_released(i)
+			audio_mode.key_released(i)
 	
 	var bend : Vector3i
 	bend = Vector3i(
@@ -30,4 +30,4 @@ func handle_input() -> void:
 	)
 	
 	if any_just_changed:
-		audio_engine.bend_changed(bend)
+		audio_mode.bend_changed(bend)

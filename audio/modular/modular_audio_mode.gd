@@ -45,7 +45,7 @@ func key_released(index: int) -> void:
 	released_polyvoice.polyvoice_off()
 
 ## Bend all currently active polyvoices to their new chords
-func bend_changed() -> void:
+func bend_changed(new_bend : Vector3i) -> void:
 	for i in polyvoices.size():
 		var polyvoice = polyvoices[i]
 		if polyvoice.pressed:

@@ -74,9 +74,8 @@ folder_colors={
 "res://elements/hold_button_element/": "red",
 "res://elements/icon_element/": "red",
 "res://elements/rectangle_element/": "red",
-"res://main/": "blue",
-"res://main/stats/": "orange",
-"res://main/test/": "yellow"
+"res://tools/": "blue",
+"res://tools/stats/": "orange"
 }
 
 [input]

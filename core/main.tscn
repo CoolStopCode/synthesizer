@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ba4k64p5yr2mo"]
+
+[ext_resource type="Script" uid="uid://c2cewwkdwuuhp" path="res://core/main.gd" id="1_3gdo0"]
+[ext_resource type="PackedScene" uid="uid://bypq5q5ltosea" path="res://tools/stats/stats.tscn" id="5_xa854"]
+[ext_resource type="PackedScene" uid="uid://di6tpby6rjspk" path="res://editor/modular/modular_editor_mode.tscn" id="11_na0o7"]
+[ext_resource type="Texture2D" uid="uid://cyohq8uaqhgb" path="res://assets/concept/notch.png" id="13_na0o7"]
+
+[node name="main" type="Control" unique_id=721855015]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3gdo0")
+
+[node name="interface" type="CanvasLayer" parent="." unique_id=593906995]
+
+[node name="backround" type="ColorRect" parent="interface" unique_id=479496105]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
+[node name="modular_editor_mode" parent="interface" unique_id=209435061 instance=ExtResource("11_na0o7")]
+
+[node name="info" type="CanvasLayer" parent="." unique_id=1274727178]
+
+[node name="stats" parent="info" unique_id=1913815094 instance=ExtResource("5_xa854")]
+visible = false
+offset_right = 97.0
+
+[node name="notch" type="TextureRect" parent="info" unique_id=1256094888]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -23.0
+offset_right = 9.0
+offset_bottom = 23.0
+grow_vertical = 2
+texture = ExtResource("13_na0o7")

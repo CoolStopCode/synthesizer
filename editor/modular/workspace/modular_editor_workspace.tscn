@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://d2twykyfktbfw"]
 
-[ext_resource type="Script" uid="uid://cjaopmh0llkim" path="res://editor/modular/modular_editor_mode.gd" id="1_jg4cs"]
+[ext_resource type="Script" uid="uid://clcjwkix84nu6" path="res://editor/modular/workspace/modular_editor_workspace.gd" id="1_h0dem"]
+[ext_resource type="PackedScene" uid="uid://4rcj7ugomg28" path="res://editor/modular/workspace/modules/input/modular_editor_input_module.tscn" id="2_tavas"]
+[ext_resource type="PackedScene" uid="uid://b0h8hrnp8s3sh" path="res://editor/modular/workspace/modules/output/modular_editor_output_module.tscn" id="3_6pujv"]
+[ext_resource type="PackedScene" uid="uid://dd2v3d2iuvt6" path="res://editor/modular/workspace/modules/oscillator/modular_editor_oscillator_module.tscn" id="4_jg4cs"]
+[ext_resource type="PackedScene" uid="uid://03uv8urr5sbc" path="res://editor/modular/workspace/modules/envelope/modular_editor_envelope_module.tscn" id="5_am3kl"]
+[ext_resource type="PackedScene" uid="uid://xtatgx378c10" path="res://editor/modular/workspace/modules/arithmetic/modular_editor_arithmetic_module.tscn" id="6_5oeak"]
+[ext_resource type="PackedScene" uid="uid://bd0ehapjlqsn1" path="res://editor/modular/workspace/layout/modular_editor_layout.tscn" id="7_6pujv"]
 [ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://elements/button_element/button_element.tscn" id="9_bgvft"]
 [ext_resource type="Texture2D" uid="uid://duno46brgdjkt" path="res://assets/icons/6x6/folder.png" id="10_l4ifc"]
 [ext_resource type="Resource" uid="uid://cfthyknmayl5x" path="res://assets/button_element_colors/light_gray.tres" id="11_lfbbl"]
@@ -10,7 +16,7 @@
 [ext_resource type="Resource" uid="uid://d0ok7wk4jih1d" path="res://assets/hold_button_element_colors/red.tres" id="15_iv01s"]
 [ext_resource type="Texture2D" uid="uid://501mtcwdmb6l" path="res://editor/modular/workspace/background.png" id="16_kwdbu"]
 
-[node name="modular_editor_workspace" type="Control" unique_id=1342845703]
+[node name="modular_editor_workspace" type="Control" unique_id=1342845703 node_paths=PackedStringArray("top_node", "center_node", "bottom_node")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +24,21 @@ anchor_bottom = 1.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jg4cs")
+script = ExtResource("1_h0dem")
+module_bindings = Dictionary[int, PackedScene]({
+0: ExtResource("2_tavas"),
+1: ExtResource("3_6pujv"),
+2: ExtResource("4_jg4cs"),
+3: null,
+4: ExtResource("5_am3kl"),
+5: null,
+6: null,
+7: ExtResource("6_5oeak")
+})
+top_node = NodePath("top")
+center_node = NodePath("center")
+bottom_node = NodePath("bottom")
+layout_scene = ExtResource("7_6pujv")
 
 [node name="left" type="Control" parent="." unique_id=1933782768]
 layout_mode = 1
@@ -78,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.8634999, 0.089999974, 1, 1)
 
-[node name="workspace" type="Control" parent="." unique_id=1472975863]
+[node name="center" type="Control" parent="." unique_id=1472975863]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -90,11 +110,11 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Parallax2D" type="Parallax2D" parent="workspace" unique_id=1344432718]
+[node name="Parallax2D" type="Parallax2D" parent="center" unique_id=1344432718]
 repeat_size = Vector2(160, 0)
 repeat_times = 5
 
-[node name="TextureRect" type="TextureRect" parent="workspace/Parallax2D" unique_id=1614227523]
+[node name="TextureRect" type="TextureRect" parent="center/Parallax2D" unique_id=1614227523]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("16_kwdbu")

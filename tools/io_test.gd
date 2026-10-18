@@ -1,3 +1,4 @@
+@icon("res://tools/at-icons/node/controller.svg")
 extends Node
 
 @export var audio_mode : AudioMode

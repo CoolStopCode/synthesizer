@@ -1,3 +1,4 @@
+@icon("res://tools/at-icons/control/icons.svg")
 class_name IconElement
 extends Control
 

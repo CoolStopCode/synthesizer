@@ -1,3 +1,4 @@
+@icon("res://tools/at-icons/control/square.svg")
 class_name RectangleElement
 extends Control
 

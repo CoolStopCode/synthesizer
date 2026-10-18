@@ -1,3 +1,4 @@
+@icon("res://tools/at-icons/node/note.svg")
 @abstract class_name AudioMode
 extends AudioStreamPlayer
 

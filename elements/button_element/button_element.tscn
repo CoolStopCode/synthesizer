@@ -136,7 +136,7 @@ offset_right = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "dfsg"
+text = "dfsgb"
 label_settings = ExtResource("5_qm3t6")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

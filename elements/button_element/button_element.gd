@@ -1,3 +1,4 @@
+@icon("res://tools/at-icons/control/push_button.svg")
 class_name ButtonElement
 extends Control
 

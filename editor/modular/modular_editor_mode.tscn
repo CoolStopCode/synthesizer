@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://di6tpby6rjspk"]
 
+[ext_resource type="Script" uid="uid://cjaopmh0llkim" path="res://editor/modular/modular_editor_mode.gd" id="1_l7st6"]
 [ext_resource type="PackedScene" uid="uid://bo5d2pf4oeqb3" path="res://editor/modular/control_bar/modular_editor_control_bar.tscn" id="1_xaffx"]
 [ext_resource type="PackedScene" uid="uid://d2twykyfktbfw" path="res://editor/modular/workspace/modular_editor_workspace.tscn" id="2_i5pqe"]
 [ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio/modular/modular_audio_mode.gd" id="3_6dr8x"]
@@ -30,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_l7st6")
 
 [node name="control_bar" parent="." unique_id=1876935929 instance=ExtResource("1_xaffx")]
 layout_mode = 1

@@ -1,3 +1,4 @@
+@icon("res://tools/at-icons/control/info.svg")
 extends Control
 
 @export var fps_label: Label

@@ -1,2 +1,0 @@
-class_name ModularEditorInputModule
-extends ModularEditorModule

@@ -1,4 +1,4 @@
-@abstract class_name TonalAudioChordTransformation
+@abstract class_name TonalChordTransformation
 extends Resource
 
-@abstract func apply(chord : TonalAudioChord) -> void
+@abstract func apply(chord : TonalChord) -> void

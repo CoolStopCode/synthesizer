@@ -1,5 +1,5 @@
-class_name TonalAudioTransposeDuplicationChordTransformation
-extends TonalAudioChordTransformation
+class_name TonalTransposeDuplicationChordTransformation
+extends TonalChordTransformation
 
 @export var semitones : int = 12
 

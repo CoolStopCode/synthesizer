@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://bo5d2pf4oeqb3"]
+
+[ext_resource type="Script" uid="uid://b04g8lgvdcjeo" path="res://sidebars/sidebar.gd" id="1_lr6tt"]
+[ext_resource type="PackedScene" uid="uid://npdevkowq413" path="res://elements/button_element/button_element.tscn" id="2_0lybw"]
+[ext_resource type="Texture2D" uid="uid://cvt3bv4ujc2ei" path="res://assets/icons/12x12/panels.png" id="3_lr6tt"]
+[ext_resource type="Resource" uid="uid://s6iki5doqmj4" path="res://assets/button_element_colors/yellow.tres" id="4_rqnfm"]
+[ext_resource type="Resource" uid="uid://bw65ag2eause" path="res://assets/button_element_shapes/round/round.tres" id="5_wnx84"]
+[ext_resource type="Texture2D" uid="uid://cq6gflw0avxfe" path="res://assets/icons/12x12/key.png" id="6_fw840"]
+[ext_resource type="Resource" uid="uid://dyoh1wgv2seep" path="res://assets/button_element_colors/blue.tres" id="7_qv1q5"]
+[ext_resource type="Texture2D" uid="uid://476fe1fbyeb3" path="res://assets/icons/12x12/layers.png" id="8_u6yr5"]
+[ext_resource type="Resource" uid="uid://o3ivdql2i4ye" path="res://assets/button_element_colors/red.tres" id="9_3u2yf"]
+[ext_resource type="Texture2D" uid="uid://crfqrvu5lde3j" path="res://assets/icons/6x6/dial.png" id="10_kqlmw"]
+[ext_resource type="Resource" uid="uid://cfthyknmayl5x" path="res://assets/button_element_colors/light_gray.tres" id="11_3jglc"]
+[ext_resource type="Texture2D" uid="uid://dkk3b5b6ywxvu" path="res://assets/icons/6x6/metronome.png" id="12_tj7ww"]
+[ext_resource type="Texture2D" uid="uid://h6po6smca61m" path="res://assets/icons/6x6/settings.png" id="13_j8jcf"]
+
+[node name="modular_sidebar" type="Control" unique_id=1876935929]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 44.0
+offset_bottom = 90.0
+script = ExtResource("1_lr6tt")
+
+[node name="right" type="Control" parent="." unique_id=1516458421]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sound" parent="right" unique_id=127682664 instance=ExtResource("2_0lybw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -45.0
+offset_right = 15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("3_lr6tt")
+tooltip = "Sound"
+color = ExtResource("4_rqnfm")
+shape = ExtResource("5_wnx84")
+
+[node name="tonal" parent="right" unique_id=1305642908 instance=ExtResource("2_0lybw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("6_fw840")
+tooltip = "Key"
+color = ExtResource("7_qv1q5")
+shape = ExtResource("5_wnx84")
+
+[node name="looper" parent="right" unique_id=508394761 instance=ExtResource("2_0lybw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 15.0
+offset_right = 15.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("8_u6yr5")
+tooltip = "Looper"
+color = ExtResource("9_3u2yf")
+shape = ExtResource("5_wnx84")
+
+[node name="left" type="Control" parent="." unique_id=2113841934]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = -30.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mode" parent="left" unique_id=1583520044 instance=ExtResource("2_0lybw")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -44.0
+offset_right = 0.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("10_kqlmw")
+tooltip = "Mode"
+color = ExtResource("11_3jglc")
+shape = ExtResource("5_wnx84")
+
+[node name="metronome" parent="left" unique_id=881189372 instance=ExtResource("2_0lybw")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -22.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("12_tj7ww")
+tooltip = "Metronome"
+color = ExtResource("11_3jglc")
+shape = ExtResource("5_wnx84")
+
+[node name="settings" parent="left" unique_id=348777945 instance=ExtResource("2_0lybw")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = 22.0
+offset_right = 0.0
+offset_bottom = 44.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("13_j8jcf")
+tooltip = "Settings"
+color = ExtResource("11_3jglc")
+shape = ExtResource("5_wnx84")

@@ -1,2 +1,0 @@
-class_name ModularEditorEnvelopeModule
-extends ModularEditorModule

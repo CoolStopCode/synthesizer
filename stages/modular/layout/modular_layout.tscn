@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bd0ehapjlqsn1"]
+
+[ext_resource type="Script" uid="uid://ce2hmqlduqp8i" path="res://stages/modular/layout/modular_layout.gd" id="1_acfo5"]
+[ext_resource type="Script" uid="uid://duagydihh5hhk" path="res://stages/modular/layout/modular_modules_layer.gd" id="2_acfo5"]
+[ext_resource type="Script" uid="uid://bya5tby4j6qel" path="res://stages/modular/layout/modular_connections_layer.gd" id="3_xctqn"]
+[ext_resource type="PackedScene" uid="uid://jygsifgflcqc" path="res://stages/modular/connection/modular_connection.tscn" id="4_kupgh"]
+
+[node name="modular_layout" type="Control" unique_id=330153262 node_paths=PackedStringArray("modules_layer", "connections_layer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_acfo5")
+modules_layer = NodePath("modules_layer")
+connections_layer = NodePath("connections_layer")
+
+[node name="modules_layer" type="Control" parent="." unique_id=671804985]
+anchors_preset = 0
+script = ExtResource("2_acfo5")
+
+[node name="connections_layer" type="Control" parent="." unique_id=267579240]
+anchors_preset = 0
+script = ExtResource("3_xctqn")
+connection_scene = ExtResource("4_kupgh")

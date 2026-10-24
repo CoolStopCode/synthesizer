@@ -1,12 +1,12 @@
-class_name TonalAudioDropChordTransformation
-extends TonalAudioChordTransformation
+class_name TonalDropChordTransformation
+extends TonalChordTransformation
 
 @export var semitone_from_top : int = 2
 
-func apply(chord : TonalAudioChord) -> void:
+func apply(chord : TonalChord) -> void:
 	if semitone_from_top > chord.semitones.size() or semitone_from_top <= 0: return
 	
 	var index : int = chord.semitones.size() - semitone_from_top
 	
-	var semitone : TonalAudioSemitone = chord.semitones[index]
+	var semitone : TonalSemitone = chord.semitones[index]
 	semitone.shift_octave(-1)

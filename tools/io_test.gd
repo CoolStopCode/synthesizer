@@ -1,21 +1,21 @@
 @icon("res://tools/at-icons/node/controller.svg")
 extends Node
 
-@export var audio_mode : AudioMode
+@export var audio : Audio
 
 func _process(_delta: float) -> void:
 	handle_input()
 
 func handle_input() -> void:
 	if Input.is_action_just_pressed("Debug"):
-		audio_mode.build()
+		audio.build()
 	
 	for i in range(7):
 		var action := "Key%d" % (i + 1)
 		if Input.is_action_just_pressed(action):
-			audio_mode.key_pressed(i)
+			audio.key_pressed(i)
 		if Input.is_action_just_released(action):
-			audio_mode.key_released(i)
+			audio.key_released(i)
 	
 	var bend : Vector3i
 	bend = Vector3i(
@@ -31,4 +31,4 @@ func handle_input() -> void:
 	)
 	
 	if any_just_changed:
-		audio_mode.bend_changed(bend)
+		audio.bend_changed(bend)

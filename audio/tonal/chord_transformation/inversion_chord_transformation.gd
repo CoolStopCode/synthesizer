@@ -1,5 +1,5 @@
-class_name TonalAudioInversionChordTransformation
-extends TonalAudioChordTransformation
+class_name TonalInversionChordTransformation
+extends TonalChordTransformation
 
 enum Direction {
 	UP,
@@ -9,11 +9,11 @@ enum Direction {
 @export var amount : int
 @export var direction : Direction
 
-func apply(chord : TonalAudioChord):
+func apply(chord : TonalChord):
 	for i in range(amount):
 		if direction == Direction.UP:
-			var lowest : TonalAudioSemitone = chord.semitones.front()
+			var lowest : TonalSemitone = chord.semitones.front()
 			lowest.shift_octave(1)
 		elif direction == Direction.DOWN:
-			var highest : TonalAudioSemitone = chord.semitones.back()
+			var highest : TonalSemitone = chord.semitones.back()
 			highest.shift_octave(-1)

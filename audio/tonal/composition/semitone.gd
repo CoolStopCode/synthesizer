@@ -1,4 +1,4 @@
-class_name TonalAudioSemitone
+class_name TonalSemitone
 extends RefCounted
 
 var semitone : int
@@ -10,14 +10,11 @@ func to_frequency() -> float:
 	return 440.0 * pow(2.0, (semitone - 69) / 12.0)
 
 const NOTE_NAMES := ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
-
 func to_string_name() -> String:
 	return NOTE_NAMES[semitone % 12] + str(semitone / 12)
 
-func shift_octave(octave : int) -> TonalAudioSemitone:
+func shift_octave(octave : int):
 	semitone += 12 * octave
-	return self
 
-func transpose(amount : int) -> TonalAudioSemitone:
+func transpose(amount : int):
 	semitone += amount
-	return self

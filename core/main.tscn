@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2cewwkdwuuhp" path="res://core/main.gd" id="1_3gdo0"]
 [ext_resource type="PackedScene" uid="uid://bypq5q5ltosea" path="res://tools/stats/stats.tscn" id="5_xa854"]
-[ext_resource type="PackedScene" uid="uid://di6tpby6rjspk" path="res://editor/modular/modular_editor_mode.tscn" id="11_na0o7"]
+[ext_resource type="PackedScene" uid="uid://di6tpby6rjspk" path="res://modes/modular/modular_mode.tscn" id="11_na0o7"]
 [ext_resource type="Texture2D" uid="uid://cyohq8uaqhgb" path="res://assets/concept/notch.png" id="13_na0o7"]
 
 [node name="main" type="Control" unique_id=721855015]
@@ -41,3 +41,5 @@ offset_right = 9.0
 offset_bottom = 23.0
 grow_vertical = 2
 texture = ExtResource("13_na0o7")
+
+[node name="services" type="Node" parent="." unique_id=1143321576]

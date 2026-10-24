@@ -1,8 +1,8 @@
-class_name TonalAudioParallelizationChordTransformation
-extends TonalAudioChordTransformation
+class_name TonalParallelizationChordTransformation
+extends TonalChordTransformation
 
-func apply(chord : TonalAudioChord) -> void:
-	var root : TonalAudioSemitone = chord.semitones.front()
+func apply(chord : TonalChord) -> void:
+	var root : TonalSemitone = chord.semitones.front()
 
 	for semitone in chord.semitones:
 		if semitone == root: continue

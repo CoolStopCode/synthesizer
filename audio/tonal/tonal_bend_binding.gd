@@ -1,7 +1,7 @@
-class_name TonalAudioBendBinding
+class_name TonalBendBinding
 extends Resource
 
-@export var bend_binding : Dictionary[Vector3i, TonalAudioBendBehavior]
+@export var bend_binding : Dictionary[Vector3i, TonalBendBehavior]
 
-func build_chord(scale : TonalAudioScale, index : int, bend : Vector3i):
+func build_chord(scale : TonalScale, index : int, bend : Vector3i):
 	return bend_binding[bend].build_chord(scale, index)

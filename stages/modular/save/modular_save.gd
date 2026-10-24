@@ -1,0 +1,30 @@
+class_name ModularSave
+extends Resource
+
+@export var module_definitions : Array[ModularModuleDefinition]
+@export var connection_definitions : Array[ModularConnectionDefinition]
+
+func to__layout(layout_scene : PackedScene, module_bindings : Dictionary[int, PackedScene]) -> ModularLayout:
+	var layout : ModularLayout = layout_scene.instantiate()
+	
+	for module_definition in module_definitions:
+		var module_scene : PackedScene = module_bindings[module_definition.id]
+		var module_position : Vector2 = module_definition.position
+		var module_instance := layout.modules_layer.create_module_at(module_scene, module_position)
+		for i in range(module_definition.parameter_values.size()):
+			var parameter_value := module_definition.parameter_values[i]
+			var parameter := module_instance.parameters[i]
+			if parameter != null:
+				parameter.set_value(parameter_value)
+	
+	for connection_definition in connection_definitions:
+		var input_port : ModularInputPort = layout.modules_layer\
+			.modules[connection_definition.input_module_index]\
+			.parameters[connection_definition.input_parameter_index]
+		var output_port : ModularOutputPort = layout.modules_layer\
+			.modules[connection_definition.output_module_index]\
+			.outputs[connection_definition.output_output_index]
+		
+		layout.connections_layer.create_finished_connection(input_port, output_port)
+	
+	return layout

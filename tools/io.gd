@@ -1,4 +1,5 @@
 @icon("res://tools/at-icons/node/controller.svg")
+class_name ToolIO
 extends Node
 
 @export var audio : Audio
@@ -31,4 +32,5 @@ func handle_input() -> void:
 	)
 	
 	if any_just_changed:
-		audio.bend_changed(bend)
+		audio.bend = bend
+		audio.bend_changed()

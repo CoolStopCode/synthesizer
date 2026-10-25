@@ -1,3 +1,4 @@
+class_name ToolLooper
 extends Node
 
 var recording := false

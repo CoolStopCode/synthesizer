@@ -8,20 +8,22 @@
 [ext_resource type="Script" uid="uid://2st765u0dv45" path="res://tools/composition/key.gd" id="5_lb4se"]
 [ext_resource type="Script" uid="uid://cjhydh6ou7sf5" path="res://audio/modular/modular_voice_layout.gd" id="5_ofies"]
 [ext_resource type="Resource" uid="uid://b34n6atb8dcqh" path="res://audio/tonal/bend_binding/harmonic.tres" id="6_fjy8e"]
-[ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://tools/io_test.gd" id="8_fjy8e"]
+[ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://tools/io.gd" id="8_fjy8e"]
+[ext_resource type="Script" uid="uid://b8g7w8si1u3xk" path="res://tools/composition/compose_audio.gd" id="10_otpb0"]
 
 [sub_resource type="Resource" id="Resource_lr6tt"]
 script = ExtResource("5_ofies")
 memory_data = PackedFloat64Array(0, 0, 0, 0)
 metadata/_custom_type_script = "uid://cjhydh6ou7sf5"
 
-[sub_resource type="Resource" id="Resource_cy6l7"]
+[sub_resource type="Resource" id="Resource_m37dx"]
 script = ExtResource("4_qnjyn")
+octave = 4
 metadata/_custom_type_script = "uid://wwstsyg87ftc"
 
-[sub_resource type="Resource" id="Resource_6dr8x"]
+[sub_resource type="Resource" id="Resource_m3rnk"]
 script = ExtResource("5_lb4se")
-root = SubResource("Resource_cy6l7")
+root = SubResource("Resource_m37dx")
 metadata/_custom_type_script = "uid://2st765u0dv45"
 
 [node name="modular_mode" type="Control" unique_id=209435061]
@@ -47,19 +49,28 @@ offset_bottom = 45.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="workspace" parent="." unique_id=1342845703 instance=ExtResource("2_i5pqe")]
+[node name="modular_stage" parent="." unique_id=1342845703 node_paths=PackedStringArray("audio") instance=ExtResource("2_i5pqe")]
 layout_mode = 1
 offset_left = 2.0
 offset_top = 2.0
 offset_right = -48.0
 offset_bottom = -2.0
+audio = NodePath("../ModularAudioMode")
 
 [node name="ModularAudioMode" type="AudioStreamPlayer" parent="." unique_id=1496644709]
 script = ExtResource("3_6dr8x")
 voice_layout = SubResource("Resource_lr6tt")
-key = SubResource("Resource_6dr8x")
+allocation = 2
 bend_binding = ExtResource("6_fjy8e")
 metadata/_custom_type_script = "uid://bvkaggdqljufp"
 
-[node name="io" type="Node" parent="." unique_id=1610846126]
+[node name="ToolIO" type="Node" parent="." unique_id=283064316 node_paths=PackedStringArray("audio")]
 script = ExtResource("8_fjy8e")
+audio = NodePath("../ModularAudioMode")
+metadata/_custom_type_script = "uid://cpwfjq8ca05mn"
+
+[node name="ToolComposeAudio" type="Node" parent="." unique_id=1201041282 node_paths=PackedStringArray("tonal_audio")]
+script = ExtResource("10_otpb0")
+tonal_audio = NodePath("../ModularAudioMode")
+key = SubResource("Resource_m3rnk")
+metadata/_custom_type_script = "uid://b8g7w8si1u3xk"

@@ -18,7 +18,6 @@ func process(delta : float) -> float:
 	return sum * sample_amplitude
 
 func build() -> void:
-	super.build()
 	var decoded_stream := sample.decode_stream(sample.audio_stream.data)
 	var base_frequency := sample.estimate_root_frequency(48000,49000)
 	

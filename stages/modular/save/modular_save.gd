@@ -4,7 +4,7 @@ extends Resource
 @export var module_definitions : Array[ModularModuleDefinition]
 @export var connection_definitions : Array[ModularConnectionDefinition]
 
-func to__layout(layout_scene : PackedScene, module_bindings : Dictionary[int, PackedScene]) -> ModularLayout:
+func to_layout(layout_scene : PackedScene, module_bindings : Dictionary[int, PackedScene]) -> ModularLayout:
 	var layout : ModularLayout = layout_scene.instantiate()
 	
 	for module_definition in module_definitions:

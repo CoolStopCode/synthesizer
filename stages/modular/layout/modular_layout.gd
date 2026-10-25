@@ -61,8 +61,8 @@ func to_save() -> ModularSave:
 	
 	return save
 
-func to_audio_layout() -> ModularLayout:
-	var layout := ModularLayout.new()
+func to_voice_layout() -> ModularVoiceLayout:
+	var layout := ModularVoiceLayout.new()
 	
 	var module_definitions := modules_layer.get_module_definitions()
 	var connection_definitions := connections_layer.get_connection_definitions(

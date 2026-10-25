@@ -15,7 +15,6 @@ func process(delta : float) -> float:
 	return sum
 
 func build() -> void:
-	super.build() # This overrides TonalAudio's build function, so we must call it again
 	polyvoices = voice_layout.to_polyvoices(polyvoice_count, voice_count)
 
 func key_pressed(index: int) -> void:
@@ -45,7 +44,7 @@ func key_released(index: int) -> void:
 	released_polyvoice.polyvoice_off()
 
 ## Bend all currently active polyvoices to their new chords
-func bend_changed(new_bend : Vector3i) -> void:
+func bend_changed() -> void:
 	for i in polyvoices.size():
 		var polyvoice = polyvoices[i]
 		if polyvoice.pressed:

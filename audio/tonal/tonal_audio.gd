@@ -13,16 +13,9 @@ enum Allocation {
 @export var allocation: Allocation
 @export var fade_duration : float = 0.05 ## Used for legato allocation, prevents clipping
 @export var chord_bend_duration : float = 0.1 ## Linear fade time for bending a pressed polyvoice
-@export var key : CompositionKey
 @export var bend_binding : TonalBendBinding
 
 var scale : TonalScale
 
 func build_chord(index: int) -> TonalChord:
 	return bend_binding.build_chord(scale, index, bend)
-
-func build() -> void:
-	scale = key.build_scale()
-	
-	#for i in range(polyvoice_count):
-		#print(scale.get_semitone(i).to_string_name())

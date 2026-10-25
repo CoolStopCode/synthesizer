@@ -5,7 +5,7 @@ func process(delta : float) -> float:
 	return 0.0
 
 func build() -> void:
-	super.build()
+	pass
 
 func key_pressed(index: int) -> void:
 	pass

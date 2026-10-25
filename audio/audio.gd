@@ -8,7 +8,7 @@ extends AudioStreamPlayer
 
 @abstract func key_pressed(index: int) -> void
 @abstract func key_released(index: int) -> void
-@abstract func bend_changed(new_bend : Vector3i) -> void
+@abstract func bend_changed() -> void
 
 @export var master_volume : float = 1.0
 @export var mix_rate : int = 44100

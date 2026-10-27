@@ -44,7 +44,7 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("3_lr6tt")
-tooltip = "Sound"
+tooltip = "Patch"
 color = ExtResource("4_rqnfm")
 shape = ExtResource("5_wnx84")
 

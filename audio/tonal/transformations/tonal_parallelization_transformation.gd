@@ -1,5 +1,5 @@
-class_name TonalParallelizationChordTransformation
-extends TonalChordTransformation
+class_name TonalParallelizationTransformation
+extends TonalTransformation
 
 func apply(chord : TonalChord) -> void:
 	var root : TonalSemitone = chord.semitones.front()

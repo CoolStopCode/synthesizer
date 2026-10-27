@@ -18,6 +18,7 @@ metadata/_custom_type_script = "uid://cjhydh6ou7sf5"
 
 [sub_resource type="Resource" id="Resource_m37dx"]
 script = ExtResource("4_qnjyn")
+note = 4
 octave = 4
 metadata/_custom_type_script = "uid://wwstsyg87ftc"
 
@@ -58,6 +59,7 @@ offset_bottom = -2.0
 audio = NodePath("../ModularAudioMode")
 
 [node name="ModularAudioMode" type="AudioStreamPlayer" parent="." unique_id=1496644709]
+bus = &"Active"
 script = ExtResource("3_6dr8x")
 voice_layout = SubResource("Resource_lr6tt")
 allocation = 2
@@ -73,4 +75,5 @@ metadata/_custom_type_script = "uid://cpwfjq8ca05mn"
 script = ExtResource("10_otpb0")
 tonal_audio = NodePath("../ModularAudioMode")
 key = SubResource("Resource_m3rnk")
+print_notes = true
 metadata/_custom_type_script = "uid://b8g7w8si1u3xk"

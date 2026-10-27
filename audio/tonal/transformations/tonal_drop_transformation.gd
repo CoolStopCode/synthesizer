@@ -1,5 +1,5 @@
-class_name TonalDropChordTransformation
-extends TonalChordTransformation
+class_name TonalDropTransformation
+extends TonalTransformation
 
 @export var semitone_from_top : int = 2
 

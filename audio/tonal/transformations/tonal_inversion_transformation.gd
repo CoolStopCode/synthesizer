@@ -1,5 +1,5 @@
-class_name TonalInversionChordTransformation
-extends TonalChordTransformation
+class_name TonalInversionTransformation
+extends TonalTransformation
 
 enum Direction {
 	UP,

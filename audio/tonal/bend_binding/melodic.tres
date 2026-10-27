@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="TonalBendBinding" format=3 uid="uid://dlcbpadla7fys"]
 
 [ext_resource type="Script" uid="uid://vmjvtatt83va" path="res://audio/tonal/tonal_bend_behavior.gd" id="1_3xbwe"]
-[ext_resource type="Script" uid="uid://c76xcxl64e8kr" path="res://audio/tonal/chord_transformation/chord_transformation.gd" id="2_e36y8"]
+[ext_resource type="Script" uid="uid://c76xcxl64e8kr" path="res://audio/tonal/transformations/tonal_transformation.gd" id="2_ahaup"]
 [ext_resource type="Script" uid="uid://cyyslm2d8sue8" path="res://audio/tonal/tonal_bend_binding.gd" id="2_t2wlk"]
-[ext_resource type="Script" uid="uid://dxx6f3ilk2sfr" path="res://audio/tonal/chord_transformation/transposition_chord_transformation.gd" id="3_yon0h"]
-[ext_resource type="Script" uid="uid://kgmquk6nhxcs" path="res://audio/tonal/chord_transformation/transpose_duplication_chord_transformation.gd" id="4_5njfv"]
+[ext_resource type="Script" uid="uid://dxx6f3ilk2sfr" path="res://audio/tonal/transformations/tonal_transposition_transformation.gd" id="3_c4dvr"]
 
 [sub_resource type="Resource" id="Resource_apxpp"]
 script = ExtResource("1_3xbwe")
@@ -12,73 +11,82 @@ degrees = Array[int]([0])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
 [sub_resource type="Resource" id="Resource_yop4i"]
-script = ExtResource("3_yon0h")
+script = ExtResource("3_c4dvr")
 semitones = 12
 metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
 
 [sub_resource type="Resource" id="Resource_qive6"]
 script = ExtResource("1_3xbwe")
 degrees = Array[int]([0])
-transformations = Array[ExtResource("2_e36y8")]([SubResource("Resource_yop4i")])
+transformations = Array[ExtResource("2_ahaup")]([SubResource("Resource_yop4i")])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
-[sub_resource type="Resource" id="Resource_b56cy"]
-script = ExtResource("4_5njfv")
+[sub_resource type="Resource" id="Resource_6mh8l"]
+script = ExtResource("3_c4dvr")
 semitones = -12
-metadata/_custom_type_script = "uid://kgmquk6nhxcs"
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
 
 [sub_resource type="Resource" id="Resource_5njfv"]
 script = ExtResource("1_3xbwe")
 degrees = Array[int]([0])
-transformations = Array[ExtResource("2_e36y8")]([SubResource("Resource_b56cy")])
+transformations = Array[ExtResource("2_ahaup")]([SubResource("Resource_6mh8l")])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
 [sub_resource type="Resource" id="Resource_j4owu"]
-script = ExtResource("3_yon0h")
+script = ExtResource("3_c4dvr")
 semitones = 1
 metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
 
 [sub_resource type="Resource" id="Resource_evsth"]
 script = ExtResource("1_3xbwe")
 degrees = Array[int]([0])
-transformations = Array[ExtResource("2_e36y8")]([SubResource("Resource_j4owu")])
+transformations = Array[ExtResource("2_ahaup")]([SubResource("Resource_j4owu")])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
 [sub_resource type="Resource" id="Resource_yon0h"]
-script = ExtResource("3_yon0h")
+script = ExtResource("3_c4dvr")
 semitones = -12
 metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
 
 [sub_resource type="Resource" id="Resource_e36y8"]
 script = ExtResource("1_3xbwe")
 degrees = Array[int]([0])
-transformations = Array[ExtResource("2_e36y8")]([SubResource("Resource_yon0h")])
+transformations = Array[ExtResource("2_ahaup")]([SubResource("Resource_yon0h")])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
-[sub_resource type="Resource" id="Resource_1orxs"]
-script = ExtResource("4_5njfv")
-metadata/_custom_type_script = "uid://kgmquk6nhxcs"
-
-[sub_resource type="Resource" id="Resource_pm1ma"]
-script = ExtResource("4_5njfv")
+[sub_resource type="Resource" id="Resource_otpb0"]
+script = ExtResource("3_c4dvr")
 semitones = -12
-metadata/_custom_type_script = "uid://kgmquk6nhxcs"
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_arxhf"]
+script = ExtResource("3_c4dvr")
+semitones = -24
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_r7f3i"]
+script = ExtResource("3_c4dvr")
+semitones = 24
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
 
 [sub_resource type="Resource" id="Resource_frm1h"]
 script = ExtResource("1_3xbwe")
 degrees = Array[int]([0])
-transformations = Array[ExtResource("2_e36y8")]([SubResource("Resource_1orxs"), SubResource("Resource_pm1ma")])
+transformations = Array[ExtResource("2_ahaup")]([SubResource("Resource_otpb0"), SubResource("Resource_arxhf"), SubResource("Resource_r7f3i")])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
 [sub_resource type="Resource" id="Resource_pyoi8"]
-script = ExtResource("3_yon0h")
+script = ExtResource("3_c4dvr")
 semitones = -1
 metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
 
 [sub_resource type="Resource" id="Resource_ijqo4"]
 script = ExtResource("1_3xbwe")
 degrees = Array[int]([0])
-transformations = Array[ExtResource("2_e36y8")]([SubResource("Resource_pyoi8")])
+transformations = Array[ExtResource("2_ahaup")]([SubResource("Resource_pyoi8")])
 metadata/_custom_type_script = "uid://vmjvtatt83va"
 
 [sub_resource type="Resource" id="Resource_0wnvq"]

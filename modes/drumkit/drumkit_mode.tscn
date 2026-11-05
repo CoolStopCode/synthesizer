@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://b060s30o3shwt"]
+
+[ext_resource type="Script" uid="uid://cjaopmh0llkim" path="res://modes/modular/modular_mode.gd" id="1_de30v"]
+[ext_resource type="PackedScene" uid="uid://clud548e7t8jy" path="res://sidebars/drumkit_sidebar.tscn" id="2_eoxj8"]
+[ext_resource type="PackedScene" uid="uid://d2twykyfktbfw" path="res://stages/modular/modular_stage.tscn" id="3_fondi"]
+[ext_resource type="Script" uid="uid://bvkaggdqljufp" path="res://audio/modular/modular_audio.gd" id="4_3v5dw"]
+[ext_resource type="Script" uid="uid://cjhydh6ou7sf5" path="res://audio/modular/modular_voice_layout.gd" id="5_40qge"]
+[ext_resource type="Resource" uid="uid://b34n6atb8dcqh" path="res://audio/tonal/bend_binding/harmonic.tres" id="6_31n2c"]
+[ext_resource type="Script" uid="uid://cpwfjq8ca05mn" path="res://tools/io.gd" id="7_2ewjn"]
+[ext_resource type="Script" uid="uid://b8g7w8si1u3xk" path="res://tools/composition/compose_audio.gd" id="8_1bnmo"]
+[ext_resource type="Script" uid="uid://wwstsyg87ftc" path="res://tools/composition/note.gd" id="9_cwx0q"]
+[ext_resource type="Script" uid="uid://2st765u0dv45" path="res://tools/composition/key.gd" id="10_ort5n"]
+
+[sub_resource type="Resource" id="Resource_lr6tt"]
+script = ExtResource("5_40qge")
+memory_data = PackedFloat64Array(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://cjhydh6ou7sf5"
+
+[sub_resource type="Resource" id="Resource_m37dx"]
+script = ExtResource("9_cwx0q")
+note = 4
+octave = 4
+metadata/_custom_type_script = "uid://wwstsyg87ftc"
+
+[sub_resource type="Resource" id="Resource_m3rnk"]
+script = ExtResource("10_ort5n")
+root = SubResource("Resource_m37dx")
+metadata/_custom_type_script = "uid://2st765u0dv45"
+
+[node name="drumkit_mode" type="Control" unique_id=209435061]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_de30v")
+
+[node name="sidebar" parent="." unique_id=1876935929 instance=ExtResource("2_eoxj8")]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 9.0
+offset_right = 190.0
+offset_bottom = 99.0
+
+[node name="stage" parent="." unique_id=1342845703 node_paths=PackedStringArray("audio") instance=ExtResource("3_fondi")]
+layout_mode = 1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -48.0
+offset_bottom = -2.0
+audio = NodePath("../audio")
+
+[node name="audio" type="AudioStreamPlayer" parent="." unique_id=1496644709]
+bus = &"Active"
+script = ExtResource("4_3v5dw")
+voice_layout = SubResource("Resource_lr6tt")
+allocation = 2
+bend_binding = ExtResource("6_31n2c")
+metadata/_custom_type_script = "uid://bvkaggdqljufp"
+
+[node name="ToolIO" type="Node" parent="." unique_id=283064316 node_paths=PackedStringArray("audio")]
+script = ExtResource("7_2ewjn")
+audio = NodePath("../audio")
+metadata/_custom_type_script = "uid://cpwfjq8ca05mn"
+
+[node name="ToolComposeAudio" type="Node" parent="." unique_id=1201041282 node_paths=PackedStringArray("tonal_audio")]
+script = ExtResource("8_1bnmo")
+tonal_audio = NodePath("../audio")
+key = SubResource("Resource_m3rnk")
+print_notes = true
+metadata/_custom_type_script = "uid://b8g7w8si1u3xk"

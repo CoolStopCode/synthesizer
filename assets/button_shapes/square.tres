@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ButtonShape" format=3 uid="uid://ioxq56axtv2v"]
+
+[ext_resource type="Texture2D" uid="uid://bsl2bvpxh0vhs" path="res://assets/box_shapes/square/fill.png" id="1_br6w3"]
+[ext_resource type="Script" uid="uid://bgy15ygymshne" path="res://elements_new/button/button_shape.gd" id="1_c7mdd"]
+[ext_resource type="Texture2D" uid="uid://bsi7ouai4dh4t" path="res://assets/box_shapes/square/outline.png" id="2_8ellc"]
+[ext_resource type="Texture2D" uid="uid://ckeqepmsdode" path="res://assets/button_shapes/square/shadow.png" id="4_8ellc"]
+
+[resource]
+script = ExtResource("1_c7mdd")
+press_offset = Vector2(0, 1)
+shadow_texture = ExtResource("4_8ellc")
+margin = 1
+fill_texture = ExtResource("1_br6w3")
+outline_texture = ExtResource("2_8ellc")
+metadata/_custom_type_script = "uid://bgy15ygymshne"

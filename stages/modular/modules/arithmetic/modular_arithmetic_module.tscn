@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://grcp6wktvy3d" path="res://assets/icons/6x6/multiply.png" id="8_tp6yk"]
 [ext_resource type="Resource" uid="uid://dfl2obfhu1ax5" path="res://assets/icon_element_colors/gray2.tres" id="9_cdra5"]
 [ext_resource type="Texture2D" uid="uid://bcckwnwnqcox3" path="res://assets/icons/6x6/slash.png" id="9_yn1pf"]
-[ext_resource type="Resource" uid="uid://o3ivdql2i4ye" path="res://assets/button_element_colors/red.tres" id="10_tp6yk"]
-[ext_resource type="Resource" uid="uid://cbacgmqo68blg" path="res://assets/button_element_shapes/square/square.tres" id="11_yn1pf"]
+[ext_resource type="Resource" uid="uid://csuctiqv1v75o" path="res://assets/icon_button_palettes/red.tres" id="10_j602q"]
+[ext_resource type="Resource" uid="uid://cjsydqa4sijte" path="res://assets/icon_button_shapes/square.tres" id="11_k5jjj"]
 
 [node name="modular_arithmetic_module" type="Control" unique_id=763916784 node_paths=PackedStringArray("parameters", "outputs")]
 layout_mode = 3
@@ -47,8 +47,8 @@ offset_top = 2.0
 offset_right = 24.0
 icons = Array[Texture]([ExtResource("6_jgy5v"), ExtResource("7_v5c3h"), ExtResource("8_tp6yk"), ExtResource("9_yn1pf")])
 tooltip = "Operation"
-color = ExtResource("10_tp6yk")
-shape = ExtResource("11_yn1pf")
+palette = ExtResource("10_j602q")
+shape = ExtResource("11_k5jjj")
 
 [node name="operand_a" parent="." unique_id=2021418910 instance=ExtResource("5_yvd3p")]
 layout_mode = 0

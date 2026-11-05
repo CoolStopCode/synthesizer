@@ -36,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l7st6")
 
-[node name="control_bar" parent="." unique_id=1876935929 instance=ExtResource("1_xaffx")]
+[node name="sidebar" parent="." unique_id=1876935929 instance=ExtResource("1_xaffx")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -50,7 +50,7 @@ offset_bottom = 45.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="modular_stage" parent="." unique_id=1342845703 node_paths=PackedStringArray("audio") instance=ExtResource("2_i5pqe")]
+[node name="stage" parent="." unique_id=1342845703 node_paths=PackedStringArray("audio") instance=ExtResource("2_i5pqe")]
 layout_mode = 1
 offset_left = 2.0
 offset_top = 2.0

@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0627451, 0.078431375, 0.12156863, 1)
 
-[node name="modular_editor_mode" parent="interface" unique_id=209435061 instance=ExtResource("11_na0o7")]
+[node name="modular_mode" parent="interface" unique_id=209435061 instance=ExtResource("11_na0o7")]
 
 [node name="info" type="CanvasLayer" parent="." unique_id=1274727178]
 

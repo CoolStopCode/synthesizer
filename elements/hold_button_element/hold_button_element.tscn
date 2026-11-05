@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://ccyhsm0wwae6h"]
 
 [ext_resource type="Script" uid="uid://dy22x46csap18" path="res://elements/hold_button_element/hold_button_element.gd" id="1_nq1ib"]
-[ext_resource type="Texture2D" uid="uid://ckeqepmsdode" path="res://assets/button_element_shapes/square/shadow.png" id="2_ninqy"]
-[ext_resource type="Texture2D" uid="uid://bsl2bvpxh0vhs" path="res://assets/button_element_shapes/square/fill.png" id="3_r7beg"]
-[ext_resource type="Texture2D" uid="uid://bsi7ouai4dh4t" path="res://assets/button_element_shapes/square/outline.png" id="4_wwmo6"]
+[ext_resource type="Texture2D" uid="uid://ckeqepmsdode" path="res://assets/button_shapes/square/shadow.png" id="2_ninqy"]
+[ext_resource type="Texture2D" uid="uid://bsl2bvpxh0vhs" path="res://assets/box_shapes/square/fill.png" id="3_r7beg"]
+[ext_resource type="Texture2D" uid="uid://bsi7ouai4dh4t" path="res://assets/box_shapes/square/outline.png" id="4_wwmo6"]
 [ext_resource type="LabelSettings" uid="uid://d0kws5alkuuv1" path="res://assets/fonts/synmin.tres" id="5_7xrmn"]
-[ext_resource type="Shader" uid="uid://cir2hcjifrlnt" path="res://elements/hold_button_element/radial_wipe.gdshader" id="5_seyyf"]
-[ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://assets/button_element_shapes/round/outline.png" id="6_seyyf"]
+[ext_resource type="Shader" uid="uid://cir2hcjifrlnt" path="res://elements_new/hold_button/radial_wipe.gdshader" id="5_seyyf"]
+[ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://assets/box_shapes/round/outline.png" id="6_seyyf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4f33v"]
 shader = ExtResource("5_seyyf")

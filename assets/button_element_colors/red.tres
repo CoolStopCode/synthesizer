@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ButtonElementColor" format=3 uid="uid://o3ivdql2i4ye"]
 
-[ext_resource type="ColorPalette" uid="uid://7ohfm1njq0yp" path="res://assets/palettes/red.tres" id="1_xla26"]
+[ext_resource type="ColorPalette" uid="uid://7ohfm1njq0yp" path="res://assets/color_palettes/red.tres" id="1_xla26"]
 [ext_resource type="Script" uid="uid://b4sn7r42178di" path="res://elements/button_element/button_element_color.gd" id="1_xnxt6"]
 
 [resource]

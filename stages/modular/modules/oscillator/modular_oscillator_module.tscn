@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://61staagwmt22" path="res://stages/modular/modules/oscillator/square.png" id="9_ws1sp"]
 [ext_resource type="Texture2D" uid="uid://citjif12131cy" path="res://stages/modular/modules/oscillator/saw.png" id="10_3dj2k"]
 [ext_resource type="Texture2D" uid="uid://ijdlpcw04g32" path="res://stages/modular/modules/oscillator/triangle.png" id="11_ysbe7"]
-[ext_resource type="Resource" uid="uid://o3ivdql2i4ye" path="res://assets/button_element_colors/red.tres" id="12_5gw5e"]
-[ext_resource type="Resource" uid="uid://cbacgmqo68blg" path="res://assets/button_element_shapes/square/square.tres" id="13_onv70"]
+[ext_resource type="Resource" uid="uid://csuctiqv1v75o" path="res://assets/icon_button_palettes/red.tres" id="12_j4yec"]
+[ext_resource type="Resource" uid="uid://cjsydqa4sijte" path="res://assets/icon_button_shapes/square.tres" id="13_4dhq2"]
 [ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output_port.tscn" id="14_ylidr"]
 [ext_resource type="Resource" uid="uid://cb181tqhciykx" path="res://stages/modular/parameters/ports/color/audio.tres" id="15_f4257"]
 
@@ -57,8 +57,8 @@ offset_top = 1.0
 offset_right = 27.0
 icons = Array[Texture]([ExtResource("8_p6g6a"), ExtResource("9_ws1sp"), ExtResource("10_3dj2k"), ExtResource("11_ysbe7")])
 tooltip = "Waveform"
-color = ExtResource("12_5gw5e")
-shape = ExtResource("13_onv70")
+palette = ExtResource("12_j4yec")
+shape = ExtResource("13_4dhq2")
 
 [node name="sample" parent="." unique_id=8079301 instance=ExtResource("14_ylidr")]
 layout_mode = 0

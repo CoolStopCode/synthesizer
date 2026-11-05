@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="IconButtonPalette" format=3 uid="uid://7isr0d4gl3u6"]
+
+[ext_resource type="ColorPalette" uid="uid://7ohfm1njq0yp" path="res://assets/color_palettes/red.tres" id="1_sjmkv"]
+[ext_resource type="Script" uid="uid://b3dod7u3nf523" path="res://elements_new/hold_button/hold_button_palette.gd" id="1_wpk2i"]
+
+[resource]
+script = ExtResource("1_wpk2i")
+icon = 1
+shadow_pressed = -1
+fill_pressed = 1
+fill = 2
+outline = 1
+color_palette = ExtResource("1_sjmkv")
+metadata/_custom_type_script = "uid://b3dod7u3nf523"

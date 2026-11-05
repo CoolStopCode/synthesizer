@@ -65,7 +65,7 @@ func key_released(index: int) -> void:
 	var released_polyvoice := polyvoices[index]
 	released_polyvoice.polyvoice_off()
 
-func bend_changed(new_bend : Vector3i) -> void:
+func bend_changed() -> void:
 	var i := 0
 	for polyvoice in polyvoices:
 		if polyvoice.active:

@@ -15,7 +15,7 @@ func _ready() -> void:
 	button.shape = shape
 	update()
 
-func _on_button_element_pressed() -> void:
+func _on_button_pressed() -> void:
 	var new_value := float((int(value) + 1) % icons.size())
 	value = new_value
 	update()

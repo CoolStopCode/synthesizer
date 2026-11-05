@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IconPalette" format=3 uid="uid://bwo8xnsw8c11n"]
+
+[ext_resource type="ColorPalette" uid="uid://bdtfvoqee84wr" path="res://assets/apollo.tres" id="1_rqcj8"]
+[ext_resource type="Script" uid="uid://cmf7bk1x1r6ef" path="res://elements/icon/icon_palette.gd" id="2_chqri"]
+
+[resource]
+script = ExtResource("2_chqri")
+icon = 21
+color_palette = ExtResource("1_rqcj8")
+metadata/_custom_type_script = "uid://cmf7bk1x1r6ef"

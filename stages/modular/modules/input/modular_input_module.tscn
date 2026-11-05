@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://4rcj7ugomg28"]
 
 [ext_resource type="Script" uid="uid://bu2v0v17800do" path="res://stages/modular/modules/input/modular_input_module.gd" id="1_t02kl"]
-[ext_resource type="PackedScene" uid="uid://ci4u7feyjehn4" path="res://elements/rectangle_element/rectangle_element.tscn" id="2_42wgl"]
-[ext_resource type="Resource" uid="uid://dtopixmd1ntn5" path="res://assets/rectangle_element_colors/white.tres" id="3_rchai"]
-[ext_resource type="Resource" uid="uid://dvfouy26jxkkf" path="res://assets/rectangle_element_shapes/square/square.tres" id="4_f3hac"]
+[ext_resource type="PackedScene" uid="uid://c6dcmfrm4mrdl" path="res://elements/box/box.tscn" id="2_bcwtg"]
+[ext_resource type="Resource" uid="uid://k5evtks1vpmd" path="res://assets/box_palettes/white.tres" id="3_42wgl"]
+[ext_resource type="Resource" uid="uid://cmoi1fgb4fy2f" path="res://assets/icon_palettes/white.tres" id="3_t02kl"]
+[ext_resource type="Resource" uid="uid://dtv20xpa11db4" path="res://assets/box_shapes/square.tres" id="4_42wgl"]
 [ext_resource type="Texture2D" uid="uid://dbp0m4ev7wbwg" path="res://stages/modular/modules/input/white_key.png" id="5_8tmwf"]
 [ext_resource type="Texture2D" uid="uid://dh4flip42fxv0" path="res://stages/modular/modules/input/black_key.png" id="6_7gvts"]
-[ext_resource type="PackedScene" uid="uid://bvpifohy0mb0" path="res://elements/icon_element/icon_element.tscn" id="7_323p3"]
 [ext_resource type="Texture2D" uid="uid://ds52fffsjrsa0" path="res://assets/icons/6x4/button.png" id="8_324cm"]
-[ext_resource type="Resource" uid="uid://byj3xokpvcwhb" path="res://assets/icon_element_colors/white.tres" id="9_eysil"]
 [ext_resource type="Texture2D" uid="uid://bdo4s5pof4k6q" path="res://assets/icons/6x4/wave.png" id="10_qjkd8"]
 [ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output_port.tscn" id="11_y86pf"]
+[ext_resource type="PackedScene" uid="uid://cvda00jw2nwgn" path="res://elements/icon/icon.tscn" id="12_42wgl"]
 [ext_resource type="Resource" uid="uid://bhl1uaglbdrt8" path="res://stages/modular/parameters/ports/color/float.tres" id="12_emldk"]
 [ext_resource type="Resource" uid="uid://iyyqbryjjjmm" path="res://stages/modular/parameters/ports/color/bool.tres" id="13_jkvdv"]
+[ext_resource type="Resource" uid="uid://svuq6hk23vta" path="res://assets/icon_shapes/shape.tres" id="13_rchai"]
 
 [node name="modular_input_module" type="Control" unique_id=388998138 node_paths=PackedStringArray("outputs")]
 layout_mode = 3
@@ -22,7 +23,7 @@ offset_bottom = 44.0
 script = ExtResource("1_t02kl")
 outputs = [NodePath("frequency"), NodePath("pressed")]
 
-[node name="rectangle_element" parent="." unique_id=611869492 instance=ExtResource("2_42wgl")]
+[node name="background2" parent="." unique_id=1459495440 instance=ExtResource("2_bcwtg")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,8 +32,8 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-color = ExtResource("3_rchai")
-shape = ExtResource("4_f3hac")
+palette = ExtResource("3_42wgl")
+shape = ExtResource("4_42wgl")
 
 [node name="keys" type="Control" parent="." unique_id=76044050]
 layout_mode = 1
@@ -95,24 +96,6 @@ offset_right = 15.0
 offset_bottom = 22.0
 texture = ExtResource("6_7gvts")
 
-[node name="pressed_icon" parent="." unique_id=1389549536 instance=ExtResource("7_323p3")]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 29.0
-offset_right = 9.0
-offset_bottom = 33.0
-icon = ExtResource("8_324cm")
-color = ExtResource("9_eysil")
-
-[node name="frequency_icon" parent="pressed_icon" unique_id=347367339 instance=ExtResource("7_323p3")]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 9.0
-offset_right = 18.0
-offset_bottom = 13.0
-icon = ExtResource("10_qjkd8")
-color = ExtResource("9_eysil")
-
 [node name="frequency" parent="." unique_id=1553455504 instance=ExtResource("11_y86pf")]
 layout_mode = 0
 offset_left = 13.0
@@ -128,3 +111,23 @@ offset_top = 33.0
 offset_right = 11.0
 offset_bottom = 43.0
 color = ExtResource("13_jkvdv")
+
+[node name="pressed_icon2" parent="." unique_id=611788639 instance=ExtResource("12_42wgl")]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 29.0
+offset_right = 9.0
+offset_bottom = 33.0
+icon = ExtResource("8_324cm")
+palette = ExtResource("3_t02kl")
+shape = ExtResource("13_rchai")
+
+[node name="frequency_icon" parent="." unique_id=1417962738 instance=ExtResource("12_42wgl")]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 38.0
+offset_right = 21.0
+offset_bottom = 42.0
+icon = ExtResource("10_qjkd8")
+palette = ExtResource("3_t02kl")
+shape = ExtResource("13_rchai")

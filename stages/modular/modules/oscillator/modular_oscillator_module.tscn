@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dd2v3d2iuvt6"]
 
 [ext_resource type="Script" uid="uid://bwytj44u02sb7" path="res://stages/modular/modules/oscillator/modular_oscillator_module.gd" id="1_j4yec"]
-[ext_resource type="PackedScene" uid="uid://ci4u7feyjehn4" path="res://elements/rectangle_element/rectangle_element.tscn" id="2_4dhq2"]
-[ext_resource type="Resource" uid="uid://bm8j7kij3cr8l" path="res://assets/rectangle_element_colors/gray3.tres" id="3_vxub4"]
-[ext_resource type="Resource" uid="uid://dvfouy26jxkkf" path="res://assets/rectangle_element_shapes/square/square.tres" id="4_dggut"]
+[ext_resource type="PackedScene" uid="uid://c6dcmfrm4mrdl" path="res://elements/box/box.tscn" id="2_j4yec"]
+[ext_resource type="Resource" uid="uid://du04fwi5v0lh2" path="res://assets/box_palettes/light_gray.tres" id="3_j4yec"]
+[ext_resource type="Resource" uid="uid://dtv20xpa11db4" path="res://assets/box_shapes/square.tres" id="4_vxub4"]
 [ext_resource type="PackedScene" uid="uid://b2xwinqql82b3" path="res://stages/modular/parameters/ports/dial/modular_dial_port.tscn" id="5_byplo"]
 [ext_resource type="Resource" uid="uid://bhl1uaglbdrt8" path="res://stages/modular/parameters/ports/color/float.tres" id="6_mcaae"]
 [ext_resource type="PackedScene" uid="uid://b8mayuqirfhew" path="res://stages/modular/parameters/button/modular_button.tscn" id="7_g1olx"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://61staagwmt22" path="res://stages/modular/modules/oscillator/square.png" id="9_ws1sp"]
 [ext_resource type="Texture2D" uid="uid://citjif12131cy" path="res://stages/modular/modules/oscillator/saw.png" id="10_3dj2k"]
 [ext_resource type="Texture2D" uid="uid://ijdlpcw04g32" path="res://stages/modular/modules/oscillator/triangle.png" id="11_ysbe7"]
-[ext_resource type="Resource" uid="uid://csuctiqv1v75o" path="res://assets/icon_button_palettes/red.tres" id="12_j4yec"]
+[ext_resource type="Resource" uid="uid://bm06v27bgrpyg" path="res://assets/icon_button_palettes/blue.tres" id="12_j4yec"]
 [ext_resource type="Resource" uid="uid://cjsydqa4sijte" path="res://assets/icon_button_shapes/square.tres" id="13_4dhq2"]
 [ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output_port.tscn" id="14_ylidr"]
 [ext_resource type="Resource" uid="uid://cb181tqhciykx" path="res://stages/modular/parameters/ports/color/audio.tres" id="15_f4257"]
@@ -26,7 +26,7 @@ id = 2
 parameters = [NodePath("frequency"), null, NodePath("waveform")]
 outputs = [NodePath("sample")]
 
-[node name="background" parent="." unique_id=611869492 instance=ExtResource("2_4dhq2")]
+[node name="background2" parent="." unique_id=1459495440 instance=ExtResource("2_j4yec")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,8 +35,8 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-color = ExtResource("3_vxub4")
-shape = ExtResource("4_dggut")
+palette = ExtResource("3_j4yec")
+shape = ExtResource("4_vxub4")
 
 [node name="frequency" parent="." unique_id=704340714 instance=ExtResource("5_byplo")]
 layout_mode = 0

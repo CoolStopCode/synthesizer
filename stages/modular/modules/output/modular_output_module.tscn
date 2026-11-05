@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://b0h8hrnp8s3sh"]
 
 [ext_resource type="Script" uid="uid://cgj7541qkkgr7" path="res://stages/modular/modules/output/modular_output_module.gd" id="1_5424x"]
-[ext_resource type="PackedScene" uid="uid://ci4u7feyjehn4" path="res://elements/rectangle_element/rectangle_element.tscn" id="2_hl2sb"]
-[ext_resource type="Resource" uid="uid://l4jvhlnxwgk3" path="res://assets/rectangle_element_colors/gray2.tres" id="3_a7t52"]
-[ext_resource type="Resource" uid="uid://dvfouy26jxkkf" path="res://assets/rectangle_element_shapes/square/square.tres" id="4_6vbvd"]
-[ext_resource type="PackedScene" uid="uid://bvpifohy0mb0" path="res://elements/icon_element/icon_element.tscn" id="5_o7s56"]
+[ext_resource type="PackedScene" uid="uid://c6dcmfrm4mrdl" path="res://elements/box/box.tscn" id="2_us0cl"]
+[ext_resource type="Resource" uid="uid://cc4grmppltfe8" path="res://assets/box_palettes/dark_gray.tres" id="3_5424x"]
+[ext_resource type="Resource" uid="uid://dtv20xpa11db4" path="res://assets/box_shapes/square.tres" id="4_hl2sb"]
 [ext_resource type="Texture2D" uid="uid://cdbx3hhqsbcpx" path="res://assets/icons/6x6/note.png" id="6_y58q6"]
-[ext_resource type="Resource" uid="uid://dfl2obfhu1ax5" path="res://assets/icon_element_colors/gray2.tres" id="7_b5t54"]
 [ext_resource type="PackedScene" uid="uid://nvxy80mgr217" path="res://stages/modular/parameters/ports/input/modular_input_port.tscn" id="8_fwssb"]
 [ext_resource type="Resource" uid="uid://cb181tqhciykx" path="res://stages/modular/parameters/ports/color/audio.tres" id="9_u7dx0"]
+[ext_resource type="PackedScene" uid="uid://cvda00jw2nwgn" path="res://elements/icon/icon.tscn" id="10_hl2sb"]
 [ext_resource type="Texture2D" uid="uid://cykm1pdlv5fo0" path="res://stages/modular/modules/output/small_speaker.png" id="10_uv7ff"]
+[ext_resource type="Resource" uid="uid://di1tokpfsdjrt" path="res://assets/icon_palettes/dark_gray.tres" id="11_a7t52"]
 [ext_resource type="Texture2D" uid="uid://ba0d151vwsbah" path="res://stages/modular/modules/output/big_speaker.png" id="11_jgqe3"]
+[ext_resource type="Resource" uid="uid://svuq6hk23vta" path="res://assets/icon_shapes/shape.tres" id="12_6vbvd"]
+
+[sub_resource type="Resource" id="Resource_6vbvd"]
+metadata/__load_path__ = "res://assets/icon_element_colors/gray2.tres"
 
 [node name="modular_output_module" type="Control" unique_id=983211691 node_paths=PackedStringArray("parameters")]
 layout_mode = 3
@@ -21,7 +25,7 @@ script = ExtResource("1_5424x")
 id = 1
 parameters = [NodePath("sample")]
 
-[node name="background" parent="." unique_id=611869492 instance=ExtResource("2_hl2sb")]
+[node name="background2" parent="." unique_id=1459495440 instance=ExtResource("2_us0cl")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,17 +34,17 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-color = ExtResource("3_a7t52")
-shape = ExtResource("4_6vbvd")
+palette = ExtResource("3_5424x")
+shape = ExtResource("4_hl2sb")
 
-[node name="sample_icon" parent="." unique_id=1389549536 instance=ExtResource("5_o7s56")]
+[node name="sample_icon" parent="." unique_id=1389549536]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 35.0
 offset_right = 10.0
 offset_bottom = 41.0
 icon = ExtResource("6_y58q6")
-color = ExtResource("7_b5t54")
+color = SubResource("Resource_6vbvd")
 
 [node name="sample" parent="." unique_id=2021418910 instance=ExtResource("8_fwssb")]
 layout_mode = 0
@@ -79,3 +83,13 @@ offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_jgqe3")
+
+[node name="icon" parent="." unique_id=611788639 instance=ExtResource("10_hl2sb")]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 35.0
+offset_right = 11.0
+offset_bottom = 41.0
+icon = ExtResource("6_y58q6")
+palette = ExtResource("11_a7t52")
+shape = ExtResource("12_6vbvd")

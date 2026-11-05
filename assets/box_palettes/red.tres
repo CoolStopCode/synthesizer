@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="BoxPalette" format=3 uid="uid://d3k4svea4seli"]
 
-[ext_resource type="Script" uid="uid://d3vr14r2dhrap" path="res://elements_new/box/box_palette.gd" id="1_i2xn1"]
-[ext_resource type="ColorPalette" uid="uid://7ohfm1njq0yp" path="res://assets/color_palettes/red.tres" id="1_sr6om"]
+[ext_resource type="Script" uid="uid://d3vr14r2dhrap" path="res://elements/box/box_palette.gd" id="1_i2xn1"]
+[ext_resource type="ColorPalette" uid="uid://bdtfvoqee84wr" path="res://assets/apollo.tres" id="1_sr6om"]
 
 [resource]
 script = ExtResource("1_i2xn1")
-fill = 2
-outline = 1
+fill = 27
+outline = 26
 color_palette = ExtResource("1_sr6om")
 metadata/_custom_type_script = "uid://d3vr14r2dhrap"

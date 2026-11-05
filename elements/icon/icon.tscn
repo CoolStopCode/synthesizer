@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cvda00jw2nwgn"]
+
+[ext_resource type="Script" uid="uid://52piocgo28dc" path="res://elements/icon/icon_element.gd" id="1_o055i"]
+[ext_resource type="Texture2D" uid="uid://bkyllow8s1yvw" path="res://assets/icons/6x6/gate.png" id="2_fpui6"]
+
+[node name="icon" type="Control" unique_id=611788639 node_paths=PackedStringArray("icon_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_o055i")
+icon_node = NodePath("icon")
+metadata/_custom_type_script = "uid://52piocgo28dc"
+
+[node name="icon" type="TextureRect" parent="." unique_id=1950568017]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fpui6")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BoxPalette" format=3 uid="uid://qbxfe4krrfrm"]
+
+[ext_resource type="ColorPalette" uid="uid://bdtfvoqee84wr" path="res://assets/apollo.tres" id="1_8hduh"]
+[ext_resource type="Script" uid="uid://d3vr14r2dhrap" path="res://elements/box/box_palette.gd" id="2_lfb0k"]
+
+[resource]
+script = ExtResource("2_lfb0k")
+fill = 2
+outline = 1
+color_palette = ExtResource("1_8hduh")
+metadata/_custom_type_script = "uid://d3vr14r2dhrap"

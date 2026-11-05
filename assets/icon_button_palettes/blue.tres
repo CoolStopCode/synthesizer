@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="IconButtonPalette" format=3 uid="uid://bm06v27bgrpyg"]
+
+[ext_resource type="ColorPalette" uid="uid://bdtfvoqee84wr" path="res://assets/apollo.tres" id="1_2hjuj"]
+[ext_resource type="Script" uid="uid://re7ni53y555g" path="res://elements/icon_button/icon_button_palette.gd" id="2_jfu3p"]
+
+[resource]
+script = ExtResource("2_jfu3p")
+icon = 1
+shadow_pressed = -1
+fill_pressed = 1
+fill = 2
+outline = 1
+color_palette = ExtResource("1_2hjuj")
+metadata/_custom_type_script = "uid://re7ni53y555g"

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bsl2bvpxh0vhs" path="res://assets/box_shapes/square/fill.png" id="1_tftnt"]
 [ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://assets/box_shapes/round/outline.png" id="2_tftnt"]
 [ext_resource type="Texture2D" uid="uid://bsi7ouai4dh4t" path="res://assets/box_shapes/square/outline.png" id="2_u7w4i"]
-[ext_resource type="Script" uid="uid://dn6q05tg5ueuk" path="res://elements_new/hold_button/hold_button_shape.gd" id="3_u7w4i"]
+[ext_resource type="Script" uid="uid://dn6q05tg5ueuk" path="res://elements/hold_button/hold_button_shape.gd" id="3_u7w4i"]
 [ext_resource type="Texture2D" uid="uid://ckeqepmsdode" path="res://assets/button_shapes/square/shadow.png" id="5_cu7mt"]
 
 [resource]

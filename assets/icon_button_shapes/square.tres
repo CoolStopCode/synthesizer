@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="IconButtonShape" format=3 uid="uid://cjsydqa4sijte"]
 
-[ext_resource type="Script" uid="uid://co3dtvdmf5w5" path="res://elements_new/icon_button/icon_button_shape.gd" id="1_htipf"]
+[ext_resource type="Script" uid="uid://co3dtvdmf5w5" path="res://elements/icon_button/icon_button_shape.gd" id="1_htipf"]
 [ext_resource type="Texture2D" uid="uid://bsl2bvpxh0vhs" path="res://assets/box_shapes/square/fill.png" id="1_rxn5j"]
 [ext_resource type="Texture2D" uid="uid://bsi7ouai4dh4t" path="res://assets/box_shapes/square/outline.png" id="2_8njgb"]
 [ext_resource type="Texture2D" uid="uid://ckeqepmsdode" path="res://assets/button_shapes/square/shadow.png" id="4_wymu5"]

@@ -53,22 +53,22 @@ func is_module_rect_in_valid_position(module_rect : Rect2) -> bool:
 func get_module(module_index : int) -> ModularModule:
 	return modules[module_index]
 
-func get_all_ports() -> Array[ModularPort]:
-	var ports : Array[ModularPort]
+func get_all_ports() -> Array[ModularPortElement]:
+	var ports : Array[ModularPortElement]
 	
 	for module : ModularModule in modules:
-		for parameter : ModularParameter in module.parameters:
-			if parameter is ModularPort:
+		for parameter : ModularParameterElement in module.parameters:
+			if parameter is ModularPortElement:
 				ports.append(parameter)
-		for output : ModularOutputPort in module.outputs:
+		for output : ModularOutputElement in module.outputs:
 			ports.append(output)
 	
 	return ports
 
-func closest_port_to(point : Vector2) -> ModularPort:
+func closest_port_to(point : Vector2) -> ModularPortElement:
 	var closest_distance : float = INF
-	var closest_port : ModularPort
-	for port : ModularPort in get_all_ports():
+	var closest_port : ModularPortElement
+	for port : ModularPortElement in get_all_ports():
 		var distance := point.distance_to(port.global_center_position())
 		if distance < closest_distance:
 			closest_distance = distance
@@ -98,21 +98,21 @@ func get_module_definitions() -> Array[ModularModuleDefinition]:
 	
 	return module_definitions
 
-func get_input_map() -> Dictionary[ModularInputPort, Vector2i]:
-	var input_map : Dictionary[ModularInputPort, Vector2i]
+func get_input_map() -> Dictionary[ModularInputElement, Vector2i]:
+	var input_map : Dictionary[ModularInputElement, Vector2i]
 	
 	for module_index in range(modules.size()):
 		var module := modules[module_index]
 		for parameter_index in range(module.parameters.size()):
 			var parameter := module.parameters[parameter_index]
-			if parameter is ModularInputPort:
-				var input := parameter as ModularInputPort
+			if parameter is ModularInputElement:
+				var input := parameter as ModularInputElement
 				input_map[input] = Vector2i(module_index, parameter_index)
 	
 	return input_map
 
-func get_output_map() -> Dictionary[ModularOutputPort, Vector2i]:
-	var output_map : Dictionary[ModularOutputPort, Vector2i]
+func get_output_map() -> Dictionary[ModularOutputElement, Vector2i]:
+	var output_map : Dictionary[ModularOutputElement, Vector2i]
 	for module_index in range(modules.size()):
 		var module := modules[module_index]
 		for output_index in range(module.outputs.size()):

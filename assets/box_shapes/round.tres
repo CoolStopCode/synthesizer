@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dednbl6gohlea" path="res://assets/box_shapes/round/fill.png" id="1_t1iie"]
 [ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://assets/box_shapes/round/outline.png" id="2_o1eaf"]
-[ext_resource type="Script" uid="uid://dglhyobli5ane" path="res://elements/box/box_shape.gd" id="3_ws8ks"]
+[ext_resource type="Script" uid="uid://dglhyobli5ane" path="res://elements/box/box_shape.gd" id="3_t1iie"]
 
 [resource]
-script = ExtResource("3_ws8ks")
+script = ExtResource("3_t1iie")
 margin = 6
-fill_texture = ExtResource("1_t1iie")
-outline_texture = ExtResource("2_o1eaf")
+fill = ExtResource("1_t1iie")
+outline = ExtResource("2_o1eaf")
 metadata/_custom_type_script = "uid://dglhyobli5ane"

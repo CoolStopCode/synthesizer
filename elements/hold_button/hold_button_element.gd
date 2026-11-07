@@ -73,7 +73,7 @@ func update() -> void:
 	
 	progress_node.self_modulate = palette.get_progress_color()
 	
-	progress_node.texture = shape.outline_texture
+	progress_node.texture = shape.get_outline_texture()
 	
 	progress_node.patch_margin_top    = shape.margin
 	progress_node.patch_margin_bottom = shape.margin

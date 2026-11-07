@@ -3,11 +3,11 @@ extends Shape
 
 @export var margin : int
 
-@export var fill_texture : Texture
-@export var outline_texture : Texture
+@export var fill : Texture
+@export var outline : Texture
 
 func get_fill_texture() -> Texture:
-	return fill_texture
+	return fill
 
 func get_outline_texture() -> Texture:
-	return outline_texture
+	return outline

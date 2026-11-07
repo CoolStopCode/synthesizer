@@ -1,5 +1,5 @@
-@abstract class_name ModularParameter
-extends Control
+@abstract class_name ModularParameterElement
+extends Element
 
 @export var value : float
 

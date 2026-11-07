@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://b8mayuqirfhew"]
 
-[ext_resource type="Script" uid="uid://baj7w1vdmgpoc" path="res://stages/modular/parameters/button/modular_button.gd" id="1_jr2be"]
+[ext_resource type="Script" uid="uid://baj7w1vdmgpoc" path="res://stages/modular/parameters/button/modular_button_element.gd" id="1_jr2be"]
 [ext_resource type="PackedScene" uid="uid://d1dur1mr3sxqh" path="res://elements/icon_button/icon_button.tscn" id="2_jn4yn"]
 [ext_resource type="Texture2D" uid="uid://h6po6smca61m" path="res://assets/icons/6x6/gear.png" id="3_2d00g"]
 [ext_resource type="Resource" uid="uid://csuctiqv1v75o" path="res://assets/icon_button_palettes/red.tres" id="3_40n4l"]
 [ext_resource type="Resource" uid="uid://cjsydqa4sijte" path="res://assets/icon_button_shapes/square.tres" id="4_2d00g"]
 
-[node name="modular_editor_button" type="Control" unique_id=2036377758 node_paths=PackedStringArray("button")]
+[node name="modular_editor_button" type="Control" unique_id=2036377758 node_paths=PackedStringArray("button_node")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 14.0
 offset_bottom = 14.0
 script = ExtResource("1_jr2be")
-button = NodePath("button")
+button_node = NodePath("button")
 
 [node name="button" parent="." unique_id=1808281601 instance=ExtResource("2_jn4yn")]
 layout_mode = 1

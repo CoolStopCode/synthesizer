@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ModularDialPalette" format=3 uid="uid://digb4nqds7wtj"]
+
+[ext_resource type="ColorPalette" uid="uid://bdtfvoqee84wr" path="res://assets/apollo.tres" id="1_unfmn"]
+[ext_resource type="Script" uid="uid://dqharp1726g3f" path="res://stages/modular/parameters/ports/dial/modular_dial_palette.gd" id="2_d5uyw"]
+
+[resource]
+script = ExtResource("2_d5uyw")
+notch = 30
+notch_highlighted = -1
+notch_connected = -1
+outline_connected = 32
+body_connected = 33
+rim_connected = 35
+hole_connected = 30
+outline = 32
+body = 33
+rim = 35
+hole = 30
+outline_highlighted = 45
+body_highlighted = 33
+rim_highlighted = 35
+hole_highlighted = 30
+color_palette = ExtResource("1_unfmn")
+metadata/_custom_type_script = "uid://dqharp1726g3f"

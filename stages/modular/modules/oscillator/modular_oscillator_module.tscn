@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://c6dcmfrm4mrdl" path="res://elements/box/box.tscn" id="2_j4yec"]
 [ext_resource type="Resource" uid="uid://du04fwi5v0lh2" path="res://assets/box_palettes/light_gray.tres" id="3_j4yec"]
 [ext_resource type="Resource" uid="uid://dtv20xpa11db4" path="res://assets/box_shapes/square.tres" id="4_vxub4"]
-[ext_resource type="PackedScene" uid="uid://b2xwinqql82b3" path="res://stages/modular/parameters/ports/dial/modular_dial_port.tscn" id="5_byplo"]
-[ext_resource type="Resource" uid="uid://bhl1uaglbdrt8" path="res://stages/modular/parameters/ports/color/float.tres" id="6_mcaae"]
+[ext_resource type="PackedScene" uid="uid://b2xwinqql82b3" path="res://stages/modular/parameters/ports/dial/modular_dial.tscn" id="5_byplo"]
+[ext_resource type="Resource" uid="uid://t30i7idqdv6p" path="res://stages/modular/parameters/ports/dial/palettes/float.tres" id="6_j4yec"]
+[ext_resource type="Resource" uid="uid://dlia06vq5cxtn" path="res://stages/modular/parameters/ports/dial/shapes/dial.tres" id="7_4dhq2"]
 [ext_resource type="PackedScene" uid="uid://b8mayuqirfhew" path="res://stages/modular/parameters/button/modular_button.tscn" id="7_g1olx"]
 [ext_resource type="Texture2D" uid="uid://cdt7v7y5xys37" path="res://stages/modular/modules/oscillator/sine.png" id="8_p6g6a"]
 [ext_resource type="Texture2D" uid="uid://61staagwmt22" path="res://stages/modular/modules/oscillator/square.png" id="9_ws1sp"]
@@ -13,8 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://ijdlpcw04g32" path="res://stages/modular/modules/oscillator/triangle.png" id="11_ysbe7"]
 [ext_resource type="Resource" uid="uid://bm06v27bgrpyg" path="res://assets/icon_button_palettes/blue.tres" id="12_j4yec"]
 [ext_resource type="Resource" uid="uid://cjsydqa4sijte" path="res://assets/icon_button_shapes/square.tres" id="13_4dhq2"]
-[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output_port.tscn" id="14_ylidr"]
-[ext_resource type="Resource" uid="uid://cb181tqhciykx" path="res://stages/modular/parameters/ports/color/audio.tres" id="15_f4257"]
+[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output.tscn" id="14_ylidr"]
+[ext_resource type="Resource" uid="uid://eyq1f4ehaiou" path="res://stages/modular/parameters/ports/palettes/audio.tres" id="16_vxub4"]
+[ext_resource type="Resource" uid="uid://dct6ffrfc3euk" path="res://stages/modular/parameters/ports/output/shape/output.tres" id="17_dggut"]
 
 [node name="modular_oscillator_module" type="Control" unique_id=1124499139 node_paths=PackedStringArray("parameters", "outputs")]
 layout_mode = 3
@@ -48,7 +50,8 @@ minimum_value = 1.0
 maximum_value = 400.0
 minimum_rotation = -6.283
 maximum_rotation = 6.283
-color = ExtResource("6_mcaae")
+palette = ExtResource("6_j4yec")
+shape = ExtResource("7_4dhq2")
 
 [node name="waveform" parent="." unique_id=2036377758 instance=ExtResource("7_g1olx")]
 layout_mode = 0
@@ -66,4 +69,5 @@ offset_left = 28.0
 offset_top = 3.0
 offset_right = 38.0
 offset_bottom = 13.0
-color = ExtResource("15_f4257")
+palette = ExtResource("16_vxub4")
+shape = ExtResource("17_dggut")

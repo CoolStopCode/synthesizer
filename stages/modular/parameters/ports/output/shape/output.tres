@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModularPortShape" format=3 uid="uid://dct6ffrfc3euk"]
+
+[ext_resource type="Texture2D" uid="uid://cjbybof3bxkjj" path="res://stages/modular/parameters/ports/output/shape/body.png" id="1_r7yu4"]
+[ext_resource type="Script" uid="uid://bginp3dd2bj21" path="res://stages/modular/parameters/ports/modular_port_shape.gd" id="1_t6fw0"]
+[ext_resource type="Texture2D" uid="uid://mpo5spivr4n" path="res://stages/modular/parameters/ports/output/shape/hole.png" id="2_k25r8"]
+[ext_resource type="Texture2D" uid="uid://cwtcbbv136mmy" path="res://stages/modular/parameters/ports/output/shape/outline.png" id="3_lanxk"]
+[ext_resource type="Texture2D" uid="uid://ba4j7n75312ft" path="res://stages/modular/parameters/ports/output/shape/rim.png" id="4_a6e2n"]
+
+[resource]
+script = ExtResource("1_t6fw0")
+outline = ExtResource("3_lanxk")
+body = ExtResource("1_r7yu4")
+rim = ExtResource("4_a6e2n")
+hole = ExtResource("2_k25r8")
+metadata/_custom_type_script = "uid://bginp3dd2bj21"

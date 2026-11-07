@@ -5,15 +5,17 @@
 [ext_resource type="Resource" uid="uid://cc4grmppltfe8" path="res://assets/box_palettes/dark_gray.tres" id="3_k5jjj"]
 [ext_resource type="PackedScene" uid="uid://b8mayuqirfhew" path="res://stages/modular/parameters/button/modular_button.tscn" id="4_iqcw7"]
 [ext_resource type="Resource" uid="uid://dtv20xpa11db4" path="res://assets/box_shapes/square.tres" id="4_q300q"]
-[ext_resource type="PackedScene" uid="uid://nvxy80mgr217" path="res://stages/modular/parameters/ports/input/modular_input_port.tscn" id="5_yvd3p"]
-[ext_resource type="Resource" uid="uid://x5warkss7ywi" path="res://stages/modular/parameters/ports/color/variant.tres" id="6_ayddj"]
-[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output_port.tscn" id="6_ix13h"]
+[ext_resource type="PackedScene" uid="uid://nvxy80mgr217" path="res://stages/modular/parameters/ports/input/modular_input.tscn" id="5_yvd3p"]
+[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output.tscn" id="6_ix13h"]
 [ext_resource type="Texture2D" uid="uid://bd00mv51y50hi" path="res://assets/icons/6x6/add.png" id="6_jgy5v"]
 [ext_resource type="Texture2D" uid="uid://whh0nde8powt" path="res://assets/icons/6x6/dash.png" id="7_v5c3h"]
 [ext_resource type="Texture2D" uid="uid://grcp6wktvy3d" path="res://assets/icons/6x6/multiply.png" id="8_tp6yk"]
 [ext_resource type="Texture2D" uid="uid://bcckwnwnqcox3" path="res://assets/icons/6x6/slash.png" id="9_yn1pf"]
 [ext_resource type="Resource" uid="uid://csuctiqv1v75o" path="res://assets/icon_button_palettes/red.tres" id="10_j602q"]
 [ext_resource type="Resource" uid="uid://cjsydqa4sijte" path="res://assets/icon_button_shapes/square.tres" id="11_k5jjj"]
+[ext_resource type="Resource" uid="uid://b7ggp23rl76b" path="res://stages/modular/parameters/ports/palettes/variant.tres" id="13_k5jjj"]
+[ext_resource type="Resource" uid="uid://bqrmrn1bb8tup" path="res://stages/modular/parameters/ports/input/shape/input.tres" id="14_vbqc0"]
+[ext_resource type="Resource" uid="uid://dct6ffrfc3euk" path="res://stages/modular/parameters/ports/output/shape/output.tres" id="16_airtu"]
 [ext_resource type="PackedScene" uid="uid://cvda00jw2nwgn" path="res://elements/icon/icon.tscn" id="17_8i7h5"]
 [ext_resource type="Resource" uid="uid://di1tokpfsdjrt" path="res://assets/icon_palettes/dark_gray.tres" id="17_vbqc0"]
 [ext_resource type="Texture2D" uid="uid://bbqjieuoxg4pq" path="res://assets/icons/6x6/equals.png" id="18_ol42g"]
@@ -57,7 +59,8 @@ offset_left = 2.0
 offset_top = 3.0
 offset_right = 12.0
 offset_bottom = 13.0
-color = ExtResource("6_ayddj")
+palette = ExtResource("13_k5jjj")
+shape = ExtResource("14_vbqc0")
 
 [node name="operand_b" parent="." unique_id=569214791 instance=ExtResource("5_yvd3p")]
 layout_mode = 0
@@ -65,7 +68,8 @@ offset_left = 24.0
 offset_top = 3.0
 offset_right = 34.0
 offset_bottom = 13.0
-color = ExtResource("6_ayddj")
+palette = ExtResource("13_k5jjj")
+shape = ExtResource("14_vbqc0")
 
 [node name="result" parent="." unique_id=8079301 instance=ExtResource("6_ix13h")]
 layout_mode = 0
@@ -73,7 +77,8 @@ offset_left = 44.0
 offset_top = 3.0
 offset_right = 54.0
 offset_bottom = 13.0
-color = ExtResource("6_ayddj")
+palette = ExtResource("13_k5jjj")
+shape = ExtResource("16_airtu")
 
 [node name="equals_icon" parent="." unique_id=611788639 instance=ExtResource("17_8i7h5")]
 layout_mode = 0

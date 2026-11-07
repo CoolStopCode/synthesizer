@@ -18,10 +18,10 @@ func to_layout(layout_scene : PackedScene, module_bindings : Dictionary[int, Pac
 				parameter.set_value(parameter_value)
 	
 	for connection_definition in connection_definitions:
-		var input_port : ModularInputPort = layout.modules_layer\
+		var input_port : ModularInputElement = layout.modules_layer\
 			.modules[connection_definition.input_module_index]\
 			.parameters[connection_definition.input_parameter_index]
-		var output_port : ModularOutputPort = layout.modules_layer\
+		var output_port : ModularOutputElement = layout.modules_layer\
 			.modules[connection_definition.output_module_index]\
 			.outputs[connection_definition.output_output_index]
 		

@@ -16,7 +16,7 @@ func _input(event: InputEvent) -> void:
 		if not closest_port.in_click_radius(event.position):
 			return
 		
-		if closest_port.has_connected():
+		if closest_port.has_connection():
 			closest_port.connection.dragging = true
 			closest_port.connection.disconnect_port(closest_port)
 			return

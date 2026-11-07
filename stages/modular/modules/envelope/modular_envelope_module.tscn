@@ -5,16 +5,20 @@
 [ext_resource type="Resource" uid="uid://hr1ldm08om8o" path="res://assets/box_palettes/darker_gray.tres" id="3_fdm81"]
 [ext_resource type="Resource" uid="uid://dtv20xpa11db4" path="res://assets/box_shapes/square.tres" id="4_fdm81"]
 [ext_resource type="Texture2D" uid="uid://bkyllow8s1yvw" path="res://assets/icons/6x6/gate.png" id="6_obx3h"]
+[ext_resource type="Resource" uid="uid://dwjr35ujfieda" path="res://stages/modular/parameters/ports/palettes/bool.tres" id="6_teq7v"]
+[ext_resource type="Resource" uid="uid://bqrmrn1bb8tup" path="res://stages/modular/parameters/ports/input/shape/input.tres" id="7_kfdcj"]
+[ext_resource type="Resource" uid="uid://t30i7idqdv6p" path="res://stages/modular/parameters/ports/dial/palettes/float.tres" id="9_obx3h"]
+[ext_resource type="Resource" uid="uid://b22d65lg5w60j" path="res://stages/modular/parameters/ports/palettes/float.tres" id="9_ofb0l"]
 [ext_resource type="Texture2D" uid="uid://jqcxq082jnb4" path="res://assets/icons/6x6/lightning.png" id="9_ook4t"]
-[ext_resource type="PackedScene" uid="uid://nvxy80mgr217" path="res://stages/modular/parameters/ports/input/modular_input_port.tscn" id="10_rdom6"]
-[ext_resource type="Resource" uid="uid://iyyqbryjjjmm" path="res://stages/modular/parameters/ports/color/bool.tres" id="11_n4qsd"]
-[ext_resource type="PackedScene" uid="uid://b2xwinqql82b3" path="res://stages/modular/parameters/ports/dial/modular_dial_port.tscn" id="12_1jsj5"]
-[ext_resource type="Resource" uid="uid://bhl1uaglbdrt8" path="res://stages/modular/parameters/ports/color/float.tres" id="13_74l7x"]
+[ext_resource type="Resource" uid="uid://dlia06vq5cxtn" path="res://stages/modular/parameters/ports/dial/shapes/dial.tres" id="10_kfdcj"]
+[ext_resource type="PackedScene" uid="uid://nvxy80mgr217" path="res://stages/modular/parameters/ports/input/modular_input.tscn" id="10_rdom6"]
+[ext_resource type="PackedScene" uid="uid://b2xwinqql82b3" path="res://stages/modular/parameters/ports/dial/modular_dial.tscn" id="12_1jsj5"]
+[ext_resource type="Resource" uid="uid://dct6ffrfc3euk" path="res://stages/modular/parameters/ports/output/shape/output.tres" id="12_obx3h"]
 [ext_resource type="PackedScene" uid="uid://cvda00jw2nwgn" path="res://elements/icon/icon.tscn" id="13_fdm81"]
 [ext_resource type="Resource" uid="uid://cb0gswviw024" path="res://assets/icon_palettes/darker_gray.tres" id="13_sca0e"]
 [ext_resource type="PackedScene" uid="uid://5k7h115onybd" path="res://stages/modular/parameters/value/modular_value.tscn" id="14_s6su1"]
 [ext_resource type="Resource" uid="uid://svuq6hk23vta" path="res://assets/icon_shapes/shape.tres" id="15_teq7v"]
-[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output_port.tscn" id="15_xanbv"]
+[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output.tscn" id="15_xanbv"]
 
 [node name="modular_envelope_module" type="Control" unique_id=1796839355 node_paths=PackedStringArray("parameters", "outputs")]
 layout_mode = 3
@@ -44,7 +48,8 @@ offset_left = 1.0
 offset_top = 10.0
 offset_right = 11.0
 offset_bottom = 20.0
-color = ExtResource("11_n4qsd")
+palette = ExtResource("6_teq7v")
+shape = ExtResource("7_kfdcj")
 
 [node name="a" parent="." unique_id=704340714 instance=ExtResource("12_1jsj5")]
 layout_mode = 0
@@ -56,7 +61,8 @@ minimum_value = 0.01
 maximum_value = 2.0
 minimum_rotation = -2.356
 maximum_rotation = 2.356
-color = ExtResource("13_74l7x")
+palette = ExtResource("9_obx3h")
+shape = ExtResource("10_kfdcj")
 
 [node name="d" parent="." unique_id=1438600050 instance=ExtResource("12_1jsj5")]
 layout_mode = 0
@@ -68,7 +74,8 @@ minimum_value = 0.01
 maximum_value = 10.0
 minimum_rotation = -2.356
 maximum_rotation = 2.356
-color = ExtResource("13_74l7x")
+palette = ExtResource("9_obx3h")
+shape = ExtResource("10_kfdcj")
 
 [node name="s" parent="." unique_id=460870603 instance=ExtResource("12_1jsj5")]
 layout_mode = 0
@@ -79,7 +86,8 @@ offset_bottom = 30.0
 maximum_value = 1.0
 minimum_rotation = -2.356
 maximum_rotation = 2.356
-color = ExtResource("13_74l7x")
+palette = ExtResource("9_obx3h")
+shape = ExtResource("10_kfdcj")
 
 [node name="r" parent="." unique_id=1360815127 instance=ExtResource("12_1jsj5")]
 layout_mode = 0
@@ -91,7 +99,8 @@ minimum_value = 0.01
 maximum_value = 20.0
 minimum_rotation = -2.356
 maximum_rotation = 2.356
-color = ExtResource("13_74l7x")
+palette = ExtResource("9_obx3h")
+shape = ExtResource("10_kfdcj")
 
 [node name="attack_curve" parent="." unique_id=1323958376 instance=ExtResource("14_s6su1")]
 visible = false
@@ -138,7 +147,8 @@ offset_left = 61.0
 offset_top = 10.0
 offset_right = 71.0
 offset_bottom = 20.0
-color = ExtResource("13_74l7x")
+palette = ExtResource("9_ofb0l")
+shape = ExtResource("12_obx3h")
 
 [node name="gate_icon2" parent="." unique_id=611788639 instance=ExtResource("13_fdm81")]
 layout_mode = 0

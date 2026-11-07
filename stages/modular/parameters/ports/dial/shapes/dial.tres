@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ModularDialShape" format=3 uid="uid://dlia06vq5cxtn"]
+
+[ext_resource type="Texture2D" uid="uid://844t85s3jhnh" path="res://stages/modular/parameters/ports/dial/shapes/body.png" id="1_48ml8"]
+[ext_resource type="Script" uid="uid://b6ts46u8w0yyy" path="res://stages/modular/parameters/ports/dial/modular_dial_shape.gd" id="1_ev2de"]
+[ext_resource type="Texture2D" uid="uid://cd0upvs7np7ri" path="res://stages/modular/parameters/ports/dial/shapes/outline.png" id="1_hoqlk"]
+[ext_resource type="Texture2D" uid="uid://3mnss18axtv4" path="res://stages/modular/parameters/ports/dial/shapes/body_open.png" id="2_pe6bv"]
+[ext_resource type="Texture2D" uid="uid://p7ejec27bln6" path="res://stages/modular/parameters/ports/dial/shapes/hole.png" id="3_sjeio"]
+[ext_resource type="Texture2D" uid="uid://07fdmknc55l5" path="res://stages/modular/parameters/ports/dial/shapes/hole_open.png" id="4_p2dsb"]
+[ext_resource type="Texture2D" uid="uid://d3nyqh0wyxvbd" path="res://stages/modular/parameters/ports/dial/shapes/notch.png" id="5_0jhyp"]
+[ext_resource type="Texture2D" uid="uid://cx05gc6ymp277" path="res://stages/modular/parameters/ports/dial/shapes/rim.png" id="7_gy6ni"]
+[ext_resource type="Texture2D" uid="uid://cnpeds34kxm5i" path="res://stages/modular/parameters/ports/dial/shapes/rim_open.png" id="8_d2mcm"]
+
+[resource]
+script = ExtResource("1_ev2de")
+notch = ExtResource("5_0jhyp")
+notch_open = ExtResource("5_0jhyp")
+outline_open = ExtResource("1_hoqlk")
+body_open = ExtResource("2_pe6bv")
+rim_open = ExtResource("8_d2mcm")
+hole_open = ExtResource("4_p2dsb")
+outline = ExtResource("1_hoqlk")
+body = ExtResource("1_48ml8")
+rim = ExtResource("7_gy6ni")
+hole = ExtResource("3_sjeio")
+metadata/_custom_type_script = "uid://b6ts46u8w0yyy"

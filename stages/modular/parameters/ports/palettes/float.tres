@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModularPortPalette" format=3 uid="uid://b22d65lg5w60j"]
+
+[ext_resource type="ColorPalette" uid="uid://bdtfvoqee84wr" path="res://assets/apollo.tres" id="1_1560j"]
+[ext_resource type="Script" uid="uid://b7xg31ygfcoki" path="res://stages/modular/parameters/ports/modular_port_palette.gd" id="2_y8pge"]
+
+[resource]
+script = ExtResource("2_y8pge")
+outline = 2
+body = 3
+rim = 5
+outline_highlighted = 45
+body_highlighted = 3
+rim_highlighted = 5
+color_palette = ExtResource("1_1560j")
+metadata/_custom_type_script = "uid://b7xg31ygfcoki"

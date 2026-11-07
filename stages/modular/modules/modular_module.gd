@@ -2,8 +2,8 @@
 extends Control
 
 @export var id : int
-@export var parameters : Array[ModularParameter]
-@export var outputs : Array[ModularOutputPort]
+@export var parameters : Array[ModularParameterElement]
+@export var outputs : Array[ModularOutputElement]
 
 func get_parameter_values() -> Array[float]:
 	var parameter_values : Array[float]

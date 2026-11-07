@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://dednbl6gohlea" path="res://assets/box_shapes/round/fill.png" id="1_d5hjj"]
 [ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://assets/box_shapes/round/outline.png" id="2_t13er"]
-[ext_resource type="Script" uid="uid://bgy15ygymshne" path="res://elements/button/button_shape.gd" id="3_dypet"]
+[ext_resource type="Script" uid="uid://bgy15ygymshne" path="res://elements/button/button_shape.gd" id="3_t13er"]
 [ext_resource type="Texture2D" uid="uid://snrfqwo8fhid" path="res://assets/button_shapes/round/shadow.png" id="4_t13er"]
 
 [resource]
-script = ExtResource("3_dypet")
+script = ExtResource("3_t13er")
 press_offset = Vector2(0, 1)
 shadow_texture = ExtResource("4_t13er")
 margin = 6
-fill_texture = ExtResource("1_d5hjj")
-outline_texture = ExtResource("2_t13er")
+fill = ExtResource("1_d5hjj")
+outline = ExtResource("2_t13er")
 metadata/_custom_type_script = "uid://bgy15ygymshne"

@@ -45,11 +45,9 @@ window/ios/hide_home_indicator=false
 
 folder_colors={
 "res://assets/": "teal",
-"res://assets/color_palettes/": "blue",
 "res://assets/concept/": "pink",
 "res://assets/fonts/": "gray",
 "res://assets/icons/": "yellow",
-"res://assets/rectangle_element_colors/": "red",
 "res://audio/": "purple",
 "res://audio/analog/": "red",
 "res://audio/drumkit/": "orange",

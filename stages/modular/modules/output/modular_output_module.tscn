@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://c6dcmfrm4mrdl" path="res://elements/box/box.tscn" id="2_us0cl"]
 [ext_resource type="Resource" uid="uid://cc4grmppltfe8" path="res://assets/box_palettes/dark_gray.tres" id="3_5424x"]
 [ext_resource type="Resource" uid="uid://dtv20xpa11db4" path="res://assets/box_shapes/square.tres" id="4_hl2sb"]
+[ext_resource type="Resource" uid="uid://eyq1f4ehaiou" path="res://stages/modular/parameters/ports/palettes/audio.tres" id="6_a7t52"]
 [ext_resource type="Texture2D" uid="uid://cdbx3hhqsbcpx" path="res://assets/icons/6x6/note.png" id="6_y58q6"]
-[ext_resource type="PackedScene" uid="uid://nvxy80mgr217" path="res://stages/modular/parameters/ports/input/modular_input_port.tscn" id="8_fwssb"]
-[ext_resource type="Resource" uid="uid://cb181tqhciykx" path="res://stages/modular/parameters/ports/color/audio.tres" id="9_u7dx0"]
+[ext_resource type="Resource" uid="uid://bqrmrn1bb8tup" path="res://stages/modular/parameters/ports/input/shape/input.tres" id="7_6vbvd"]
+[ext_resource type="PackedScene" uid="uid://nvxy80mgr217" path="res://stages/modular/parameters/ports/input/modular_input.tscn" id="8_fwssb"]
 [ext_resource type="PackedScene" uid="uid://cvda00jw2nwgn" path="res://elements/icon/icon.tscn" id="10_hl2sb"]
 [ext_resource type="Texture2D" uid="uid://cykm1pdlv5fo0" path="res://stages/modular/modules/output/small_speaker.png" id="10_uv7ff"]
 [ext_resource type="Resource" uid="uid://di1tokpfsdjrt" path="res://assets/icon_palettes/dark_gray.tres" id="11_a7t52"]
@@ -40,7 +41,8 @@ offset_left = 11.0
 offset_top = 33.0
 offset_right = 21.0
 offset_bottom = 43.0
-color = ExtResource("9_u7dx0")
+palette = ExtResource("6_a7t52")
+shape = ExtResource("7_6vbvd")
 
 [node name="small" type="TextureRect" parent="." unique_id=418160659]
 layout_mode = 1

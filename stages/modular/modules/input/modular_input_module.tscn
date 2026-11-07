@@ -8,11 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://dbp0m4ev7wbwg" path="res://stages/modular/modules/input/white_key.png" id="5_8tmwf"]
 [ext_resource type="Texture2D" uid="uid://dh4flip42fxv0" path="res://stages/modular/modules/input/black_key.png" id="6_7gvts"]
 [ext_resource type="Texture2D" uid="uid://ds52fffsjrsa0" path="res://assets/icons/6x4/button.png" id="8_324cm"]
+[ext_resource type="Resource" uid="uid://b22d65lg5w60j" path="res://stages/modular/parameters/ports/palettes/float.tres" id="8_rchai"]
+[ext_resource type="Resource" uid="uid://dct6ffrfc3euk" path="res://stages/modular/parameters/ports/output/shape/output.tres" id="9_f3hac"]
+[ext_resource type="Resource" uid="uid://dwjr35ujfieda" path="res://stages/modular/parameters/ports/palettes/bool.tres" id="10_8tmwf"]
 [ext_resource type="Texture2D" uid="uid://bdo4s5pof4k6q" path="res://assets/icons/6x4/wave.png" id="10_qjkd8"]
-[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output_port.tscn" id="11_y86pf"]
+[ext_resource type="PackedScene" uid="uid://cdxxrvhageo6i" path="res://stages/modular/parameters/ports/output/modular_output.tscn" id="11_y86pf"]
 [ext_resource type="PackedScene" uid="uid://cvda00jw2nwgn" path="res://elements/icon/icon.tscn" id="12_42wgl"]
-[ext_resource type="Resource" uid="uid://bhl1uaglbdrt8" path="res://stages/modular/parameters/ports/color/float.tres" id="12_emldk"]
-[ext_resource type="Resource" uid="uid://iyyqbryjjjmm" path="res://stages/modular/parameters/ports/color/bool.tres" id="13_jkvdv"]
 [ext_resource type="Resource" uid="uid://svuq6hk23vta" path="res://assets/icon_shapes/shape.tres" id="13_rchai"]
 
 [node name="modular_input_module" type="Control" unique_id=388998138 node_paths=PackedStringArray("outputs")]
@@ -102,7 +103,8 @@ offset_left = 13.0
 offset_top = 28.0
 offset_right = 23.0
 offset_bottom = 38.0
-color = ExtResource("12_emldk")
+palette = ExtResource("8_rchai")
+shape = ExtResource("9_f3hac")
 
 [node name="pressed" parent="." unique_id=8079301 instance=ExtResource("11_y86pf")]
 layout_mode = 0
@@ -110,7 +112,8 @@ offset_left = 1.0
 offset_top = 33.0
 offset_right = 11.0
 offset_bottom = 43.0
-color = ExtResource("13_jkvdv")
+palette = ExtResource("10_8tmwf")
+shape = ExtResource("9_f3hac")
 
 [node name="pressed_icon2" parent="." unique_id=611788639 instance=ExtResource("12_42wgl")]
 layout_mode = 0

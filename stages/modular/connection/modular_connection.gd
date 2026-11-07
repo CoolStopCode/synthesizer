@@ -1,8 +1,8 @@
 class_name ModularConnection
 extends Node2D
 
-var input_port: ModularInputPort
-var output_port: ModularOutputPort
+var input: ModularInputElement
+var output: ModularOutputElement
 
 var dragging : bool
 var dragging_finger_index : int
@@ -13,41 +13,41 @@ var dragging_finger_index : int
 @export var point_count : int
 @export var sag : float
 
-func disconnect_port(port: ModularPort) -> void:
-	if port == input_port:
-		input_port.disconnected.emit()
-		input_port.connection = null
-		input_port = null
+func disconnect_port(port: ModularPortElement) -> void:
+	if port == input:
+		input.connection = null
+		input.disconnected.emit()
+		input = null
 	
-	if port == output_port:
-		output_port.disconnected.emit()
-		output_port.connection = null
-		output_port = null
-	
-	update_point_positions(port.global_center_position())
-
-func connect_port(port: ModularPort) -> void:
-	if port is ModularInputPort:
-		port.connected.emit()
-		port.connection = self
-		input_port = port
-	
-	if port is ModularOutputPort:
-		port.connected.emit()
-		port.connection = self
-		output_port = port
+	if port == output:
+		output.connection = null
+		output.disconnected.emit()
+		output = null
 	
 	update_point_positions(port.global_center_position())
 
-func can_connect_to(port: ModularPort) -> bool:
-	if input_port == null and output_port == null: return false
-	if input_port != null and output_port != null: return false
+func connect_port(port: ModularPortElement) -> void:
+	if port is ModularInputElement:
+		port.connection = self
+		input = port
+		port.connected.emit()
 	
-	if input_port != null:
-		return input_port.can_connect_to(port)
+	if port is ModularOutputElement:
+		port.connection = self
+		output = port
+		port.connected.emit()
 	
-	if output_port != null:
-		return output_port.can_connect_to(port)
+	update_point_positions(port.global_center_position())
+
+func can_connect_to(port: ModularPortElement) -> bool:
+	if input == null and output == null: return false
+	if input != null and output != null: return false
+	
+	if input != null:
+		return input.can_connect_to(port)
+	
+	if output != null:
+		return output.can_connect_to(port)
 	
 	return false
 
@@ -62,13 +62,13 @@ func update_point_positions(event_position : Vector2) -> void:
 	var from_position: Vector2
 	var to_position: Vector2
 
-	if input_port != null:
-		from_position = input_port.global_center_position()
+	if input != null:
+		from_position = input.global_center_position()
 	else:
 		from_position = event_position
 
-	if output_port != null:
-		to_position = output_port.global_center_position()
+	if output != null:
+		to_position = output.global_center_position()
 	else:
 		to_position = event_position
 	

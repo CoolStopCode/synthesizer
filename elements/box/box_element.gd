@@ -9,8 +9,8 @@ func update() -> void:
 	fill_node   .self_modulate = palette.get_fill_color()
 	outline_node.self_modulate = palette.get_outline_color()
 	
-	fill_node   .texture = shape.fill_texture
-	outline_node.texture = shape.outline_texture
+	fill_node   .texture = shape.get_fill_texture()
+	outline_node.texture = shape.get_outline_texture()
 	
 	fill_node   .patch_margin_top    = shape.margin
 	fill_node   .patch_margin_bottom = shape.margin

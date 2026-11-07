@@ -44,10 +44,10 @@ func can_connect_to(port: ModularPortElement) -> bool:
 	if input != null and output != null: return false
 	
 	if input != null:
-		return input.can_connect_to(port)
+		return port.can_connect_to(input)
 	
 	if output != null:
-		return output.can_connect_to(port)
+		return port.can_connect_to(output)
 	
 	return false
 

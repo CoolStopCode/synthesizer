@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_y8pge")
-outline = 2
+outline = -1
 body = 3
 rim = 5
 outline_highlighted = 45

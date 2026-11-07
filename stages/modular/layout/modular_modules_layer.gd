@@ -76,14 +76,14 @@ func closest_port_to(point : Vector2) -> ModularPortElement:
 	
 	return closest_port
 
-#func highlight_on(from : ModularPort) -> void:
-	#for port in get_all_ports():
-		#if port.can_connect_to(from):
-			#port.highlight_on()
-#
-#func highlight_off() -> void:
-	#for port in get_all_ports():
-		#port.highlight_off()
+func start_highlight_from(from : ModularPortElement) -> void:
+	for port in get_all_ports():
+		if port.can_connect_to(from):
+			port.highlight_on()
+
+func stop_highlight() -> void:
+	for port in get_all_ports():
+		port.highlight_off()
 
 func get_module_definitions() -> Array[ModularModuleDefinition]:
 	var module_definitions : Array[ModularModuleDefinition]

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_xh2w6")
-outline = 32
+outline = -1
 body = 33
 rim = 35
 hole = 30

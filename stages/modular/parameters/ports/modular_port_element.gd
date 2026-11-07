@@ -17,6 +17,14 @@ signal pressed(event : InputEvent)
 signal connected
 signal disconnected
 
+func highlight_on():
+	is_highlighted = true
+	update()
+
+func highlight_off():
+	is_highlighted = false
+	update()
+
 func global_center_position():
 	return global_position + (size / 2)
 
@@ -44,7 +52,7 @@ func in_click_radius(point : Vector2):
 	return global_center_position().distance_to(point) <= click_radius
 
 func can_connect_to(port : ModularPortElement) -> bool:
-	if port.has_connection(): return false
+	if has_connection(): return false
 	if (self is ModularInputElement) == (port is ModularInputElement): return false
 	
 	return true

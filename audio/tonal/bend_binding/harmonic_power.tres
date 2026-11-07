@@ -1,0 +1,142 @@
+[gd_resource type="Resource" script_class="TonalBendBinding" format=3 uid="uid://cvj1onjxwduba"]
+
+[ext_resource type="Script" uid="uid://vmjvtatt83va" path="res://audio/tonal/tonal_bend_behavior.gd" id="1_0a6lm"]
+[ext_resource type="Script" uid="uid://c76xcxl64e8kr" path="res://audio/tonal/transformations/tonal_transformation.gd" id="2_38o5h"]
+[ext_resource type="Script" uid="uid://dxx6f3ilk2sfr" path="res://audio/tonal/transformations/tonal_transposition_transformation.gd" id="3_bpsf3"]
+[ext_resource type="Script" uid="uid://iuk71y1w08v3" path="res://audio/tonal/transformations/tonal_inversion_transformation.gd" id="4_77lfm"]
+[ext_resource type="Script" uid="uid://cygkchfsc4bg2" path="res://audio/tonal/transformations/tonal_parallelization_transformation.gd" id="5_cvhwc"]
+[ext_resource type="Script" uid="uid://dswfjxu20hcjr" path="res://audio/tonal/transformations/tonal_drop_transformation.gd" id="6_4y1a5"]
+[ext_resource type="Script" uid="uid://cyyslm2d8sue8" path="res://audio/tonal/tonal_bend_binding.gd" id="7_hayjq"]
+
+[sub_resource type="Resource" id="Resource_w4ccr"]
+script = ExtResource("3_bpsf3")
+semitones = -12
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_67o5f"]
+script = ExtResource("1_0a6lm")
+degrees = Array[int]([0, 2, 4])
+transformations = Array[ExtResource("2_38o5h")]([SubResource("Resource_w4ccr")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_uksfa"]
+script = ExtResource("3_bpsf3")
+semitones = 12
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_0a6lm"]
+script = ExtResource("3_bpsf3")
+semitones = -12
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_2ewe7"]
+script = ExtResource("1_0a6lm")
+degrees = Array[int]([0, 2, 4])
+transformations = Array[ExtResource("2_38o5h")]([SubResource("Resource_uksfa"), SubResource("Resource_0a6lm")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_38o5h"]
+script = ExtResource("3_bpsf3")
+semitones = -12
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_ximew"]
+script = ExtResource("1_0a6lm")
+degrees = Array[int]([0])
+transformations = Array[ExtResource("2_38o5h")]([SubResource("Resource_38o5h")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_vdyda"]
+script = ExtResource("4_77lfm")
+amount = 1
+metadata/_custom_type_script = "uid://iuk71y1w08v3"
+
+[sub_resource type="Resource" id="Resource_bpsf3"]
+script = ExtResource("3_bpsf3")
+semitones = -12
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_1iesh"]
+script = ExtResource("1_0a6lm")
+degrees = Array[int]([0, 2, 4])
+transformations = Array[ExtResource("2_38o5h")]([SubResource("Resource_vdyda"), SubResource("Resource_bpsf3")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_rayt5"]
+script = ExtResource("3_bpsf3")
+semitones = -12
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_77lfm"]
+script = ExtResource("3_bpsf3")
+semitones = -12
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_6hfrw"]
+script = ExtResource("1_0a6lm")
+degrees = Array[int]([0, 2, 4])
+transformations = Array[ExtResource("2_38o5h")]([SubResource("Resource_rayt5"), SubResource("Resource_77lfm")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_tkua8"]
+script = ExtResource("5_cvhwc")
+metadata/_custom_type_script = "uid://cygkchfsc4bg2"
+
+[sub_resource type="Resource" id="Resource_cvhwc"]
+script = ExtResource("3_bpsf3")
+semitones = -12
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_b3rbs"]
+script = ExtResource("1_0a6lm")
+degrees = Array[int]([0, 2, 4])
+transformations = Array[ExtResource("2_38o5h")]([SubResource("Resource_tkua8"), SubResource("Resource_cvhwc")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_4y1a5"]
+script = ExtResource("3_bpsf3")
+semitones = -12
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_p0eo5"]
+script = ExtResource("1_0a6lm")
+degrees = Array[int]([0, 3, 5])
+transformations = Array[ExtResource("2_38o5h")]([SubResource("Resource_4y1a5")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[sub_resource type="Resource" id="Resource_pbmga"]
+script = ExtResource("6_4y1a5")
+metadata/_custom_type_script = "uid://dswfjxu20hcjr"
+
+[sub_resource type="Resource" id="Resource_hayjq"]
+script = ExtResource("3_bpsf3")
+semitones = -12
+action = 1
+metadata/_custom_type_script = "uid://dxx6f3ilk2sfr"
+
+[sub_resource type="Resource" id="Resource_bg858"]
+script = ExtResource("1_0a6lm")
+degrees = Array[int]([0, 2, 4, 6])
+transformations = Array[ExtResource("2_38o5h")]([SubResource("Resource_pbmga"), SubResource("Resource_hayjq")])
+metadata/_custom_type_script = "uid://vmjvtatt83va"
+
+[resource]
+script = ExtResource("7_hayjq")
+bend_binding = Dictionary[Vector3i, ExtResource("1_0a6lm")]({
+Vector3i(0, 0, 0): SubResource("Resource_67o5f"),
+Vector3i(0, 0, 1): SubResource("Resource_2ewe7"),
+Vector3i(0, 1, 0): SubResource("Resource_ximew"),
+Vector3i(0, 1, 1): SubResource("Resource_1iesh"),
+Vector3i(1, 0, 0): SubResource("Resource_6hfrw"),
+Vector3i(1, 0, 1): SubResource("Resource_b3rbs"),
+Vector3i(1, 1, 0): SubResource("Resource_p0eo5"),
+Vector3i(1, 1, 1): SubResource("Resource_bg858")
+})
+metadata/_custom_type_script = "uid://cyyslm2d8sue8"

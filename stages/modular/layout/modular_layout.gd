@@ -17,14 +17,20 @@ func _input(event: InputEvent) -> void:
 			return
 		
 		if closest_port.has_connection():
+			var opposite : ModularPortElement = closest_port.connection.output if closest_port is ModularInputElement else closest_port.connection.input
+			
 			closest_port.connection.dragging = true
 			closest_port.connection.disconnect_port(closest_port)
+			
+			modules_layer.start_highlight_from(opposite)
+			
 			return
 		
 		if not closest_port.can_create_connection:
 			closest_port.pressed.emit(event)
 			return
 		
+		modules_layer.start_highlight_from(closest_port)
 		connections_layer.create_dragging_connection(closest_port, event.index)
 	
 	if not event.is_pressed():
@@ -37,13 +43,16 @@ func _input(event: InputEvent) -> void:
 			return
 		
 		if not closest_port.in_click_radius(event.position):
+			modules_layer.stop_highlight()
 			connections_layer.delete_connection(released_connection)
 			return
 			
 		if not released_connection.can_connect_to(closest_port):
+			modules_layer.stop_highlight()
 			connections_layer.delete_connection(released_connection)
 			return
 		
+		modules_layer.stop_highlight()
 		released_connection.dragging = false
 		released_connection.connect_port(closest_port)
 

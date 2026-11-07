@@ -4,46 +4,74 @@ uniform float progress : hint_range(0.0, 1.0) = 0.0;
 uniform float start : hint_range(0.0, 360.0) = 0.0;
 uniform vec2 size = vec2(200.0, 100.0);
 
-float edge_position(vec2 point) {
-	vec2 half_size = size * 0.5;
+float ray_to_perimeter(vec2 direction) {
+    vec2 half_size = size * 0.5;
 
-	if (abs(point.y) * half_size.x > abs(point.x) * half_size.y) {
-		float intersection_horizontal = point.x * half_size.y / abs(point.y);
-		if (point.y < 0.0) {
-			return half_size.x + intersection_horizontal;                         // top
-		} else {
-			return size.x + size.y + half_size.x - intersection_horizontal;       // bottom
-		}
-	} else {
-		float intersection_vertical = point.y * half_size.x / max(abs(point.x), 0.000001);
-		if (point.x > 0.0) {
-			return size.x + half_size.y + intersection_vertical;                  // right
-		} else {
-			return 2.0 * size.x + size.y + half_size.y - intersection_vertical;   // left
-		}
-	}
+    float horizontal_scale = half_size.x / max(abs(direction.x), 0.000001);
+    float vertical_scale = half_size.y / max(abs(direction.y), 0.000001);
+
+    vec2 intersection = direction * min(horizontal_scale, vertical_scale);
+
+    if (horizontal_scale < vertical_scale) {
+        if (direction.x > 0.0) {
+            return size.x + half_size.y + intersection.y;
+        } else {
+            return 2.0 * size.x + size.y + half_size.y - intersection.y;
+        }
+    } else {
+        if (direction.y < 0.0) {
+            return half_size.x + intersection.x;
+        } else {
+            return size.x + size.y + half_size.x - intersection.x;
+        }
+    }
+}
+
+vec2 perimeter_to_point(float distance_along_perimeter) {
+    vec2 half_size = size * 0.5;
+    float perimeter = 2.0 * (size.x + size.y);
+
+    distance_along_perimeter = mod(distance_along_perimeter, perimeter);
+
+    if (distance_along_perimeter < size.x) {
+        return vec2(-half_size.x + distance_along_perimeter, -half_size.y);
+    } else if (distance_along_perimeter < size.x + size.y) {
+        return vec2(half_size.x, -half_size.y + distance_along_perimeter - size.x);
+    } else if (distance_along_perimeter < 2.0 * size.x + size.y) {
+        return vec2(
+            half_size.x - (distance_along_perimeter - size.x - size.y),
+            half_size.y
+        );
+    } else {
+        return vec2(
+            -half_size.x,
+            half_size.y - (distance_along_perimeter - 2.0 * size.x - size.y)
+        );
+    }
 }
 
 void fragment() {
-	if (progress == 0.0) {
-		discard;
-	}
-	
-	vec4 texture_color = texture(TEXTURE, UV);
-	
-	float perimeter = 2.0 * (size.x + size.y);
-	
-	vec2 texel_center = floor(UV * size) + 0.5;
-	vec2 pixel_offset_from_center = texel_center - size * 0.5;
-	
-	float start_angle_radians = radians(start);
-	vec2 start_direction = vec2(sin(start_angle_radians), -cos(start_angle_radians));
-	
-	float pixel_edge_position = edge_position(pixel_offset_from_center) / perimeter;
-	float start_edge_position = edge_position(start_direction) / perimeter;
-	
-	float tie_break_bias = 0.01 / perimeter;
-	float sweep_position = fract(pixel_edge_position - start_edge_position + tie_break_bias);
-	
-	COLOR.a *= step(sweep_position, progress);
+    if (progress <= 0.0) {
+        discard;
+    }
+
+    if (progress < 1.0) {
+        float perimeter = 2.0 * (size.x + size.y);
+        float start_angle = radians(start);
+
+        vec2 start_direction = vec2(sin(start_angle), -cos(start_angle));
+        float start_distance = ray_to_perimeter(start_direction);
+
+        float arm_distance = start_distance + progress * perimeter;
+        vec2 arm_point = perimeter_to_point(arm_distance);
+
+        float arm_angle = atan(arm_point.x, -arm_point.y);
+        float arm_sweep = mod(arm_angle - start_angle + TAU, TAU);
+
+        vec2 pixel_position = (UV - vec2(0.5)) * size;
+        float pixel_angle = atan(pixel_position.x, -pixel_position.y);
+        float pixel_sweep = mod(pixel_angle - start_angle + TAU, TAU);
+
+        COLOR.a *= step(pixel_sweep, arm_sweep);
+    }
 }

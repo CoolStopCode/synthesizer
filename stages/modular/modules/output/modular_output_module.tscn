@@ -13,9 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://ba0d151vwsbah" path="res://stages/modular/modules/output/big_speaker.png" id="11_jgqe3"]
 [ext_resource type="Resource" uid="uid://svuq6hk23vta" path="res://assets/icon_shapes/shape.tres" id="12_6vbvd"]
 
-[sub_resource type="Resource" id="Resource_6vbvd"]
-metadata/__load_path__ = "res://assets/icon_element_colors/gray2.tres"
-
 [node name="modular_output_module" type="Control" unique_id=983211691 node_paths=PackedStringArray("parameters")]
 layout_mode = 3
 anchors_preset = 0
@@ -36,15 +33,6 @@ grow_horizontal = 2
 grow_vertical = 2
 palette = ExtResource("3_5424x")
 shape = ExtResource("4_hl2sb")
-
-[node name="sample_icon" parent="." unique_id=1389549536]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 35.0
-offset_right = 10.0
-offset_bottom = 41.0
-icon = ExtResource("6_y58q6")
-color = SubResource("Resource_6vbvd")
 
 [node name="sample" parent="." unique_id=2021418910 instance=ExtResource("8_fwssb")]
 layout_mode = 0

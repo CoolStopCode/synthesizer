@@ -10,7 +10,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4krde"]
 shader = ExtResource("6_33l1a")
-shader_parameter/progress = 1.0
+shader_parameter/progress = 0.0
 shader_parameter/start = 0.0
 shader_parameter/size = Vector2(12, 12)
 

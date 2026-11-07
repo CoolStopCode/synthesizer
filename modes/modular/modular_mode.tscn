@@ -25,6 +25,7 @@ metadata/_custom_type_script = "uid://wwstsyg87ftc"
 [sub_resource type="Resource" id="Resource_m3rnk"]
 script = ExtResource("5_lb4se")
 root = SubResource("Resource_m37dx")
+modus = 1
 metadata/_custom_type_script = "uid://2st765u0dv45"
 
 [node name="modular_mode" type="Control" unique_id=209435061]

@@ -21,7 +21,7 @@ func _on_button_up() -> void:
 		tween.kill()
 		tween = null
 	
-	set_progress(0.0)
+	set_shader_progress(0.0)
 
 func _on_button_down() -> void:
 	triggering = true
@@ -31,7 +31,7 @@ func _on_button_down() -> void:
 	
 	tween = create_tween()
 	tween.tween_method(
-		set_progress,
+		set_shader_progress,
 		0.0,
 		1.0,
 		hold_time
@@ -39,10 +39,11 @@ func _on_button_down() -> void:
 
 	tween.tween_callback(on_hold_finished)
 
-
-func set_progress(value: float) -> void:
+func set_shader_progress(value : float) -> void:
 	progress_node.material.set_shader_parameter("progress", value)
 
+func set_shader_size(value : Vector2) -> void:
+	progress_node.material.set_shader_parameter("size", value)
 
 func on_hold_finished() -> void:
 	if not triggering:
@@ -54,7 +55,7 @@ func on_hold_finished() -> void:
 		tween.kill()
 		tween = null
 	
-	set_progress(0.0)
+	set_shader_progress(0.0)
 	
 	is_pressed = false
 	button_up.emit()
@@ -68,7 +69,7 @@ func on_hold_finished() -> void:
 
 func update() -> void:
 	super()
-	progress_node.material.set_shader_parameter("size", progress_node.size)
+	set_shader_size(progress_node.size)
 	
 	progress_node.self_modulate = palette.get_progress_color()
 	

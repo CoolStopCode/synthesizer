@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dn5dkawkq887m"]
+
+[ext_resource type="PackedScene" uid="uid://c6dcmfrm4mrdl" path="res://elements/box/box.tscn" id="1_aufq0"]
+[ext_resource type="Resource" uid="uid://qbxfe4krrfrm" path="res://assets/box_palettes/blue.tres" id="2_hfnsw"]
+[ext_resource type="Resource" uid="uid://dtv20xpa11db4" path="res://assets/box_shapes/square.tres" id="3_ow0dq"]
+
+[node name="ModularModule" type="Control" unique_id=1729983695]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 16.0
+
+[node name="BoxElement" parent="." unique_id=1459495440 instance=ExtResource("1_aufq0")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+palette = ExtResource("2_hfnsw")
+shape = ExtResource("3_ow0dq")

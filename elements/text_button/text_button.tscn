@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://cbhndgntgx18x"]
+
+[ext_resource type="Script" uid="uid://bb5e7qpsfwhna" path="res://elements/text_button/text_button_element.gd" id="1_2bcqc"]
+[ext_resource type="Texture2D" uid="uid://ckeqepmsdode" path="res://assets/button_shapes/square/shadow.png" id="2_j07gg"]
+[ext_resource type="Texture2D" uid="uid://bsl2bvpxh0vhs" path="res://assets/box_shapes/square/fill.png" id="3_bvroq"]
+[ext_resource type="Texture2D" uid="uid://bsi7ouai4dh4t" path="res://assets/box_shapes/square/outline.png" id="4_25oju"]
+[ext_resource type="LabelSettings" uid="uid://d0kws5alkuuv1" path="res://assets/fonts/synmin.tres" id="6_qf5kg"]
+
+[node name="TextButtonElement" type="Control" unique_id=1069242262 node_paths=PackedStringArray("text_node", "tooltip_timer_node", "tooltip_container_node", "tooltip_label_node", "press_container_node", "shadow_node", "fill_node", "outline_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2bcqc")
+text_node = NodePath("press_container/text")
+tooltip_timer_node = NodePath("tooltip_timer")
+tooltip_container_node = NodePath("tooltip_container")
+tooltip_label_node = NodePath("tooltip_container/tooltip_label")
+press_container_node = NodePath("press_container")
+shadow_node = NodePath("shadow")
+fill_node = NodePath("press_container/fill")
+outline_node = NodePath("press_container/outline")
+metadata/_custom_type_script = "uid://bb5e7qpsfwhna"
+
+[node name="tooltip_timer" type="Timer" parent="." unique_id=692031210]
+wait_time = 0.6
+one_shot = true
+
+[node name="shadow" type="NinePatchRect" parent="." unique_id=1949693949]
+self_modulate = Color(0, 1, 0, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j07gg")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="press_container" type="Control" parent="." unique_id=1371866911]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="fill" type="NinePatchRect" parent="press_container" unique_id=261413972]
+self_modulate = Color(0, 0, 1, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bvroq")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="outline" type="NinePatchRect" parent="press_container" unique_id=1464754042]
+self_modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_25oju")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="text" type="Label" parent="press_container" unique_id=1251708096]
+self_modulate = Color(0.011764706, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -2.0
+offset_right = 8.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "text"
+label_settings = ExtResource("6_qf5kg")
+
+[node name="tooltip_container" type="Control" parent="." unique_id=93066892]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 6.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="tooltip_container" unique_id=1211163589]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0627451, 0.078431375, 0.12156863, 1)
+
+[node name="tooltip_label" type="Label" parent="tooltip_container" unique_id=215533143]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "dfsgb"
+label_settings = ExtResource("6_qf5kg")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

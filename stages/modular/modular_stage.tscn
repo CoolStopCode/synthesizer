@@ -36,7 +36,7 @@ module_bindings = Dictionary[int, PackedScene]({
 6: null,
 7: ExtResource("6_ww3cs")
 })
-top_node = NodePath("top")
+top_node = NodePath("")
 center_node = NodePath("workspace")
 layout_scene = ExtResource("7_7ofq1")
 
@@ -80,26 +80,6 @@ icon = ExtResource("9_0f22e")
 tooltip = "Save"
 palette = ExtResource("14_qmg6p")
 shape = ExtResource("15_ww3cs")
-
-[node name="top" type="Control" parent="." unique_id=1757403071]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 16.0
-offset_bottom = 10.0
-grow_horizontal = 2
-
-[node name="bottom" type="Control" parent="." unique_id=516929351]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -6.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 0
 
 [node name="workspace" type="Control" parent="." unique_id=1472975863]
 clip_contents = true

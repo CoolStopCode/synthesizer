@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TextButtonPalette" format=3 uid="uid://cm4j7dghphnht"]
+
+[ext_resource type="ColorPalette" uid="uid://bdtfvoqee84wr" path="res://assets/apollo.tres" id="1_heu8x"]
+[ext_resource type="Script" uid="uid://cypncfjy3df1h" path="res://elements/text_button/text_button_palette.gd" id="2_bdor1"]
+
+[resource]
+script = ExtResource("2_bdor1")
+text = 44
+text_pressed = 43
+shadow = 43
+shadow_pressed = -1
+fill_pressed = 44
+outline_pressed = 43
+fill = 45
+outline = 44
+color_palette = ExtResource("1_heu8x")
+metadata/_custom_type_script = "uid://cypncfjy3df1h"

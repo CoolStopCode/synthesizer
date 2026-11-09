@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TextButtonShape" format=3 uid="uid://bai6pl5c6x58w"]
+
+[ext_resource type="Texture2D" uid="uid://dednbl6gohlea" path="res://assets/box_shapes/round/fill.png" id="1_a5q4x"]
+[ext_resource type="Script" uid="uid://bemjbwb1so5av" path="res://elements/text_button/text_button_shape.gd" id="1_e1oa5"]
+[ext_resource type="LabelSettings" uid="uid://d0kws5alkuuv1" path="res://assets/fonts/synmin.tres" id="2_ah3rd"]
+[ext_resource type="Texture2D" uid="uid://b4fxopbbrul6v" path="res://assets/box_shapes/round/outline.png" id="3_q473f"]
+[ext_resource type="Texture2D" uid="uid://snrfqwo8fhid" path="res://assets/button_shapes/round/shadow.png" id="5_as4is"]
+
+[resource]
+script = ExtResource("1_e1oa5")
+label_settings = ExtResource("2_ah3rd")
+press_offset = Vector2(0, 1)
+shadow_texture = ExtResource("5_as4is")
+margin = 6
+fill = ExtResource("1_a5q4x")
+outline = ExtResource("3_q473f")
+metadata/_custom_type_script = "uid://bemjbwb1so5av"

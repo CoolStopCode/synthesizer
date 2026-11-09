@@ -17,7 +17,11 @@ func _input(event: InputEvent) -> void:
 			return
 		
 		if closest_port.has_connection():
-			var opposite : ModularPortElement = closest_port.connection.output if closest_port is ModularInputElement else closest_port.connection.input
+			var opposite : ModularPortElement
+			if closest_port is ModularInputElement:
+				opposite = closest_port.connection.output
+			else:
+				opposite = closest_port.connection.input
 			
 			closest_port.connection.dragging = true
 			closest_port.connection.disconnect_port(closest_port)
